@@ -1,0 +1,9 @@
+These Mateba Unica Autorevolver graphics were actually drawn for me by
+The_Funktasm of #zdoom. I do not know how he does it, people! =P
+
+The graphics were originally given to me as a sheet of sprites; I disassembled
+them and tweaked them until they were in the state they're in now.
+
+Additional credits go to Xaser for some slight touchups to the carbine graphic
+and for editing up the scope attachment (which I believe originally comes from
+Shadow Warrior?).

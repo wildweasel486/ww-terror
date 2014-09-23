@@ -1,0 +1,5 @@
+This Taser (stungun) sprite was originally a remote detonator in
+Blood: Plasma Pak, before The_Funktasm got his hands on it. I modified it
+further to have MidoriMan's awesome leather-clad arms attached, which actually
+required quite a lot of effort, as MidoriMan did not originally make
+an arm that would fit the graphic.

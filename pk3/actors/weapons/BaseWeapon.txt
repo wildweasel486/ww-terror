@@ -1,0 +1,335 @@
+// Weapon constants and ammo types are defined in here; also the melee attack.
+// Kick sounds: Soldier of Fortune 2, Yakuza 2, Team Fortress 2, MoH: Pacific Assault.
+// Taser sounds: No One Lives Forever 2, SiN.
+
+ACTOR WWTWeapon : Weapon replaces Fist
+{
+	Weapon.BobStyle Alpha
+	Weapon.BobSpeed 2.5
+	Weapon.BobRangeX 0.2
+	Weapon.BobRangeY 0.5
+	Inventory.Icon "UNKNA0" // if no icon defined, show <!> instead.
+	+Weapon.NoAlert
+	States
+	{
+	Altfire:
+		"####" "#" 0 A_JumpIfInventory("KickSeq", 1, "KickLevel1")
+		"####" "#" 1 Offset(-10,35)
+		"####" "#" 1 Offset(-15,38)
+		"####" "#" 1 Offset(-35,44)
+		"####" "#" 1 Offset(-60,52)
+		"####" "#" 1 Offset(-90,62)
+		"####" "#" 1 Offset(-130,72)
+		"####" "#" 1 Offset(-160,82)
+		TNT1 A 0 A_JumpIfInventory("WWTTaserActivated", 1, "Taser")
+	Kick:
+		TNT1 A 0 A_JumpIfInventory("KickLevelup", 1, "KickLevel1")
+		TNT1 A 1 A_PlayWeaponSound("Kick/Swing")
+		KICK A 1 Offset(80,50)
+		KICK A 1 Offset(50,32)
+		KICK B 1 Offset(10,40)
+		KICK B 1 Offset(-30,32) A_CustomPunch(30,1,0,"WWTKickPuff",100)
+		KICK C 1 Offset(-60,4)
+		KICK C 1 Offset(-70,10)
+		KICK C 1 Offset(-80,22)
+		KICK C 1 Offset(-85,32)
+		KICK C 1 Offset(-88,40)
+		KICK B 1 Offset(-80,50)
+		KICK B 1 Offset(-70,60)
+		KICK A 1 Offset(-60,70)
+		TNT1 A 4
+		TNT1 A 1 A_Jump(256, "AltfireReturn")
+		Goto Ready
+	KickLevel1:
+		TNT1 A 0 A_JumpIfInventory("KickLevelup", 3, "KickLevel3")
+		TNT1 A 0 A_JumpIfInventory("KickSeq", 2, "KickFinisherLevel1")
+		TNT1 A 1 A_PlayWeaponSound("Kick/Swing")
+		KICK A 1 Offset(80,50) A_GiveInventory("KickSeq", 1)
+		KICK A 1 Offset(50,32)
+		KICK B 1 Offset(10,40)
+		KICK B 1 Offset(-30,32) A_CustomPunch(30,1,0,"WWTKickPuff",100)
+		KICK C 1 Offset(-60,4)
+		KICK C 1 Offset(-70,10)
+		KICK C 1 Offset(-80,22)
+		KICK C 1 Offset(-85,32)
+		KICK C 1 Offset(-88,40) A_WeaponReady(WRF_NOBOB|WRF_NOPRIMARY)
+		KICK B 1 Offset(-80,50) A_WeaponReady(WRF_NOBOB|WRF_NOPRIMARY)
+		KICK B 1 Offset(-70,60) A_WeaponReady(WRF_NOBOB|WRF_NOPRIMARY)
+		KICK A 1 Offset(-60,70) A_WeaponReady(WRF_NOBOB|WRF_NOPRIMARY)
+		TNT1 AAAA 1 A_WeaponReady(WRF_NOBOB|WRF_NOPRIMARY)
+		TNT1 A 0 A_TakeInventory("KickSeq", 2)
+		TNT1 A 1 A_Jump(256, "AltfireReturn")
+		Goto Ready
+	KickFinisherLevel1:
+		TNT1 A 1 A_SetAngle(angle - 30.0)
+		TNT1 A 1 A_SetAngle(angle - 30.0)
+		TNT1 A 1 A_SetAngle(angle - 30.0)
+		TNT1 A 1 A_SetAngle(angle - 30.0)
+		TNT1 A 1 A_SetAngle(angle - 30.0)
+		TNT1 A 1 A_SetAngle(angle - 30.0)
+		TNT1 A 1 A_SetAngle(angle - 30.0)
+		TNT1 A 1 A_SetAngle(angle - 30.0)
+		TNT1 A 1 A_SetAngle(angle - 30.0)
+		TNT1 A 0 A_PlayWeaponSound("Kick/Swing")
+		KICK C 1 Offset(-180,50) A_SetAngle(angle - 30.0)
+		KICK C 1 Offset(-150,32) A_SetAngle(angle - 30.0)
+		KICK C 1 Offset(-110,40) A_SetAngle(angle - 30.0)
+		KICK C 1 Offset(-50,32) A_CustomPunch(60,1,0,"WWTKickPuffHeavy",100)
+		KICK B 0 A_JumpIfInventory("KickLevelup", 2, "KickBlastLevel2")
+	KickReturnLevel2:
+		KICK C 1 Offset(10,4)
+		KICK B 1 Offset(40,10)
+		KICK B 1 Offset(60,22)
+		KICK B 1 Offset(85,32)
+		KICK B 1 Offset(88,40)
+		KICK A 1 Offset(80,50)
+		KICK A 1 Offset(70,60)
+		KICK A 1 Offset(60,70)
+		TNT1 A 4 A_TakeInventory("KickSeq", 2)
+		TNT1 A 1 A_Jump(256, "AltfireReturn")
+	KickBlastLevel2:
+		KICK B 0 A_Blast(BF_DONTWARN, 255, 255, 20.0, "WWTKickPuff", "kick/shockwave")
+		KICK BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB 0 A_SpawnItemEx("RepelShock", 0, 0, 0, 0, 20, 0, frandom(0.0, 359.9), SXF_NOCHECKPOSITION)
+		Goto KickReturnLevel2
+	KickLevel3:
+		TNT1 A 0 A_JumpIfInventory("KickSeq", 2, "KickFinisherLevel3")
+		TNT1 A 1 A_PlayWeaponSound("Kick/Swing")
+		KICK A 1 Offset(80,50) A_GiveInventory("KickSeq", 1)
+		KICK A 1 Offset(50,32)
+		KICK B 1 Offset(10,40)
+		KICK B 1 Offset(-30,32) A_CustomPunch(60,1,0,"WWTExplosiveKickPuff",100)
+		KICK C 1 Offset(-60,4)
+		KICK C 1 Offset(-70,10)
+		KICK C 1 Offset(-80,22)
+		KICK C 1 Offset(-85,32)
+		KICK C 1 Offset(-88,40)
+		KICK B 1 Offset(-80,50) A_WeaponReady(WRF_NOBOB|WRF_NOPRIMARY)
+		KICK B 1 Offset(-70,60) A_WeaponReady(WRF_NOBOB|WRF_NOPRIMARY)
+		KICK A 1 Offset(-60,70) A_WeaponReady(WRF_NOBOB|WRF_NOPRIMARY)
+		TNT1 AAAA 1 A_WeaponReady(WRF_NOBOB|WRF_NOPRIMARY)
+		TNT1 A 0 A_TakeInventory("KickSeq", 2)
+		TNT1 A 1 A_Jump(256, "AltfireReturn")
+		Goto Ready
+	KickFinisherLevel3:
+		TNT1 A 1 A_SetAngle(angle - 30.0)
+		TNT1 A 1 A_SetAngle(angle - 30.0)
+		TNT1 A 1 A_SetAngle(angle - 30.0)
+		TNT1 A 1 A_SetAngle(angle - 30.0)
+		TNT1 A 1 A_SetAngle(angle - 30.0)
+		TNT1 A 1 A_SetAngle(angle - 30.0)
+		TNT1 A 1 A_SetAngle(angle - 30.0)
+		TNT1 A 1 A_SetAngle(angle - 30.0)
+		TNT1 A 1 A_SetAngle(angle - 30.0)
+		TNT1 A 0 A_PlayWeaponSound("Kick/Swing")
+		KICK C 1 Offset(-180,50) A_SetAngle(angle - 30.0)
+		KICK C 1 Offset(-150,32) A_SetAngle(angle - 30.0)
+		KICK C 1 Offset(-110,40) A_SetAngle(angle - 30.0)
+		KICK C 1 Offset(-50,32) A_CustomPunch(60,1,0,"WWTExplosiveKickPuff",100)
+		KICK B 0 A_Blast(BF_DONTWARN, 255, 255, 20.0, "WWTExplosiveKickPuff", "kick/shockwave")
+		KICK BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB 0 A_SpawnItemEx("RepelShock", 0, 0, 0, 0, 20, 0, frandom(0.0, 359.9), SXF_NOCHECKPOSITION)
+		KICK C 1 Offset(10,4)
+		KICK B 1 Offset(40,10)
+		KICK B 1 Offset(60,22)
+		KICK B 1 Offset(85,32)
+		KICK B 1 Offset(88,40)
+		KICK A 1 Offset(80,50)
+		KICK A 1 Offset(70,60)
+		KICK A 1 Offset(60,70)
+		TNT1 A 4 A_TakeInventory("KickSeq", 2)
+		TNT1 A 1 A_Jump(256, "AltfireReturn")
+	Taser:
+		TAZR A 1 Offset(-30,60)
+		TAZR A 1 Offset(-10,40)
+		TAZR A 1 Offset(5,25)
+		TAZR A 1 Offset(10,15)
+		TAZR A 0 A_PlaySound("Taser/Loop", CHAN_WEAPON, 1.0, 1)
+	TaserHold:
+		TAZR A 0 A_JumpIfInventory("TaserLevelup", 3, "TaserHoldLevel3")
+		TAZR A 0 A_JumpIfInventory("TaserLevelup", 2, "TaserHoldLevel2")
+		TAZR A 0 A_JumpIfInventory("TaserLevelup", 1, "TaserHoldLevel1")
+		TAZR B 1 Offset(12,13) BRIGHT A_CustomPunch(1, 1, 0, "TaserPuff", 100)
+		TAZR A 1 Offset(13,12)
+		TAZR C 1 Offset(14,11) BRIGHT A_CustomPunch(1, 1, 0, "TaserPuff", 100)
+		TAZR A 1 Offset(13,12)
+		TAZR D 1 Offset(12,11) BRIGHT A_CustomPunch(1, 1, 0, "TaserPuff", 100)
+		TAZR A 1 Offset(13,12)
+		TAZR E 1 Offset(12,13) BRIGHT A_CustomPunch(1, 1, 0, "TaserPuff", 100)
+		TAZR A 1 Offset(10,15) A_Refire("TaserHold")
+		Goto TaserReturn
+	TaserHoldLevel1:
+		TAZR B 1 Offset(12,13) BRIGHT A_CustomPunch(2, 1, 0, "TaserPuff", 100)
+		TAZR A 1 Offset(13,12)
+		TAZR C 1 Offset(14,11) BRIGHT A_CustomPunch(2, 1, 0, "TaserPuff", 100)
+		TAZR A 1 Offset(13,12)
+		TAZR D 1 Offset(12,11) BRIGHT A_CustomPunch(2, 1, 0, "TaserPuff", 100)
+		TAZR A 1 Offset(13,12)
+		TAZR E 1 Offset(12,13) BRIGHT A_CustomPunch(2, 1, 0, "TaserPuff", 100)
+		TAZR A 1 Offset(10,15) A_Refire("TaserHold")
+		Goto TaserReturn
+	TaserHoldLevel2:
+		TAZR B 1 Offset(12,13) BRIGHT A_CustomPunch(3, 1, 0, "TaserPuff", 100)
+		TAZR A 1 Offset(13,12)
+		TAZR C 1 Offset(14,11) BRIGHT A_CustomPunch(3, 1, 0, "TaserPuff", 100)
+		TAZR A 1 Offset(13,12)
+		TAZR D 1 Offset(12,11) BRIGHT A_CustomPunch(3, 1, 0, "TaserPuff", 100)
+		TAZR A 1 Offset(13,12)
+		TAZR E 1 Offset(12,13) BRIGHT A_CustomPunch(3, 1, 0, "TaserPuff", 100)
+		TAZR A 1 Offset(10,15) A_Refire("TaserHold")
+		Goto TaserReturn
+	TaserHoldLevel3:
+		TAZR B 1 Offset(12,13) BRIGHT A_CustomPunch(3, 1, 0, "TaserChainPuff", 100)
+		TAZR A 1 Offset(13,12)
+		TAZR C 1 Offset(14,11) BRIGHT A_CustomPunch(3, 1, 0, "TaserChainPuff", 100)
+		TAZR A 1 Offset(13,12)
+		TAZR D 1 Offset(12,11) BRIGHT A_CustomPunch(3, 1, 0, "TaserChainPuff", 100)
+		TAZR A 1 Offset(13,12)
+		TAZR E 1 Offset(12,13) BRIGHT A_CustomPunch(3, 1, 0, "TaserChainPuff", 100)
+		TAZR A 1 Offset(10,15) A_Refire("TaserHold")
+		Goto TaserReturn
+	TaserReturn:
+		TAZR A 0 A_StopSound(CHAN_WEAPON)
+		TAZR A 1 Offset(5,25)
+		TAZR A 1 Offset(-10,40)
+		TAZR A 1 Offset(-30,60)
+		TNT1 A 4
+		TNT1 A 1 A_Jump(256, "AltfireReturn")
+		Goto Ready
+	}
+}
+
+ACTOR KickSeq : Inventory // Combo sequence for upgrades.
+{
+	Inventory.MaxAmount 2
+}
+
+ACTOR KickExp : Inventory
+{
+	Inventory.MaxAmount 50
+}
+
+ACTOR KickLevelup : Inventory
+{
+	Inventory.MaxAmount 3
+}
+
+ACTOR KickMaxed : Inventory
+{
+	Inventory.MaxAmount 1
+}
+
+ACTOR KickBlastAngle : Inventory
+{
+	Inventory.MaxAmount 360
+}
+
+ACTOR TaserExp : Inventory
+{
+	Inventory.MaxAmount 20
+}
+
+ACTOR TaserLevelup : Inventory
+{
+	Inventory.MaxAmount 3
+}
+
+ACTOR TaserMaxed : Inventory
+{
+	Inventory.MaxAmount 1
+}
+
+ACTOR WWTTaserActivated : Inventory
+{
+	Inventory.MaxAmount 1
+}
+	
+ACTOR WWTTaserPickup : CustomInventory replaces Chainsaw
+{
+	Inventory.PickupMessage "$WWTTASERPICK"
+	Inventory.Icon "TASPA0"
+	Inventory.PickupSound "Taser/Pickup"
+	-INVBAR
+	+Inventory.AlwaysPickup
+	Scale 0.3
+	Radius 24
+	Height 16
+	States
+	{
+	Spawn:
+		TASP A -1
+		Stop
+	Pickup:
+		TNT1 A 0 A_JumpIfInventory("WWTTaserPickup", 1, "Nevermind")
+		TNT1 A 0 ACS_NamedExecute("TaserPickupMessage")
+		Stop
+	Use:
+		TNT1 A 0 A_JumpIfInventory("WWTTaserActivated", 1, "Disable")
+		TNT1 A 0 A_GiveInventory("WWTTaserActivated", 1)
+		TNT1 A 0 ACS_NamedExecute("TaserToggleMessage")
+		Fail
+	Disable:
+		TNT1 A 0 A_TakeInventory("WWTTaserActivated", 1)
+		TNT1 A 0 ACS_NamedExecute("TaserToggleMessage")
+		Fail
+	Nevermind:
+		TNT1 A 0
+		Stop
+	}
+}
+
+actor WWTKickPuff
+{
+	+NOBLOCKMAP
+	+NOGRAVITY
+	+PUFFONACTORS
+	+THRUGHOST
+	+NOEXTREMEDEATH
+	activesound ""
+	attacksound "Kick/wall"
+	seesound "Kick/hit"
+	Obituary "%o got %hself clobbered by %k's roundhouse kick."
+	DamageType "PlayerMelee"
+	states
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 1
+		stop
+	Crash:
+		TNT1 A 0
+		TNT1 A 1
+		stop
+	Melee:
+		TNT1 A 0
+		TNT1 A 1
+		stop
+	}
+}
+
+ACTOR WWTKickPuffHeavy : WWTKickPuff
+{
+	Attacksound "Kick/Wallheavy"
+}
+
+ACTOR WWTExplosiveKickPuff : WWTKickPuff
+{
+	Scale 0.35
+	RenderStyle Add
+	Alpha 0.9
+	Decal Scorch
+	+DONTBLAST
+	States
+	{
+	Spawn:
+		FRME A 1 Bright A_Quake(7,10,0,96,"grenade/explode")
+		FRME BCDEFGHIHJKLMNOPQRS 1 bright
+		stop
+	Crash:
+		FRME A 1 Bright A_Quake(7,10,0,96,"grenade/explode")
+		FRME BCDEFGHIHJKLMNOPQRS 1 bright
+		stop
+	Melee:
+		FRME A 1 Bright A_Quake(7,10,0,96,"grenade/explode")
+		FRME BCDEFGHIHJKLMNOPQRS 1 bright
+		stop
+	}
+}

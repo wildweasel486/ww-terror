@@ -1,0 +1,7 @@
+The Milkor MGL-140 that I am using was originally a model replacement for
+the Firearms mod for Half-Life. It was then modified into a grenade
+replacement for Counter-Strike 1.6. Those involved with the model's creation
+certainly do deserve credit here, and their names are Ultimate Bastard
+Felipe Paiva, Teh Snake, Inph!n!tY, TheLama, DeadPixel, and Racer445.
+I screenshotted the model in Jed's HLMV and tweaked the crap out of it
+to make it actually look good in ZDoom.

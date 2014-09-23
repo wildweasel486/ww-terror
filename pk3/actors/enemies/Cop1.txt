@@ -1,0 +1,78 @@
+ACTOR Cop1 : WWTBadGuy
+{
+	YScale 0.45
+	XScale 0.5
+	Radius 20
+	Height 56
+	Health 55
+	Speed 12
+	PainChance 255
+	SeeSound "Sights/Male02"
+	PainSound "Pains/Male02"
+	DeathSound "Deaths/Male04"
+	DropItem "44MagAmmoSmall" 128
+	DropItem "44MagAmmo" 64
+	DropItem "Mateba"
+	DamageFactor "EnemyBullet", 0.3
+	DamageFactor "EnemyGrenade", 0.3
+	Obituary "%o realized that the cops aren't on %p side."
+	MONSTER
+	+FLOORCLIP
+	States
+	{
+	Spawn:
+		COP1 A 1 A_Look
+		Loop
+	See:
+		COP1 BCDE 6 A_Chase
+		Loop
+	Missile:
+		COP1 FGH 5 Fast A_FaceTarget
+	Missile2:
+		COP1 G 0 A_JumpIfInventory("MatebaLoaded",6,"Reload")
+		COP1 G 0 A_PlayWeaponSound("Mateba/EnemyFire")
+		COP1 I 2 BRIGHT A_CustomMissile("EnemyMagnumTracer", 52, 0, frandom(-2.0,2.0))
+		COP1 J 2 A_GiveInventory("MatebaLoaded",1)
+		COP1 H 12 Fast A_FaceTarget
+		COP1 G 0 A_JumpIfInventory("MatebaLoaded",6,"Reload")
+		COP1 G 0 A_PlayWeaponSound("Mateba/EnemyFire")
+		COP1 I 2 BRIGHT A_CustomMissile("EnemyMagnumTracer", 52, 0, frandom(-2.0,2.0))
+		COP1 J 2 A_GiveInventory("MatebaLoaded",1)
+		COP1 H 12 Fast A_FaceTarget
+		COP1 G 0 A_JumpIfInventory("MatebaLoaded",6,"Reload")
+		COP1 G 0 A_PlayWeaponSound("Mateba/EnemyFire")
+		COP1 I 2 BRIGHT A_CustomMissile("EnemyMagnumTracer", 52, 0, frandom(-2.0,2.0))
+		COP1 J 2 A_GiveInventory("MatebaLoaded",1)
+		COP1 H 15
+		COP1 H 5 A_MonsterRefire(40, "Holster")
+		Goto Missile2
+	Holster:
+		COP1 GF 4
+		Goto See
+	Reload:
+		COP1 G 10 A_PlayWeaponSound("Mateba/Open")
+		COP1 FFFFFF 0 A_SpawnItemEx("MagnumCasing",24,-12,36,0,0,0,random(-55,-80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
+		COP1 F 10 A_PlayWeaponSound("Mateba/Out")
+		COP1 G 10 A_PlayWeaponSound("Mateba/In")
+		COP1 H 10 A_PlayWeaponSound("Mateba/Close")
+		COP1 H 0 A_TakeInventory("MatebaLoaded",6)
+		Goto Holster
+	Pain.PlayerElectricGrenade:
+	Pain.PlayerTaser:
+	Pain.EnemyTaser:
+		COP1 K 0
+		Goto Tased
+	Pain:
+		COP1 K 3 A_Pain
+		Goto See
+	Death:
+		COP1 M 3 A_Scream
+		COP1 NOPQ 3
+		COP1 R 3 A_PlaySound("Misc/Bodyfall")
+		COP1 S 3 A_NoBlocking
+		COP1 T 3
+		COP1 U 3
+		COP1 V -1
+		Stop
+	}
+}

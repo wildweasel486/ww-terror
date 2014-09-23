@@ -1,0 +1,13 @@
+clearplayerclasses
+addplayerclass WildWeaselPlayer
+
+addkeysection "Terrorists!" TerroristsKeys
+addmenukey "Throw Grenade" throwgrenade
+addmenukey "Toggle Melee Type" toggletaser
+alias throwgrenade "use GrenadePickup"
+defaultbind g "throwgrenade"
+alias toggletaser "use WWTTaserPickup"
+defaultbind f "toggletaser"
+alias ww_levelup "give berettaexp 999; give matebaexp 999; give strikerexp 999; give uziexp 999; give ak47exp 999; give barrettexp 999; give mglexp 999; give m60exp 999; give grenadeexp 999; give taserexp 999; give kickexp 999; echo Upgrade complete."
+alias ww_9000volts "give WWTTaserPickup; echo Meet the bug zapper."
+alias ww_fragout "give GrenadePickup 9; echo Pineapples."

@@ -1,0 +1,4 @@
+This pipebomb is modified from the one in Duke Nukem 3D to remove the
+caution stripes and recolor the metal. Said modifications were done by me.
+Since it was a relatively simple hack, you don't need to ask my permission
+if you want to use these yourself.

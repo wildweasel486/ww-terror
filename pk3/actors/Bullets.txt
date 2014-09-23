@@ -1,0 +1,417 @@
+ACTOR Tracer : FastProjectile
+{
+	Alpha 1.0
+	RenderStyle Add
+	Radius 2
+	Height 2
+	Speed 75
+	PROJECTILE
+	+BLOODSPLATTER
+	Scale 0.3
+	MissileType TracerTrail
+	MissileHeight 8
+	Decal BulletChip
+	States
+	{
+	Spawn:
+		WPUF B 1 BRIGHT
+		Loop
+	Death:
+	Crash:
+		PUFF A 2 BRIGHT A_SpawnDebris("TracerSpark")
+		PUFF B 1 BRIGHT A_SetTranslucent(0.9,0)
+		PUFF B 1 BRIGHT A_PlaySound("Bullet/Ricochet", CHAN_BODY, 0.5)
+		PUFF CD 2 BRIGHT
+		Stop
+	XDeath:
+		TNT1 A 3 A_PlaySound("Bullet/HitFlesh", CHAN_BODY, 0.5)
+		Stop
+	}
+}
+
+ACTOR TracerTrail
+{ 
+	Alpha 1.0
+	RenderStyle Add
+	Speed 0
+	+NOBLOCKMAP
+	+NOGRAVITY
+	+NOTELEPORT
+	+CANNOTPUSH
+	+NODAMAGETHRUST
+	Scale 0.3
+	States
+	{
+	Spawn:
+		WPUF BBB 1 BRIGHT
+		Stop
+	}
+}
+
+ACTOR TracerSpark
+{
+	Health 4
+	radius 3
+	height 6
+	speed .1
+	RenderStyle ADD
+	Alpha		1
+	Scale 0.4
+	Mass		0
+	+missile
+	+doombounce
+	+FLOORCLIP
+	+DONTSPLASH
+	+NOTELEPORT
+	States
+	{
+	Spawn:
+		WPUF A 1
+		WPUF AAAAA 1  Bright A_SetTranslucent(.8,1)
+		WPUF BBBBBB 1  Bright A_SetTranslucent(.6,1)
+		WPUF CCCCCCCC 1  Bright A_SetTranslucent(.4,1)
+		WPUF DDDDDDDDDD 1 Bright A_SetTranslucent(.2,1)
+		Stop
+	}
+}
+
+// Launcher grenades.
+
+ACTOR PlayerLauncherGrenade
+{
+	Radius 4
+	Height 3
+	Speed 55
+	Damage (1)
+	Gravity 0.2
+	DamageType "PlayerMGL"
+	Decal Scorch
+	PROJECTILE
+	+NOBLOCKMAP
+	+DROPOFF 
+	+MISSILE 
+	+ACTIVATEIMPACT 
+	+ACTIVATEPCROSS
+	-NOGRAVITY
+	States
+	{
+	Spawn:
+		SGRN A 1
+		loop
+	Death:
+		FRME A 0 A_AlertMonsters
+		FRME A 0 A_SetScale(1.75,1.75)
+		FRME A 0 A_SetTranslucent(0.75,1)
+		FRME A 0 A_PlaySound("grenade/explode",0,1.0,0,0.1)
+		FRME A 1 bright A_Explode(128,192,1)
+		FRME B 1 A_Quake(7,10,0,256,0)
+		FRME CDEFGHIHJKLMNOPQRS 1 bright
+		stop
+	}
+}
+
+ACTOR PlayerAKGrenade
+{
+	Radius 4
+	Height 3
+	Speed 55
+	Damage (100)
+	Gravity 0.2
+	DamageType "PlayerAKGrenade"
+	Decal Scorch
+	PROJECTILE
+	+NOBLOCKMAP
+	+DROPOFF 
+	+MISSILE 
+	+ACTIVATEIMPACT 
+	+ACTIVATEPCROSS
+	-NOGRAVITY
+	States
+	{
+	Spawn:
+		SGRN A 1
+		loop
+	Death:
+		FRME A 0 A_AlertMonsters
+		FRME A 0 A_SetScale(1.0,1.0)
+		FRME A 0 A_SetTranslucent(0.75,1)
+		FRME A 0 A_PlaySound("grenade/explode",0,1.0,0,0.1)
+		FRME A 1 bright A_Explode(32,192,1)
+		FRME B 1 A_Quake(7,10,0,256,0)
+		FRME CDEFGHIHJKLMNOPQRS 1 bright
+		stop
+	}
+}
+
+ACTOR PlayerLauncherGrenadeFaster : FastProjectile
+{
+	Radius 4
+	Height 3
+	Speed 75
+	Damage (1)
+	DamageType "PlayerMGL"
+	Decal Scorch
+	PROJECTILE
+	+NOBLOCKMAP
+	+DROPOFF 
+	+MISSILE 
+	+ACTIVATEIMPACT 
+	+ACTIVATEPCROSS
+	States
+	{
+	Spawn:
+		SGRN A 1
+		loop
+	Death:
+		FRME A 0 A_AlertMonsters
+		FRME A 0 A_SetScale(1.75,1.75)
+		FRME A 0 A_SetTranslucent(0.75,1)
+		FRME A 0 A_PlaySound("grenade/explode",0,1.0,0,0.1)
+		FRME A 1 bright A_Explode(128,192,1)
+		FRME B 1 A_Quake(7,10,0,256,0)
+		FRME CDEFGHIHJKLMNOPQRS 1 bright
+		stop
+	}
+}
+
+ACTOR PlayerLauncherGrenadeFaster2 : PlayerLauncherGrenadeFaster
+{
+	Damage (64)
+}
+
+ACTOR PlayerLauncherGrenadeFinal : PlayerLauncherGrenadeFaster2
+{
+	DamageType Fire
+	States
+	{
+	Death:
+		FBLX A 0 BRIGHT A_SetScale(1.0,1.0)
+     	FBLX A 0 BRIGHT A_AlertMonsters
+		FBLX A 0 BRIGHT A_SetTranslucent(0.75,1)
+		FBLX A 0 BRIGHT A_PlaySound("grenade/explode",0,1.0,0,0.1)
+		FBLX A 1 BRIGHT A_Explode(128,192,1)
+		FBLX B 1 BRIGHT A_Quake(7,10,0,256,0)
+		FBLX CCCCCCCCCC 0 BRIGHT A_CustomMissile("ThermaBurstFireChunk",0,0,(random(0,359)),6,(random(4,15)))
+		FBLX CDEFGHIJK 2 BRIGHT
+     	Stop
+  	}
+}
+
+ACTOR ThermaBurstFireChunk
+{
+	Damage 6
+	Alpha 0.9
+	Radius 4
+	Height 4
+	Speed 13
+	Renderstyle Add
+	Obituary "%o is welcomed to %k's barbecue."
+	Decal PlasmaScorchLower
+	DamageType Fire
+	PROJECTILE
+	-NOGRAVITY
+	+STRIFEDAMAGE
+	+NODAMAGETHRUST
+	States
+	{
+	Spawn:
+		FFLC ABCDABCDABCDABCD 3 BRIGHT
+	Death:
+		FFLG ABCD 3 BRIGHT
+		FFLG EFGHIJKLMNOPQEFGHIJKLMNOPQEFGHIJKLMNOPQ 2 BRIGHT A_Explode(3,128,1)
+		FFLG RST 3 BRIGHT
+		Stop
+	}
+}
+
+ACTOR ThermaBurstMolotovChunk : ThermaBurstFireChunk
+{
+	DamageType PlayerGrenadeFire
+}
+
+ACTOR EnemyLauncherGrenade : PlayerLauncherGrenade
+{
+	Speed 30
+	Damage (1)
+	DamageType "EnemyGrenade"
+	+NOGRAVITY
+	States
+	{
+	Death:
+		FRME A 0 A_SetScale(1.75,1.75)
+		FRME A 0 A_SetTranslucent(0.75,1)
+		FRME A 0 A_PlaySound("grenade/explode",0,1.0,0,0.1)
+		FRME A 1 bright A_Explode(32,256,0)
+		FRME B 1 A_Quake(7,10,0,256,0)
+		FRME CDEFGHIHJKLMNOPQRS 1 bright
+		stop
+	}
+}
+
+// Player weapon tracers. These contain the damage numbers and speed adjustments
+
+ACTOR PlayerPistolTracer : Tracer
+{
+	Damage (random(15,20))
+	DamageType "PlayerPistol"
+	Speed 90
+}
+
+ACTOR PlayerPistolTracerFaster : Tracer
+{
+	Damage (random(18,20))
+	DamageType "PlayerPistolPierce"
+	Speed 100
+}
+
+ACTOR PlayerUziTracer : Tracer
+{
+	Damage (random(16,19))
+	DamageType "PlayerUzi"
+	Speed 85
+}
+
+ACTOR PlayerAK47Tracer : Tracer
+{
+	Damage (30)
+	DamageType "PlayerAK"
+	Speed 120
+}
+
+ACTOR PlayerAK47TracerFaster : Tracer
+{
+	Damage (35)
+	DamageType "PlayerAK"
+	Speed 150
+}
+
+ACTOR PlayerM60Tracer : Tracer
+{
+	Damage (random(25,30))
+	DamageType "PlayerM60"
+	Speed 140
+}
+
+ACTOR PlayerM60TracerFaster : Tracer
+{
+	Damage (random(25,34))
+	DamageType "PlayerM60"
+	Speed 160
+}
+
+ACTOR PlayerShotgunTracer : Tracer
+{
+	Damage (random(8,13))
+	DamageType "PlayerShotgun"
+	Speed 75
+}
+
+ACTOR PlayerRevolverTracer : Tracer
+{
+	Damage (random(40,75))
+	DamageType "PlayerMagnum"
+	Speed 110
+}
+
+ACTOR PlayerBarrettTracer : Tracer
+{
+	Damage (130)
+	DamageType "Player50BMG"
+	Speed 200
+	Scale 0.6
+}
+
+ACTOR PlayerBarrettTracerLevel3 : Tracer
+{
+	Damage (200)
+	DamageType "Player50BMG"
+	Speed 250
+	Scale 0.6
+	+RIPPER
+	+NOBOSSRIP
+}
+
+ACTOR PlayerBarrettTracerLevel2 : Tracer
+{
+	Damage (200)
+	DamageType "Player50BMG"
+	Speed 200
+	Scale 0.6
+	States
+	{
+	Death:
+		FRME A 0 A_SetScale(0.4,0.4)
+		FRME A 0 A_SetTranslucent(0.75,1)
+		FRME A 0 A_PlaySound("Barrett/Explode")
+		FRME A 1 bright A_Explode(64,32,0)
+		FRME B 1 A_Quake(7,10,0,100,0)
+		FRME CDEFGHIHJKLMNOPQRS 1 bright
+		stop
+	}
+}
+
+// Enemy weapon tracers. In addition to damage numbers and speeds,
+// these also must have DamageType "EnemyBullet" so enemies can't kill each other
+
+ACTOR EnemyPistolTracer : Tracer
+{
+	Damage (random(5,6))
+	Speed 50
+	FastSpeed 90
+	DamageType "EnemyBullet"
+	DamageType "Enemy9mm"
+}
+
+ACTOR EnemyMagnumTracer : Tracer
+{
+	Damage (random(9,12))
+	Speed 50
+	FastSpeed 90
+	DamageType "EnemyBullet"
+	DamageType "Enemy9mm"
+}
+
+ACTOR EnemySMGTracer : Tracer
+{
+	Damage (random(3,6))
+	Speed 70
+	FastSpeed 100
+	DamageType "EnemyBullet"
+	DamageType "Enemy9mm"
+}
+
+ACTOR EnemyARTracer : Tracer
+{
+	Damage (random(2,10))
+	Speed 90
+	FastSpeed 120
+	DamageType "EnemyBullet"
+	DamageType "Enemy762mm"
+}
+
+ACTOR EnemyM60Tracer : Tracer
+{
+	Damage (random(2,5))
+	Speed 55
+	FastSpeed 90
+	DamageType "EnemyBullet"
+	DamageType "Enemy762mm"
+}
+
+ACTOR EnemyShotgunTracer : Tracer
+{
+	Damage (4)
+	Speed 40
+	FastSpeed 70
+	DamageType "EnemyBullet"
+	DamageType "Enemy12ga"
+}
+
+ACTOR EnemyDualiesTracer : Tracer
+{
+	Damage (random(1,4))
+	Speed 50
+	FastSpeed 100
+	DamageType "EnemyBullet"
+	DamageType "Enemy9mm"
+}

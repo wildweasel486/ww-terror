@@ -1,0 +1,81 @@
+[enu default]
+
+// Weapon names and pickup messages.
+
+WWTTASERNAME = "Corbex PDZ-20 Personal Defense Zapper";
+WWTTASERPICK = "Picked up a Corbex PDZ-20. (Melee upgrade!)";
+WWTTASERSHORT = "Zapper";
+WWTWEP1NAME = "Berducci P92 Sabre";
+WWTWEP1PICK = "Picked up a Berducci P92 Sabre handgun. (slot 1)";
+WWTWEP1UPGRADENAME = "P92R Conversion Kit";
+WWTWEP2NAME = "Mariani Sulaco 6";
+WWTWEP2PICK = "Picked up a Mariani Sulaco 6 auto-revolver. (slot 2)";
+WWTWEP3NAME = "Aartsen Slugger";
+WWTWEP3PICK = "Picked up an Aartsen Slugger shotgun. (slot 3)";
+WWTWEP4NAME = "Sherazi Mk.IX";
+WWTWEP4PICK = "Picked up a Sherazi Mk.IX SMG. (slot 4)";
+WWTWEP5NAME = "Kuznetzov 47M";
+WWTWEP5PICK = "Picked up a Kuznetzov 47M rifle. (slot 5)";
+WWTWEP6NAME = "Berlinghoff AMR-82";
+WWTWEP6PICK = "Picked up a Berlinghoff AMR-82. (slot 6)";
+WWTWEP7NAME = "Cooke GLP-140";
+WWTWEP7PICK = "Picked up a Cooke GLP-140 grenade launcher. (slot 7)";
+WWTWEP8NAME = "Black Boar LMG";
+WWTWEP8PICK = "Picked up a \"Black Boar\" machine gun. (slot 8)";
+WWTGREN1NAME = "Markov 21 Frag Grenades";
+WWTGREN2NAME = "XM112 High-Voltage Grenades";
+WWTGREN3NAME = "Ace T5 Incendiary Grenades";
+
+// Replaced quit messages.
+
+QUITMSG = "If you try to run,\nI've got six little friends\nand they can all run faster than you can.";
+QUITMSG1 = "You had better decide whether you're\nhanging on the cross\nor banging in the nails.";
+QUITMSG2 = "There's gotta be a hundred reasons\nwhy I don't blow you away.\nRight now I can't think of one.";
+QUITMSG3 = "Ever notice how you come across\nsomebody once in a while\nyou shouldn't have f'ed with? That's me.";
+QUITMSG4 = "I got all the time in the world.\n*You* don't, but I do.";
+QUITMSG5 = "You ain't got time to bleed?";
+QUITMSG6 = "Sounds like you've had a hard life.\nGood thing it's over.";
+QUITMSG7 = "Losers always whine about their best.\nWinners go home and fuck the prom queen. ";
+QUITMSG8 = "Feeling a bit _too_ expendable?";
+QUITMSG9 = "Are you gonna do something?\nOr just stand there and bleed?";
+QUITMSG10 = "Are you not entertained?";
+QUITMSG11 = "You're not making the same mistakes again --\nyou're making all new ones.";
+QUITMSG12 = "Questions, comments, complaints?\nSee the thread on ZDoom Forums.";
+QUITMSG13 = "Do you feel lucky?";
+QUITMSG14 = "Sure you're not hungry for some Green Beret?";
+TXT_YES = "Affirmative";
+TXT_NO = "Negative";
+
+// Replaced cheat names.
+
+STSTR_DQDON = "Seagal's Boon ON";
+STSTR_DQDOFF = "Seagal's Boon OFF";
+STSTR_KFAADDED = "Insert \"Gear Up\" scene here (with accompanying hacker montage).";
+STSTR_FAADDED = "Insert \"Gear Up\" scene here.";
+STSTR_NCON = "Who do you think you are, Patrick Swayze?";
+STSTR_NCOFF = "After a while you start to miss being able to touch things.";
+STSTR_BEHOLD = "Who actually uses this cheat anymore?";
+STSTR_BEHOLDX = "You, apparently.";
+STSTR_CHOPPERS = "Leatherface not appearing in this mod.";
+TXT_BUDDHAON = "Die Hard Mode ON";
+TXT_BUDDHAOFF = "Die Hard Mode OFF";
+TXT_DEFAULTPICKUPMSG = "If you see this message, let Weasel know what you were doing!";
+
+// Obituary strings
+// First the self-kills, then the other-kills
+OB_SUICIDE = "%o went out in %p own unique way.";
+OB_FALLING = "%o went out like Alan Rickman in Die Hard.";
+OB_CRUSH = "%o went out like Brigette Nielsen in Body Count.";
+OB_EXIT = "%o fell for the old electric exit button trick.";
+OB_WATER = "%o should have paid attention in swimming class.";
+OB_SLIME = "%o becomes the Toxic Avenger (not really).";
+OB_LAVA = "%o went out like Arnold in Terminator 2.";
+OB_BARREL = "%o should have paid attention in chemistry.";
+OB_KILLEDSELF = "%o receives a Darwin Award.";
+OB_VOODOO = "%o killed his doppelganger without considering the consequences.";
+OB_MONTELEFRAG = "%o learns why teleportation hasn't been invented yet.";
+OB_DEFAULT = "%o died mysteriously.";
+OB_FRIENDLY1 = "%k didn't realize team damage was on.";
+OB_FRIENDLY2 = "%k ate a Green Beret for breakfast.";
+OB_FRIENDLY3 = "%k should really watch %p fire.";
+OB_FRIENDLY4 = "%k didn't like %o anyway.";

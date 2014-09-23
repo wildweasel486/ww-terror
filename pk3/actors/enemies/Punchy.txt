@@ -1,0 +1,50 @@
+ACTOR Punchy : WWTBadGuy
+{
+	YScale 0.35
+	XScale 0.4
+	Radius 20
+	Height 56
+	Health 90
+	Speed 22
+	PainChance 255
+	MeleeRange 64
+	SeeSound "Sights/Male03"
+	PainSound "Pains/Male03"
+	DeathSound "Deaths/Male02"
+	DamageFactor "EnemyBullet", 0.3
+	DamageFactor "EnemyGrenade", 0.3
+	DropItem "WeakBooze", 16
+	Obituary "%o got punched really hard."
+	MONSTER
+	+FLOORCLIP
+	States
+	{
+	Spawn:
+		PUNK A 1 A_Look
+		Loop
+	See:
+		PUNK BCDE 4 Fast A_Chase
+		Loop
+	Melee:
+		PUNK FG 2 A_FaceTarget
+		PUNK H 8 A_CustomMeleeAttack((15),"skeleton/melee", "skeleton/swing", "PunchPunchyPunchPunch")
+		PUNK GF 4
+		Goto See
+	Pain.PlayerElectricGrenade:
+	Pain.PlayerTaser:
+	Pain.EnemyTaser:
+		PUNK A 0
+		Goto Tased
+	Pain:
+		PUNK A 3 A_Pain
+		Goto See
+	Death:
+		PUNK J 3 A_Scream
+		PUNK KLM 3
+		PUNK O 3 A_PlaySound("Misc/Bodyfall")
+		PUNK P 3 A_NoBlocking
+		PUNK Q 3
+		PUNK R -1
+		Stop
+	}
+}

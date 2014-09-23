@@ -1,0 +1,127 @@
+// Weasel Presents: Terrorists!
+// a tangentially-related spin-off of Nazis!
+
+const int STUNTIME = 105; // Thanks, Kate.
+
+#include "actors/Bullets.txt"
+#include "actors/Casings.txt"
+#include "actors/Items.txt"
+#include "actors/Effects.txt"
+#include "actors/Barrels.txt"
+#include "actors/weapons/BaseWeapon.txt"
+#include "actors/weapons/Beretta.txt"
+#include "actors/weapons/Mateba.txt"
+#include "actors/weapons/Striker.txt"
+#include "actors/weapons/Uzi.txt"
+#include "actors/weapons/Ak47.txt"
+#include "actors/weapons/Barrett.txt"
+#include "actors/weapons/MGL140.txt"
+#include "actors/weapons/M60.txt"
+#include "actors/weapons/Grenades.txt"
+#include "actors/enemies/BaseEnemy.txt"
+#include "actors/enemies/spawners.txt"
+#include "actors/enemies/PistolThug1.txt"
+#include "actors/enemies/PistolThugFemale1.txt"
+#include "actors/enemies/Cop1.txt"
+#include "actors/enemies/Cop2.txt"
+#include "actors/enemies/CopTaser.txt"
+#include "actors/enemies/MagnumFemale.txt"
+#include "actors/enemies/Bomber1.txt"
+#include "actors/enemies/Bomber2.txt"
+#include "actors/enemies/MagnumThug.txt"
+#include "actors/enemies/SMGThug.txt"
+#include "actors/enemies/ShotgunThug.txt"
+#include "actors/enemies/ARThug.txt"
+#include "actors/enemies/ARThug2.txt"
+#include "actors/enemies/Wesker.txt"
+#include "actors/enemies/MrFalcon.txt"
+#include "actors/enemies/UAV1.txt"
+#include "actors/enemies/Seeker.txt"
+#include "actors/enemies/Skimmer.txt"
+#include "actors/enemies/Scientist.txt"
+#include "actors/enemies/Enforcer.txt"
+#include "actors/enemies/DualieDooley.txt"
+#include "actors/enemies/TaserFemale.txt"
+#include "actors/enemies/SilentJ.txt"
+#include "actors/enemies/Caleb.txt"
+#include "actors/enemies/Punchy.txt"
+#include "actors/enemies/Undercover.txt"
+#include "actors/enemies/FemaleExec.txt"
+#include "actors/civilians/Deadguys.txt"
+#include "actors/civilians/Panhandler.txt"
+#include "actors/civilians/Officelady.txt"
+#include "actors/civilians/Sonya.txt"
+#include "actors/civilians/Stryker.txt"
+#include "actors/civilians/OfficeExec.txt"
+#include "actors/civilians/CoatGuy.txt"
+
+Actor WildWeaselPlayer : DoomPlayer 
+{
+	GibHealth -50
+	Player.InvulnerabilityMode "reflective"
+	Player.StartItem "Beretta"
+	Player.StartItem "WWTFists"
+	Player.StartItem "BerettaLoaded" 15
+	Player.StartItem "MatebaLoaded" 3
+	Player.StartItem "UziLoaded" 16
+	Player.StartItem "AK47Loaded" 15
+	Player.StartItem "StrikerLoaded" 6
+	Player.StartItem "BarrettLoaded" 3
+	Player.StartItem "MGLLoaded" 3
+	Player.StartItem "M60Loaded" 50
+	Player.StartItem "9mmAmmo" 30
+	Player.StartItem "GrenadePickup" 1
+	Player.ViewHeight 49
+	Player.AttackZOffset 17
+	Player.ColorRange 0 0
+	Player.AttackZOffset 18
+	Player.CrouchSprite ""
+	Player.DisplayName "Weasel"
+	Player.SoundClass "Weasel"
+	DamageFactor "PlayerTaser", 0.05
+	Scale 1.1
+	States
+	{
+	Spawn:
+		WEAS A 1
+   		Loop
+   	See:
+      	WEAS ABCD 6
+      	goto Spawn
+    Pain:
+		WEAS G 0
+        WEAS G 3 A_Pain
+        Goto Spawn
+	Pain.PlayerElectricGrenade:
+	Pain.PlayerTaser:
+	Pain.EnemyTaser:
+		WEAS G 0 A_SetBlend("00 55 FF", 0.5, 10)
+		WEAS G 5 SetPlayerProperty(0, 1, PROP_TOTALLYFROZEN)
+		WEAS G 1 SetPlayerProperty(0, 0, PROP_TOTALLYFROZEN)
+		Goto Spawn
+	Pain.EnemyFlash:
+		WEAS G 0 A_SetBlend("77 77 77", 1.0, 175)
+		WEAS G 3 A_Pain
+		Goto Spawn
+	Missile:
+		WEAS E 12 
+		Goto Spawn
+	Melee:
+		WEAS F 6 BRIGHT
+		Goto Missile
+	Death:
+		WEAS H 5 A_PlayerScream
+		WEAS I 5 
+		WEAS J 5 A_NoBlocking
+		WEAS K 5
+		WEAS L -1
+		Stop
+	XDeath:
+		WEAS H 5
+		WEAS I 5 A_XScream
+		WEAS J 5 A_NoBlocking
+		WEAS K 5
+		WEAS L -1
+		Stop
+	}
+}

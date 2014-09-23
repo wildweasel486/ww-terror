@@ -1,0 +1,48 @@
+ACTOR ZombiemanSpawner : RandomSpawner replaces Zombieman
+{
+	DropItem "PistolThug1"
+	DropItem "Cop2"
+}
+
+ACTOR ShotgunguySpawner : RandomSpawner replaces ShotgunGuy
+{
+	DropItem "Cop1"
+	DropItem "MagnumFemale"
+}
+
+ACTOR ChaingunguySpawner : RandomSpawner replaces ChaingunGuy
+{
+	Dropitem "SMGThug"
+	Dropitem "SilentJ"
+}
+
+ACTOR ImpSpawner : RandomSpawner replaces DoomImp
+{
+	DropItem "MagnumThug"
+	DropItem "PistolThugFemale1"
+}
+
+ACTOR DemonSpawner : RandomSpawner replaces Demon
+{
+	DropItem "ShotgunThug"
+	DropItem "ARThug2"
+	DropItem "Punchy"
+}
+
+ACTOR SpectreSpawner : RandomSpawner replaces Spectre
+{
+	DropItem "CopTaser"
+	DropItem "TaserFemale"
+}
+
+ACTOR HellKnightSpawner : RandomSpawner replaces HellKnight
+{
+	DropItem "Bomber1"
+	DropItem "FemaleExec"
+}
+
+ACTOR RevenantSpawner : RandomSpawner replaces Revenant
+{
+	DropItem "ARThug"
+	DropItem "Undercover"
+}

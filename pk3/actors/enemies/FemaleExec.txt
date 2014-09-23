@@ -1,0 +1,86 @@
+ACTOR FemaleExec : WWTBadGuy
+{
+	XScale 0.4
+	YScale 0.35
+	Radius 20
+	Height 56
+	Health 100
+	Speed 18
+	PainChance 255
+	SeeSound "Sights/Female03"
+	PainSound "Pains/Female03"
+	DeathSound "Deaths/Female03"
+	DamageFactor "EnemyBullet", 0.3
+	DamageFactor "EnemyGrenade", 0.3
+	DamageFactor "PlayerPistol", 0.4
+	DamageFactor "PlayerUzi", 0.4
+	DamageFactor "PlayerShotgun", 0.4
+	DamageFactor "PlayerAK", 0.9
+	DamageFactor "PlayerM60", 0.9
+	DamageFactor "PlayerMagnum", 0.7
+	DamageFactor "PlayerMelee", 2.0
+	Obituary "%o can't see shit, Captain."
+	MONSTER
+	+FLOORCLIP
+	States
+	{
+	Spawn:
+		FXEC A 0 A_GiveInventory("IsFemale", 1)
+		FXEC A 1 A_Look
+		Loop
+	See:
+		FXEC A 0 A_GiveInventory("IsFemale", 1)
+		FXEC BCDE 3 A_Chase
+		Loop
+	Missile:
+		FXEC FG 4 A_FaceTarget
+		FXEC H 0 A_PlayWeaponSound("Flash/fire")
+		FXEC H 8 Bright A_CustomMissile("FlashBullet", 46)
+		FXEC I 8
+		FXEC GF 4
+		Goto See
+	Pain.PlayerPistol:
+	Pain.PlayerUzi:
+	Pain.PlayerShotgun:
+		FXEC JJJJJJJJJJ 0 A_SpawnItemEx("BulletIneffectiveSpark",0,0,32,frandom(-2.0,2.0),frandom(-2.0,2.0),frandom(3.0,6.0),frandom(0.0,359.9),SXF_NOCHECKPOSITION)
+		FXEC J 3 A_PlaySound("Bullet/HitMetal")
+		Goto See
+	Pain.PlayerElectricGrenade:
+	Pain.PlayerTaser:
+	Pain.EnemyTaser:
+		FXEC J 0
+		Goto Tased
+	Pain:
+		FXEC J 3 A_Pain
+		Goto See
+	Death:
+		FXEC K 3 A_Scream
+		FXEC LM 3
+		FXEC N 3 A_PlaySound("Misc/Bodyfall")
+		FXEC O 3 A_NoBlocking
+		FXEC PQR 3
+		FXEC S -1
+		Stop
+	}
+}
+
+ACTOR FlashBullet
+{
+	Radius 5
+	Height 8
+	Speed 30
+	Damage (8)
+	PROJECTILE
+	SeeSound "Flash/Fire"
+	DamageType "EnemyFlash"
+	States
+	{
+	Spawn:
+		ARWP AA 0 Bright A_SpawnItemEx("BulletIneffectiveSpark",0,0,0,frandom(-2.0,2.0),frandom(-2.0,2.0),frandom(3.0,6.0),frandom(0.0,359.9),SXF_NOCHECKPOSITION)
+		ARWP A 1 Bright
+		Loop
+	Death:
+		TNT1 A 1
+		Stop
+	}
+}

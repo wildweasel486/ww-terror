@@ -1,0 +1,13 @@
+ROHUDSMALL
+{
+	1 Small1
+	2 Small2
+	3 Small3
+	4 Small4
+	5 Small5
+	6 Small6
+	7 Small7
+	8 Small8
+	9 Small9
+	0 Small0
+}

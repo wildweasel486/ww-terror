@@ -1,0 +1,4 @@
+These are additional graphics for Necronixxis' Uzi, which I created to allow
+the level 3 Uzi upgrade to work. Uzibolt is an edit of Necronixxis' Uzi
+with the bolt recoiled backwards, while Uzisuppr was actually drawn from scratch
+by me. Please ask me first if you want to use the suppressor on your own sprite.

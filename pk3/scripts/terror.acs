@@ -1,0 +1,470 @@
+#library "TERROR"
+#include "zcommon.acs"
+#Define Player_0_TID	32000 // That's for neural's resurrect-friendly script thing
+
+// Player move speed script
+// donated by DoomRater
+
+Script "PlayerSpeed" (int movespeed)
+{
+	SetActorProperty(0,APROP_Speed,movespeed*65535/100);
+}
+
+Script "IsNightmare" (void)
+{
+	SetResultValue(GameSkill());
+}
+
+Script "TaserPickupMessage" (void)
+{
+	HudMessage(l:"WWTTASERNAME", s:" acquired! \nPress ", k:"toggletaser", s:" to switch between Kick and ", l:"WWTTASERSHORT", s:"."; HUDMSG_TYPEON|HUDMSG_LOG, 0, -1, 0.1, 0.6, 3.0, 0.01, 0.75);
+}
+
+Script "TaserToggleMessage" (void)
+{
+	If (CheckInventory("WWTTaserActivated") == 1) {
+		HudMessage(l:"WWTTASERSHORT", s:" activated."; HUDMSG_TYPEON|HUDMSG_LOG, 1, -1, 0.1, 0.6, 3.0, 0.01, 0.75);
+	}
+	else {
+		HudMessage(l:"WWTTASERSHORT", s:" deactivated."; HUDMSG_TYPEON|HUDMSG_LOG, 1, -1, 0.1, 0.6, 3.0, 0.01, 0.75);
+	}
+}
+
+Script "PistolToggleMessage" (void)
+{
+	If (CheckInventory("BerettaBurstActive") == 1) {
+		HudMessage(s:"Burst Fire mode."; HUDMSG_TYPEON|HUDMSG_LOG, 1, -1, 0.1, 0.6, 3.0, 0.01, 0.75);
+	}
+	else {
+		HudMessage(s:"Single Fire mode."; HUDMSG_TYPEON|HUDMSG_LOG, 1, -1, 0.1, 0.6, 3.0, 0.01, 0.75);
+	}
+}
+
+
+Script "InstantLevelup" (void)
+{
+	If (CheckWeapon("Beretta"))
+	{
+		If (CheckInventory("BerettaMaxed") == 1) {
+			HudMessage(s:"Weapon already at maximum level.\nFilling ammunition instead..."; HUDMSG_TYPEON|HUDMSG_LOG, 0, -1, 0.1, 0.6, 3.0, 0.01, 0.75);
+			GiveInventory("BerettaLoaded", 999);
+			GiveInventory("9mmAmmo", 999);
+		}
+		GiveInventory("BerettaExp", 999);
+	}
+	If (CheckWeapon("Mateba"))
+	{
+		If (CheckInventory("MatebaMaxed") == 1) {
+			HudMessage(s:"Weapon already at maximum level.\nFilling ammunition instead..."; HUDMSG_TYPEON|HUDMSG_LOG, 0, -1, 0.1, 0.6, 3.0, 0.01, 0.75);
+			GiveInventory("MatebaLoaded", 999);
+			GiveInventory("44MagAmmo", 999);
+		}
+		GiveInventory("MatebaExp", 999);
+	}
+	If (CheckWeapon("WWTStriker"))
+	{
+		If (CheckInventory("StrikerMaxed") == 1) {
+			HudMessage(s:"Weapon already at maximum level.\nFilling ammunition instead..."; HUDMSG_TYPEON|HUDMSG_LOG, 0, -1, 0.1, 0.6, 3.0, 0.01, 0.75);
+			GiveInventory("StrikerLoaded", 999);
+			GiveInventory("12gaAmmo", 999);
+		}
+		GiveInventory("StrikerExp", 999);
+	}
+	If (CheckWeapon("WWTUzi"))
+	{
+		If (CheckInventory("UziMaxed") == 1) {
+			HudMessage(s:"Weapon already at maximum level.\nFilling ammunition instead..."; HUDMSG_TYPEON|HUDMSG_LOG, 0, -1, 0.1, 0.6, 3.0, 0.01, 0.75);
+			GiveInventory("UziLoaded", 999);
+			GiveInventory("9mmAmmo", 999);
+		}
+		GiveInventory("UziExp", 999);
+	}
+	If (CheckWeapon("WWTAK47"))
+	{
+		If (CheckInventory("AK47Maxed") == 1) {
+			HudMessage(s:"Weapon already at maximum level.\nFilling ammunition instead..."; HUDMSG_TYPEON|HUDMSG_LOG, 0, -1, 0.1, 0.6, 3.0, 0.01, 0.75);
+			GiveInventory("AK47Loaded", 999);
+			GiveInventory("762mmAmmo", 999);
+		}
+		GiveInventory("AK47Exp", 999);
+	}
+	If (CheckWeapon("Barrett"))
+	{
+		If (CheckInventory("BarrettMaxed") == 1) {
+			HudMessage(s:"Weapon already at maximum level.\nFilling ammunition instead..."; HUDMSG_TYPEON|HUDMSG_LOG, 0, -1, 0.1, 0.6, 3.0, 0.01, 0.75);
+			GiveInventory("BarrettLoaded", 999);
+			GiveInventory("50BMGAmmo", 999);
+		}
+		GiveInventory("BarrettExp", 999);
+	}
+	If (CheckWeapon("MGL140"))
+	{
+		If (CheckInventory("MGLMaxed") == 1) {
+			HudMessage(s:"Weapon already at maximum level.\nFilling ammunition instead..."; HUDMSG_TYPEON|HUDMSG_LOG, 0, -1, 0.1, 0.6, 3.0, 0.01, 0.75);
+			GiveInventory("MGLLoaded", 999);
+			GiveInventory("40mmAmmo", 999);
+		}
+		GiveInventory("MGLExp", 999);
+	}
+	If (CheckWeapon("WWTM60"))
+	{
+		If (CheckInventory("M60Maxed") == 1) {
+			HudMessage(s:"Weapon already at maximum level.\nFilling ammunition instead..."; HUDMSG_TYPEON|HUDMSG_LOG, 0, -1, 0.1, 0.6, 3.0, 0.01, 0.75);
+			GiveInventory("M60Loaded", 999);
+			GiveInventory("762mmAmmo", 999);
+		}
+		GiveInventory("M60Exp", 999);
+	}
+}
+
+Script "GunExp" Enter
+{
+	// Not needed or desired in TitleMaps.
+	If (GameType() == Game_Title_Map) Terminate;
+	
+	// Which Player?
+	Int ThisPlayer = PlayerNumber();
+	// Cancel if somehow called by a non-Player.
+	If ((ThisPlayer < 0) || (ThisPlayer >= 32)) Terminate;
+ 
+	// Unique Player TID. Make sure nothing else in the game has it!
+	Int ThisTID = ThisPlayer + Player_0_TID;
+	Thing_ChangeTID (ThisTID, 0);
+	Thing_ChangeTID (0, ThisTID);
+	
+	While (True)
+	{
+		// They've left this body?
+		If (ActivatorTID() == 0) Terminate;
+		// Abort if they're gone.
+		If (!PlayerInGame(ThisPlayer)) Terminate;
+		
+		// And now the sound of John Denver being strangled with an if/else.
+		
+		// The Mighty Foot
+		if (CheckInventory("KickExp") >= 50)
+		{
+			if (CheckInventory("KickLevelup") > 2)
+			{
+				TakeInventory("KickExp", 999);
+			}
+			
+			else
+			{
+				GiveInventory("KickLevelup", 1);
+				HudMessage(s:"Kick attack reached Belt Level ", d:(CheckInventory("KickLevelup")); HUDMSG_TYPEON|HUDMSG_LOG, 0, -1, 0.1, 0.5, 3.0, 0.01, 0.75);
+				if (CheckInventory("KickLevelup") == 1)
+				{
+					HudMessage(s:"Tae Kwon Do Training\nLEARNED THREE-KICK COMBO"; HUDMSG_TYPEON|HUDMSG_LOG, 0, -1, 0.1, 0.6, 3.0, 0.01, 0.75);
+				}
+				if (CheckInventory("KickLevelup") == 2)
+				{
+					HudMessage(s:"A Certain Stranger...\nKICK COMBO ENDS IN SHOCKWAVE"; HUDMSG_TYPEON|HUDMSG_LOG, 0, -1, 0.1, 0.6, 3.0, 0.01, 0.75);
+				}
+				if (CheckInventory("KickLevelup") == 3)
+				{
+					HudMessage(s:"Way of the Exploding Foot\nKICKS EXPLODE ON CONTACT"; HUDMSG_TYPEON|HUDMSG_LOG, 0, -1, 0.1, 0.6, 3.0, 0.01, 0.75);
+					GiveInventory("KickMaxed", 1);
+				}
+				TakeInventory("KickExp", 999);
+			}
+		}
+		
+		// Taser
+		if (CheckInventory("TaserExp") >= 20)
+		{
+			if (CheckInventory("TaserLevelup") > 2)
+			{
+				TakeInventory("TaserExp", 999);
+			}
+			
+			else
+			{
+				GiveInventory("TaserLevelup", 1);
+				HudMessage(l: "WWTTASERSHORT", s:" reached Charge Level ", d:(CheckInventory("TaserLevelup")); HUDMSG_TYPEON|HUDMSG_LOG, 0, -1, 0.1, 0.5, 3.0, 0.01, 0.75);
+				if (CheckInventory("TaserLevelup") == 1)
+				{
+					HudMessage(s:"Over-Voltage Battery\nDAMAGE ++\nSETS ENEMIES ON FIRE"; HUDMSG_TYPEON|HUDMSG_LOG, 0, -1, 0.1, 0.6, 3.0, 0.01, 0.75);
+				}
+				if (CheckInventory("TaserLevelup") == 2)
+				{
+					HudMessage(s:"Direct-Current\nDAMAGE++"; HUDMSG_TYPEON|HUDMSG_LOG, 0, -1, 0.1, 0.6, 3.0, 0.01, 0.75);
+				}
+				if (CheckInventory("TaserLevelup") == 3)
+				{
+					HudMessage(s:"A Little Help from Comrade Nikola\nCHAIN-LIGHTNING EFFECT ADDED\nHANDLE WITH CARE!!"; HUDMSG_TYPEON|HUDMSG_LOG, 0, -1, 0.1, 0.6, 3.0, 0.01, 0.75);
+					GiveInventory("TaserMaxed", 1);
+				}
+				TakeInventory("TaserExp", 999);
+			}
+		}
+		
+		// Grenades
+		if (CheckInventory("GrenadeExp") >= 25)
+		{
+			if (CheckInventory("GrenadeLevelup") > 2)
+			{
+				TakeInventory("GrenadeExp", 999);
+			}
+			
+			else
+			{
+				GiveInventory("GrenadeLevelup", 1);
+				HudMessage(s:"Grenade reached Demolitions Level ", d:(CheckInventory("GrenadeLevelup")); HUDMSG_TYPEON|HUDMSG_LOG, 0, -1, 0.1, 0.5, 3.0, 0.01, 0.75);
+				if (CheckInventory("GrenadeLevelup") == 1)
+				{
+					HudMessage(l:"WWTGREN1NAME", s:"\nFRAGMENTATION EFFECT\nSTRONGER SPLASH DAMAGE"; HUDMSG_TYPEON|HUDMSG_LOG, 0, -1, 0.1, 0.6, 3.0, 0.01, 0.75);
+				}
+				if (CheckInventory("GrenadeLevelup") == 2)
+				{
+					HudMessage(l:"WWTGREN2NAME", s:"\nELECTRICAL DAMAGE\nSTUNS ENEMIES"; HUDMSG_TYPEON|HUDMSG_LOG, 0, -1, 0.1, 0.6, 3.0, 0.01, 0.75);
+				}
+				if (CheckInventory("GrenadeLevelup") == 3)
+				{
+					HudMessage(l:"WWTGREN3NAME", s:"\nCONSTANT FIRE DAMAGE"; HUDMSG_TYPEON|HUDMSG_LOG, 0, -1, 0.1, 0.6, 3.0, 0.01, 0.75);
+					GiveInventory("GrenadeMaxed", 1);
+				}
+				TakeInventory("GrenadeExp", 999);
+			}
+		}
+		
+		// Beretta
+		if (CheckInventory("BerettaExp") >= 25)
+		{
+			if (CheckInventory("BerettaLevelup") > 2)
+			{
+				TakeInventory("BerettaExp", 999);
+			}
+			
+			else
+			{
+				GiveInventory("BerettaLevelup", 1);
+				HudMessage(l:"WWTWEP1NAME", s:" reached Marksman Level ", d:(CheckInventory("BerettaLevelup")); HUDMSG_TYPEON|HUDMSG_LOG, 0, -1, 0.1, 0.5, 3.0, 0.01, 0.75);
+				if (CheckInventory("BerettaLevelup") == 3)
+				{
+					HudMessage(l:"WWTWEP1UPGRADENAME", s:"\nBURST FIRE (PRESS ", k:"+zoom", s:" TO ENABLE)\nMAGAZINE SIZE ++"; HUDMSG_TYPEON|HUDMSG_LOG, 0, -1, 0.1, 0.6, 3.0, 0.01, 0.75);
+					GiveInventory("BerettaMaxed", 1);
+				}
+				if (CheckInventory("BerettaLevelup") == 2)
+				{
+					HudMessage(s:"Cop-Killer Ammo\nMUZZLE VELOCITY ++\nBULLETS PIERCE ARMOR"; HUDMSG_TYPEON|HUDMSG_LOG, 0, -1, 0.1, 0.6, 3.0, 0.01, 0.75);
+				}
+				if (CheckInventory("BerettaLevelup") == 1)
+				{
+					HudMessage(s:"Match Grade Trigger\nRATE OF FIRE ++"; HUDMSG_TYPEON|HUDMSG_LOG, 0, -1, 0.1, 0.6, 3.0, 0.01, 0.75);
+				}
+				TakeInventory("BerettaExp", 999);
+			}
+		}
+		
+		// Mateba
+		if (CheckInventory("MatebaExp") >= 30)
+		{
+			if (CheckInventory("MatebaLevelup") > 2)
+			{
+				TakeInventory("MatebaExp", 999);
+			}
+			
+			else
+			{
+				GiveInventory("MatebaLevelup", 1);
+				HudMessage(l:"WWTWEP2NAME", s:" reached Marksman Level ", d:(CheckInventory("MatebaLevelup")); HUDMSG_TYPEON|HUDMSG_LOG, 0, -1, 0.1, 0.5, 3.0, 0.01, 0.75);
+				if (CheckInventory("MatebaLevelup") == 1)
+				{
+					HudMessage(s:"Shock Absorption System\nRECOIL --\nFIRE RATE ++"; HUDMSG_TYPEON|HUDMSG_LOG, 0, -1, 0.1, 0.6, 3.0, 0.01, 0.75);
+				}
+				if (CheckInventory("MatebaLevelup") == 2)
+				{
+					HudMessage(s:"Carbine Conversion Kit\nRECOIL --\nFIRE RATE ++\nACCURACY ++"; HUDMSG_TYPEON|HUDMSG_LOG, 0, -1, 0.1, 0.6, 3.0, 0.01, 0.75);
+				}
+				if (CheckInventory("MatebaLevelup") == 3)
+				{
+					HudMessage(s:"Competition Scope\nZOOM FEATURE ADDED\nPRESS ", k:"+zoom", s:" TO ACTIVATE"; HUDMSG_TYPEON|HUDMSG_LOG, 0, -1, 0.1, 0.6, 3.0, 0.01, 0.75);
+					GiveInventory("MatebaMaxed", 1);
+				}
+				TakeInventory("MatebaExp", 999);
+			}
+		}
+		
+		// Striker
+		if (CheckInventory("StrikerExp") >= 40)
+		{
+			if (CheckInventory("StrikerLevelup") > 2)
+			{
+				TakeInventory("StrikerExp", 999);
+			}
+			
+			else
+			{
+				GiveInventory("StrikerLevelup", 1);
+				HudMessage(l:"WWTWEP3NAME", s:" reached Marksman Level ", d:(CheckInventory("StrikerLevelup")); HUDMSG_TYPEON|HUDMSG_LOG, 0, -1, 0.1, 0.5, 3.0, 0.01, 0.75);
+				if (CheckInventory("StrikerLevelup") == 1)
+				{
+					HudMessage(s:"Tightened Choke\nPELLET SPREAD --"; HUDMSG_TYPEON|HUDMSG_LOG, 0, -1, 0.1, 0.6, 3.0, 0.01, 0.75);
+				}
+				if (CheckInventory("StrikerLevelup") == 2)
+				{
+					HudMessage(s:"Improved Blowback System\nSHELLS EJECT AUTOMATICALLY"; HUDMSG_TYPEON|HUDMSG_LOG, 0, -1, 0.1, 0.6, 3.0, 0.01, 0.75);
+				}
+				if (CheckInventory("StrikerLevelup") == 3)
+				{
+					HudMessage(s:"Detachable Magazine\nRELOAD SPEED ++"; HUDMSG_TYPEON|HUDMSG_LOG, 0, -1, 0.1, 0.6, 3.0, 0.01, 0.75);
+					GiveInventory("StrikerMaxed", 1);
+				}
+				TakeInventory("StrikerExp", 999);
+			}
+		}
+		
+		// Uzi
+		if (CheckInventory("UziExp") >= 60)
+		{
+			if (CheckInventory("UziLevelup") > 2)
+			{
+				TakeInventory("UziExp", 999);
+			}
+			
+			else
+			{
+				GiveInventory("UziLevelup", 1);
+				HudMessage(l:"WWTWEP4NAME", s:" reached Marksman Level ", d:(CheckInventory("UziLevelup")); HUDMSG_TYPEON|HUDMSG_LOG, 0, -1, 0.1, 0.5, 3.0, 0.01, 0.75);
+				if (CheckInventory("UziLevelup") == 1)
+				{
+					HudMessage(s:"Front Foregrip\nRECOIL --"; HUDMSG_TYPEON|HUDMSG_LOG, 0, -1, 0.1, 0.6, 3.0, 0.01, 0.75);
+				}
+				if (CheckInventory("UziLevelup") == 2)
+				{
+					HudMessage(s:"Titanium Bolt\nFIRE RATE ++"; HUDMSG_TYPEON|HUDMSG_LOG, 0, -1, 0.1, 0.6, 3.0, 0.01, 0.75);
+				}
+				if (CheckInventory("UziLevelup") == 3)
+				{
+					HudMessage(s:"Sound/Flash Suppressor\nGUNSHOT NOISE --"; HUDMSG_TYPEON|HUDMSG_LOG, 0, -1, 0.1, 0.6, 3.0, 0.01, 0.75);
+					GiveInventory("UziMaxed", 1);
+				}
+				TakeInventory("UziExp", 999);
+			}
+		}
+		
+		// AK47
+		if (CheckInventory("AK47Exp") >= 60)
+		{
+			if (CheckInventory("AK47Levelup") > 2)
+			{
+				TakeInventory("AK47Exp", 999);
+			}
+			
+			else
+			{
+				GiveInventory("AK47Levelup", 1);
+				HudMessage(l:"WWTWEP5NAME", s:" reached Marksman Level ", d:(CheckInventory("AK47Levelup")); HUDMSG_TYPEON|HUDMSG_LOG, 0, -1, 0.1, 0.5, 3.0, 0.01, 0.75);
+				if (CheckInventory("AK47Levelup") == 1)
+				{
+					HudMessage(s:"Extended Magazines\nMAGAZINE SIZE ++"; HUDMSG_TYPEON|HUDMSG_LOG, 0, -1, 0.1, 0.6, 3.0, 0.01, 0.75);
+				}
+				if (CheckInventory("AK47Levelup") == 2)
+				{
+					HudMessage(s:"Long Barrel\nMUZZLE VELOCITY ++\nACCURACY ++\nDAMAGE ~+"; HUDMSG_TYPEON|HUDMSG_LOG, 0, -1, 0.1, 0.6, 3.0, 0.01, 0.75);
+				}
+				if (CheckInventory("AK47Levelup") == 3)
+				{
+					HudMessage(s:"Grenade Launcher\nPRESS ", k:"+zoom", s:" TO FIRE"; HUDMSG_TYPEON|HUDMSG_LOG, 0, -1, 0.1, 0.6, 3.0, 0.01, 0.75);
+					GiveInventory("AK47Maxed", 1);
+					GiveInventory("40mmAmmo", 1);
+				}
+				TakeInventory("AK47Exp", 999);
+			}
+		}
+		
+		// Barrett
+		if (CheckInventory("BarrettExp") >= 50)
+		{
+			if (CheckInventory("BarrettLevelup") > 2)
+			{
+				TakeInventory("BarrettExp", 999);
+			}
+			
+			else
+			{
+				GiveInventory("BarrettLevelup", 1);
+				HudMessage(l:"WWTWEP6NAME", s:" reached Marksman Level ", d:(CheckInventory("BarrettLevelup")); HUDMSG_TYPEON|HUDMSG_LOG, 0, -1, 0.1, 0.5, 3.0, 0.01, 0.75);
+				if (CheckInventory("BarrettLevelup") == 1)
+				{
+					HudMessage(s:"Shock Absorption System\nRECOIL --"; HUDMSG_TYPEON|HUDMSG_LOG, 0, -1, 0.1, 0.6, 3.0, 0.01, 0.75);
+				}
+				if (CheckInventory("BarrettLevelup") == 2)
+				{
+					HudMessage(s:"Concussive Ammo\nDAMAGE ++\nSHOTS EXPLODE ON CONTACT"; HUDMSG_TYPEON|HUDMSG_LOG, 0, -1, 0.1, 0.6, 3.0, 0.01, 0.75);
+				}
+				if (CheckInventory("BarrettLevelup") == 3)
+				{
+					HudMessage(s:"Nitro Express Ammo\n\nMUZZLE VELOCITY ++\nSHOTS PIERCE THROUGH ENEMIES"; HUDMSG_TYPEON|HUDMSG_LOG, 0, -1, 0.1, 0.6, 3.0, 0.01, 0.75);
+					GiveInventory("BarrettMaxed", 1);
+				}
+				TakeInventory("BarrettExp", 999);
+			}
+		}
+		
+		// MGL
+		if (CheckInventory("MGLExp") >= 50)
+		{
+			if (CheckInventory("MGLLevelup") > 2)
+			{
+				TakeInventory("MGLExp", 999);
+			}
+			
+			else
+			{
+				GiveInventory("MGLLevelup", 1);
+				HudMessage(l:"WWTWEP7NAME", s:" reached Marksman Level ", d:(CheckInventory("MGLLevelup")); HUDMSG_TYPEON|HUDMSG_LOG, 0, -1, 0.1, 0.5, 3.0, 0.01, 0.75);
+				if (CheckInventory("MGLLevelup") == 1)
+				{
+					HudMessage(s:"Stablizing Fins\nPROJECTILE SPEED ++\nRANGE ++\nGRENADES FLY STRAIGHT"; HUDMSG_TYPEON|HUDMSG_LOG, 0, -1, 0.1, 0.6, 3.0, 0.01, 0.75);
+				}
+				if (CheckInventory("MGLLevelup") == 2)
+				{
+					HudMessage(s:"Shaped-Tip Rounds\nDIRECT DAMAGE ++"; HUDMSG_TYPEON|HUDMSG_LOG, 0, -1, 0.1, 0.6, 3.0, 0.01, 0.75);
+				}
+				if (CheckInventory("MGLLevelup") == 3)
+				{
+					HudMessage(s:"Incendiary Payload\nSHOTS DEAL CONTINUOUS DAMAGE"; HUDMSG_TYPEON|HUDMSG_LOG, 0, -1, 0.1, 0.6, 3.0, 0.01, 0.75);
+					GiveInventory("MGLMaxed", 1);
+				}
+				TakeInventory("MGLExp", 999);
+			}
+		}
+		
+		// M60
+		if (CheckInventory("M60Exp") >= 100)
+		{
+			if (CheckInventory("M60Levelup") > 2)
+			{
+				TakeInventory("M60Exp", 999);
+			}
+			
+			else
+			{
+				GiveInventory("M60Levelup", 1);
+				HudMessage(l:"WWTWEP8NAME", s:" reached Marksman Level ", d:(CheckInventory("M60Levelup")); HUDMSG_TYPEON|HUDMSG_LOG, 0, -1, 0.1, 0.5, 3.0, 0.01, 0.75);
+				if (CheckInventory("M60Levelup") == 1)
+				{
+					HudMessage(s:"Light-Weight Receiver\nFIRING MOVEMENT SPEED ++"; HUDMSG_TYPEON|HUDMSG_LOG, 0, -1, 0.1, 0.6, 3.0, 0.01, 0.75);
+				}
+				if (CheckInventory("M60Levelup") == 2)
+				{
+					HudMessage(s:"Recoil-Control Stock\nHIP-FIRE RECOIL --"; HUDMSG_TYPEON|HUDMSG_LOG, 0, -1, 0.1, 0.6, 3.0, 0.01, 0.75);
+				}
+				if (CheckInventory("M60Levelup") == 3)
+				{
+					HudMessage(s:"Improved Gas System\nDAMAGE ++\nMUZZLE VELOCITY ++"; HUDMSG_TYPEON|HUDMSG_LOG, 0, -1, 0.1, 0.6, 3.0, 0.01, 0.75);
+					GiveInventory("M60Maxed", 1);
+				}
+				TakeInventory("M60Exp", 999);
+			}
+		}
+	Delay (Const:1);
+	}
+}
+
+Script "GunExpRespawn" Respawn
+{
+	ACS_NamedExecuteAlways("GunExp", 0);
+}

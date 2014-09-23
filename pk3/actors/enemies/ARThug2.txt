@@ -1,0 +1,83 @@
+ACTOR ARThug2 : WWTBadGuy
+{
+	YScale 0.5
+	XScale 0.55
+	Radius 20
+	Height 56
+	Health 120
+	Speed 11
+	PainChance 255
+	SeeSound "Sights/Male10"
+	PainSound "Pains/Male06"
+	DeathSound "Deaths/Male06"
+	DropItem "WWTAk47" 84
+	DropItem "762mmAmmo" 84
+	DamageFactor "EnemyBullet", 0.3
+	DamageFactor "EnemyGrenade", 0.3
+	Obituary "%o couldn't refuse an offer of lead."
+	MONSTER
+	+FLOORCLIP
+	+MISSILEMORE
+	States
+	{
+	Spawn:
+		KTHG A 1 A_Look
+		Loop
+	See:
+		KTHG BBCCDDEE 5 Fast A_Chase
+		Loop
+	Missile:
+		KTHG F 0 A_JumpIfInventory("AK47Loaded",15,"Reload")
+		KTHG FGG 5 Fast A_FaceTarget
+		KTHG G 0 A_GiveInventory("AK47Loaded",1)
+		KTHG G 0 A_PlayWeaponSound("AK47/EnemyFire")
+		ATHG G 0 A_SpawnItemEx("RifleCasing",24,-32,40,8,2,4,random(-55,-80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
+		KTHG G 2 BRIGHT A_CustomMissile("EnemyARTracer", 32, 0, -6)
+		KTHG G 3 A_FaceTarget
+		KTHG G 0 A_GiveInventory("AK47Loaded",1)
+		KTHG G 0 A_PlayWeaponSound("AK47/EnemyFire")
+		ATHG G 0 A_SpawnItemEx("RifleCasing",24,-32,40,8,2,4,random(-55,-80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
+		KTHG G 2 BRIGHT A_CustomMissile("EnemyARTracer", 32, 0, 0)
+		KTHG G 3 A_FaceTarget
+		KTHG G 0 A_GiveInventory("AK47Loaded",1)
+		KTHG G 0 A_PlayWeaponSound("AK47/EnemyFire")
+		ATHG G 0 A_SpawnItemEx("RifleCasing",24,-32,40,8,2,4,random(-55,-80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
+		KTHG G 2 BRIGHT A_CustomMissile("EnemyARTracer", 32, 0, 6)
+		KTHG F 3
+		KTHG G 0 A_GiveInventory("AK47Loaded",1)
+		KTHG G 0 A_PlayWeaponSound("AK47/EnemyFire")
+		ATHG G 0 A_SpawnItemEx("RifleCasing",24,-32,40,8,2,4,random(-55,-80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
+		KTHG G 2 BRIGHT A_CustomMissile("EnemyARTracer", 32, 0, 0)
+		KTHG G 3 A_FaceTarget
+		KTHG G 0 A_GiveInventory("AK47Loaded",1)
+		KTHG G 0 A_PlayWeaponSound("AK47/EnemyFire")
+		ATHG G 0 A_SpawnItemEx("RifleCasing",24,-32,40,8,2,4,random(-55,-80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
+		KTHG G 2 BRIGHT A_CustomMissile("EnemyARTracer", 32, 0, -6)
+		KTHG F 3
+		Goto See
+	Reload:
+		KTHG F 3 A_PlayWeaponSound("AK47/Clipout")
+		KTHG F 10
+		KTHG A 10 A_PlayWeaponSound("AK47/Clipin")
+		KTHG F 6
+		KTHG I 4 A_PlayWeaponSound("AK47/Cock")
+		KTHG F 5 A_TakeInventory("AK47Loaded",30)
+		Goto See
+	Pain:
+		KTHG I 3 A_Pain
+		Goto See
+	Pain.PlayerElectricGrenade:
+	Pain.PlayerTaser:
+	Pain.EnemyTaser:
+		KTHG I 0
+		Goto Tased
+	Death:
+		KTHG J 3 A_Scream
+		KTHG KL 3
+		KTHG M 3 A_NoBlocking
+		KTHG N 3
+		KTHG O 3 A_PlaySound("Misc/Bodyfall")
+		KTHG P -1
+		Stop
+	}
+}

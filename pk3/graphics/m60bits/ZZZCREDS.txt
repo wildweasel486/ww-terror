@@ -1,0 +1,6 @@
+The M60's sprites were originally from an old post on Doomworld by
+a user named Kronos, who you might know better for having drawn those Doom 3
+weapon sprites that have been floating around for years. The bipod
+was pasted on by me, then Xaser got his hands on it and retooled the barrel
+shroud, and then I took it again and added the bullet chain from Powerslave's
+M60.

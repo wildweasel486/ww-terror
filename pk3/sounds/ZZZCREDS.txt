@@ -1,0 +1,13 @@
+The various "empty" sounds all come from Counter-Strike Source, with the
+exception of EMPTYR (Medal of Honor: Pacific Assault) and EMPTYH (freesound.org).
+
+Flesh1 through Flesh5, Ric1 through Ric5, all come from Medal of Honor: Allied Assault.
+
+Metlhit1-4 are borrowed from Reelism by kind permission of Kinsie.
+
+Dssecret is from Street Fighter: The Movie: The Arcade Game by Capcom and
+Incredible Technologies. (Apparently, that's Zangief, and that sound plays
+whenever a credit is inserted into the machine.)
+
+YOULOSE comes from Operation: Body Count by Capstone. Oddly, the scene that this
+sound is attached to only seems to appear in the demo version!

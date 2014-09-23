@@ -1,0 +1,9 @@
+These hands were assembled by MidoriMan of the ZDoom forums (and later
+disassembled by me). Some edits were made by me to keep things more consistent
+with the weapons; the Handmat* graphics were taken into Rotsprite.
+
+Portions of the hands come from HacX by Banjo Software, Blood by Monolith,
+and id Software's original Doomguy hands.
+
+And a special thanks to Kevin Cloud, whose arms are just about the hairiest
+I've seen in a game, ever.

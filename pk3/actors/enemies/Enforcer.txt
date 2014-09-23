@@ -1,0 +1,80 @@
+ACTOR WWTEnforcer : WWTBadGuy replaces BaronOfHell
+{
+	SpawnID 3
+	Scale 0.65
+	Radius 20
+	Height 56
+	Health 400
+	Speed 11
+	PainChance 64
+	Mass 9000
+	SeeSound "Sights/Male09"
+	PainSound "Pains/Male09"
+	DeathSound "Deaths/Male09"
+	DropItem "WWTM60", 42
+	DamageFactor "EnemyBullet", 0.3
+	DamageFactor "EnemyGrenade", 0.3
+	DamageFactor "EnemyTaser", 0.1
+	DamageFactor "PlayerPistol", 0.3
+	DamageFactor "PlayerUzi", 0.3
+	DamageFactor "PlayerShotgun", 0.3
+	DamageFactor "PlayerAK", 0.7
+	DamageFactor "PlayerM60", 0.7
+	DamageFactor "PlayerMagnum", 0.6
+	DamageFactor "PlayerMelee", 2.0
+	Obituary "%o exceeds a lead-to-flesh ratio of 2:1."
+	MONSTER
+	+FLOORCLIP
+	+MISSILEMORE
+	+MISSILEEVENMORE
+	+QUICKTORETALIATE
+	+BOSSDEATH
+	States
+	{
+	Spawn:
+		UTHG A 1 A_Look
+		Loop
+	See:
+		UTHG BBCCDDEE 3 A_Chase
+		Loop
+	Missile:
+		UTHG F 0 A_Jump(64,"Grenade")
+		UTHG FG 6 Fast A_FaceTarget
+	MissileHold:
+		UTHG G 0 A_PlayWeaponSound("M60/EnemyFire")
+		UTHG H 0 A_SpawnItemEx("RifleCasing",24,-32,40,8,2,4,random(-55,-80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
+		UTHG H 1 BRIGHT A_CustomMissile("EnemyM60Tracer", 44, 0, frandom(-6.0,6.0), 0, frandom (-3.0,3.0))
+		UTHG I 2 Fast
+		UTHG G 1 A_MonsterRefire(40,"See")
+		Goto MissileHold
+	Grenade:
+		UTHG J 3 A_PlaySound("Throws/Male09", CHAN_VOICE)
+		UTHG KLMN 3 Fast
+		UTHG O 3 A_CustomMissile("EnemyGrenade")
+		UTHG PQ 3
+		Goto See
+	Pain.PlayerPistol:
+	Pain.PlayerUzi:
+	Pain.PlayerShotgun:
+		UTHG RRRRRRRRRR 0 A_SpawnItemEx("BulletIneffectiveSpark",0,0,32,frandom(-2.0,2.0),frandom(-2.0,2.0),frandom(3.0,6.0),frandom(0.0,359.9),SXF_NOCHECKPOSITION)
+		UTHG R 3 A_PlaySound("Bullet/HitMetal")
+		Goto See
+	Pain.PlayerElectricGrenade:
+	Pain.PlayerTaser:
+	Pain.EnemyTaser:
+		UTHG R 0
+		Goto Tased
+	Pain:
+		UTHG R 3 A_Pain
+		Goto See
+	Death:
+		UTHG S 3 A_Scream
+		UTHG T 3
+		UTHG U 3 A_NoBlocking
+		UTHG V 3 A_BossDeath
+		UTHG W 3 A_PlaySound("Misc/Bodyfall")
+		UTHG X -1
+		Stop
+	
+	}
+}

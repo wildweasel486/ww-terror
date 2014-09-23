@@ -1,0 +1,8 @@
+The skill name graphics were made using the BMF font called DNS_NIBLE,
+which was acquired from http://bmf.wz.cz/ and likely came from an
+Amiga demoscene production or similar. I'm afraid I don't have more
+information than that, sadly...
+
+The AgencyHQ graphic came from a Google Image Search for "headquarters" and
+is actually a photograph of the United States Census Bureau's headquarters
+in Washington, DC, downloaded from www.census.gov.

@@ -1,0 +1,64 @@
+ACTOR ShotgunThug : WWTBadGuy
+{
+	YScale 0.4
+	XScale 0.45
+	Radius 20
+	Height 56
+	Health 85
+	Speed 12
+	PainChance 255
+	SeeSound "Sights/Male05"
+	PainSound "Pains/Male05"
+	DeathSound "Deaths/Male05"
+	DropItem "12gaAmmoSmall"
+	DropItem "WWTStriker", 84
+	DamageFactor "EnemyBullet", 0.3
+	DamageFactor "EnemyGrenade", 0.3
+	Obituary "%o lost the bloodsport to Chong Li."
+	MONSTER
+	+FLOORCLIP
+	States
+	{
+	Spawn:
+		GTHG A 1 A_Look
+		Loop
+	See:
+		GTHG BCDE 6 A_Chase
+		Loop
+	Missile:
+		GTHG F 3 A_PlaySound("Striker/Load")
+		GTHG GGG 3 A_FaceTarget
+		GTHG G 0 A_JumpIf(CallACS("IsNightmare") >= 4, "MissileNightmare")
+		GTHG G 0 A_PlayWeaponSound("Striker/EnemyFire")
+		GTHG GGG 0 BRIGHT A_CustomMissile("EnemyShotgunTracer", 49, 0, frandom(-3.0,3.0))
+		GTHG G 2 BRIGHT A_CustomMissile("EnemyShotgunTracer", 49, 0, frandom(-3.0,3.0), CMF_OFFSETPITCH, frandom(-3.0, 3.0))
+		GTHG G 10
+		GTHG H 4 A_PlaySound("Striker/Ready")
+		GTHG G 10
+		Goto See
+	MissileNightmare:
+		GTHG G 0 A_PlayWeaponSound("Striker/EnemyFire")
+		GTHG GGG 0 BRIGHT A_CustomMissile("EnemyShotgunTracer", 49, 0, frandom(-3.0,3.0))
+		GTHG G 2 BRIGHT A_CustomMissile("EnemyShotgunTracer", 49, 0, frandom(-3.0,3.0), CMF_OFFSETPITCH, frandom(-3.0, 3.0))
+		GTHG G 10 Fast
+		GTHG H 4 A_PlaySound("Striker/Ready")
+		GTHG G 10 A_MonsterRefire(32, "See")
+		Goto MissileNightmare
+	Pain.PlayerElectricGrenade:
+	Pain.PlayerTaser:
+	Pain.EnemyTaser:
+		GTHG I 0
+		Goto Tased
+	Pain:
+		GTHG I 3 A_Pain
+		Goto See
+	Death:
+		GTHG J 3 A_Scream
+		GTHG KL 3
+		GTHG M 3 A_NoBlocking
+		GTHG NO 3
+		GTHG P 3 A_PlaySound("Misc/Bodyfall")
+		GTHG Q -1
+		Stop
+	}
+}

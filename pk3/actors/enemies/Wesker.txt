@@ -1,0 +1,105 @@
+// Introducing Alfred Wester, who is totally not Albert Wesker. Honest.
+
+// Voice acting kindly provided by Marty Kirra,
+// because I can't afford D.C. Douglas.
+
+ACTOR Wesker : WWTBadGuy replaces Cyberdemon
+{
+	SpawnID 114
+	YScale 0.35
+	XScale 0.4
+	Radius 20
+	Height 56
+	Health 2000
+	Speed 45
+	PainChance 255
+	PainChance "PlayerPistol", 32
+	PainChance "PlayerUzi", 48
+	PainChance "PlayerM60", 32
+	PainChance "PlayerTaser", 40
+	PainChance "PlayerGrenadeFire", 16
+	PainChance "Fire", 16
+	PainChance "EnemyTaser", 40
+	Mass 9999
+	SeeSound "Sights/Wesker"
+	PainSound "Pains/Wesker"
+	DeathSound "Deaths/Wesker"
+	DamageFactor "EnemyBullet", 0.0
+	DamageFactor "EnemyGrenade", 0.0
+	DamageFactor "PlayerGrenadeFire", 0.2
+	DamageFactor "Fire", 0.2
+	MeleeThreshold 512
+	MeleeRange 96
+	Obituary "%o has experienced Complete. Global. Saturation."
+	MONSTER
+	+BOSS
+	+FLOORCLIP
+	+MISSILEMORE
+	+DONTMORPH
+	States
+	{
+	Spawn:
+		WESK A 1 A_Look
+		Loop
+	See:
+		WESK B 0 A_JumpIfInventory("WeskerTauntSeq", 40, "Taunt")
+		WESK BCDE 6 A_Chase("Charge", "Missile", CHF_FASTCHASE|CHF_NIGHTMAREFAST)
+		WESK E 0 A_GiveInventory("WeskerTauntSeq", 1)
+		Loop
+	Missile:
+		WESK FGG 3 A_FaceTarget
+		WESK G 0 A_PlaySound("Mateba/WeskerFire", CHAN_WEAPON, 1.0, 0, ATTN_NONE)
+		WESK G 2 BRIGHT A_CustomMissile("WeskerPistolTracer", 32, 0, 0)
+		WESK G 18 A_FaceTarget
+		WESK G 0 A_PlaySound("Mateba/WeskerFire", CHAN_WEAPON, 1.0, 0, ATTN_NONE)
+		WESK G 2 BRIGHT A_CustomMissile("WeskerPistolTracer", 32, 0, 0)
+		WESK H 3 A_TakeInventory("WeskerTauntSeq", 40)
+		WESK F 4
+		Goto See
+	Charge:
+		WESK F 2 A_FaceTarget
+		WESK F 0 A_PlaySound("kick/shockwave")
+		WESK F 1 A_Recoil(-80)
+		WESK FFFFFFFFF 1 A_SpawnItemEx("RepelShock")
+		WESK I 3 A_TakeInventory("WeskerTauntSeq", 40)
+		WESK H 5 A_CustomMeleeAttack((45),"skeleton/melee", "skeleton/swing", "WeskerPunch")
+		Goto See
+	Taunt:
+		WESK A 0 A_TakeInventory("WeskerTauntSeq", 40) 
+		WESK A 5 A_JumpIfCloser(1500, 1)
+		Goto See
+		WESK A 20 A_PlaySound("Active/Wesker", CHAN_AUTO, 1.0, 0, ATTN_NONE)
+		WESK A 5
+		Goto See
+	Pain.PlayerElectricGrenade:
+	Pain.PlayerTaser:
+	Pain.EnemyTaser:
+		WESK I 0 A_TakeInventory("WeskerTauntSeq", 40)
+		Goto Tased
+	Pain:
+		WESK I 4 A_Pain
+		WESK A 2 A_TakeInventory("WeskerTauntSeq", 40)
+		Goto See
+	Death:
+		WESK J 3 A_Scream
+		WESK KL 3
+		WESK M 3 A_NoBlocking
+		WESK N 3 A_BossDeath
+		WESK O 3 A_PlaySound("Misc/Bodyfall")
+		WESK P -1
+		Stop
+	}
+}
+
+ACTOR WeskerPistolTracer : Tracer
+{
+	Damage (random(18,90))
+	Speed 90
+	DamageType "EnemyBullet"
+	DamageType "Enemy762mm"
+}
+
+ACTOR WeskerTauntSeq : Inventory
+{
+	Inventory.MaxAmount 40
+}

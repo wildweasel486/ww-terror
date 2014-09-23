@@ -1,0 +1,210 @@
+ACTOR BumSpawner : RandomSpawner replaces Soulsphere
+{
+	DropItem "WWTPanhandler"
+	DropItem "WWTPanhandler2"
+	DropItem "WWTPanhandler3"
+	DropItem "WWTPanhandler4"
+	DropItem "WWTPanhandler5"
+	DropItem "WWTPanhandler6"
+	DropItem "WWTPanhandler7"
+	DropItem "WWTPanhandler8"
+	DropItem "WWTPanhandler9"
+	DropItem "WWTPanhandlerA"
+	DropItem "WWTPanhandlerB"
+	DropItem "WWTPanhandlerC"
+}
+
+ACTOR WWTPanhandler : SwitchableDecoration
+{
+	MONSTER
+	-COUNTKILL
+	+FRIGHTENED
+	+USESPECIAL
+	+LOOKALLAROUND
+	YScale 0.35
+	XScale 0.4
+	Radius 24
+	Height 56
+	Health 50
+	Speed 0
+	PainChance 256
+	SeeSound "Bum/Sight"
+	DeathSound "Bum/Death"
+	PainSound "Bum/Pain"
+	Activation "THINGSPEC_Activate"
+	States
+	{
+	Spawn:
+		BUM1 A 10 A_Look
+		Loop
+	See:
+		"####" A 1 A_Wander
+		"####" A 6 A_SpawnItemEx("HalpSign", 0, 0, 64)
+		Loop
+	Pain:
+		BUMM E 5 A_Pain
+		BUMM E 0 A_Jump(256, "Spawn")
+		Goto Spawn
+	Death:
+		BUMM E 0 A_ChangeFlag(USESPECIAL, 0)
+		BUMM E 5 A_Scream
+		BUMM F 5 A_SpawnItemEx("WeakBooze",0,0,0,0,0,6)
+		BUMM G 5 A_PlaySound("misc/bodyfall")
+		BUMM H 5 A_NoBlocking
+		BUMM I -1
+		Stop
+	Death.Telefrag:
+	Active:
+		BUM1 A 0 A_ChangeFlag(SOLID, 0)
+		BUM1 A 0 A_ChangeFlag(SHOOTABLE, 0)
+		BUM1 A 0 A_ChangeFlag(USESPECIAL, 0)
+		BUM1 A 0 A_NoBlocking
+		BUM1 A 0 A_PlaySound("Bum/Active")
+		BUM1 A 0 A_SpawnItemEx("PowerBooze",0,0,0,0,0,6)
+		BUM1 A 0 A_Jump(256, "Warpout")
+		Goto Warpout
+	Warpout:
+		BUM1 A 1 A_FadeOut(0.02)
+		Loop
+	}
+}
+
+ACTOR WWTPanhandler2 : WWTPanhandler
+{
+	States
+	{
+	Spawn:
+		BUM2 A 10 A_Look
+		Loop
+	Warpout:
+		BUM2 A 1 A_FadeOut(0.02)
+		Loop	
+	}
+}
+
+ACTOR WWTPanhandler3 : WWTPanhandler
+{
+	States
+	{
+	Spawn:
+		BUM3 A 10 A_Look
+		Loop
+	Warpout:
+		BUM3 A 1 A_FadeOut(0.02)
+		Loop
+	}
+}
+
+ACTOR WWTPanhandler4 : WWTPanhandler
+{
+	States
+	{
+	Spawn:
+		BUM4 A 10 A_Look
+		Loop
+	Warpout:
+		BUM4 A 1 A_FadeOut(0.02)
+		Loop
+	}
+}
+
+ACTOR WWTPanhandler5 : WWTPanhandler
+{
+	States
+	{
+	Spawn:
+		BUM5 A 10 A_Look
+		Loop
+	Warpout:
+		BUM5 A 1 A_FadeOut(0.02)
+		Loop
+	}
+}
+
+ACTOR WWTPanhandler6 : WWTPanhandler
+{
+	States
+	{
+	Spawn:
+		BUM6 A 10 A_Look
+		Loop
+	Warpout:
+		BUM6 A 1 A_FadeOut(0.02)
+		Loop
+	}
+}
+
+ACTOR WWTPanhandler7 : WWTPanhandler
+{
+	States
+	{
+	Spawn:
+		BUM7 A 10 A_Look
+		Loop
+	Warpout:
+		BUM7 A 1 A_FadeOut(0.02)
+		Loop
+	}
+}
+
+ACTOR WWTPanhandler8 : WWTPanhandler
+{
+	States
+	{
+	Spawn:
+		BUM8 A 10 A_Look
+		Loop
+	Warpout:
+		BUM8 A 1 A_FadeOut(0.02)
+		Loop
+	}
+}
+
+ACTOR WWTPanhandler9 : WWTPanhandler
+{
+	States
+	{
+	Spawn:
+		BUM9 A 10 A_Look
+		Loop
+	Warpout:
+		BUM9 A 1 A_FadeOut(0.02)
+		Loop
+	}
+}
+ACTOR WWTPanhandlerA : WWTPanhandler
+{
+	States
+	{
+	Spawn:
+		BUMA A 10 A_Look
+		Loop
+	Warpout:
+		BUMA A 1 A_FadeOut(0.02)
+		Loop
+	}
+}
+ACTOR WWTPanhandlerB : WWTPanhandler
+{
+	States
+	{
+	Spawn:
+		BUMB A 10 A_Look
+		Loop
+	Warpout:
+		BUMB A 1 A_FadeOut(0.02)
+		Loop
+	}
+}
+ACTOR WWTPanhandlerC : WWTPanhandler
+{
+	States
+	{
+	Spawn:
+		BUMC A 10 A_Look
+		Loop
+	Warpout:
+		BUMC A 1 A_FadeOut(0.02)
+		Loop
+	}
+}

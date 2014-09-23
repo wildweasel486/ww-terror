@@ -1,0 +1,3 @@
+D_TRROR1 is from Wing Commander 2.
+D_TRROR2 is from Policenauts (Konami MIDI Power Pro 3's floppy disk, with edit by NeuralStunner).
+D_TRROR3 is from F-Zero.

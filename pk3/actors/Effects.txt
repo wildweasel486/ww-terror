@@ -1,0 +1,751 @@
+ACTOR RepelShock // Borrowed from LWM's Hammerhound.
+{
+	Speed 8
+	Radius 12
+	Height 16
+	RenderStyle Add
+	Alpha 0.5
+	Scale 0.1
+	PROJECTILE
+	+DROPOFF
+	-NoGravity
+	+FloorHugger
+	States
+	{
+	Spawn:
+		SMOK A 2 A_SetScale(0.05)
+		SMOK B 2 A_SetScale(0.1)
+		SMOK C 2 A_SetScale(0.15)
+		SMOK D 2 A_SetScale(0.2)
+		SMOK E 2 A_SetScale(0.25)
+		SMOK F 2 A_SetScale(0.3)
+		SMOK G 2 A_SetScale(0.35)
+		SMOK H 2 A_SetScale(0.4)
+		SMOK I 2 A_SetScale(0.45)
+		SMOK J 2 A_SetScale(0.5)
+		SMOK K 2 A_SetScale(0.55)
+		SMOK L 2 A_SetScale(0.6)
+		SMOK M 2 A_SetScale(0.65)
+		SMOK N 2 A_SetScale(0.7)
+		SMOK O 2 A_SetScale(0.75)
+		SMOK P 2 A_SetScale(0.8)
+	Death:
+		SMOK Q 2
+		Stop
+	}
+}
+
+ACTOR DIExplosion
+{
+	RENDERSTYLE ADD
+	Radius 1
+	Height 1
+	Speed 0
+	Scale 1.5
+	SeeSound "weapons/rocklx"
+	PROJECTILE
+	+EXPLODEONWATER
+	+NOCLIP
+	Decal BigScorch
+	DamageType Fire
+	States
+	{
+	Spawn:
+		EXP1 A 2 BRIGHT A_Explode(56,160,0)
+		EXP1 B 2 BRIGHT Radius_Quake(3,10,0,8,0)
+		EXP1 C 2 BRIGHT A_PlaySoundEx("weapons/rocklx","SoundSlot5",0)
+		EXP1 DEFGHIJKLMN 2 BRIGHT
+		Stop
+	}
+}
+
+ACTOR DIExplosionLarge : DIExplosion
+{
+	Scale 2.5
+}
+
+ACTOR SparkSpawner
+{
+	Alpha 1.0
+	RenderStyle Add
+	Scale 0.3
+	SeeSound "Bullet/HitMetal"
+	States
+	{
+	Spawn:
+	Death:
+	Crash:
+		PUFF A 2 BRIGHT A_SpawnDebris("BulletIneffectiveSpark")
+		PUFF B 1 BRIGHT A_SetTranslucent(0.9,0)
+		PUFF B 1 BRIGHT
+		PUFF CD 2 BRIGHT
+		Stop
+	}
+}
+
+ACTOR BulletIneffectiveSpark : TracerSpark
+{
+	States
+	{
+	Spawn:
+		WPUF E 1 BRIGHT A_Fadeout(0.05)
+		Loop
+	}
+}
+
+// Fire actors, from Reelism courtesy of Kinsie et al
+Actor Fire
+{
+	Height 10
+	Radius 10
+	speed 8
+	+NoGravity
+	+Missile
+	damagetype Fire
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItemEx("SmallFlame",0,0,0,0,0,0,0,128)
+		TNT1 A 1 A_SpawnItemEx("FlameProj1A",0,0,0,0,0,0,0,128)
+		TNT1 A 0 A_SpawnItemEx("Ember1",0,0,0,0,0,0,0,128)
+		TNT1 A 1 A_SpawnItemEx("FlameProj1B",0,0,0,0,0,0,0,128)
+		TNT1 A 1 A_SpawnItemEx("FlameProj2A",0,0,0,0,0,0,0,128)
+		TNT1 A 1 A_SpawnItemEx("FlameProj2B",0,0,0,0,0,0,0,128)
+		TNT1 A 1 A_SpawnItemEx("FlameProj3A",0,0,0,0,0,0,0,128)
+		TNT1 A 1 A_SpawnItemEx("FlameProj3B",0,0,0,0,0,0,0,128)
+		TNT1 A 0 A_SpawnItemEx("SmallFlame",0,0,0,0,0,0,0,128)
+		TNT1 A 1 A_SpawnItemEx("FlameProj1A",0,0,0,0,0,0,0,128)
+		TNT1 A 0 A_SpawnItemEx("Ember1",0,0,0,0,0,0,0,128)
+		TNT1 A 1 A_SpawnItemEx("FlameProj1B",0,0,0,0,0,0,0,128)
+		TNT1 A 1 A_SpawnItemEx("FlameProj2A",0,0,0,0,0,0,0,128)
+		TNT1 A 1 A_SpawnItemEx("FlameProj2B",0,0,0,0,0,0,0,128)
+		TNT1 A 1 A_SpawnItemEx("FlameProj3A",0,0,0,0,0,0,0,128)
+		TNT1 A 1 A_SpawnItemEx("FlameProj3B",0,0,0,0,0,0,0,128)
+		TNT1 A 0 A_SpawnItemEx("SmallFlame",0,0,0,0,0,0,0,128)
+		TNT1 A 1 A_SpawnItemEx("FlameProj1A",0,0,0,0,0,0,0,128)
+		TNT1 A 0 A_SpawnItemEx("Ember1",0,0,0,0,0,0,0,128)
+		TNT1 A 1 A_SpawnItemEx("FlameProj1B",0,0,0,0,0,0,0,128)
+		TNT1 A 1 A_SpawnItemEx("FlameProj2A",0,0,0,0,0,0,0,128)
+		TNT1 A 1 A_SpawnItemEx("FlameProj2B",0,0,0,0,0,0,0,128)
+		TNT1 A 1 A_SpawnItemEx("FlameProj3A",0,0,0,0,0,0,0,128)
+		TNT1 A 1 A_SpawnItemEx("FlameProj3B",0,0,0,0,0,0,0,128)
+		TNT1 A 0 A_SpawnItemEx("SmallFlame",0,0,0,0,0,0,0,128)
+		TNT1 A 1 A_SpawnItemEx("FlameProj1A",0,0,0,0,0,0,0,128)
+		TNT1 A 0 A_SpawnItemEx("Ember1",0,0,0,0,0,0,0,128)
+		TNT1 A 1 A_SpawnItemEx("FlameProj1B",0,0,0,0,0,0,0,128)
+		TNT1 A 1 A_SpawnItemEx("FlameProj2A",0,0,0,0,0,0,0,128)
+		TNT1 A 1 A_SpawnItemEx("FlameProj2B",0,0,0,0,0,0,0,128)
+		TNT1 A 1 A_SpawnItemEx("FlameProj3A",0,0,0,0,0,0,0,128)
+		TNT1 A 1 A_SpawnItemEx("FlameProj3B",0,0,0,0,0,0,0,128)
+		TNT1 A 0 A_SpawnItemEx("SmallFlame",0,0,0,0,0,0,0,128)
+		TNT1 A 1 A_SpawnItemEx("FlameProj1A",0,0,0,0,0,0,0,128)
+		TNT1 A 0 A_SpawnItemEx("Ember1",0,0,0,0,0,0,0,128)
+		TNT1 A 1 A_SpawnItemEx("FlameProj1B",0,0,0,0,0,0,0,128)
+		TNT1 A 1 A_SpawnItemEx("FlameProj2A",0,0,0,0,0,0,0,128)
+		TNT1 A 1 A_SpawnItemEx("FlameProj2B",0,0,0,0,0,0,0,128)
+		TNT1 A 1 A_SpawnItemEx("FlameProj3A",0,0,0,0,0,0,0,128)
+		TNT1 A 1 A_SpawnItemEx("FlameProj3B",0,0,0,0,0,0,0,128)
+		stop
+	Death:
+		TNT1 A 1 A_SpawnItem("FireImpact")
+		stop
+	}
+}
+
+Actor FlameProj1A
+{
+	Height 2
+	Radius 1
+	+NoGravity
+	+NoBlockMap
+	+Missile
+	//+NoInteraction
+	+ForceXYBillboard
+	RenderStyle Add
+	Alpha 0.8
+	Scale 0.1
+	States
+	{
+	Spawn:
+		FLM1 A 0
+		"####" A 0 ThrustThingZ(0,Random(2,6),0,0)
+		"####" A 0 ThrustThing(Random(0,255),Random(0,1),0,0)
+		"####" ABCDE 2 Bright
+		"####" F 1 Bright A_SetTranslucent(0.75,1)
+		"####" F 1 Bright A_SetTranslucent(0.7,1)
+		"####" G 1 Bright A_SetTranslucent(0.65,1)
+		"####" G 1 Bright A_SetTranslucent(0.6,1)
+		"####" H 1 Bright A_SetTranslucent(0.55,1)
+		"####" H 1 Bright A_SetTranslucent(0.5,1)
+		"####" I 1 Bright A_SetTranslucent(0.45,1)
+		"####" I 1 Bright A_SetTranslucent(0.4,1)
+		"####" J 1 Bright A_SetTranslucent(0.35,1)
+		"####" J 1 Bright A_SetTranslucent(0.3,1)
+		"####" K 1 Bright A_SetTranslucent(0.25,1)
+		"####" K 1 Bright A_SetTranslucent(0.2,1)
+		"####" L 1 Bright A_SetTranslucent(0.15,1)
+		"####" L 1 Bright A_SetTranslucent(0.1,1)
+		Stop
+	}
+}
+
+Actor FlameProj1B : FlameProj1A
+{
+	States
+	{
+	Spawn:
+		FLM2 A 0
+		Goto Super::Spawn+1
+	}
+}
+
+Actor FlameProj2A : FlameProj1A
+{
+	States
+	{
+	Spawn:
+		FLM3 A 0
+		Goto Super::Spawn+1
+	}
+}
+
+Actor FlameProj2B : FlameProj1A
+{
+	States
+	{
+	Spawn:
+		FLM4 A 0
+		Goto Super::Spawn+1
+	}
+}
+
+Actor FlameProj3A : FlameProj1A
+{
+	States
+	{
+	Spawn:
+		FLM5 A 0
+		Goto Super::Spawn+1
+	}
+}
+
+Actor FlameProj3B : FlameProj1A
+{
+	States
+	{
+	Spawn:
+		FLM6 A 0
+		Goto Super::Spawn+1
+	}
+}
+
+Actor FireImpact
+{
+	Height 10
+	Radius 10
+	damagetype Fire
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_Explode(10,32)
+		TNT1 A 0 A_PlaySound("SFX/FireLoop1",6,1,1)
+		TNT1 A 0 A_SpawnItemEx("SmallFlame",0,0,0,0,0,0,0,128)
+		TNT1 A 0 A_Jump(216,3)
+		TNT1 A 1 A_SpawnItemEx("Flame1A",0,0,0,0,0,0,0,128)
+		TNT1 A 0 A_SpawnItemEx("Ember1",0,0,0,0,0,0,0,128)
+		Loop
+		TNT1 A 0 A_Jump(176,2)
+		TNT1 A 1 A_SpawnItemEx("Flame1B",0,0,0,0,0,0,0,128)
+		Loop
+		TNT1 A 0 A_Jump(136,2)
+		TNT1 A 1 A_SpawnItemEx("Flame2A",0,0,0,0,0,0,0,128)
+		Loop
+		TNT1 A 0 A_Jump(96,2)
+		TNT1 A 1 A_SpawnItemEx("Flame2B",0,0,0,0,0,0,0,128)
+		Loop
+		TNT1 A 0 A_Jump(56,2)
+		TNT1 A 1 A_SpawnItemEx("Flame3A",0,0,0,0,0,0,0,128)
+		Loop
+		TNT1 A 1 A_SpawnItemEx("Flame3B",0,0,0,0,0,0,0,128)
+		stop
+	}
+}
+
+//Dynamic Light actors
+Actor SmallFlame
+{
+	+ClientSideOnly
+	+NoClip
+	+NoBlockMap
+	+NoGravity
+	+NoInteraction
+	States
+	{
+	Spawn:
+		TNT1 A 1
+		Stop
+	}
+}
+
+Actor MediumFlame : SmallFlame { }
+Actor LargeFlame : SmallFlame { }
+
+//Flames and particles
+Actor Flame1A : FlameProj1A
+{
+	Scale 0.35
+}
+
+Actor Flame1B : FlameProj1B
+{
+	Scale 0.35
+}
+Actor Flame2A : FlameProj2A
+{
+	Scale 0.35
+}
+
+Actor Flame2B : FlameProj2B
+{
+	Scale 0.35
+}
+Actor Flame3A : FlameProj3A
+{
+	Scale 0.35
+}
+
+Actor Flame3B : FlameProj3B
+{
+	Scale 0.35
+}
+
+Actor Flame4A : Flame1A
+{
+	+NoInteraction
+	Scale 0.7
+	States
+	{
+	Spawn:
+		FLM1 A 0
+		FLM1 A 0 ThrustThingZ(0, Random(4, 12), 0, 0)
+		FLM1 A 0 ThrustThing(Random(0, 255), Random(0, 2), 0, 0)
+		Goto Flame1A::Spawn+3
+	}
+}
+
+Actor Flame4B : Flame1B
+{
+	+NoInteraction
+	Scale 0.7
+}
+
+Actor Flame5A : Flame2A
+{
+	+NoInteraction
+	Scale 0.7
+}
+
+Actor Flame5B : Flame2B
+{
+	+NoInteraction
+	Scale 0.7
+}
+
+Actor Flame6A : Flame3A
+{
+	+NoInteraction
+	Scale 0.7
+}
+
+Actor Flame6B : Flame3B
+{
+	+NoInteraction
+	Scale 0.7
+}
+
+Actor Flame7A : Flame4A
+{
+	Scale 1.4
+	States
+	{
+	Spawn:
+		FLM1 A 0
+		FLM1 A 0 ThrustThingZ(0, Random(8, 24), 0, 0)
+		FLM1 A 0 ThrustThing(Random(0, 255), Random(0, 4), 0, 0)
+		Goto Flame1A::Spawn+3
+	}
+}
+
+Actor Flame7B : Flame4B
+{
+	Scale 1.4
+}
+
+Actor Flame8A : Flame5A
+{
+	Scale 1.4
+}
+
+Actor Flame8B : Flame5B
+{
+	Scale 1.4
+}
+
+Actor Flame9A : Flame6A
+{
+	Scale 1.4
+}
+
+Actor Flame9B : Flame6B
+{
+	Scale 1.4
+}
+
+Actor Ember1 : Flame1A
+{
+	Scale 0.1
+	States
+	{
+	Spawn:
+		EMBR A 0
+		EMBR A 0 ThrustThingZ(0,Random(4,16),0,0)
+		EMBR A 0 ThrustThing(Random(0,255),Random(0,1),0,0)
+		EMBR A 32 Bright
+		Goto Death
+	Death:
+		EMBR A 2 Bright A_FadeOut(0.1)
+		Loop
+	}
+}
+
+Actor Ember2 : Ember1
+{
+	States
+	{
+	Spawn:
+		EMBR A 0
+		EMBR A 0 ThrustThingZ(0,Random(4,16),0,0)
+		EMBR A 0 ThrustThing(Random(0,255),Random(0,1),0,0)
+		EMBR A 64 Bright
+		Goto Death
+	}
+}
+
+Actor HalpSign
+{
+	Scale 0.15
+	RenderStyle Translucent
+	Alpha 1.0
+	+NOGRAVITY
+	+NOINTERACTION
+	States
+	{
+	Spawn:
+		HALP A 1 Bright
+		HALP A 1 Bright A_FadeOut(0.1, 1)
+		Loop
+	}
+}
+
+// The taser stuff, borrowed (in some instances) from Psychic with
+// contributions by Kate
+
+actor TaserPuff
+{
+	+NOBLOCKMAP
+	+NOGRAVITY
+	+PUFFONACTORS
+	+THRUGHOST
+	+NOEXTREMEDEATH
+	+BLOODLESSIMPACT
+	activesound ""
+	attacksound "Taser/wall"
+	seesound "Taser/hit"
+	Obituary "%o was a victim of %k's police brutality."
+	DamageType "PlayerTaser"
+	Scale 0.3
+	states
+	{
+	Spawn:
+		ZAP1 A 2 Bright
+		ZAP1 ABCD 2 Bright 
+		ZAP1 E 2 Bright A_SetTranslucent(0.40, 1)
+		ZAP1 F 2 Bright A_SetTranslucent(0.55, 1)
+		ZAP1 E 2 Bright A_SetTranslucent(0.30, 1)
+		ZAP1 D 2 Bright A_SetTranslucent(0.10, 1)
+		Stop
+	Crash:
+		ZAP1 A 2 Bright
+		ZAP1 ABCD 2 Bright 
+		ZAP1 E 2 Bright A_SetTranslucent(0.40, 1)
+		ZAP1 F 2 Bright A_SetTranslucent(0.55, 1)
+		ZAP1 E 2 Bright A_SetTranslucent(0.30, 1)
+		ZAP1 D 2 Bright A_SetTranslucent(0.10, 1)
+		Stop
+	Melee:
+		ZAP1 A 2 Bright
+		ZAP1 ABCD 2 Bright 
+		ZAP1 E 2 Bright A_SetTranslucent(0.40, 1)
+		ZAP1 F 2 Bright A_SetTranslucent(0.55, 1)
+		ZAP1 E 2 Bright A_SetTranslucent(0.30, 1)
+		ZAP1 D 2 Bright A_SetTranslucent(0.10, 1)
+		Stop
+	}
+}
+
+actor TaserChainPuff
+{
+	+NOBLOCKMAP
+	+NOGRAVITY
+	+PUFFONACTORS
+	+THRUGHOST
+	+NOEXTREMEDEATH
+	+BLOODLESSIMPACT
+	+PUFFGETSOWNER
+	activesound ""
+	attacksound "Taser/wall"
+	seesound "Taser/hit"
+	Obituary "%o was a victim of %k's police brutality."
+	DamageType "PlayerTaser"
+	var int user_theta;
+	Scale 0.5
+	states
+	{
+	Death:
+		ZAP1 A 2 Bright
+		ZAP1 ABCD 2 Bright 
+		ZAP1 E 2 Bright A_SetTranslucent(0.40, 1)
+		ZAP1 F 2 Bright A_SetTranslucent(0.55, 1)
+		ZAP1 E 2 Bright A_SetTranslucent(0.30, 1)
+		ZAP1 D 2 Bright A_SetTranslucent(0.10, 1)
+		Stop
+	Spawn:
+		TESL E 0 A_CustomMissile("TeslaTracer1A", 0, 0, user_theta, CMF_AIMDIRECTION | CMF_TRACKOWNER)
+		TESL E 0 A_SetUserVar("user_theta", user_theta + 20)
+		TESL E 0 A_JumpIf(user_theta >= 360, "Death")
+		Loop
+	Melee:
+		TESL E 0 A_CustomMissile("TeslaTracer1A", 0, 0, user_theta, CMF_AIMDIRECTION | CMF_TRACKOWNER)
+		TESL E 0 A_SetUserVar("user_theta", user_theta + 20)
+		TESL E 0 A_JumpIf(user_theta >= 360, "Death")
+		Loop
+	Crash:
+		TESL E 0 A_CustomMissile("TeslaTracer1A", 0, 0, user_theta, CMF_AIMDIRECTION | CMF_TRACKOWNER)
+		TESL E 0 A_SetUserVar("user_theta", user_theta + 20)
+		TESL E 0 A_JumpIf(user_theta >= 360, "Death")
+		Loop
+	}
+}
+
+//"Psychic" Decorate, by Xaser the Insane
+// Psychic Powers: Lightning
+
+ACTOR PsychLightning : FastProjectile
+{
+	Height 8
+	Radius 6
+	Damage 30
+	Speed 100
+	RenderStyle Add
+	Alpha 0.8
+	PROJECTILE
+	DeathSound "psychic/thunder3"
+	Damagetype "PlayerTaser"
+	Obituary "%o couldn't handle %k's shocking revelation."
+	MissileType "TeslaTrail"
+	var int user_theta;
+	States
+	{
+	Spawn:
+		TNT1 A 1
+		Loop
+	Death:
+		ZAP1 A 2 Bright
+		ZAP1 ABCD 2 Bright 
+		ZAP1 E 2 Bright A_SetTranslucent(0.40, 1)
+		ZAP1 F 2 Bright A_SetTranslucent(0.55, 1)
+		ZAP1 E 2 Bright A_SetTranslucent(0.30, 1)
+		ZAP1 D 2 Bright A_SetTranslucent(0.10, 1)
+		Stop
+	XDeath:
+		TESL E 0 A_CustomMissile("TeslaTracer1A", 0, 0, user_theta, CMF_AIMDIRECTION | CMF_TRACKOWNER)
+		TESL E 0 A_SetUserVar("user_theta", user_theta + 20)
+		TESL E 0 A_JumpIf(user_theta >= 360, "Death")
+		Loop
+	}
+}
+
+ACTOR TeslaTrail
+{
+	Radius 4
+	Height 3
+	Scale 0.5
+	RenderStyle Add
+	Alpha 0.75
+        Projectile
+	Speed 10
+	States
+	{
+	Spawn:
+		ZAP1 A 1 Bright A_SetTranslucent(0.6, 1)
+		ZAP1 B 1 Bright A_SetTranslucent(0.5, 1)
+		ZAP1 C 1 Bright A_SetTranslucent(0.4, 1)
+		ZAP1 D 1 Bright A_SetTranslucent(0.3, 1)
+		ZAP1 E 1 Bright A_SetTranslucent(0.2, 1)
+		ZAP1 F 1 Bright A_SetTranslucent(0.1, 1)
+		Stop
+	}
+}
+
+
+ACTOR TeslaTracer1A : PsychLightning
+{
+	Damage 2
+	+THRUACTORS
+	DeathSound ""
+	MissileType ""
+	States
+	{
+	Spawn:
+		TNT1 A 1
+		TNT1 A 1 A_ChangeFlag("THRUACTORS",0)
+		Stop
+	Death:
+		TNT1 A 1
+		Stop
+	XDeath:
+		TESL E 0 A_PlaySound("psychic/thunder2")
+	XDeathLoop:
+		TESL E 0 A_CustomMissile("TeslaTracer1B", 0, 0, user_theta, CMF_AIMDIRECTION | CMF_TRACKOWNER)
+		TESL E 0 A_SetUserVar("user_theta", user_theta + 20)
+		TESL E 0 A_JumpIf(user_theta >= 360, "XDeathFinish")
+		Loop
+	XDeathFinish:
+		ZAP1 ABCD 2 Bright 
+		ZAP1 E 2 Bright A_SetTranslucent(0.40, 1)
+		ZAP1 F 2 Bright A_SetTranslucent(0.55, 1)
+		ZAP1 E 2 Bright A_SetTranslucent(0.30, 1)
+		ZAP1 D 2 Bright A_SetTranslucent(0.10, 1)
+		Stop
+	}
+}
+
+ACTOR TeslaTracer1B : TeslaTracer1A
+{
+	Scale 0.6
+	Damage 2
+	States
+	{
+	XDeath:
+		TESL E 0 A_PlaySound("psychic/thunder3")
+	XDeathLoop:
+		TESL E 0 A_CustomMissile("TeslaTracer1C", 0, 0, user_theta, CMF_AIMDIRECTION | CMF_TRACKOWNER)
+		TESL E 0 A_SetUserVar("user_theta", user_theta + 20)
+		TESL E 0 A_JumpIf(user_theta >= 360, "XDeathFinish")
+		Loop
+	XDeathFinish:
+		ZAP6 ABCA 2 Bright 
+		ZAP6 B 2 Bright A_SetTranslucent(0.60, 1)
+		ZAP6 C 2 Bright A_SetTranslucent(0.40, 1)
+		ZAP6 A 2 Bright A_SetTranslucent(0.55, 1)
+		ZAP6 B 2 Bright A_SetTranslucent(0.30, 1)
+		ZAP6 C 2 Bright A_SetTranslucent(0.10, 1)
+		Stop
+	}
+}
+
+ACTOR TeslaTracer1C : TeslaTracer1A
+{
+	Damage 2
+	States
+	{
+	XDeath:
+		TESL E 0 A_PlaySound("psychic/thunder2")
+		ZAP1 A 2 Bright A_SetTranslucent(0.6, 1)
+		ZAP1 B 2 Bright A_SetTranslucent(0.5, 1)
+		ZAP1 C 2 Bright A_SetTranslucent(0.4, 1)
+		ZAP1 D 2 Bright A_SetTranslucent(0.3, 1)
+		ZAP1 E 2 Bright A_SetTranslucent(0.2, 1)
+		ZAP1 F 2 Bright A_SetTranslucent(0.1, 1)
+		Stop
+	}
+}
+
+ACTOR TeslaTracer2A : TeslaTracer1B
+{
+	Damage 2
+	States
+	{
+	XDeathLoop:
+		TESL E 0 A_CustomMissile("TeslaTracer2B", 0, 0, user_theta, CMF_AIMDIRECTION | CMF_TRACKOWNER)
+		TESL E 0 A_SetUserVar("user_theta", user_theta + 20)
+		TESL E 0 A_JumpIf(user_theta >= 360, "XDeathFinish")
+		Loop
+	}
+}
+ACTOR TeslaTracer2B : TeslaTracer1C
+{
+	Damage 2
+}
+ACTOR TeslaTracer3 : TeslaTracer1C
+{
+	Damage 2
+}
+
+
+ACTOR PsychLightningPower
+{
+	Height 8
+	Radius 6
+	Damage 0
+	Speed 0
+	RenderStyle Add
+	Alpha 1
+	PROJECTILE
+	Damagetype Lightning
+	Obituary "%o was awestruct by %k's lightning."
+	States
+	{
+	Spawn:
+		TNT1 A 0 
+		TNT1 A 5 A_PlaySound("psychic/thunder4")
+		TNT1 A 1 A_BFGSpray("LightningStrike",20,15)
+		TNT1 A 1 A_Die
+		Stop
+	Death:
+		TNT1 A 1
+		Stop
+	}
+}
+
+ACTOR LightningStrike
+{
+    Mass 1
+	Radius		1
+	Height		1
+	RenderStyle ADD
+	Alpha		1
+	+NOGRAVITY
+	+NOBLOCKMAP
+	+FLOORCLIP
+	+NOEXTREMEDEATH
+	+FORCEYBILLBOARD
+	Obituary "%o was awestruct by %k's lightning."
+	States
+	{
+	Spawn:
+		LITA A 0 
+		LITA A 0 A_PlaySound("psychic/thunder")
+		LITA AE 1 Bright
+		LITA BC 2 Bright
+		LITA DH 1 Bright
+		LITA AB 2 Bright
+		LITA CG 1 Bright
+		LITA DA 2 Bright A_FadeOut(0.2)
+		LITA BF 1 Bright A_FadeOut(0.2)
+		LITA C 2 Bright A_FadeOut(0.2)
+		Stop
+	}
+}

@@ -1,0 +1,94 @@
+// Seeker drone
+// Sprite source: Terminator Rampage by Bethesda Softworks
+
+ACTOR SeekerDrone : WWTBadGuy replaces LostSoul
+{
+	Health 50
+	Radius 16
+	Height 56
+	Mass 75
+	Speed 6
+	Scale 0.7
+	Painchance 255
+	PainSound "Bullet/HitMetal"
+	SeeSound "Seekerbot/See"
+	DeathSound "Seekerbot/Pain"
+	Obituary "%o was assisted by a helpful little droid."
+	MONSTER
+	+FLOAT
+	+NOGRAVITY
+	+NOBLOOD
+	+DONTRIP
+	+SLIDESONWALLS
+	States
+	{
+	Spawn:
+		SEKR ABCDEFGHIJK 1 A_Look
+		Loop
+	See:
+		SEKR A 1 A_Recoil(-1)
+		SEKR A 0 A_JumpIfCloser(56, "Melee")
+		SEKR BCD 1 A_FaceTarget
+		SEKR A 0 A_JumpIfCloser(56, "Melee")
+		SEKR E 1 A_FaceTarget
+		SEKR F 1 A_Recoil(-1)
+		SEKR G 1 A_FaceTarget
+		SEKR A 0 A_JumpIfCloser(56, "Melee")
+		SEKR HIJ 1 A_FaceTarget
+		SEKR A 0 A_JumpIfCloser(56, "Melee")
+		SEKR K 1 A_FaceTarget
+	CheckSee:
+		SEKR D 0 A_JumpIfTargetInLOS("See", 360)
+		goto Navigate
+	Navigate:
+		SEKR ABCDEFGHIJK 2 A_Chase
+		goto CheckSee
+	Melee:
+		SEKR A 1 A_PlaySound("Seekerbot/Alert")
+		SEKR BCDEFGHIJKABCDEFGHIJK 1
+		SEKR A 0 A_Die
+		stop
+	Pain.PlayerElectricGrenade:
+	Pain.PlayerTaser:
+	Pain.EnemyTaser:
+		SEKR A 0
+	Tased:
+		"----" A 0 A_ChangeFlag ("NoPain", 1)
+		"----" A 0 A_Gravity
+		"----" A 0 A_SetUserVar ("user_stuntime", (STUNTIME / 2))
+	TasedLoop:
+		"----" A 1 BRIGHT
+		"----" A 1
+		"----" A 0 A_JumpIf (user_stuntime == 0, 2)
+		"----" A 0 A_SetUserVar ("user_stuntime", user_stuntime - 1)
+		Loop
+		"----" A 0 A_NoGravity
+		"----" A 0 A_ChangeFlag ("NoPain", 0)
+		Goto See
+	Pain:
+		SEKR LLLLLLLLLL 0 A_SpawnItemEx("BulletIneffectiveSpark",0,0,32,frandom(-2.0,2.0),frandom(-2.0,2.0),frandom(3.0,6.0),frandom(0.0,359.9),SXF_NOCHECKPOSITION)
+	Pain.Fire:
+	Pain.PlayerGrenadeFire:
+		SEKR L 1 A_Pain
+		Goto See
+	Death.PlayerGrenadeFire:
+		"----" A 0 A_GiveToTarget("GrenadeExp", 1)
+	Death.Fire:
+	Death.PlayerMelee:
+		SEKR A 1 A_PlaySound("Seekerbot/Alert")
+		SEKR BCDEFGHIJKABCDEFGHIJK 1
+	Death:
+		SEKR M 2 Bright A_Scream
+		SEKR M 2 Bright A_SpawnItemEx("DIExplosion",frandom(-20.0,20.0),frandom(-20.0,20.0),frandom(0,32.0),0,0,0,SXF_NOCHECKPOSITION)
+		SEKR N 2 Bright A_Explode(10,160)
+		Wait
+	Crash:
+		SEKR O 2 Bright A_NoBlocking
+		SEKR P 2 Bright A_SpawnItemEx("DIExplosion",frandom(-20.0,20.0),frandom(-20.0,20.0),frandom(0,32.0),0,0,0,SXF_NOCHECKPOSITION)
+		SEKR QRS 2 Bright
+		SEKR T 2 Bright A_Explode(10,160)
+		SEKR UVWX 2 Bright
+		TNT1 A 1
+		Stop
+	}
+}

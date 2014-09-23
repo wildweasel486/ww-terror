@@ -1,0 +1,2 @@
+STARTUPTITLE = "Police Brutality (Weasel Presents: Terrorists!)"
+STARTUPCOLORS = "002266", "0088FF"

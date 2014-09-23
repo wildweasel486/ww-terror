@@ -1,0 +1,722 @@
+// Okay so most of this shit is copy-pasted from gzdoom.pk3's menudef, so
+// if it breaks, I want you to go yell at Graf Zahl about it. Kay? -ww
+
+DEFAULTLISTMENU
+{
+	Font "Bignums", "Untranslated"
+	Selector "BRTMENU", -20, 5
+	Linespacing 15
+}
+
+LISTMENU "MainMenu"
+{
+	Font "Logofont", "Untranslated"
+	StaticText 17, 8, "TERRORISTS!"
+	Font "Bignums", "Untranslated"
+	Position 37, 62
+	TextItem "New", "n", "PlayerclassMenu"
+	TextItem "Options","o", "OptionsMenu"
+	TextItem "Load", "l", "LoadGameMenu"
+	TextItem "Save", "s", "SaveGameMenu"
+	TextItem "Help", "h", "HelpTopicsMenu"
+	TextItem "Quit", "q", "QuitMenu"
+}
+
+ListMenu "EpisodeMenu"
+{
+	NetgameMessage "$NETGAME"
+	Position 48, 63
+	StaticText 84, 38, "Pick Your Mission"
+}
+
+ListMenu "SkillMenu"
+{
+	StaticText 126, 14, "New Game"
+	Font "Dbigfont"
+	StaticText 34, 32, "Which of these films best describes you?"
+	Position 16, 50
+	Linespacing 24
+}
+
+ListMenu "HelpTopicsMenu"
+{
+	Font "Logofont", "Untranslated"
+	Position 37, 30
+	StaticText 0, 0, "HELP"
+	Font "Smallfont", "Untranslated"
+	TextItem "1. Introduction to Terrorists!", "1", "HelpSection1-1"
+	TextItem "2. The Tools of the Trade", "2", "HelpSection2-1"
+	TextItem "3. The Terrorists", "3", "HelpSection3-1"
+	TextItem "4. Hostage Rescue Tactics", "4", "HelpSection4-1"
+	TextItem "5. The Upgrade System", "5", "HelpSection5-1"
+	TextItem "6. Who Made This Thing, Anyway?", "6", "CreditsPage"
+	TextItem "Appendix: Honorary Achievements", "a", "Achievements"
+}
+
+ListMenu "HelpSection1-1"
+{
+	Font "Logofont", "Untranslated"
+	Position 18, 30
+	StaticText 0, 0, "INTRO"
+	Font "THREEFIV", "Untranslated"
+	StaticText 4, 35, "Welcome to Weasel Presents: Terrorists!"
+	StaticText 4, 42, "This in-game manual should help you decipher the true meaning of Christmas."
+	StaticText 4, 49, "Actually, that's a bald-faced lie - but if you ever wanted to know what"
+	StaticText 4, 56, "something does in the mod, this is the best place to look."
+	
+	StaticText 4, 70, "You play the role of John SomeGuyWithAPistol as he slaughters terrorists"
+	StaticText 4, 77, "by the thousands, saves the hostages from a terrible fate of wandering"
+	StaticText 4, 84, "through a video game for eternity, and kicks a lot of stuff."
+	
+	StaticText 4, 98, "If you have any questions about the mod that I have not answered in"
+	StaticText 4, 105, "this help file, please get in touch with me via the ZDoom Forums"
+	StaticText 4, 112, "(screen name: wildweasel), IRC (irc.esper.net, channel #zdoom),"
+	StaticText 4, 119, "or email (wild.weasel@gmail.com)."
+	
+	StaticText 4, 133, "Don't forget: this mod is FREE. If you paid money for it, especially"
+	StaticText 4, 140, "to a fellow calling himself Michael J. Hardy, then you have been"
+	StaticText 4, 147, "utterly ripped off. (Not that I've ever had that happen to my own mod...)"
+}
+
+ListMenu "HelpSection2-1"
+{
+	Font "Logofont", "Untranslated"
+	Position 18, 30
+	StaticText 0, 0, "GUNS"
+	Font "THREEFIV", "Untranslated"
+	StaticText 4, 35, "Here are the weapons you will encounter throughout the terrorist's complex."
+	StaticText 4, 42, ""
+	StaticText 4, 49, "BERDUCCI P92 SABER - A reliable, inexpensive 9mm handgun, which happens to"
+	StaticText 4, 56, "be the pistol that the main character's last name implies. It is relatively"
+	StaticText 4, 63, "quick, fairly accurate, and takes the most common ammo in the game. If you"
+	StaticText 4, 70, "are persistent, it will upgrade to fire much faster, and gain the ability"
+	StaticText 4, 77, "to pierce bullet-proof vests on certain enemies."
+	StaticText 4, 84, ""
+	StaticText 4, 91, "MARIANI SULACO 6 - The unique barrel positioning on this .44 Magnum revolver"
+	StaticText 4, 98, "makes recoil somewhat less of an issue compared to other revolvers. It does"
+	StaticText 4, 105, "pack quite a punch, and can be upgraded into a cheap sniping weapon."
+	StaticText 4, 112, ""
+	StaticText 4, 119, "AARTSEN SLUGGER - This South African-made shotgun fires semi-automatically"
+	StaticText 4, 126, "and can make minced meat out of most foes, but it is a waste of time to"
+	StaticText 4, 133, "fire it at armored foes. Upgrades will speed up its sluggish reload times."
+	StaticText 4, 140, ""
+	StaticText 4, 147, "SHERAZI MK.IX - A lightweight, easily-tamed 9mm submachine gun. Notable for"
+	StaticText 4, 154, "its versatility as well as its low price, making it one of the more common"
+	StaticText 4, 161, "guns you'll find on dead foes. With some time and effort, the Sherazi can"
+	StaticText 4, 168, "be upgraded to fire faster, and to accept common sound/flash suppressors."
+	Font "Smallfont", "Untranslated"
+	Position 20, 190
+	Linespacing 10
+	TextItem "Next Page", "n", "HelpSection2-2"
+}
+
+ListMenu "HelpSection2-2"
+{
+	Font "Logofont", "Untranslated"
+	Position 18, 30
+	StaticText 0, 0, "GUNS II"
+	Font "THREEFIV", "Untranslated"
+	StaticText 4, 35, "KUZNETZOV 47M - Commonly referred to as the greatest assault rifle of all time."
+	StaticText 4, 42, "It is the mainstay of many rebel and insurgent factions all around the world."
+	StaticText 4, 49, "The 7.62mm round it fires is strong enough to bypass armor. With upgrades, its"
+	StaticText 4, 56, "bullets will fly faster, and there is also a grenade launcher (WEAPON ZOOM fires)."
+	StaticText 4, 63, ""
+	StaticText 4, 70, "BERLINGHOFF AMR-82 - The world's most powerful anti-materiel rifle, firing the"
+	StaticText 4, 77, "massive .50 BMG cartridge. It ignores armor, packs a wallop, and has a scope"
+	StaticText 4, 84, "that provides a 3x zoom. Upgrades can help rectify its initial recoil problems,"
+	StaticText 4, 91, "and also give it the ability to pierce through enemy ranks with ease."
+	StaticText 4, 98, ""
+	StaticText 4, 105, "COOKE GLP-140 - This variant on a Croatian design can fire 40mm grenades at"
+	StaticText 4, 112, "a respectable distance, with upgrades enabling it to launch even further,"
+	StaticText 4, 119, "and eventually increasing its explosive payload to almost hellish temperatures."
+	StaticText 4, 126, "It does take a very long time to reload, though, so pay attention to your ammo."
+	StaticText 4, 133, ""
+	StaticText 4, 140, "\"BLACK BOAR\" LMG - It served your country well during its previous campaign"
+	StaticText 4, 147, "in south-east Asia, but now the terrorists have obtained some themselves. The"
+	StaticText 4, 154, "Black Boar fires really quickly, but its recoil (owing to the weapon's weight)"
+	StaticText 4, 161, "is almost unmanageable, unless the weapon is stablized by gripping the front"
+	StaticText 4, 168, "bipod (WEAPON ZOOM button)."
+	Font "Smallfont", "Untranslated"
+	Position 20, 190
+	Linespacing 10
+	TextItem "Next Page", "n", "HelpSection2-3"
+}
+
+ListMenu "HelpSection2-3"
+{
+	Font "Logofont", "Untranslated"
+	Position 18, 30
+	StaticText 0, 0, "GUNS III"
+	Font "THREEFIV", "Untranslated"
+	StaticText 4, 35, "THE MIGHTY FOOT - Sometimes a dude just needs a kick to the face. No matter what"
+	StaticText 4, 42, "weapon you have selected, you can press ALTERNATE FIRE to attack with your foot."
+	StaticText 4, 49, "Kicking enemies does quite a lot of damage, but it is a bit slow, and you can't"
+	StaticText 4, 56, "shoot at the same time, either. It is useful if your weapon is empty, though."
+	StaticText 4, 63, "With enough KO's, you can learn to kick in combos, or even kick so hard that all"
+	StaticText 4, 70, "who surround you will be thrust away. There's one other kick level you can reach,"
+	StaticText 4, 77, "but I'll save that for a surprise."
+	StaticText 4, 84, ""
+	StaticText 4, 91, "HAND GRENADES - Situations do sometimes call for throwable explosives, of which"
+	StaticText 4, 98, "you can carry up to nine. Through some contrivance, the more kills you get with"
+	StaticText 4, 105, "your initial pipebomb grenades, the better grenades you'll be able to throw."
+	StaticText 4, 112, "I'm not even going to bother trying to explain why. It's a game, dammit."
+	StaticText 4, 119, ""
+	StaticText 4, 126, "TASER - NYPD SWAT's favorite tool of intimidation is now a really good way to"
+	StaticText 4, 133, "delay terrorists while you're reloading, or if you need to retreat, or if you"
+	StaticText 4, 140, "just want to make some poor sap wet themselves, and then have them burst into"
+	StaticText 4, 147, "flames because you held it on them for way too long. If you are patient enough"
+	StaticText 4, 154, "to level it up, it will become quite a lot easier to \"over-taser\" enemies,"
+	StaticText 4, 161, "and eventually the battery will be so strong that the electricity will start to"
+	StaticText 4, 168, "arc between foes with devastating effects. Just be careful; it likes to backfire."
+}
+
+ListMenu "HelpSection3-1"
+{
+	Font "Logofont", "Untranslated"
+	Position 18, 30
+	StaticText 0, 0, "BAD GUYS"
+	Font "THREEFIV", "Untranslated"
+	StaticText 4, 35, "Most of what we know about these terrorists comes from our man on the inside."
+	StaticText 4, 42, "Sadly, he got captured by said terrorists, so our info is pretty limited. But"
+	StaticText 4, 49, "he did manage to get us a vague idea of their armaments and who uses them..."
+	StaticText 4, 56, ""
+	StaticText 4, 63, "THUGS WITH PISTOLS - Our man reported men in blue jackets, which he claims are"
+	StaticText 4, 70, "the weakest of the weak. They apparently only joined the faction because their"
+	StaticText 4, 77, "Facebook page said \"Like us for a free cookie!\" Generally not threatening."
+	StaticText 4, 84, "You will also find some smartly dressed men in leather suit jackets; these men"
+	StaticText 4, 91, "are wearing weak armored vests beneath said jackets, so you may need a bit more"
+	StaticText 4, 98, "firepower (or just a solid kick to the chest)."
+	StaticText 4, 105, ""
+	StaticText 4, 112, "THE POLICE DOUBLE-AGENTS - These terrorists apparently have some men inside the"
+	StaticText 4, 119, "local police department; you will find men in police uniforms, but these men are"
+	StaticText 4, 126, "NOT on your side. They will shoot to kill. Some have ordinary pistols, some have"
+	StaticText 4, 133, "Magnums as their sidearms."
+	StaticText 4, 140, ""
+	StaticText 4, 147, "MAGNUM WOMEN - Our agent mentioned that women are commonly outfitted with the"
+	StaticText 4, 154, "same Magnum sidearm as the police. Some of them only fire a couple shots at a"
+	StaticText 4, 161, "time, while others will empty the entire weapon at once and then reload on the"
+	StaticText 4, 168, "spot. We shouldn't have to mention that Magnums pack a punch, so take cover."
+	Font "Smallfont", "Untranslated"
+	Position 20, 190
+	Linespacing 10
+	TextItem "Next Page", "n", "HelpSection3-2"
+}
+
+ListMenu "HelpSection3-2"
+{
+	Font "Logofont", "Untranslated"
+	Position 18, 30
+	StaticText 0, 0, "BAD GUYS II"
+	Font "THREEFIV", "Untranslated"
+	StaticText 4, 35, "\"SHOCK\" TROOPERS - Troops clad in a grey security uniform, wielding Tasers."
+	StaticText 4, 42, "Beware, as although the taser doesn't hurt you that much, it does stun you."
+	StaticText 4, 49, "Yes, our agent really called them Shock Troopers. No, you aren't allowed to punch"
+	StaticText 4, 56, "him in the face (until he's debriefed - NO, you aren't allowed to \"debrief\" him)."
+	StaticText 4, 63, ""
+	StaticText 4, 70, "RIFLEMEN - Our guy says there are a lot of different kinds of these in their ranks."
+	StaticText 4, 77, "Some have Kuznetzov rifles, some wield shotguns, some wear armor and some don't."
+	StaticText 4, 84, "He did say that the armored folks are wearing stronger armor that shotguns can't"
+	StaticText 4, 91, "breach, so find a rifle of your own to take them on."
+	StaticText 4, 98, ""
+	StaticText 4, 105, "\"PUNCHY\" - Of all things, we can't figure out why our agent gave these guys"
+	StaticText 4, 112, "a nickname and not the rest of them, but he said you'd know what he meant when"
+	StaticText 4, 119, "you meet one...because they like to punch people. We take it back; you may punch"
+	StaticText 4, 126, "him when you find him."
+	StaticText 4, 133, ""
+	StaticText 4, 140, "BULLET-HOSERS - We briefly wondered if our man on the inside is Canadian, until"
+	StaticText 4, 147, "he explained that he was talking about Tangoes wielding sub-machine guns. The big"
+	StaticText 4, 154, "guys in trenchcoats are equipped with stock Sherazis, he says, while the women"
+	StaticText 4, 161, "in the orange jackets have modified theirs with sound suppressors. The women also"
+	StaticText 4, 168, "wear heavy body armor, he warns, so have your rifle at the ready."
+	Font "Smallfont", "Untranslated"
+	Position 20, 190
+	Linespacing 10
+	TextItem "Next Page", "n", "HelpSection3-3"
+}
+
+ListMenu "HelpSection3-3"
+{
+	Font "Logofont", "Untranslated"
+	Position 18, 30
+	StaticText 0, 0, "BAD GUYS III"
+	Font "THREEFIV", "Untranslated"
+	StaticText 4, 35, "BOMBERS - As with most of his intel, our guy mentions two different kinds of"
+	StaticText 4, 42, "Bombers. Some are ex-convicts (you'll tell them by their uniforms) that throw their"
+	StaticText 4, 49, "home-made pipebomb explosives at you. They tend to get into arguments with their"
+	StaticText 4, 56, "compatriots, and often resort to clubbing each other in the head with their bombs."
+	StaticText 4, 63, "The other bombers wear lead aprons, stolen from the medical center, and carry a"
+	StaticText 4, 70, "lot of old frag grenades underneath, which they like to throw in large amounts."
+	StaticText 4, 77, ""
+	StaticText 4, 84, "SCIENTISTS - Well, we should have figured that Stockholm Syndrome would set in,"
+	StaticText 4, 91, "and it's no secret that the facility that we're sending you into had some rather..."
+	StaticText 4, 98, "dangerous research being undertaken. But we didn't expect that the science team"
+	StaticText 4, 105, "would so willingly join the terrorists, let alone test their experimental weapons"
+	StaticText 4, 112, "on the first intruder they see. Our agent says he hasn't seen anything quite like"
+	StaticText 4, 119, "these before. Be prepared for anything."
+	StaticText 4, 126, ""
+	StaticText 4, 133, "FLASHERS - Don't get any dirty thoughts here, Agent; the women our contact calls"
+	StaticText 4, 140, "\"Flashers\" are called such because of their unique personal defense sidearms,"
+	StaticText 4, 147, "which fire bursts of energy that, on contact, will temporarily blind whatever"
+	StaticText 4, 154, "they touch. It doesn't hurt that much, but if you're not careful, it could cost"
+	StaticText 4, 161, "you severely in a firefight. Unfortunately, he says, his sunglasses didn't protect"
+	StaticText 4, 168, "him from said energy bursts. Did we mention he infiltrated at night? Weird guy."
+	Font "Smallfont", "Untranslated"
+	Position 20, 190
+	Linespacing 10
+	TextItem "Next Page", "n", "HelpSection3-4"
+}
+
+ListMenu "HelpSection3-4"
+{
+	Font "Logofont", "Untranslated"
+	Position 18, 30
+	StaticText 0, 0, "BAD GUYS IV"
+	Font "THREEFIV", "Untranslated"
+	StaticText 4, 35, "UNMANNED AERIAL VEHICLES - Well, it seems like the bad guys subverted our remote"
+	StaticText 4, 42, "attack drones as well. These are controlled, presumably, by those Chinese gold"
+	StaticText 4, 49, "farmers we hear so much about. Beware their rockets; if you hear the weapons bay"
+	StaticText 4, 56, "opening, they're about to fire a large salvo in your direction."
+	StaticText 4, 63, ""
+	StaticText 4, 70, "SEEKER DRONES - These little droids were originally to give directions for"
+	StaticText 4, 77, "visitors to the complex, and they would approach visitors and ask questions. It"
+	StaticText 4, 84, "seems someone has created a short in their wiring, so that when they attempt to"
+	StaticText 4, 91, "greet someone, they instead explode in the poor visitor's face. Probably has lots"
+	StaticText 4, 98, "to do with that product recall on fission batteries we heard about the other day."
+	StaticText 4, 105, ""
+	StaticText 4, 112, "ML-42 SKIMMER - Fun fact: the complex you're about to infiltrate was developing a"
+	StaticText 4, 119, "military support drone, AI-controlled, equipped with two .30-caliber machine guns."
+	StaticText 4, 126, "The Skimmer, as it's known, was going to be really useful for patrolling urban"
+	StaticText 4, 133, "environments. Unfortunately, all it takes to make them into flying nightmares is"
+	StaticText 4, 140, "to switch their IFF system around, which basically means you're going to dodge"
+	StaticText 4, 147, "a lot of lead when they're around. Our sincerest apologies for not warning you"
+	StaticText 4, 154, "sooner; \"Need To Know\" is apparently a lot farther-reaching than we expected,"
+	StaticText 4, 161, "and we only learned of their existence this morning, thanks to the last agent we"
+	StaticText 4, 168, "sent in."
+	Font "Smallfont", "Untranslated"
+	Position 20, 190
+	Linespacing 10
+	TextItem "Next Page", "n", "HelpSection3-5"
+}
+
+ListMenu "HelpSection3-5"
+{
+	Font "Logofont", "Untranslated"
+	Position 18, 30
+	StaticText 0, 0, "BAD GUYS V"
+	Font "THREEFIV", "Untranslated"
+	StaticText 4, 35, "BENNETT - It's probably a code-name, as our man claims to have seen at least two"
+	StaticText 4, 42, "men matching his description at once. \"Bennett\" is clad in heavy riot armor, so"
+	StaticText 4, 49, "many weapons are significantly weaker against him. He also wields a vintage Black"
+	StaticText 4, 56, "Boar LMG from the Southeast Asian campaign, as well as grenades. Heavy firepower"
+	StaticText 4, 63, "is recommended against him."
+	StaticText 4, 70, ""
+	StaticText 4, 77, "\"DUALIE\" DOOLEY - Our contact overheard this man bragging about his K/D ratio,"
+	StaticText 4, 84, "so we can only assume that he thinks he's hot stuff because he played that one"
+	StaticText 4, 91, "online FPS game. He reportedly carries a pair of Sherazi SMGs, which he likes to"
+	StaticText 4, 98, "fire wildly into the air for no reason. The sheer amount of ammo he's bound to"
+	StaticText 4, 105, "throw downrange will utterly annihilate you if you don't get in cover."
+	StaticText 4, 112, ""
+	StaticText 4, 119, "ALFRED WESTER - The only member of the terrorist faction that we've had any"
+	StaticText 4, 126, "contact with, Wester doesn't appear anywhere in our dossier, but that's the name"
+	StaticText 4, 133, "on the communique we received this morning, and our inside guy claims he"
+	StaticText 4, 140, "heard some of the baddies say the name a couple of times. We don't know what to"
+	StaticText 4, 147, "expect, so just be on your guard."
+	StaticText 4, 154, ""
+	StaticText 4, 161, "MR. FALCON - Wait, seriously? Is that his name? What, did this guy grow up on"
+	StaticText 4, 168, "TV-edited action flicks? Is he actually one of them? Is our agent drunk or what?"
+}
+
+ListMenu "HelpSection4-1"
+{
+	Font "Logofont", "Untranslated"
+	Position 18, 30
+	StaticText 0, 0, "HOSTAGES"
+	Font "THREEFIV", "Untranslated"
+	StaticText 4, 35, "What group of terrorists doesn't take hostages? Then they wouldn't have a chip"
+	StaticText 4, 42, "to bargain with when the negotiations start, and that wouldn't be in their best"
+	StaticText 4, 49, "interests. You'll find a number of innocents trapped in the complex - sometimes"
+	StaticText 4, 56, "locked behind secret panels - which you'll need to evacuate. Thankfully, your"
+	StaticText 4, 63, "Standard-Issue Terrorist Negotiation Kit includes a number of Fulton X35 personal"
+	StaticText 4, 70, "teleportation devices. If you encounter a hostage, simply run up to them and hit"
+	StaticText 4, 77, "the USE key to give them a device. They will be instantly beamed to a nearby"
+	StaticText 4, 84, "debriefing center, and they will drop useful items to aid you in your assault."
+	
+	StaticText 4, 98, "If a hostage is executed, don't fret - you will still receive items from dead"
+	StaticText 4, 105, "hostages, but bear in mind that the reward for rescuing one is always better"
+	StaticText 4, 112, "than the item you'll find on their corpse."
+	
+	Font "Smallfont", "Untranslated"
+	Position 20, 190
+	Linespacing 10
+	TextItem "Next Page", "n", "HelpSection4-2"
+}
+
+ListMenu "HelpSection4-2"
+{
+	Font "Logofont", "Untranslated"
+	Position 18, 30
+	StaticText 0, 0, "HOSTAGES II"
+	Font "THREEFIV", "Untranslated"
+	StaticText 4, 35, "Intelligence is aware of the following people having been taken hostage:"
+	StaticText 4, 42, ""
+	StaticText 4, 49, "LINDA, The Office Lady - She works nine to five, for 5% less monthly"
+	StaticText 4, 56, "salary than the rest of her company. She is almost convinced that having"
+	StaticText 4, 63, "been held by terrorists is the most exciting thing that's happened to her"
+	StaticText 4, 70, "all year. When rescued, she will drop an IBEX kit, which will upgrade your"
+	StaticText 4, 77, "currently selected weapon. If killed, she drops nothing."
+	StaticText 4, 84, ""
+	StaticText 4, 91, "RODNEY, The Wonder Bum - Constantly found standing in place with a cardboard"
+	StaticText 4, 98, "sign, Rodney has a taste for exquisite boozes. He seems convinced that he has"
+	StaticText 4, 105, "consumed so much booze that his body can actually produce it. The booze you"
+	StaticText 4, 112, "receive from him restores health, and its strength depends on whether he is"
+	StaticText 4, 119, "killed or rescued."
+	StaticText 4, 126, ""
+	StaticText 4, 133, "ROGER KOMAKI, The Vagrant Master - His grey trenchcoat often sees him"
+	StaticText 4, 140, "mistaken for a criminal, but Roger Komaki, the last heir of the Komaki Style,"
+	StaticText 4, 147, "actually knows a lot about kicking people in the face. Unfortunately, his"
+	StaticText 4, 154, "history of abusing painkillers has taken a toll on his body, rendering him"
+	StaticText 4, 161, "incapable of actually putting his knowledge to use. However, save his ass"
+	StaticText 4, 168, "from the bad guys, and he'll teach you what he knows."
+	
+	Font "Smallfont", "Untranslated"
+	Position 20, 190
+	Linespacing 10
+	TextItem "Next Page", "n", "HelpSection4-3"
+}
+
+ListMenu "HelpSection4-3"
+{
+	Font "Logofont", "Untranslated"
+	Position 18, 30
+	StaticText 0, 0, "HOSTAGES III"
+	Font "THREEFIV", "Untranslated"
+	StaticText 4, 35, "JAXSON, The Architect - He doesn't work here; he's just here to point out some"
+	StaticText 4, 42, "structural flaws to the building owner. He resents his horrible timing, as he"
+	StaticText 4, 49, "was nabbed by some thugs on his way out the building. He managed to conceal his"
+	StaticText 4, 56, "building blueprints from the bad guys, and you can get them from him - but if"
+	StaticText 4, 63, "you rescue him instead of letting him die, said blueprints will have extra"
+	StaticText 4, 70, "annotations, detailing the exact location of every person, place, and thing"
+	StaticText 4, 77, "in the current area."
+	StaticText 4, 84, ""
+	StaticText 4, 91, "SONYA BLADE - Lord only knows why she's here, or why she didn't think she"
+	StaticText 4, 98, "could fight the terrorists herself, considering she's fought far worse in her"
+	StaticText 4, 105, "own time...but what we do know is that if you save her, she'll give you an"
+	StaticText 4, 112, "artifact from her own days of ass-kicking that might give you an edge."
+	StaticText 4, 119, ""
+	StaticText 4, 126, "KURTIS STRYKER - A bit of a rookie, this is the guy we originally sent in"
+	StaticText 4, 133, "to deal with the terrorist threat, but he must have forgotten his guns at"
+	StaticText 4, 140, "home, because his decision to fight everybody unarmed got him captured."
+	StaticText 4, 147, "When he last reported in to HQ, he did say that he managed to find some new"
+	StaticText 4, 154, "experimental formula that allows one to absorb all damage (to some extent)."
+	StaticText 4, 161, "The formula doesn't hold up well at room temperature, so he just carries the"
+	StaticText 4, 168, "herbs on him, and he'll mix them up for twice the potency when you save him."
+}
+
+ListMenu "HelpSection5-1"
+{
+	Font "Logofont", "Untranslated"
+	Position 18, 30
+	StaticText 0, 0, "UPGRADES"
+	Font "THREEFIV", "Untranslated"
+	StaticText 4, 35, "Our organization rewards thoroughness, so for doing your best to clear out"
+	StaticText 4, 42, "every single Tango in the complex, we'll issue you an upgrade for the tool"
+	StaticText 4, 49, "of our choice. To put it simply, when you get enough kills with a given"
+	StaticText 4, 56, "weapon, it will receive an upgrade. Now, there are other ways to get these,"
+	StaticText 4, 63, "generally involving rescuing hostages (such as the IBEX Upgrade Kit),"
+	StaticText 4, 70, "but some things (the grenades and taser) can't be upgraded in this manner."
+	StaticText 4, 77, "Each weapon requires a different amount of kills to upgrade."
+	StaticText 4, 84, ""
+	StaticText 4, 91, "BERDUCCI P92 SABER - 25 Kills"
+	StaticText 4, 98, "MARIANI SULACO 6 - 30 Kills"
+	StaticText 4, 105, "AARTSEN SLUGGER - 40 Kills"
+	StaticText 4, 112, "SHERAZI MK.IX - 60 Kills"
+	StaticText 4, 119, "KUZNETZOV 47M - 60 Kills"
+	StaticText 4, 126, "BERLINGHOFF AMR-82 - 50 Kills"
+	StaticText 4, 133, "COOKE GLP-140 - 50 Kills"
+	StaticText 4, 140, "BLACK BOAR LMG - 100 Kills"
+	StaticText 4, 147, "KICK - 50 Kills (or a scroll from Roger Komaki)"
+	StaticText 4, 154, "TASER - 20 Kills"
+	StaticText 4, 161, "GRENADE - 25 Kills"
+	StaticText 4, 168, "(Hostages DO NOT count as kills! Leave that bloodthirsty attitude at home!)"
+}
+
+
+ListMenu "CreditsPage"
+{
+	Font "Logofont", "Untranslated"
+	StaticText 17, 0, "TERRORISTS!"
+	Font "THREEFIV", "Untranslated"
+	StaticText 4, 40, "by wildweasel, created throughout 2012"
+	Font "Smallfont", "Untranslated"
+	StaticText 4, 60, "Based on sprites from William Shatner's TekWar."
+	StaticText 4, 70, "For more detailed credits, see individual PK3 folders."
+	StaticText 4, 80, "Non-resource credits follow."
+	
+	StaticText 4, 100, "The vast majority of this mod's code was by me"
+	StaticText 4, 110, "(wildweasel). The bullet tracers were borrowed"
+	StaticText 4, 120, "from my own WW-Nazis, whose spark effects were"
+	StaticText 4, 130, "originally coded by Caligari87, for HaloGuns2.wad."
+	
+	StaticText 4, 150, "The Taser's pain state effects, many updates and"
+	StaticText 4, 160, "fixes to some enemies, and some other things I"
+	StaticText 4, 170, "probably forgot were done by Kate/Pink Silver."
+	
+	Position 20, 190
+	Linespacing 10
+	TextItem "Next Page", "n", "CreditsPage2"
+}
+
+ListMenu "CreditsPage2"
+{
+	Font "Smallfont", "Untranslated"
+	StaticText 4, 0, "The Taser's puff effects and chain-lightning"
+	StaticText 4, 10, "effect were kindly offered by Xaser from his"
+	StaticText 4, 20, "mod, Psychic."
+	
+	StaticText 4, 40, "The flame-death effects are on loan from Kinsie's"
+	StaticText 4, 50, "Reelism mod, and were originally written by"
+	StaticText 4, 60, "SolarSnowfall."
+	
+	StaticText 4, 80, "I also borrowed the RepelShock effects from"
+	StaticText 4, 90, "LittleWhiteMouse's Hammerhound enemy, from the"
+	StaticText 4, 100, "Boss Monster Resource Wad."
+	
+	StaticText 4, 120, "Much thanks must go to BouncyTEM, who not only"
+	StaticText 4, 130, "provided the voice of main villain Mr. Falcon, but"
+	StaticText 4, 140, "also saved me a lot of work implementing a"
+	StaticText 4, 150, "replacement for the Wolfenstein SS."
+
+	Position 20, 190
+	Linespacing 10
+	TextItem "Next Page", "n", "CreditsPage3"
+}
+
+ListMenu "CreditsPage3"
+{
+	Font "Smallfont", "Untranslated"
+	StaticText 4, 0, "Much bugfixing assistance was offered by Kate,"
+	StaticText 4, 10, "TheDarkArchon, DavidPH, Blzut3, and the rest of"
+	StaticText 4, 20, "the #zdoom regulars. I'd also like to personally"
+	StaticText 4, 30, "apologize for making you guys put up with all my"
+	StaticText 4, 40, "frustrated swearing and bitching when the ACS"
+	StaticText 4, 50, "scripts wouldn't compile."
+
+	StaticText 4, 70, "Many balancing tweaks are thanks to the regulars"
+	StaticText 4, 80, "at ZDoom Forums and #zdoom on IRC. Hey, just"
+	StaticText 4, 90, "because I edit everybody's posts and yell at"
+	StaticText 4, 100, "people for being assholes doesn't mean that I"
+	StaticText 4, 110, "don't thank you for all the help and"
+	StaticText 4, 120, "encouragement. =P"
+	
+	StaticText 4, 140, "I almost forgot to include Marty Kirra in this"
+	StaticText 4, 150, "list as well - while he hasn't done much in this"
+	StaticText 4, 160, "mod compared to others I've made, he did provide"
+	StaticText 4, 170, "a voice for \"Alfred Wester\", so he's awesome."
+
+	Position 20, 190
+	Linespacing 10
+	TextItem "Next Page", "n", "CreditsPage4"
+}
+
+ListMenu "CreditsPage4"
+{
+	Font "Smallfont", "Untranslated"
+	StaticText 4, 0, "I should also mention my buddies at Hardcore"
+	StaticText 4, 10, "Gaming 101, as their keen insight into video games"
+	StaticText 4, 20, "(and 80's action flicks) helped me a lot. This"
+	StaticText 4, 30, "includes Sotenga, Bobinator, Snarboo,"
+	StaticText 4, 40, "NamelessFragger, EksFaktr, susanismyalias, dire51,"
+	StaticText 4, 50, "Dooz, and muteKi, and all the other awesome"
+	StaticText 4, 60, "folks whose names I forgot to note down at the time."
+	
+	StaticText 4, 80, "Finally, much of this mod simply would not be"
+	StaticText 4, 90, "possible if it were not for the tireless efforts"
+	StaticText 4, 100, "of the people behind the ZDoom Wiki. I check it"
+	StaticText 4, 110, "obsessively to make sure my function args are correct."
+
+	StaticText 4, 130, "If you'd like to figure out where all my resources"
+	StaticText 4, 140, "came from, check the Graphics, Sprites, and Sounds"
+	StaticText 4, 150, "folders inside ww-terror.pk3 - I left several text"
+	StaticText 4, 160, "files in each folder to note where all the stuff"
+	StaticText 4, 170, "originated. --ww (8/5/2012)"
+}
+
+
+ListMenu "Achievements"
+{
+	Font "Logofont", "Untranslated"
+	Position 18, 30
+	StaticText 0, 0, "CHEEVOS"
+	Font "THREEFIV", "Untranslated"
+	StaticText 4, 40, "Note: Terrorists! does not actually keep track of the status of these"
+	StaticText 4, 46, "achievements, so these are strictly based on the honor system - but if"
+	StaticText 4, 52, "you can show me a video of yourself actually completing one, I'll"
+	StaticText 4, 58, "be impressed. -ww"
+	Font "Smallfont", "Untranslated"
+	Position 37, 66
+	Linespacing 11
+	TextItem "Van Damme's Disciple", "", "Achievement01"
+	TextItem "Forced Pantswetting", "", "Achievement02"
+	TextItem "I Was Out Of Bullets", "", "Achievement03"
+	TextItem "Boulder-Puncher's Merit Badge", "", "Achievement04"
+	TextItem "Yippie-Ki-Yay, Mr. Falcon", "", "Achievement05"
+	TextItem "See You At The Party, Richter", "", "Achievement06"
+	TextItem "Not A Doom Clone", "", "Achievement07"
+	TextItem "You're Fired", "", "Achievement08"
+	TextItem "Too Old For This Shit", "", "Achievement09"
+	TextItem "The Burn Supremacy", "", "Achievement10"
+	TextItem "Do I Feel Lucky?", "", "Achievement11"
+	TextItem "Collateral Damage", "", "Achievement12"
+	TextItem "Rated PG", "", "Achievement13"
+	TextItem "Rated NC-17", "", "Achievement14"
+}
+
+ListMenu "Achievement01"
+{
+	Font "Smallfont", "Untranslated"
+	StaticText 4, 50, "Van Damme's Disciple - Awarded for showing great"
+	StaticText 4, 60, "aptitude in the ways of kicking people in the face,"
+	StaticText 4, 70, "completing an entire level using only the kick,"
+	StaticText 4, 80, "and for not making any Chuck Norris Facts jokes"
+	StaticText 4, 90, "in the process."
+}
+
+ListMenu "Achievement02"
+{
+	Font "Smallfont", "Untranslated"
+	StaticText 4, 50, "Forced Pantswetting - Awarded for being a complete"
+	StaticText 4, 60, "sadist and achieving 100% Kills on a given map"
+	StaticText 4, 70, "using only the Taser."
+}
+
+ListMenu "Achievement03"
+{
+	Font "Smallfont", "Untranslated"
+	StaticText 4, 50, "I Was Out Of Bullets - Awarded for somehow managing"
+	StaticText 4, 60, "to kill a UAV or Skimmer either by kicking it, or by"
+	StaticText 4, 70, "kicking a barrel or Seeker Drone. (Does not count if"
+	StaticText 4, 80, "you die in the process. Tasers are allowed, as long"
+	StaticText 4, 90, "as the kill is made by a barrel, Seeker, or a kick.)"
+}
+
+ListMenu "Achievement04"
+{
+	Font "Smallfont", "Untranslated"
+	StaticText 4, 50, "Boulder-Puncher's Merit Badge - Awarded for following"
+	StaticText 4, 60, "in a certain BSAA agent's footsteps and defeating"
+	StaticText 4, 70, "\"Alfred Wester\" with melee weapons only."
+}
+
+ListMenu "Achievement05"
+{
+	Font "Smallfont", "Untranslated"
+	StaticText 4, 50, "Yippie-Ki-Yay, Mr. Falcon - Awarded for being an"
+	StaticText 4, 60, "excellent ad-hoc physics professor, quickly teaching"
+	StaticText 4, 70, "the terrorist faction's leader about gravity, by"
+	StaticText 4, 80, "kicking Mr. Falcon off a very tall cliff."
+	StaticText 4, 90, "(Bonus points if said kick is a killing blow.)"
+}
+
+ListMenu "Achievement06"
+{
+	Font "Smallfont", "Untranslated"
+	StaticText 4, 50, "See You At The Party, Richter - Awarded for"
+	StaticText 4, 60, "issuing an impromptu safety demonstration, by"
+	StaticText 4, 70, "knocking any enemy (or player) off a lift going up."
+}
+
+ListMenu "Achievement07"
+{
+	Font "Smallfont", "Untranslated"
+	StaticText 4, 50, "Not a Doom Clone - Awarded for showing Weasel that"
+	StaticText 4, 60, "he's not crazy and completing a level without"
+	StaticText 4, 70, "using the shotgun. (And for not suggesting that I"
+	StaticText 4, 80, "add a pump-action shotgun on top of the Slugger.)"
+}
+
+ListMenu "Achievement08"
+{
+	Font "Smallfont", "Untranslated"
+	StaticText 4, 50, "You're Fired - Awarded for great contributions"
+	StaticText 4, 60, "to the field of human propulsion, by launching any"
+	StaticText 4, 70, "enemy more than 512 map units with an explosion."
+}
+
+ListMenu "Achievement09"
+{
+	Font "Smallfont", "Untranslated"
+	StaticText 4, 50, "Too Old For This Shit - Awarded for outstanding"
+	StaticText 4, 60, "bravery in spite of age, for finishing a level"
+	StaticText 4, 70, "without running, jumping, crouching, or kicking."
+}
+
+ListMenu "Achievement10"
+{
+	Font "Smallfont", "Untranslated"
+	StaticText 4, 50, "The Burn Supremacy - Awarded for showing great"
+	StaticText 4, 60, "proficiency with combustive weaponry, by defeating"
+	StaticText 4, 70, "a boss (Wester, Mr. Falcon, Bennett, or Dooley)"
+	StaticText 4, 80, "with only hand grenades."
+}
+
+ListMenu "Achievement11"
+{
+	Font "Smallfont", "Untranslated"
+	StaticText 4, 50, "Do I Feel Lucky? - Finish a level having fired just"
+	StaticText 4, 60, "six shots from the Mariani Sulaco 6 (or was it"
+	StaticText 4, 70, "only five?)."
+}
+
+ListMenu "Achievement12"
+{
+	Font "Smallfont", "Untranslated"
+	StaticText 4, 50, "Collateral Damage - Wipe out an entire room full of"
+	StaticText 4, 60, "people with ONE fire grenade, including hostages."
+}
+
+ListMenu "Achievement13"
+{
+	Font "Smallfont", "Untranslated"
+	StaticText 4, 50, "Rated PG - Complete a level having saved every last"
+	StaticText 4, 60, "hostage, without killing any of the terrorists."
+}
+
+ListMenu "Achievement14"
+{
+	Font "Smallfont", "Untranslated"
+	StaticText 4, 50, "Rated NC-17 - Kill all terrorists through cruel and"
+	StaticText 4, 60, "unusual means, save all hostages after tasering them,"
+	StaticText 4, 70, "and leave the map with less than 10 health/no armor."
+}
+
+ListMenu "TempExampleMenu"
+{
+	Font "Logofont", "Untranslated"
+	Position 18, 30
+	StaticText 0, 0, "HEADER"
+	Font "THREEFIV", "Untranslated"
+	StaticText 4, 35, ""
+	StaticText 4, 42, ""
+	StaticText 4, 49, ""
+	StaticText 4, 56, ""
+	StaticText 4, 63, ""
+	StaticText 4, 70, ""
+	StaticText 4, 77, ""
+	StaticText 4, 84, ""
+	StaticText 4, 91, ""
+	StaticText 4, 98, ""
+	StaticText 4, 105, ""
+	StaticText 4, 112, ""
+	StaticText 4, 119, ""
+	StaticText 4, 126, ""
+	StaticText 4, 133, ""
+	StaticText 4, 140, ""
+	StaticText 4, 147, ""
+	StaticText 4, 154, ""
+	StaticText 4, 161, ""
+	StaticText 4, 168, ""
+	Font "Smallfont", "Untranslated"
+	Position 20, 190
+	Linespacing 10
+	TextItem "Next Page", "n", "HelpSectionXX"
+}

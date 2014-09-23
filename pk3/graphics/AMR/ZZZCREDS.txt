@@ -1,0 +1,7 @@
+The Barrett M82A1 actually comes from screenshots of a model for
+Counter-Strike: Condition Zero, which was created by
+r2pp2r, twinke masta, Hav0c, Jennifer!!, Vunsunta, and kenlau.
+I brought it into Paint Shop Pro for a little surgery (separating the magazine
+from the weapon for animation purposes) and mild color correction to make
+it look nicer in ZDoom. The muzzle flash in this folder is an enlarged
+version of one from Blood by Monolith Software.

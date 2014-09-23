@@ -1,0 +1,54 @@
+ACTOR PistolThugFemale1 : WWTBadGuy
+{
+	XScale 0.4
+	YScale 0.35
+	Radius 20
+	Height 56
+	Health 50
+	Speed 12
+	PainChance 255
+	SeeSound "Sights/Female02"
+	PainSound "Pains/Female02"
+	DeathSound "Deaths/Female02"
+	DropItem "Mateba" 64
+	DamageFactor "EnemyBullet", 0.3
+	DamageFactor "EnemyGrenade", 0.3
+	Obituary "%o has second thoughts about female empowerment."
+	MONSTER
+	+FLOORCLIP
+	States
+	{
+	Spawn:
+		PGRL A 0 A_GiveInventory("IsFemale", 1)
+		PGRL A 1 A_Look
+		Loop
+	See:
+		PGRL A 0 A_GiveInventory("IsFemale", 1)
+		PGRL BCDE 6 A_Chase
+		Loop
+	Missile:
+		PGRL F 10 A_FaceTarget
+		PGRL G 0 A_PlayWeaponSound("Mateba/EnemyFire")
+		PGRL G 2 BRIGHT A_CustomMissile("EnemyMagnumTracer", 52, 0, frandom(-2.0,2.0))
+		PGRL F 2
+		PGRL H 5
+		PGRL F 4
+		Goto See
+	Pain.PlayerElectricGrenade:
+	Pain.PlayerTaser:
+	Pain.EnemyTaser:
+		PGRL I 0
+		Goto Tased
+	Pain:
+		PGRL I 3 A_Pain
+		Goto See
+	Death:
+		PGRL J 3 A_Scream
+		PGRL KL 3
+		PGRL M 3 A_PlaySound("Misc/Bodyfall")
+		PGRL N 3 A_NoBlocking
+		PGRL OP 3
+		PGRL Q -1
+		Stop
+	}
+}

@@ -1,0 +1,305 @@
+gameinfo
+{
+	quitmessages = "$QUITMSG", "$QUITMSG1", "$QUITMSG2", "$QUITMSG3", "$QUITMSG4", "$QUITMSG5", "$QUITMSG6", "$QUITMSG7", "$QUITMSG8", "$QUITMSG9", "$QUITMSG10", "$QUITMSG11", "$QUITMSG12", "$QUITMSG13", "$QUITMSG14"
+	menufontcolor_title = "Untranslated"
+	menufontcolor_label = "Light Blue"
+	menufontcolor_value = "White"
+	menufontcolor_header = "Untranslated"
+	menufontcolor_highlight = "Gold"
+	menufontcolor_action = "Gold"
+	menufontcolor_selection = "Green"
+	dimcolor = "#000000"
+	dimamount = "0.5"
+}
+
+clearskills
+
+skill Terroreasy
+{
+	EasyBossBrain
+	SpawnFilter = Easy
+	Name = "Pride and Prejudice"
+	PicName = "WWSKILL1"
+	Key = "1"
+	ACSReturn = 1
+	EasyKey
+}
+
+skill Terrornormal
+{
+	SpawnFilter = Normal
+	Key = "2"
+	Name = "True Lies"
+	PicName = "WWSKILL2"
+	ACSReturn = 2
+}
+
+skill Terrorhard
+{
+	SpawnFilter = Hard
+	Name = "Commando"
+	PicName = "WWSKILL3"
+	Key = "3"
+	ACSReturn = 3
+	DefaultSkill
+}
+
+skill Terrornightmare
+{
+	FastMonsters
+	SpawnFilter = Nightmare
+	Name = "Die Hard"
+	PicName = "WWSKILL4"
+	Key = "4"
+	ACSReturn = 4
+}
+
+skill TerrorSupernightmare
+{
+	FastMonsters
+	SpawnFilter = Nightmare
+	Name = "The Sum of All Fears"
+	PicName = "WWSKILL5"
+	MustConfirm = "I don't know what's scarier, losing nuclear weapons, or that it happens so often there's actually a term for it."
+	ACSReturn = 5
+	Key = "5"
+	DamageFactor = 2.0
+	MonsterHealth = 0.5
+}
+
+Intermission Inter_Cast
+{
+	Scroller
+	{
+		ScrollDirection = Down
+		Background = "ENDCRD01"
+		Background2 = "ENDCRD02"
+		Music = "D_TRROR3"
+		InitialDelay = -100
+		Scrolltime = -320
+		Time = -420
+	}
+	Link = Inter_Cast2
+}
+
+Intermission Inter_Cast2
+{
+	Scroller
+	{
+		Time = 1
+		ScrollDirection = Down
+		Background2 = "ENDCRD03"
+		Scrolltime = -320
+		Time = -320
+	}
+	Link = Inter_Cast3
+}
+
+Intermission Inter_Cast3
+{
+	Scroller
+	{
+		Time = 1
+		ScrollDirection = Down
+		Background2 = "ENDCRD04"
+		Scrolltime = -320
+		Time = -320
+	}
+	Link = Inter_Cast4
+}
+
+Intermission Inter_Cast4
+{
+	Scroller
+	{
+		Time = 1
+		ScrollDirection = Down
+		Background2 = "ENDCRD05"
+		Scrolltime = -320
+		Time = -320
+	}
+	Link = Inter_Cast5
+}
+Intermission Inter_Cast5
+{
+	Scroller
+	{
+		Time = 1
+		ScrollDirection = Down
+		Background2 = "ENDCRD06"
+		Scrolltime = -320
+		Time = -320
+	}
+	Link = Inter_Cast6
+}
+Intermission Inter_Cast6
+{
+	Scroller
+	{
+		Time = 1
+		ScrollDirection = Down
+		Background2 = "ENDCRD07"
+		Scrolltime = -320
+		Time = -320
+	}
+	Link = Inter_Cast7
+}
+Intermission Inter_Cast7
+{
+	Scroller
+	{
+		Time = 1
+		ScrollDirection = Down
+		Background2 = "ENDCRD08"
+		Scrolltime = -320
+		Time = -320
+	}
+	Link = Inter_Cast8
+}
+Intermission Inter_Cast8
+{
+	Scroller
+	{
+		Time = 1
+		ScrollDirection = Down
+		Background2 = "ENDCRD09"
+		Scrolltime = -320
+		Time = -320
+	}
+	Link = Inter_Cast9
+}
+Intermission Inter_Cast9
+{
+	Scroller
+	{
+		Time = 1
+		ScrollDirection = Down
+		Background2 = "ENDCRD10"
+		Scrolltime = -320
+		Time = -320
+	}
+	Link = Inter_Cast10
+}
+Intermission Inter_Cast10
+{
+	Scroller
+	{
+		Time = 1
+		ScrollDirection = Down
+		Background2 = "ENDCRD11"
+		Scrolltime = -320
+		Time = -320
+	}
+	Link = Inter_Cast11
+}
+Intermission Inter_Cast11
+{
+	Scroller
+	{
+		Time = 1
+		ScrollDirection = Down
+		Background2 = "ENDCRD12"
+		Scrolltime = -320
+		Time = -320
+	}
+	Link = Inter_Cast12
+}
+Intermission Inter_Cast12
+{
+	Scroller
+	{
+		Time = 1
+		ScrollDirection = Down
+		Background2 = "ENDCRD13"
+		Scrolltime = -320
+		Time = -320
+	}
+	Link = Inter_Cast13
+}
+Intermission Inter_Cast13
+{
+	Scroller
+	{
+		Time = 1
+		ScrollDirection = Down
+		Background2 = "ENDCRD14"
+		Scrolltime = -320
+		Time = -320
+	}
+	Link = Inter_Cast14
+}
+Intermission Inter_Cast14
+{
+	Scroller
+	{
+		Time = 1
+		ScrollDirection = Down
+		Background2 = "ENDCRD15"
+		Scrolltime = -320
+		Time = -320
+	}
+	Link = Inter_Cast15
+}
+Intermission Inter_Cast15
+{
+	Scroller
+	{
+		Time = 1
+		ScrollDirection = Down
+		Background2 = "ENDCRD16"
+		Scrolltime = -320
+		Time = -320
+	}
+	Link = Inter_Cast16
+}
+Intermission Inter_Cast16
+{
+	Scroller
+	{
+		Time = 1
+		ScrollDirection = Down
+		Background2 = "ENDCRD17"
+		Scrolltime = -320
+		Time = -320
+	}
+}
+
+/*
+// And here comes the casting call!
+
+Intermission Inter_Cast
+{
+	Image
+	{
+		Background = "WLFTITLE"
+		Time = -1
+		Music = "HORSTW"
+	}
+	Link = Doom2Cast
+}
+
+Intermission Doom2Cast
+{
+	Cast
+	{
+		CastClass = "PistolThug1"
+		CastName = "Matt Damon as Pistol Thug"
+	}
+	Cast
+	{
+		CastClass = "Cop2"
+		CastName = "Keifer Sutherland as Police Rookie"
+	}
+	Cast
+	{
+		CastClass = "Cop1"
+		CastName = "Robert Patrick as Police Sergeant"
+	}
+	
+	Cast
+	{
+		CastClass = "MagnumFemale"
+		CastName = "Rachel Ticotin as Magnum Lady"
+	}
+	Link = Doom2Cast	// restart cast call
+} */

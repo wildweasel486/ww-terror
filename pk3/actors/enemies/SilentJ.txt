@@ -1,0 +1,67 @@
+ACTOR SilentJ : WWTBadGuy
+{
+	Scale 0.35
+	Radius 20
+	Height 56
+	Health 50
+	Speed 12
+	PainChance 255
+	SeeSound "Sights/Male01"
+	PainSound "Pains/Male01"
+	DeathSound "Deaths/Male01"
+	DropItem "9mmAmmoSmall"
+	DamageFactor "EnemyBullet", 0.3
+	DamageFactor "EnemyGrenade", 0.3
+	DamageFactor "PlayerPistol", 0.5
+	DamageFactor "PlayerUzi", 0.5
+	DamageFactor "PlayerMelee", 2.0
+	Obituary "%o got brought down all silent-like by Silent J."
+	MONSTER
+	+FLOORCLIP
+	+MISSILEMORE
+	+MISSILEEVENMORE
+	States
+	{
+	Spawn:
+		ORAN A 1 A_Look
+		Loop
+	See:
+		ORAN BCDE 6 A_Chase
+		Loop
+	Missile:
+		ORAN F 10 A_FaceTarget
+		ORAN G 0 A_PlayWeaponSound("Beretta/Silent")
+		COP3 G 0 A_SpawnItemEx("BulletCasing",24,-24,40,8,2,4,random(55,80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
+		ORAN G 2 BRIGHT A_CustomMissile("EnemyARTracer", 52, 0, frandom(-2.0,2.0))
+		ORAN F 6
+		ORAN G 0 A_PlayWeaponSound("Beretta/Silent")
+		COP3 G 0 A_SpawnItemEx("BulletCasing",24,-24,40,8,2,4,random(55,80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
+		ORAN G 2 BRIGHT A_CustomMissile("EnemyARTracer", 52, 0, frandom(-2.0,2.0))
+		ORAN F 2
+		ORAN H 5
+		ORAN F 4
+		Goto See
+	Pain.PlayerElectricGrenade:
+	Pain.PlayerTaser:
+	Pain.EnemyTaser:
+		ORAN I 0
+		Goto Tased
+	Pain.PlayerPistol:
+	Pain.PlayerUzi:
+		ORAN IIIIIIIIII 0 A_SpawnItemEx("BulletIneffectiveSpark",0,0,32,frandom(-2.0,2.0),frandom(-2.0,2.0),frandom(3.0,6.0),frandom(0.0,359.9),SXF_NOCHECKPOSITION)
+		ORAN I 3 A_PlaySound("Bullet/HitMetal")
+		Goto See
+	Pain:
+		ORAN I 3 A_Pain
+		Goto See
+	Death:
+		ORAN J 3 A_Scream
+		ORAN KL 3
+		ORAN M 3 A_PlaySound("Misc/Bodyfall")
+		ORAN N 3 A_NoBlocking
+		ORAN OP 3
+		ORAN Q 3
+		ORAN R -1
+		Stop
+	}
+}

@@ -1,0 +1,2 @@
+// Male voice 7 - Soldier of Fortune 1 and 2 by Raven Software
+// Sight sounds are from SOF2; pains and deaths are from SOF1.

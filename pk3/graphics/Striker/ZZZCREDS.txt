@@ -1,0 +1,4 @@
+This Striker is in here thanks to the efforts of
+W1LLDAB3AST, DeadPixel, SilentAssassin12, and CIgano, who created the
+original weapon model for Counter-Strike: Condition Zero that I screenshotted
+to make this sprite. It's amazing what you can pull off with only one sprite.

@@ -1,0 +1,82 @@
+ACTOR WWTScientist : WWTBadGuy replaces Arachnotron
+{
+	SpawnID 6
+	YScale 0.35
+	XScale 0.4
+	Radius 20
+	Height 56
+	Health 200
+	Speed 12
+	PainChance 255
+	SeeSound "Scientist/See"
+	PainSound "Scientist/Pain"
+	DeathSound "Scientist/Death"
+	DamageFactor "EnemyBullet", 0.3
+	DamageFactor "EnemyGrenade", 0.3
+	Obituary "%o unwittingly proved the success of an experimental weapon."
+	MONSTER
+	+FLOORCLIP
+	States
+	{
+	Spawn:
+		WSCI A 1 A_Look
+		Loop
+	See:
+		WSCI BCDE 6 A_Chase
+		Loop
+	Missile:
+		WSCI F 5 A_FaceTarget
+		WSCI G 5 Bright A_CustomMissile("ScientistPlasmaBall")
+		WSCI H 5
+		Goto See
+	Pain.PlayerElectricGrenade:
+	Pain.PlayerTaser:
+	Pain.EnemyTaser:
+		WSCI I 0
+		Goto Tased
+	Pain:
+		WSCI I 3 A_Pain
+		Goto See
+	Death:
+		WSCI J 3 A_Scream
+		WSCI KLM 3
+		WSCI N 3 A_PlaySound("Misc/Bodyfall")
+		WSCI O 3 A_NoBlocking
+		WSCI P 3 A_BossDeath
+		WSCI P -1
+		Stop
+	}
+}
+
+ACTOR ScientistPlasmaBall : FastProjectile
+{
+	Radius 11
+	Height 8
+	Speed 20
+	Damage (20)
+	PROJECTILE
+	SeeSound "Scientist/Blaster"
+	DeathSound "Scientist/BlasterHit"
+	MissileType "ScientistMissileTrail"
+	MissileHeight 12
+	Scale 0.2
+	RenderStyle Add
+	Alpha 1.0
+	States
+	{
+	Spawn:
+		PBAL A 1 Bright
+		Loop
+	Death:
+		MISL A 0 A_SetScale(1.0)
+		MISL B 4 Bright A_Scream
+		MISL C 4 Bright
+		MISL D 4 Bright
+		Stop
+	}
+}
+
+ACTOR ScientistMissileTrail : MiniMissileTrail
+{
+	Scale 0.6
+}

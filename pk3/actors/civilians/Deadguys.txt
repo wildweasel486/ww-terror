@@ -1,0 +1,95 @@
+ACTOR DeadHostage1 replaces DeadZombieman
+{
+	YScale 0.35
+	XScale 0.4
+	States
+	{
+	Spawn:
+		BUMM I -1
+		Stop
+	}
+}
+
+ACTOR DeadHostage2 replaces DeadShotgunGuy
+{
+	YScale 0.3
+	XScale 0.35
+	States
+	{
+	Spawn:
+		CIV1 O -1
+		Stop
+	}
+}
+
+ACTOR DeadHostage3 replaces DeadMarine
+{
+	YScale 0.42
+	XScale 0.47
+	States
+	{
+	Spawn:
+		CIV2 V -1
+		Stop
+	}
+}
+
+ACTOR DeadHostage4 replaces DeadDoomImp
+{
+	YScale 0.35
+	XScale 0.4
+	States
+	{
+	Spawn:
+		CIV3 U -1
+		Stop
+	}
+}
+
+ACTOR DeadHostage5 replaces DeadDemon
+{
+	YScale 0.4
+	XScale 0.45
+	States
+	{
+	Spawn:
+		HMK2 F -1
+		Stop
+	}
+}
+
+ACTOR DeadHostage6 replaces DeadCacodemon
+{
+	YScale 0.4
+	XScale 0.45
+	States
+	{
+	Spawn:
+		HMK1 F -1
+		Stop
+	}
+}
+
+ACTOR DeadCop1 replaces GibbedMarine
+{
+	YScale 0.45
+	XScale 0.5
+	States
+	{
+	Spawn:
+		COP1 V -1
+		Stop
+	}
+}
+
+ACTOR DeadCop2 replaces GibbedMarineExtra
+{
+	YScale 0.35
+	XScale 0.4
+	States
+	{
+	Spawn:
+		COP2 R -1
+		Stop
+	}
+}

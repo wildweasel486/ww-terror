@@ -1,0 +1,4 @@
+Absolutely everything in this folder was drawn originally by me (wildweasel).
+If you want to use an adaptation of this status bar in your own mod,
+please ask me first, because this took me entirely too much work to see it
+go into someone else's mod without knowing about it first. =P

@@ -1,0 +1,6 @@
+The Beretta Cutlass in this folder was edited by Mike12 of the ZDoom Forums.
+I took matters into my own hands later on and added the hands to it,
+in addition to trimming the individual bits into separate images
+for animation purposes. The icon I'm using for burst fire...I'll be honest,
+I have no idea where it comes from, aside from having seen it in one of
+Laz Rojas' mods back in the day.

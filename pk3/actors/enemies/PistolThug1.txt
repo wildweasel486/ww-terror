@@ -1,0 +1,60 @@
+ACTOR PistolThug1 : WWTBadGuy
+{
+	XScale 0.5
+	YScale 0.45
+	Radius 20
+	Height 56
+	Health 25
+	Speed 12
+	PainChance 255
+	SeeSound "Sights/Male01"
+	PainSound "Pains/Male01"
+	DeathSound "Deaths/Male01"
+	DropItem "9mmAmmoSmall"
+	DamageFactor "EnemyBullet", 0.3
+	DamageFactor "EnemyGrenade", 0.3
+	Obituary "%o finds %hself the embarrassing victim of a stray bullet."
+	MONSTER
+	+FLOORCLIP
+	States
+	{
+	Spawn:
+		PTHG A 1 A_Look
+		Loop
+	See:
+		PTHG BCDE 6 A_Chase
+		Loop
+	Missile:
+		PTHG F 10 A_FaceTarget
+		PTHG G 0 A_JumpIfInventory("BerettaLoaded", 7, "Reload")
+		PTHG G 0 A_PlayWeaponSound("Beretta/EnemyFire")
+		COP3 G 0 A_SpawnItemEx("BulletCasing",24,-24,40,8,2,4,random(-55,-80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
+		PTHG G 2 BRIGHT A_CustomMissile("EnemyPistolTracer", 52, 0, frandom(-2.0,2.0))
+		PTHG F 2 A_GiveInventory("BerettaLoaded", 1)
+		PTHG H 5
+		PTHG F 4
+		Goto See
+	Reload:
+		PTHG F 5 A_PlayWeaponSound("Beretta/Reload")
+		PTHG H 10
+		PTHG A 5 A_TakeInventory("BerettaLoaded", 7)
+		Goto Missile
+	Pain.PlayerElectricGrenade:
+	Pain.PlayerTaser:
+	Pain.EnemyTaser:
+		PTHG I 0
+		Goto Tased
+	Pain:
+		PTHG I 3 A_Pain
+		Goto See
+	Death:
+		PTHG J 3 A_Scream
+		PTHG KL 3
+		PTHG M 3 A_PlaySound("Misc/Bodyfall")
+		PTHG N 3 A_NoBlocking
+		PTHG OP 3
+		PTHG Q 3
+		PTHG R -1
+		Stop
+	}
+}
