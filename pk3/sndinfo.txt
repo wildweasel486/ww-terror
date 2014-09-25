@@ -319,8 +319,12 @@ Tasered/Male8 MaleTas8
 Tasered/Male9 MaleTas9
 Tasered/Male10 MaleTasa
 
-Tasered/Female FemTas1
-
+$random Tasered/Female { Tasered/Female1 Tasered/Female2 Tasered/Female3 Tasered/Female4 Tasered/Female5 }
+Tasered/Female1 FemTas1
+Tasered/Female2 FemTas2
+Tasered/Female3 FemTas3
+Tasered/Female4 FemTas4
+Tasered/Female5 FemTas5
 
 UAV1/Missile UAV1FIRE
 UAV1/BayOpen UAV1BAY
@@ -950,14 +954,13 @@ Pains/Female01/03 F1Hit03
 Pains/Female01/04 F1Hit04
 Pains/Female01/05 F1Hit05
 Pains/Female01/06 F1Hit06
-$random Deaths/Female01 { Deaths/Female01/01 Deaths/Female01/02 Deaths/Female01/03 Deaths/Female01/04 Deaths/Female01/05 Deaths/Female01/06 Deaths/Female01/07 }
+$random Deaths/Female01 { Deaths/Female01/01 Deaths/Female01/02 Deaths/Female01/03 Deaths/Female01/04 Deaths/Female01/05 Deaths/Female01/06 }
 Deaths/Female01/01 F1Dth01
 Deaths/Female01/02 F1Dth02
 Deaths/Female01/03 F1Dth03
 Deaths/Female01/04 F1Dth04
 Deaths/Female01/05 F1Dth05
 Deaths/Female01/06 F1Dth06
-Deaths/Female01/07 F1Dth07
 
 // Female 02
 $random Sights/Female02 {
@@ -1030,7 +1033,7 @@ Pains/Female02/03 F2Hit03
 Pains/Female02/04 F2Hit04
 Pains/Female02/05 F2Hit05
 Pains/Female02/06 F2Hit06
-$random Deaths/Female02 { Deaths/Female02/01 Deaths/Female02/02 Deaths/Female02/03 Deaths/Female02/04 Deaths/Female02/05 Deaths/Female02/06 Deaths/Female02/07 Deaths/Female02/08 Deaths/Female02/09 Deaths/Female02/10 }
+$random Deaths/Female02 { Deaths/Female02/01 Deaths/Female02/02 Deaths/Female02/03 Deaths/Female02/04 Deaths/Female02/05 Deaths/Female02/06 Deaths/Female02/07 }
 Deaths/Female02/01 F2Dth01
 Deaths/Female02/02 F2Dth02
 Deaths/Female02/03 F2Dth03
@@ -1038,9 +1041,6 @@ Deaths/Female02/04 F2Dth04
 Deaths/Female02/05 F2Dth05
 Deaths/Female02/06 F2Dth06
 Deaths/Female02/07 F2Dth07
-Deaths/Female02/08 F2Dth08
-Deaths/Female02/09 F2Dth09
-Deaths/Female02/10 F2Dth10
 
 // Female 02
 $random Sights/Female03 {
