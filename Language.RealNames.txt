@@ -1,0 +1,29 @@
+[enu default]
+
+// Real Weapon Names patch
+// Since I added Language functionality, I might as well. =P
+// To load the Real Names patch, load it like any other Doom WAD.
+
+WWTTASERNAME = "TASER Conductive Electrical Weapon";
+WWTTASERPICK = "Picked up a TASER CEW. (Melee upgrade!)";
+WWTTASERSHORT = "TASER";
+WWTWEP1NAME = "Beretta 92FS Cutlass";
+WWTWEP1PICK = "Picked up a Beretta 92FS Cutlass. (slot 1)";
+WWTWEP1UPGRADENAME = "Beretta 93R Conversion Kit";
+WWTWEP2NAME = "Mateba Model 6 Unica";
+WWTWEP2PICK = "Picked up a Mateba Unica auto-revolver. (slot 2)";
+WWTWEP3NAME = "Armsel Striker";
+WWTWEP3PICK = "Picked up an Armsel Striker shotgun. (slot 3)";
+WWTWEP4NAME = "IMI Uzi 9mm";
+WWTWEP4PICK = "Picked up an IMI Uzi 9mm. (slot 4)";
+WWTWEP5NAME = "Avtomat Kalashnikova AKMS";
+WWTWEP5PICK = "Picked up a Kalashnikov AKMS rifle. (slot 5)";
+WWTWEP6NAME = "Barrett M82A1 .50";
+WWTWEP6PICK = "Picked up a Barrett M82A1. (slot 6)";
+WWTWEP7NAME = "Milkor MGL-140";
+WWTWEP7PICK = "Picked up a Milkor MGL-140 grenade launcher. (slot 7)";
+WWTWEP8NAME = "M60 \"Pig\" LMG";
+WWTWEP8PICK = "Picked up an M60 \"Pig\" machine gun. (slot 8)";
+WWTGREN1NAME = "Mk.II A1 Frag Grenades";
+WWTGREN2NAME = "XM112 High-Voltage Grenades"; // There's currently no real grenade like this one, sorry. =P
+WWTGREN3NAME = "AN-M14 Incendiary Grenades";
