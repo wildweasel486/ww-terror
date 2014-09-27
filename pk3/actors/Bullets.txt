@@ -304,6 +304,16 @@ ACTOR PlayerShotgunTracer : Tracer
 	Damage (random(8,13))
 	DamageType "PlayerShotgun"
 	Speed 75
+	States
+	{
+	Death:
+	Crash:
+		PUFF A 2 BRIGHT A_SpawnDebris("TracerSpark")
+		PUFF B 1 BRIGHT A_SetTranslucent(0.9,0)
+		PUFF B 1 BRIGHT
+		PUFF CD 2 BRIGHT
+		Stop
+	}
 }
 
 ACTOR PlayerRevolverTracer : Tracer
@@ -405,6 +415,16 @@ ACTOR EnemyShotgunTracer : Tracer
 	FastSpeed 70
 	DamageType "EnemyBullet"
 	DamageType "Enemy12ga"
+	States
+	{
+	Death:
+	Crash:
+		PUFF A 2 BRIGHT A_SpawnDebris("TracerSpark")
+		PUFF B 1 BRIGHT A_SetTranslucent(0.9,0)
+		PUFF B 1 BRIGHT
+		PUFF CD 2 BRIGHT
+		Stop
+	}
 }
 
 ACTOR EnemyDualiesTracer : Tracer
