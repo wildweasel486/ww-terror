@@ -1,20 +1,19 @@
 // PLAYER
-$playersound player weasel *death wwdthlo
-$playersound player weasel *wimpydeath wwdthlo
-$playersound player weasel *crazydeath wwdthhi
-$playersound player weasel *xdeath wwdthhi
-$playersound player weasel *gibbed wwdthhi
-$playeralias player weasel *pain100 weasellowpain
-$playeralias player weasel *pain75 weaselmedpain
-$playeralias player weasel *pain50 weaselhipain
-$playeralias player weasel *pain25 weaselcritpain
-$playeralias player weasel *grunt weaseloof
-$playersound player weasel *usefail dsnoway
-$random weaselcritpain { p1-1 p1-2 p1-3 p1-4 p1-5 p1-6 }
-$random weaselhipain { p2-1 p2-2 p2-3 p2-4 p2-5 p2-6 }
-$random weaselmedpain { p3-1 p3-2 p3-3 p3-4 p3-5 }
-$random weasellowpain { p4-1 p4-2 p4-3 p4-4 }
-$random weaseloof { poof-1 poof-2 poof-3 poof-4 poof-5 }
+$playersound	weasel	male	*death		wwdthlo
+$playersound	weasel	male	*xdeath		wwdthhi
+$playeralias	weasel	male	*pain100	weasellowpain
+$playeralias	weasel	male	*pain75		weaselmedpain
+$playeralias	weasel	male	*pain50		weaselhipain
+$playeralias	weasel	male	*pain25		weaselcritpain
+$playeralias	weasel	male	*grunt		weaseloof
+$playersounddup	weasel	male	*land		*grunt
+$playersound	weasel	male	*usefail	dsnoway
+
+$random weaselcritpain{p1-1 p1-2 p1-3 p1-4 p1-5 p1-6}
+$random weaselhipain{p2-1 p2-2 p2-3 p2-4 p2-5 p2-6}
+$random weaselmedpain{p3-1 p3-2 p3-3 p3-4 p3-5}
+$random weasellowpain{p4-1 p4-2 p4-3 p4-4}
+$random weaseloof{poof-1 poof-2 poof-3 poof-4 poof-5}
 p4-1 plpain41
 p4-2 plpain42
 p4-3 plpain43
@@ -70,12 +69,12 @@ Dryfire/Revolver EMPTYR
 Dryfire/Heavy EMPTYH
 
 // Kick Melee
-$random Kick/Hit { Kick/Hit1 Kick/Hit2 Kick/Hit3 Kick/Hit4 }
+$random Kick/Hit{Kick/Hit1 Kick/Hit2 Kick/Hit3 Kick/Hit4}
 Kick/Hit1 Kickhit1
 Kick/Hit2 Kickhit2
 Kick/Hit3 Kickhit3
 Kick/Hit4 Kickhit4
-$random Kick/Swing { Kick/Swing1 Kick/Swing2 }
+$random Kick/Swing{Kick/Swing1 Kick/Swing2}
 Kick/Swing1 Kickswg1
 Kick/Swing2 Kickswg2
 Kick/Wall Kickwall
@@ -112,7 +111,7 @@ Mateba/ZoomIn Matzoom
 Mateba/Ready Matready
 
 // Striker
-$random Striker/Fire { Striker/Fire1 Striker/Fire2 }
+$random Striker/Fire{Striker/Fire1 Striker/Fire2}
 Striker/Fire1 StkFire1
 Striker/Fire2 StkFire2
 Striker/EnemyFire StkEnemy
@@ -171,12 +170,12 @@ M60/Enemyfire M60Enemy
 
 // Grenades
 grenade/throw grnpin
-$random grenade/bounce { grenade/bounce1 grenade/bounce2 grenade/bounce3 grenade/bounce4 }
+$random grenade/bounce{grenade/bounce1 grenade/bounce2 grenade/bounce3 grenade/bounce4}
 grenade/bounce1 grnbnce1
 grenade/bounce2 grnbnce2
 grenade/bounce3 grnbnce3
 grenade/bounce4 grnbnce4
-$random grenade/explode { grenade/explode1 grenade/explode2 grenade/explode3 }
+$random grenade/explode{grenade/explode1 grenade/explode2 grenade/explode3}
 grenade/explode1 grnblst1
 grenade/explode2 grnblst2
 grenade/explode3 grnblst3
@@ -206,13 +205,13 @@ plats/slowmove lift2mid
 plats/slowstop lift2stp
 
 // Shell Casings
-$random bulletcasing/bounce { bcase1 bcase2 bcase3 bcase4 }
+$random bulletcasing/bounce{bcase1 bcase2 bcase3 bcase4}
 bcase1 bcase1
 bcase2 bcase2
 bcase3 bcase3
 bcase4 bcase4
-$random shellcasing/bounce { scasesb1 scasesb2 }
-$random shellcasing/stop { scases1 scases2 scases3 }
+$random shellcasing/bounce{scasesb1 scasesb2}
+$random shellcasing/stop{scases1 scases2 scases3}
 scases1 scases1
 scases2 scases2
 scases3 scases3
@@ -220,7 +219,7 @@ scasesb1 scasesb1
 scasesb2 scasesb2
 
 // Dropped clips
-$random weapons/smallclip { sc1 sc2 sc3 sc4 sc5 sc6 }
+$random weapons/smallclip{sc1 sc2 sc3 sc4 sc5 sc6}
 sc1 dsbounc1
 sc2 dsbounc2
 sc3 dsbounc3
@@ -228,7 +227,7 @@ sc4 dsbounc4
 sc5 dsbounc5
 sc6 dsbounc6
 
-$random weapons/largeclip { lc1 lc2 lc3 lc4 lc5 lc6 }
+$random weapons/largeclip{lc1 lc2 lc3 lc4 lc5 lc6}
 lc1 dsaounc1
 lc2 dsaounc2
 lc3 dsaounc3
@@ -237,26 +236,26 @@ lc5 dsaounc5
 lc6 dsaounc6
 
 // Bullet Hits
-$random Bullet/Ricochet { Bullet/Ricochet1 Bullet/Ricochet2 Bullet/Ricochet3 Bullet/Ricochet4 Bullet/Ricochet5 }
+$random Bullet/Ricochet{Bullet/Ricochet1 Bullet/Ricochet2 Bullet/Ricochet3 Bullet/Ricochet4 Bullet/Ricochet5}
 Bullet/Ricochet1 ric1
 Bullet/Ricochet2 ric2
 Bullet/Ricochet3 ric3
 Bullet/Ricochet4 ric4
 Bullet/Ricochet5 ric5
-$random Bullet/HitFlesh { Bullet/HitFlesh1 Bullet/HitFlesh2 Bullet/HitFlesh3 Bullet/HitFlesh4 Bullet/HitFlesh5 }
+$random Bullet/HitFlesh{Bullet/HitFlesh1 Bullet/HitFlesh2 Bullet/HitFlesh3 Bullet/HitFlesh4 Bullet/HitFlesh5}
 Bullet/HitFlesh1 flesh1
 Bullet/HitFlesh2 flesh2
 Bullet/HitFlesh3 flesh3
 Bullet/HitFlesh4 flesh4
 Bullet/HitFlesh5 flesh5
-$random Bullet/HitMetal { Bullet/HitMetal1 Bullet/HitMetal2 Bullet/HitMetal3 Bullet/HitMetal4 }
+$random Bullet/HitMetal{Bullet/HitMetal1 Bullet/HitMetal2 Bullet/HitMetal3 Bullet/HitMetal4}
 Bullet/HitMetal1 Metlhit1
 Bullet/HitMetal2 Metlhit2
 Bullet/HitMetal3 Metlhit3
 Bullet/HitMetal4 Metlhit4
 
 // Body Falls
-$random Misc/Bodyfall { Misc/Bodyfall01 Misc/Bodyfall02 Misc/Bodyfall03 Misc/Bodyfall04 Misc/Bodyfall05 Misc/Bodyfall06 Misc/Bodyfall07 Misc/Bodyfall08 Misc/Bodyfall09 Misc/Bodyfall10 Misc/Bodyfall11 Misc/Bodyfall12 Misc/Bodyfall13 }
+$random Misc/Bodyfall{Misc/Bodyfall01 Misc/Bodyfall02 Misc/Bodyfall03 Misc/Bodyfall04 Misc/Bodyfall05 Misc/Bodyfall06 Misc/Bodyfall07 Misc/Bodyfall08 Misc/Bodyfall09 Misc/Bodyfall10 Misc/Bodyfall11 Misc/Bodyfall12 Misc/Bodyfall13}
 Misc/Bodyfall01 Body01
 Misc/Bodyfall02 Body02
 Misc/Bodyfall03 Body03
@@ -272,7 +271,7 @@ Misc/Bodyfall12 Body12
 Misc/Bodyfall13 Body13
 
 // Explosions
-$random weapons/rocklx		{ explosion1 explosion2 explosion3 explosion4 explosion5 explosion6 explosion7 }
+$random weapons/rocklx		{explosion1 explosion2 explosion3 explosion4 explosion5 explosion6 explosion7}
 explosion1					dsbarex1
 explosion2					dsbarex2
 explosion3					dsbarex3
@@ -280,7 +279,7 @@ explosion4					dsbarex4
 explosion5					dsbarex5
 explosion6					dsbarex6
 explosion7					dsbarex7
-$random world/barrelx { barrelx1 barrelx2 barrelx3 barrelx4 }
+$random world/barrelx{barrelx1 barrelx2 barrelx3 barrelx4}
 barrelx1 barrelx1
 barrelx2 barrelx2
 barrelx3 barrelx3
@@ -288,7 +287,7 @@ barrelx4 barrelx4
 
 // ENEMY SOUNDS - GENERIC
 
-$random Burning/Male { Burning/Male1 Burning/Male2 Burning/Male3 Burning/Male4 Burning/Male5 Burning/Male6 Burning/Male7 Burning/Male8 Burning/Male9 }
+$random Burning/Male{Burning/Male1 Burning/Male2 Burning/Male3 Burning/Male4 Burning/Male5 Burning/Male6 Burning/Male7 Burning/Male8 Burning/Male9}
 Burning/Male1 BurnMal1
 Burning/Male2 BurnMal2
 Burning/Male3 BurnMal3
@@ -298,7 +297,7 @@ Burning/Male6 BurnMal6
 Burning/Male7 BurnMal7
 Burning/Male8 BurnMal8
 Burning/Male9 BurnMal9
-$random Burning/Female { Burning/Female1 Burning/Female2 Burning/Female3 Burning/Female4 Burning/Female5 Burning/Female6 Burning/Female7 }
+$random Burning/Female{Burning/Female1 Burning/Female2 Burning/Female3 Burning/Female4 Burning/Female5 Burning/Female6 Burning/Female7}
 Burning/Female1 BurnFem1
 Burning/Female2 BurnFem2
 Burning/Female3 BurnFem3
@@ -307,7 +306,7 @@ Burning/Female5 BurnFem5
 Burning/Female6 BurnFem6
 Burning/Female7 BurnFem7
 
-$random Tasered/Male { Tasered/Male1 Tasered/Male2 Tasered/Male3 Tasered/Male4 Tasered/Male5 Tasered/Male6 Tasered/Male7 Tasered/Male8 Tasered/Male9 Tasered/Male10 }
+$random Tasered/Male{Tasered/Male1 Tasered/Male2 Tasered/Male3 Tasered/Male4 Tasered/Male5 Tasered/Male6 Tasered/Male7 Tasered/Male8 Tasered/Male9 Tasered/Male10}
 Tasered/Male1 MaleTas1
 Tasered/Male2 MaleTas2
 Tasered/Male3 MaleTas3
@@ -319,7 +318,7 @@ Tasered/Male8 MaleTas8
 Tasered/Male9 MaleTas9
 Tasered/Male10 MaleTasa
 
-$random Tasered/Female { Tasered/Female1 Tasered/Female2 Tasered/Female3 Tasered/Female4 Tasered/Female5 }
+$random Tasered/Female{Tasered/Female1 Tasered/Female2 Tasered/Female3 Tasered/Female4 Tasered/Female5}
 Tasered/Female1 FemTas1
 Tasered/Female2 FemTas2
 Tasered/Female3 FemTas3
@@ -330,7 +329,7 @@ UAV1/Missile UAV1FIRE
 UAV1/BayOpen UAV1BAY
 UAV1/Death UAV1DIE
 UAV1/Active UAV1ACT
-$random UAV1/MissileHit { UAV1/MissileHit1 UAV1/MissileHit2 UAV1/MissileHit3 }
+$random UAV1/MissileHit{UAV1/MissileHit1 UAV1/MissileHit2 UAV1/MissileHit3}
 UAV1/MissileHit1 UAV1EXP1
 UAV1/MissileHit2 UAV1EXP2
 UAV1/MissileHit3 UAV1EXP3
@@ -339,17 +338,17 @@ Seekerbot/See SeekSee
 Seekerbot/Pain SeekPain
 Seekerbot/Alert SeekAlrt
 
-$random Skimmer/See { Skimmer/See1 Skimmer/See2 Skimmer/See3 Skimmer/See4 Skimmer/See5 }
+$random Skimmer/See{Skimmer/See1 Skimmer/See2 Skimmer/See3 Skimmer/See4 Skimmer/See5}
 Skimmer/See1 Skimsee1
 Skimmer/See2 Skimsee2
 Skimmer/See3 Skimsee3
 Skimmer/See4 Skimsee4
 Skimmer/See5 Skimsee5
-$random Skimmer/Pain { Skimmer/Pain1 Skimmer/Pain2 Skimmer/Pain3 }
+$random Skimmer/Pain{Skimmer/Pain1 Skimmer/Pain2 Skimmer/Pain3}
 Skimmer/Pain1 Skimhit1
 Skimmer/Pain2 Skimhit2
 Skimmer/Pain3 Skimhit3
-$random Skimmer/Death { Skimmer/Death1 Skimmer/Death2 Skimmer/Death3 Skimmer/Death4 }
+$random Skimmer/Death{Skimmer/Death1 Skimmer/Death2 Skimmer/Death3 Skimmer/Death4}
 Skimmer/Death1 Skimdth1
 Skimmer/Death2 Skimdth2
 Skimmer/Death3 Skimdth3
@@ -359,7 +358,7 @@ Skimmer/Burst Skimfire
 // ENEMY VOICES - MALE
 
 // Male 01
-$random Sights/Male01 { Sights/Male01/01 Sights/Male01/02 Sights/Male01/03 Sights/Male01/04 Sights/Male01/05 Sights/Male01/06 Sights/Male01/07 }
+$random Sights/Male01{Sights/Male01/01 Sights/Male01/02 Sights/Male01/03 Sights/Male01/04 Sights/Male01/05 Sights/Male01/06 Sights/Male01/07}
 Sights/Male01/01 M1Sit01
 Sights/Male01/02 M1Sit02
 Sights/Male01/03 M1Sit03
@@ -367,7 +366,7 @@ Sights/Male01/04 M1Sit04
 Sights/Male01/05 M1Sit05
 Sights/Male01/06 M1Sit06
 Sights/Male01/07 M1Sit07
-$random Pains/Male01 { Pains/Male01/01 Pains/Male01/02 Pains/Male01/03 Pains/Male01/04 Pains/Male01/05 Pains/Male01/06 Pains/Male01/07 }
+$random Pains/Male01{Pains/Male01/01 Pains/Male01/02 Pains/Male01/03 Pains/Male01/04 Pains/Male01/05 Pains/Male01/06 Pains/Male01/07}
 Pains/Male01/01 M1Hit01
 Pains/Male01/02 M1Hit02
 Pains/Male01/03 M1Hit03
@@ -375,7 +374,7 @@ Pains/Male01/04 M1Hit04
 Pains/Male01/05 M1Hit05
 Pains/Male01/06 M1Hit06
 Pains/Male01/07 M1Hit07
-$random Deaths/Male01 { Deaths/Male01/01 Deaths/Male01/02 Deaths/Male01/03 Deaths/Male01/04 Deaths/Male01/05 Deaths/Male01/06 Deaths/Male01/07 Deaths/Male01/08 Deaths/Male01/09 Deaths/Male01/10 }
+$random Deaths/Male01{Deaths/Male01/01 Deaths/Male01/02 Deaths/Male01/03 Deaths/Male01/04 Deaths/Male01/05 Deaths/Male01/06 Deaths/Male01/07 Deaths/Male01/08 Deaths/Male01/09 Deaths/Male01/10}
 Deaths/Male01/01 M1Dth01
 Deaths/Male01/02 M1Dth02
 Deaths/Male01/03 M1Dth03
@@ -388,7 +387,7 @@ Deaths/Male01/09 M1Dth09
 Deaths/Male01/10 M1Dth10
 
 // Male 02
-$random Sights/Male02 { Sights/Male02/01 Sights/Male02/02 Sights/Male02/03 Sights/Male02/04 Sights/Male02/05 Sights/Male02/06 Sights/Male02/07 Sights/Male02/08 Sights/Male02/09 }
+$random Sights/Male02{Sights/Male02/01 Sights/Male02/02 Sights/Male02/03 Sights/Male02/04 Sights/Male02/05 Sights/Male02/06 Sights/Male02/07 Sights/Male02/08 Sights/Male02/09}
 Sights/Male02/01 M2Sit01
 Sights/Male02/02 M2Sit02
 Sights/Male02/03 M2Sit03
@@ -398,12 +397,12 @@ Sights/Male02/06 M2Sit06
 Sights/Male02/07 M2Sit07
 Sights/Male02/08 M2Sit08
 Sights/Male02/09 M2Sit09
-$random Pains/Male02 { Pains/Male02/01 Pains/Male02/02 Pains/Male02/03 Pains/Male02/04 }
+$random Pains/Male02{Pains/Male02/01 Pains/Male02/02 Pains/Male02/03 Pains/Male02/04}
 Pains/Male02/01 M2Hit01
 Pains/Male02/02 M2Hit02
 Pains/Male02/03 M2Hit03
 Pains/Male02/04 M2Hit04
-$random Deaths/Male02 { Deaths/Male02/01 Deaths/Male02/02 Deaths/Male02/03 Deaths/Male02/04 Deaths/Male02/05 Deaths/Male02/06 Deaths/Male02/07 Deaths/Male02/08 Deaths/Male02/09 Deaths/Male02/10 }
+$random Deaths/Male02{Deaths/Male02/01 Deaths/Male02/02 Deaths/Male02/03 Deaths/Male02/04 Deaths/Male02/05 Deaths/Male02/06 Deaths/Male02/07 Deaths/Male02/08 Deaths/Male02/09 Deaths/Male02/10}
 Deaths/Male02/01 M2Dth01
 Deaths/Male02/02 M2Dth02
 Deaths/Male02/03 M2Dth03
@@ -416,19 +415,19 @@ Deaths/Male02/09 M2Dth09
 Deaths/Male02/10 M2Dth10
 
 // Male 03
-$random Sights/Male03 { Sights/Male03/01 Sights/Male03/02 Sights/Male03/03 Sights/Male03/04 Sights/Male03/05 Sights/Male03/06 }
+$random Sights/Male03{Sights/Male03/01 Sights/Male03/02 Sights/Male03/03 Sights/Male03/04 Sights/Male03/05 Sights/Male03/06}
 Sights/Male03/01 M3Sit01
 Sights/Male03/02 M3Sit02
 Sights/Male03/03 M3Sit03
 Sights/Male03/04 M3Sit04
 Sights/Male03/05 M3Sit05
 Sights/Male03/06 M3Sit06
-$random Pains/Male03 { Pains/Male03/01 Pains/Male03/01 }
+$random Pains/Male03{Pains/Male03/01 Pains/Male03/01}
 Pains/Male03/01 M3Hit01
 Pains/Male03/02 M3Hit02
 
 // Male 04
-$random Sights/Male04 { Sights/Male04/01 Sights/Male04/02 Sights/Male04/03 Sights/Male04/04 Sights/Male04/05 Sights/Male04/06 Sights/Male04/07 Sights/Male04/08 Sights/Male04/09 Sights/Male04/10 Sights/Male04/11 Sights/Male04/12 Sights/Male04/13 Sights/Male04/14 Sights/Male04/15  Sights/Male04/16 Sights/Male04/17 Sights/Male04/18 }
+$random Sights/Male04{Sights/Male04/01 Sights/Male04/02 Sights/Male04/03 Sights/Male04/04 Sights/Male04/05 Sights/Male04/06 Sights/Male04/07 Sights/Male04/08 Sights/Male04/09 Sights/Male04/10 Sights/Male04/11 Sights/Male04/12 Sights/Male04/13 Sights/Male04/14 Sights/Male04/15  Sights/Male04/16 Sights/Male04/17 Sights/Male04/18}
 Sights/Male04/01 M4Sit01
 Sights/Male04/02 M4Sit02
 Sights/Male04/03 M4Sit03
@@ -447,7 +446,7 @@ Sights/Male04/15 M4Sit15
 Sights/Male04/16 M4Sit16
 Sights/Male04/17 M4Sit17
 Sights/Male04/18 M4Sit18
-$random Pains/Male04 { Pains/Male04/01 Pains/Male04/02 Pains/Male04/03 Pains/Male04/04 Pains/Male04/05 Pains/Male04/06 Pains/Male04/07 Pains/Male04/08 Pains/Male04/09 Pains/Male04/10 Pains/Male04/11 Pains/Male04/12 Pains/Male04/13 Pains/Male04/14 Pains/Male04/15 Pains/Male04/16 }
+$random Pains/Male04{Pains/Male04/01 Pains/Male04/02 Pains/Male04/03 Pains/Male04/04 Pains/Male04/05 Pains/Male04/06 Pains/Male04/07 Pains/Male04/08 Pains/Male04/09 Pains/Male04/10 Pains/Male04/11 Pains/Male04/12 Pains/Male04/13 Pains/Male04/14 Pains/Male04/15 Pains/Male04/16}
 Pains/Male04/01 M4Hit01
 Pains/Male04/02 M4Hit02
 Pains/Male04/03 M4Hit03
@@ -464,7 +463,7 @@ Pains/Male04/13 M4Hit13
 Pains/Male04/14 M4Hit14
 Pains/Male04/15 M4Hit15
 Pains/Male04/16 M4Hit16
-$random Deaths/Male04 { Deaths/Male04/01 Deaths/Male04/02 Deaths/Male04/03 Deaths/Male04/04 Deaths/Male04/05 Deaths/Male04/06 Deaths/Male04/07 Deaths/Male04/08 Deaths/Male04/09 Deaths/Male04/10 Deaths/Male04/11 }
+$random Deaths/Male04{Deaths/Male04/01 Deaths/Male04/02 Deaths/Male04/03 Deaths/Male04/04 Deaths/Male04/05 Deaths/Male04/06 Deaths/Male04/07 Deaths/Male04/08 Deaths/Male04/09 Deaths/Male04/10 Deaths/Male04/11}
 Deaths/Male04/01 M4Dth01
 Deaths/Male04/02 M4Dth02
 Deaths/Male04/03 M4Dth03
@@ -478,7 +477,7 @@ Deaths/Male04/10 M4Dth10
 Deaths/Male04/11 M4Dth11
 
 // Male 05
-$random Sights/Male05 { Sights/Male05/01 Sights/Male05/02 Sights/Male05/03 Sights/Male05/04 Sights/Male05/05 Sights/Male05/06 Sights/Male05/07 Sights/Male05/08 }
+$random Sights/Male05{Sights/Male05/01 Sights/Male05/02 Sights/Male05/03 Sights/Male05/04 Sights/Male05/05 Sights/Male05/06 Sights/Male05/07 Sights/Male05/08}
 Sights/Male05/01 M5Sit01
 Sights/Male05/02 M5Sit02
 Sights/Male05/03 M5Sit03
@@ -487,7 +486,7 @@ Sights/Male05/05 M5Sit05
 Sights/Male05/06 M5Sit06
 Sights/Male05/07 M5Sit07
 Sights/Male05/08 M5Sit08
-$random Pains/Male05 { Pains/Male05/01 Pains/Male05/02 Pains/Male05/03 Pains/Male05/04 Pains/Male05/05 Pains/Male05/06 Pains/Male05/07 Pains/Male05/08 }
+$random Pains/Male05{Pains/Male05/01 Pains/Male05/02 Pains/Male05/03 Pains/Male05/04 Pains/Male05/05 Pains/Male05/06 Pains/Male05/07 Pains/Male05/08}
 Pains/Male05/01 M5Hit01
 Pains/Male05/02 M5Hit02
 Pains/Male05/03 M5Hit03
@@ -496,7 +495,7 @@ Pains/Male05/05 M5Hit05
 Pains/Male05/06 M5Hit06
 Pains/Male05/07 M5Hit07
 Pains/Male05/08 M5Hit08
-$random Deaths/Male05 { Deaths/Male05/01 Deaths/Male05/02 Deaths/Male05/03 Deaths/Male05/04 Deaths/Male05/05 Deaths/Male05/06 Deaths/Male05/07 Deaths/Male05/08 Deaths/Male05/09 }
+$random Deaths/Male05{Deaths/Male05/01 Deaths/Male05/02 Deaths/Male05/03 Deaths/Male05/04 Deaths/Male05/05 Deaths/Male05/06 Deaths/Male05/07 Deaths/Male05/08 Deaths/Male05/09}
 Deaths/Male05/01 M5Dth01
 Deaths/Male05/02 M5Dth02
 Deaths/Male05/03 M5Dth03
@@ -508,7 +507,7 @@ Deaths/Male05/08 M5Dth08
 Deaths/Male05/09 M5Dth09
 
 // Male 06
-$random Sights/Male06 { Sights/Male06/01 Sights/Male06/02 Sights/Male06/03 Sights/Male06/04 Sights/Male06/05 Sights/Male06/06 Sights/Male06/07 Sights/Male06/08 Sights/Male06/09 Sights/Male06/10 Sights/Male06/11 Sights/Male06/12 Sights/Male06/13 Sights/Male06/14 Sights/Male06/15 }
+$random Sights/Male06{Sights/Male06/01 Sights/Male06/02 Sights/Male06/03 Sights/Male06/04 Sights/Male06/05 Sights/Male06/06 Sights/Male06/07 Sights/Male06/08 Sights/Male06/09 Sights/Male06/10 Sights/Male06/11 Sights/Male06/12 Sights/Male06/13 Sights/Male06/14 Sights/Male06/15}
 Sights/Male06/01 M6Sit01
 Sights/Male06/02 M6Sit02
 Sights/Male06/03 M6Sit03
@@ -524,7 +523,7 @@ Sights/Male06/12 M6Sit12
 Sights/Male06/13 M6Sit13
 Sights/Male06/14 M6Sit14
 Sights/Male06/15 M6Sit15
-$random Pains/Male06 { Pains/Male06/01 Pains/Male06/02 Pains/Male06/03 Pains/Male06/04 Pains/Male06/05 Pains/Male06/06 Pains/Male06/07 Pains/Male06/08 }
+$random Pains/Male06{Pains/Male06/01 Pains/Male06/02 Pains/Male06/03 Pains/Male06/04 Pains/Male06/05 Pains/Male06/06 Pains/Male06/07 Pains/Male06/08}
 Pains/Male06/01 M6Hit01
 Pains/Male06/02 M6Hit02
 Pains/Male06/03 M6Hit03
@@ -533,7 +532,7 @@ Pains/Male06/05 M6Hit05
 Pains/Male06/06 M6Hit06
 Pains/Male06/07 M6Hit07
 Pains/Male06/08 M6Hit08
-$random Deaths/Male06 { Deaths/Male06/01 Deaths/Male06/02 Deaths/Male06/03 Deaths/Male06/04 Deaths/Male06/05 Deaths/Male06/06 Deaths/Male06/07 Deaths/Male06/08 Deaths/Male06/09 Deaths/Male06/10 }
+$random Deaths/Male06{Deaths/Male06/01 Deaths/Male06/02 Deaths/Male06/03 Deaths/Male06/04 Deaths/Male06/05 Deaths/Male06/06 Deaths/Male06/07 Deaths/Male06/08 Deaths/Male06/09 Deaths/Male06/10}
 Deaths/Male06/01 M6Dth01
 Deaths/Male06/02 M6Dth02
 Deaths/Male06/03 M6Dth03
@@ -547,7 +546,7 @@ Deaths/Male06/10 M6Dth10
 
 // Male 07
 
-$random Sights/Male07 {
+$random Sights/Male07{
 	Sights/Male07/01
 	Sights/Male07/02
 	Sights/Male07/03
@@ -584,7 +583,7 @@ $random Sights/Male07 {
 	Sights/Male07/34
 	Sights/Male07/35
 	Sights/Male07/36
-	Sights/Male07/37 }
+	Sights/Male07/37}
 
 Sights/Male07/01 M7Sit01
 Sights/Male07/02 M7Sit02
@@ -624,7 +623,7 @@ Sights/Male07/35 M7Sit35
 Sights/Male07/36 M7Sit36
 Sights/Male07/37 M7Sit37
 
-$random Pains/Male07 { Pains/Male07/01 Pains/Male07/02 Pains/Male07/03 Pains/Male07/04 Pains/Male07/05 Pains/Male07/06 Pains/Male07/07 }
+$random Pains/Male07{Pains/Male07/01 Pains/Male07/02 Pains/Male07/03 Pains/Male07/04 Pains/Male07/05 Pains/Male07/06 Pains/Male07/07}
 Pains/Male07/01 M7Hit01
 Pains/Male07/02 M7Hit02
 Pains/Male07/03 M7Hit03
@@ -632,7 +631,7 @@ Pains/Male07/04 M7Hit04
 Pains/Male07/05 M7Hit05
 Pains/Male07/06 M7Hit06
 Pains/Male07/07 M7Hit07
-$random Deaths/Male07 { Deaths/Male07/01 Deaths/Male07/02 Deaths/Male07/03 Deaths/Male07/04 Deaths/Male07/05 Deaths/Male07/06 Deaths/Male07/07 }
+$random Deaths/Male07{Deaths/Male07/01 Deaths/Male07/02 Deaths/Male07/03 Deaths/Male07/04 Deaths/Male07/05 Deaths/Male07/06 Deaths/Male07/07}
 Deaths/Male07/01 M7Dth01
 Deaths/Male07/02 M7Dth02
 Deaths/Male07/03 M7Dth03
@@ -643,7 +642,7 @@ Deaths/Male07/07 M7Dth07
 
 // Male 08
 
-$random Sights/Male08 {
+$random Sights/Male08{
 Sights/Male08/01
 Sights/Male08/02
 Sights/Male08/03
@@ -660,7 +659,7 @@ Sights/Male08/13
 Sights/Male08/14
 Sights/Male08/15
 Sights/Male08/16
-Sights/Male08/17 }
+Sights/Male08/17}
 
 Sights/Male08/01 M8Sit01
 Sights/Male08/02 M8Sit02
@@ -680,7 +679,7 @@ Sights/Male08/15 M8Sit15
 Sights/Male08/16 M8Sit16
 Sights/Male08/17 M8Sit17
 
-$random Pains/Male08 {
+$random Pains/Male08{
 Pains/Male08/01
 Pains/Male08/02
 Pains/Male08/03
@@ -689,7 +688,7 @@ Pains/Male08/05
 Pains/Male08/06
 Pains/Male08/07
 Pains/Male08/08
-Pains/Male08/09 }
+Pains/Male08/09}
 
 Pains/Male08/01 M8Hit01
 Pains/Male08/02 M8Hit02
@@ -701,16 +700,16 @@ Pains/Male08/07 M8Hit07
 Pains/Male08/08 M8Hit08
 Pains/Male08/09 M8Hit09
 
-$random Throws/Male08 { Throws/Male08/01 Throws/Male08/02 }
+$random Throws/Male08{Throws/Male08/01 Throws/Male08/02}
 Throws/Male08/01 m8thr01
 Throws/Male08/02 m8thr02
 
-$random Deaths/Male08 {
+$random Deaths/Male08{
 Deaths/Male08/01
 Deaths/Male08/02
 Deaths/Male08/03
 Deaths/Male08/04
-Deaths/Male08/05 }
+Deaths/Male08/05}
 
 Deaths/Male08/01 m8dth01
 Deaths/Male08/02 m8dth02
@@ -720,7 +719,7 @@ Deaths/Male08/05 m8dth05
 
 // Male 09
 
-$random Sights/Male09 {
+$random Sights/Male09{
 Sights/Male09/01
 Sights/Male09/02
 Sights/Male09/03
@@ -733,7 +732,7 @@ Sights/Male09/09
 Sights/Male09/10
 Sights/Male09/11
 Sights/Male09/12
-Sights/Male09/13 }
+Sights/Male09/13}
 
 Sights/Male09/01 M9Sit01
 Sights/Male09/02 M9Sit02
@@ -749,12 +748,12 @@ Sights/Male09/11 M9Sit11
 Sights/Male09/12 M9Sit12
 Sights/Male09/13 M9Sit13
 
-$random Pains/Male09 {
+$random Pains/Male09{
 Pains/Male09/01
 Pains/Male09/02
 Pains/Male09/03
 Pains/Male09/04
-Pains/Male09/05 }
+Pains/Male09/05}
 
 Pains/Male09/01 M9Hit01
 Pains/Male09/02 M9Hit02
@@ -762,15 +761,15 @@ Pains/Male09/03 M9Hit03
 Pains/Male09/04 M9Hit04
 Pains/Male09/05 M9Hit05
 
-$random Throws/Male09 { Throws/Male09/01 nul }
+$random Throws/Male09{Throws/Male09/01 nul}
 Throws/Male09/01 M9thr01
 
-$random Deaths/Male09 {
+$random Deaths/Male09{
 Deaths/Male09/01
 Deaths/Male09/02
 Deaths/Male09/03
 Deaths/Male09/04
-Deaths/Male09/05 }
+Deaths/Male09/05}
 
 Deaths/Male09/01 M9dth01
 Deaths/Male09/02 M9dth02
@@ -780,7 +779,7 @@ Deaths/Male09/05 M9dth05
 
 // Male 10
 
-$random Sights/Male10 {
+$random Sights/Male10{
 	Sights/Male10/01
 	Sights/Male10/02
 	Sights/Male10/03
@@ -803,7 +802,7 @@ $random Sights/Male10 {
 	Sights/Male10/20
 	Sights/Male10/21
 	Sights/Male10/22
-	Sights/Male10/23 }
+	Sights/Male10/23}
 
 Sights/Male10/01 MaSit01
 Sights/Male10/02 MaSit02
@@ -831,7 +830,7 @@ Sights/Male10/23 MaSit23
 
 // MALE 11
 
-$random Sights/Male11 { 
+$random Sights/Male11{
 Sights/Male11/01
 Sights/Male11/02
 Sights/Male11/03
@@ -871,7 +870,7 @@ Sights/Male11/36
 Sights/Male11/37
 Sights/Male11/38
 Sights/Male11/39
-Sights/Male11/40 }
+Sights/Male11/40}
 
 Sights/Male11/01 mbsit01
 Sights/Male11/02 mbsit02
@@ -916,11 +915,11 @@ Sights/Male11/40 mbsit40
 
 // Male Scientist
 
-$random Scientist/See { Scientist/See1 Scientist/See2 Scientist/See3 Scientist/See4 Scientist/See5 Scientist/See6 }
-$random Scientist/Death { Scientist/Death1 Scientist/Death2 Scientist/Death3 Scientist/Death4 Scientist/Death5 }
-$random Scientist/Pain { Scientist/Pain1 Scientist/Pain2 Scientist/Pain3 Scientist/Pain4 Scientist/Pain5 }
+$random Scientist/See{Scientist/See1 Scientist/See2 Scientist/See3 Scientist/See4 Scientist/See5 Scientist/See6}
+$random Scientist/Death{Scientist/Death1 Scientist/Death2 Scientist/Death3 Scientist/Death4 Scientist/Death5}
+$random Scientist/Pain{Scientist/Pain1 Scientist/Pain2 Scientist/Pain3 Scientist/Pain4 Scientist/Pain5}
 Scientist/See1 Scisee1
-Scientist/See2 Scisee2 
+Scientist/See2 Scisee2
 Scientist/See3 Scisee3
 Scientist/See4 Scisee4
 Scientist/See5 Scisee5
@@ -939,7 +938,7 @@ Scientist/Blaster Scifire
 Scientist/BlasterHit Sciexplo
 
 // Female 01
-$random Sights/Female01 { Sights/Female01/01 Sights/Female01/02 Sights/Female01/03 Sights/Female01/04 Sights/Female01/05 Sights/Female01/06 Sights/Female01/07 }
+$random Sights/Female01{Sights/Female01/01 Sights/Female01/02 Sights/Female01/03 Sights/Female01/04 Sights/Female01/05 Sights/Female01/06 Sights/Female01/07}
 Sights/Female01/01 F1Sit01
 Sights/Female01/02 F1Sit02
 Sights/Female01/03 F1Sit03
@@ -947,14 +946,14 @@ Sights/Female01/04 F1Sit04
 Sights/Female01/05 F1Sit05
 Sights/Female01/06 F1Sit06
 Sights/Female01/07 F1Sit07
-$random Pains/Female01 { Pains/Female01/01 Pains/Female01/02 Pains/Female01/03 Pains/Female01/04 Pains/Female01/05 Pains/Female01/06 }
+$random Pains/Female01{Pains/Female01/01 Pains/Female01/02 Pains/Female01/03 Pains/Female01/04 Pains/Female01/05 Pains/Female01/06}
 Pains/Female01/01 F1Hit01
 Pains/Female01/02 F1Hit02
 Pains/Female01/03 F1Hit03
 Pains/Female01/04 F1Hit04
 Pains/Female01/05 F1Hit05
 Pains/Female01/06 F1Hit06
-$random Deaths/Female01 { Deaths/Female01/01 Deaths/Female01/02 Deaths/Female01/03 Deaths/Female01/04 Deaths/Female01/05 Deaths/Female01/06 }
+$random Deaths/Female01{Deaths/Female01/01 Deaths/Female01/02 Deaths/Female01/03 Deaths/Female01/04 Deaths/Female01/05 Deaths/Female01/06}
 Deaths/Female01/01 F1Dth01
 Deaths/Female01/02 F1Dth02
 Deaths/Female01/03 F1Dth03
@@ -963,7 +962,7 @@ Deaths/Female01/05 F1Dth05
 Deaths/Female01/06 F1Dth06
 
 // Female 02
-$random Sights/Female02 {
+$random Sights/Female02{
 	Sights/Female02/01
 	Sights/Female02/02
 	Sights/Female02/03
@@ -993,8 +992,8 @@ $random Sights/Female02 {
 	Sights/Female02/27
 	Sights/Female02/28
 	Sights/Female02/29
-	Sights/Female02/30 }
-	
+	Sights/Female02/30}
+
 Sights/Female02/01 F2Sit01
 Sights/Female02/02 F2Sit02
 Sights/Female02/03 F2Sit03
@@ -1026,14 +1025,14 @@ Sights/Female02/28 F2Sit28
 Sights/Female02/29 F2Sit29
 Sights/Female02/30 F2Sit30
 
-$random Pains/Female02 { Pains/Female02/01 Pains/Female02/02 Pains/Female02/03 Pains/Female02/04 Pains/Female02/05 Pains/Female02/06 }
+$random Pains/Female02{Pains/Female02/01 Pains/Female02/02 Pains/Female02/03 Pains/Female02/04 Pains/Female02/05 Pains/Female02/06}
 Pains/Female02/01 F2Hit01
 Pains/Female02/02 F2Hit02
 Pains/Female02/03 F2Hit03
 Pains/Female02/04 F2Hit04
 Pains/Female02/05 F2Hit05
 Pains/Female02/06 F2Hit06
-$random Deaths/Female02 { Deaths/Female02/01 Deaths/Female02/02 Deaths/Female02/03 Deaths/Female02/04 Deaths/Female02/05 Deaths/Female02/06 Deaths/Female02/07 }
+$random Deaths/Female02{Deaths/Female02/01 Deaths/Female02/02 Deaths/Female02/03 Deaths/Female02/04 Deaths/Female02/05 Deaths/Female02/06 Deaths/Female02/07}
 Deaths/Female02/01 F2Dth01
 Deaths/Female02/02 F2Dth02
 Deaths/Female02/03 F2Dth03
@@ -1043,7 +1042,7 @@ Deaths/Female02/06 F2Dth06
 Deaths/Female02/07 F2Dth07
 
 // Female 02
-$random Sights/Female03 {
+$random Sights/Female03{
 	Sights/Female03/01
 	Sights/Female03/02
 	Sights/Female03/03
@@ -1068,8 +1067,8 @@ $random Sights/Female03 {
 	Sights/Female03/22
 	Sights/Female03/23
 	Sights/Female03/24
-	Sights/Female03/25 }
-	
+	Sights/Female03/25}
+
 Sights/Female03/01 F3Sit01
 Sights/Female03/02 F3Sit02
 Sights/Female03/03 F3Sit03
@@ -1096,7 +1095,7 @@ Sights/Female03/23 F3Sit23
 Sights/Female03/24 F3Sit24
 Sights/Female03/25 F3Sit25
 
-$random Pains/Female03 { Pains/Female03/01 Pains/Female03/02 Pains/Female03/03 Pains/Female03/04 Pains/Female03/05 Pains/Female03/06 Pains/Female03/07 Pains/Female03/08 }
+$random Pains/Female03{Pains/Female03/01 Pains/Female03/02 Pains/Female03/03 Pains/Female03/04 Pains/Female03/05 Pains/Female03/06 Pains/Female03/07 Pains/Female03/08}
 Pains/Female03/01 F3Hit01
 Pains/Female03/02 F3Hit02
 Pains/Female03/03 F3Hit03
@@ -1105,7 +1104,7 @@ Pains/Female03/05 F3Hit05
 Pains/Female03/06 F3Hit06
 Pains/Female03/07 F3Hit07
 Pains/Female03/08 F3Hit08
-$random Deaths/Female03 { Deaths/Female03/01 Deaths/Female03/02 Deaths/Female03/03 Deaths/Female03/04 Deaths/Female03/05 Deaths/Female03/06 }
+$random Deaths/Female03{Deaths/Female03/01 Deaths/Female03/02 Deaths/Female03/03 Deaths/Female03/04 Deaths/Female03/05 Deaths/Female03/06}
 Deaths/Female03/01 F3Dth01
 Deaths/Female03/02 F3Dth02
 Deaths/Female03/03 F3Dth03
@@ -1114,7 +1113,7 @@ Deaths/Female03/05 F3Dth05
 Deaths/Female03/06 F3Dth06
 
 // Wesker
-$random Sights/Wesker { Sights/Wesker01 Sights/Wesker02 Sights/Wesker03 Sights/Wesker04 Sights/Wesker05 Sights/Wesker06 Sights/Wesker07 Sights/Wesker08 Sights/Wesker09 Sights/Wesker10 Sights/Wesker11 Sights/Wesker12 RareSights/Wesker }
+$random Sights/Wesker{Sights/Wesker01 Sights/Wesker02 Sights/Wesker03 Sights/Wesker04 Sights/Wesker05 Sights/Wesker06 Sights/Wesker07 Sights/Wesker08 Sights/Wesker09 Sights/Wesker10 Sights/Wesker11 Sights/Wesker12 RareSights/Wesker}
 Sights/Wesker01 WESKST1
 Sights/Wesker02 WESKST2
 Sights/Wesker03 WESKST3
@@ -1128,7 +1127,7 @@ Sights/Wesker10 WESKST10
 Sights/Wesker11 WESKST11
 Sights/Wesker12 WESKST12
 
-$random RareSights/Wesker { RareSights/Wesker01 RareSights/Wesker02 RareSights/Wesker03 RareSights/Wesker04 RareSights/Wesker05 RareSights/Wesker06 RareSights/Wesker07 RareSights/Wesker08 }
+$random RareSights/Wesker{RareSights/Wesker01 RareSights/Wesker02 RareSights/Wesker03 RareSights/Wesker04 RareSights/Wesker05 RareSights/Wesker06 RareSights/Wesker07 RareSights/Wesker08}
 RareSights/Wesker01 WESKRS1
 RareSights/Wesker02 WESKRS2
 RareSights/Wesker03 WESKRS3
@@ -1138,7 +1137,7 @@ RareSights/Wesker06 WESKRS6
 RareSights/Wesker07 WESKRS7
 RareSights/Wesker08 WESKRS8
 
-$random Active/Wesker { Active/Wesker01 Active/Wesker02 Active/Wesker03 Active/Wesker04 Active/Wesker05 Active/Wesker06 Active/Wesker07 }
+$random Active/Wesker{Active/Wesker01 Active/Wesker02 Active/Wesker03 Active/Wesker04 Active/Wesker05 Active/Wesker06 Active/Wesker07}
 Active/Wesker01 WESKAL1
 Active/Wesker02 WESKAL2
 Active/Wesker03 WESKAL3
@@ -1147,7 +1146,7 @@ Active/Wesker05 WESKAL5
 Active/Wesker06 WESKAL6
 Active/Wesker07 WESKAL7
 
-$random Pains/Wesker { Pains/Wesker01 Pains/Wesker02 Pains/Wesker03 Pains/Wesker04 Pains/Wesker05 Pains/Wesker06 Pains/Wesker07 Pains/Wesker08 Pains/Wesker09 Pains/Wesker10 Pains/Wesker11 }
+$random Pains/Wesker{Pains/Wesker01 Pains/Wesker02 Pains/Wesker03 Pains/Wesker04 Pains/Wesker05 Pains/Wesker06 Pains/Wesker07 Pains/Wesker08 Pains/Wesker09 Pains/Wesker10 Pains/Wesker11}
 Pains/Wesker01 WESKPN1
 Pains/Wesker02 WESKPN2
 Pains/Wesker03 WESKPN3
@@ -1160,7 +1159,7 @@ Pains/Wesker09 WESKPN9
 Pains/Wesker00 WESKPN10
 Pains/Wesker01 WESKPN11
 
-$random Deaths/Wesker { Deaths/Wesker01 Deaths/Wesker02 Deaths/Wesker03 Deaths/Wesker04 Deaths/Wesker05 Deaths/Wesker06 Deaths/Wesker07 Deaths/Wesker08 Deaths/Wesker09 }
+$random Deaths/Wesker{Deaths/Wesker01 Deaths/Wesker02 Deaths/Wesker03 Deaths/Wesker04 Deaths/Wesker05 Deaths/Wesker06 Deaths/Wesker07 Deaths/Wesker08 Deaths/Wesker09}
 Deaths/Wesker01 WESKDE1
 Deaths/Wesker02 WESKDE2
 Deaths/Wesker03 WESKDE3
@@ -1172,7 +1171,7 @@ Deaths/Wesker08 WESKDE8
 Deaths/Wesker09 WESKDE9
 
 // Mr. Falcon (Yippie-ki-yay.)
-$random Sights/MrFalcon { 
+$random Sights/MrFalcon{
 Sights/MrFalcon/01
 Sights/MrFalcon/02
 Sights/MrFalcon/03
@@ -1181,7 +1180,7 @@ Sights/MrFalcon/05
 Sights/MrFalcon/06
 Sights/MrFalcon/07
 Sights/MrFalcon/08
-RareSights/MrFalcon }
+RareSights/MrFalcon}
 
 Sights/MrFalcon/01 Mfsit01
 Sights/MrFalcon/02 Mfsit02
@@ -1192,14 +1191,14 @@ Sights/MrFalcon/06 Mfsit06
 Sights/MrFalcon/07 Mfsit07
 Sights/MrFalcon/08 Mfsit08
 
-$random RareSights/MrFalcon {
+$random RareSights/MrFalcon{
 RareSights/MrFalcon/01
 RareSights/MrFalcon/02
 RareSights/MrFalcon/03
 RareSights/MrFalcon/04
 RareSights/MrFalcon/05
 RareSights/MrFalcon/06
-RareSights/MrFalcon/07 }
+RareSights/MrFalcon/07}
 
 RareSights/MrFalcon/01 Mfrsit01
 RareSights/MrFalcon/02 Mfrsit02
@@ -1209,22 +1208,22 @@ RareSights/MrFalcon/05 Mfrsit05
 RareSights/MrFalcon/06 Mfrsit06
 RareSights/MrFalcon/07 Mfrsit07
 
-$random Pains/MrFalcon {
-Pains/MrFalcon/01 
-Pains/MrFalcon/02 
-Pains/MrFalcon/03 
-Pains/MrFalcon/04 
-Pains/MrFalcon/05 
-Pains/MrFalcon/06 
-Pains/MrFalcon/07 
-Pains/MrFalcon/08 
-Pains/MrFalcon/09 
-Pains/MrFalcon/10 
-Pains/MrFalcon/11 
-Pains/MrFalcon/12 
-Pains/MrFalcon/13 
-Pains/MrFalcon/14 
-Pains/MrFalcon/15 }
+$random Pains/MrFalcon{
+Pains/MrFalcon/01
+Pains/MrFalcon/02
+Pains/MrFalcon/03
+Pains/MrFalcon/04
+Pains/MrFalcon/05
+Pains/MrFalcon/06
+Pains/MrFalcon/07
+Pains/MrFalcon/08
+Pains/MrFalcon/09
+Pains/MrFalcon/10
+Pains/MrFalcon/11
+Pains/MrFalcon/12
+Pains/MrFalcon/13
+Pains/MrFalcon/14
+Pains/MrFalcon/15}
 
 Pains/MrFalcon/01 Mfhit01
 Pains/MrFalcon/02 Mfhit02
@@ -1242,13 +1241,13 @@ Pains/MrFalcon/13 Mfhit13
 Pains/MrFalcon/14 Mfhit14
 Pains/MrFalcon/15 Mfhit15
 
-$random HeavyPains/MrFalcon {
+$random HeavyPains/MrFalcon{
 HeavyPains/MrFalcon/01
 HeavyPains/MrFalcon/02
 HeavyPains/MrFalcon/03
 HeavyPains/MrFalcon/04
 HeavyPains/MrFalcon/05
-HeavyPains/MrFalcon/06 }
+HeavyPains/MrFalcon/06}
 
 HeavyPains/MrFalcon/01 mfphit01
 HeavyPains/MrFalcon/02 mfphit02
@@ -1257,21 +1256,21 @@ HeavyPains/MrFalcon/04 mfphit04
 HeavyPains/MrFalcon/05 mfphit05
 HeavyPains/MrFalcon/06 mfphit06
 
-$random Firing/MrFalcon {
+$random Firing/MrFalcon{
 Firing/MrFalcon/01
 Firing/MrFalcon/02
 Firing/MrFalcon/03
 Firing/MrFalcon/04
 Firing/MrFalcon/05
 Firing/MrFalcon/06
-Firing/MrFalcon/07 
+Firing/MrFalcon/07
 empty
 empty
 empty
 empty
 empty
 empty
-empty }
+empty}
 
 Firing/MrFalcon/01 mffir01
 Firing/MrFalcon/02 mffir02
@@ -1281,14 +1280,14 @@ Firing/MrFalcon/05 mffir05
 Firing/MrFalcon/06 mffir06
 Firing/MrFalcon/07 mffir07
 
-$random Reloading/MrFalcon {
+$random Reloading/MrFalcon{
 Reloading/MrFalcon/01
 Reloading/MrFalcon/02
 Reloading/MrFalcon/03
 Reloading/MrFalcon/04
 Reloading/MrFalcon/05
 Reloading/MrFalcon/06
-Reloading/MrFalcon/07 }
+Reloading/MrFalcon/07}
 
 Reloading/MrFalcon/01 mfload01
 Reloading/MrFalcon/02 mfload02
@@ -1298,11 +1297,11 @@ Reloading/MrFalcon/05 mfload05
 Reloading/MrFalcon/06 mfload06
 Reloading/MrFalcon/07 mfload07
 
-$random UberDeaths/MrFalcon {
+$random UberDeaths/MrFalcon{
 UberDeaths/MrFalcon/01
 UberDeaths/MrFalcon/02
 UberDeaths/MrFalcon/03
-UberDeaths/MrFalcon/04 }
+UberDeaths/MrFalcon/04}
 
 UberDeaths/MrFalcon/01 mfdth01
 UberDeaths/MrFalcon/02 mfdth02
@@ -1310,7 +1309,7 @@ UberDeaths/MrFalcon/03 mfdth03
 UberDeaths/MrFalcon/04 mfdth04
 
 // Civilians - Bum
-$random Bum/Sight { Bum/Sight1 Bum/Sight2 Bum/Sight3 Bum/Sight4 Bum/Sight5 Bum/Sight6 }
+$random Bum/Sight{Bum/Sight1 Bum/Sight2 Bum/Sight3 Bum/Sight4 Bum/Sight5 Bum/Sight6}
 Bum/Sight1 Bumsee1
 Bum/Sight2 Bumsee2
 Bum/Sight3 Bumsee3
@@ -1319,7 +1318,7 @@ Bum/Sight5 Bumsee5
 Bum/Sight6 Bumsee6
 Bum/Pain bumpain
 Bum/Death bumdeath
-$random Bum/Active { Bum/Active1 Bum/Active2 Bum/Active3 Bum/Active4 Bum/Active5 }
+$random Bum/Active{Bum/Active1 Bum/Active2 Bum/Active3 Bum/Active4 Bum/Active5}
 Bum/Active1 bumact1
 Bum/Active2 bumact2
 Bum/Active3 bumact3
@@ -1328,17 +1327,17 @@ Bum/Active5 bumact5
 
 // Civilians - Female 1
 
-$random FemCiv/Sight { FemCiv/Sight1 FemCiv/Sight2 FemCiv/Sight3 FemCiv/Sight4 FemCiv/Sight5 }
+$random FemCiv/Sight{FemCiv/Sight1 FemCiv/Sight2 FemCiv/Sight3 FemCiv/Sight4 FemCiv/Sight5}
 FemCiv/Sight1 civfhlp1
 FemCiv/Sight2 civfhlp2
 FemCiv/Sight3 civfhlp3
 FemCiv/Sight4 civfhlp4
 FemCiv/Sight5 civfhlp5
-$random FemCiv/Pain { FemCiv/Pain1 FemCiv/Pain2 FemCiv/Pain3 }
+$random FemCiv/Pain{FemCiv/Pain1 FemCiv/Pain2 FemCiv/Pain3}
 FemCiv/Pain1 civfhit1
 FemCiv/Pain2 civfhit2
 FemCiv/Pain3 civfhit3
-$random FemCiv/Saved { FemCiv/Saved1 FemCiv/Saved2 FemCiv/Saved3 FemCiv/Saved4 }
+$random FemCiv/Saved{FemCiv/Saved1 FemCiv/Saved2 FemCiv/Saved3 FemCiv/Saved4}
 FemCiv/Saved1 civfsav1
 FemCiv/Saved2 civfsav2
 FemCiv/Saved3 civfsav3
@@ -1346,13 +1345,13 @@ FemCiv/Saved4 civfsav4
 
 // Civilians - Male 1
 
-$random MaleCiv/Sight { MaleCiv/Sight1 MaleCiv/Sight2 MaleCiv/Sight3 MaleCiv/Sight4 MaleCiv/Sight5 }
+$random MaleCiv/Sight{MaleCiv/Sight1 MaleCiv/Sight2 MaleCiv/Sight3 MaleCiv/Sight4 MaleCiv/Sight5}
 MaleCiv/Sight1 civmsit1
 MaleCiv/Sight2 civmsit2
 MaleCiv/Sight3 civmsit3
 MaleCiv/Sight4 civmsit4
 MaleCiv/Sight5 civmsit5
-$random MaleCiv/Pain { MaleCiv/Pain1 MaleCiv/Pain2 MaleCiv/Pain3 }
+$random MaleCiv/Pain{MaleCiv/Pain1 MaleCiv/Pain2 MaleCiv/Pain3}
 MaleCiv/Pain1 civmhit1
 MaleCiv/Pain2 civmhit2
 MaleCiv/Pain3 civmhit3
@@ -1361,11 +1360,11 @@ MaleCiv/Pain5 civmhit5
 MaleCiv/Pain6 civmhit6
 MaleCiv/Pain7 civmhit7
 MaleCiv/Pain8 civmhit8
-$random MaleCiv/Death { MaleCiv/Death1 MaleCiv/Death2 MaleCiv/Death3 }
+$random MaleCiv/Death{MaleCiv/Death1 MaleCiv/Death2 MaleCiv/Death3}
 MaleCiv/Death1 civmdth1
 MaleCiv/Death2 civmdth2
 MaleCiv/Death3 civmdth3
-$random MaleCiv/Saved { MaleCiv/Saved1 MaleCiv/Saved2 }
+$random MaleCiv/Saved{MaleCiv/Saved1 MaleCiv/Saved2}
 MaleCiv/Saved1 civmsav1
 MaleCiv/Saved2 civmsav2
 
@@ -1410,7 +1409,7 @@ caleb/die3		caldth3
 caleb/die4		caldth4
 caleb/die5		caldth5
 
-$random Sights/Caleb { caleb/sight1 caleb/sight2 caleb/sight3 caleb/sight4 caleb/sight5 caleb/sight6 caleb/sight7 }
-$random Actives/Caleb { caleb/active1 caleb/active2 caleb/active3 }
-$random Pains/Caleb { caleb/pain1 caleb/pain2 caleb/pain3 caleb/pain4 caleb/pain5 }
-$random Deaths/Caleb { caleb/die1 caleb/die2 caleb/die3 caleb/die4 caleb/die5 }
+$random Sights/Caleb{caleb/sight1 caleb/sight2 caleb/sight3 caleb/sight4 caleb/sight5 caleb/sight6 caleb/sight7}
+$random Actives/Caleb{caleb/active1 caleb/active2 caleb/active3}
+$random Pains/Caleb{caleb/pain1 caleb/pain2 caleb/pain3 caleb/pain4 caleb/pain5}
+$random Deaths/Caleb{caleb/die1 caleb/die2 caleb/die3 caleb/die4 caleb/die5}

@@ -10,6 +10,7 @@ gameinfo
 	menufontcolor_selection = "Green"
 	dimcolor = "#000000"
 	dimamount = "0.5"
+	playerclasses="WWTPlayer"
 }
 
 clearskills
@@ -264,42 +265,176 @@ Intermission Inter_Cast16
 	}
 }
 
-/*
-// And here comes the casting call!
-
-Intermission Inter_Cast
+MAP TITLEMAP "Terrorists!"
 {
-	Image
-	{
-		Background = "WLFTITLE"
-		Time = -1
-		Music = "HORSTW"
-	}
-	Link = Doom2Cast
+	precachesounds="Dryfire/Pistol","Dryfire/SMG","Dryfire/Rifle","Dryfire/Revolver",
+	"Dryfire/Heavy","Kick/Hit1","Kick/Hit2","Kick/Hit3","Kick/Hit4","Kick/Swing1",
+	"Kick/Swing2","Kick/Wall","Kick/WallHeavy","Kick/Shockwave","Taser/Pickup","Taser/Hit",
+	"Taser/Zap","Taser/Wall","Taser/Loop","Taser/Upgrade","Beretta/PlayerFire","Beretta/EnemyFire",
+	"Beretta/Reload","Beretta/Reload2","Beretta/Empty","Beretta/Ready","Beretta/Drop",
+	"Beretta/Silent","Mateba/Fire","Mateba/Open","Mateba/Out","Mateba/In","Mateba/Close",
+	"Mateba/EnemyFire","Mateba/WeskerFire","Mateba/ZoomIn","Mateba/Ready","Striker/Fire1",
+	"Striker/Fire2","Striker/EnemyFire","Striker/Load","Striker/Pickup","Striker/Eject",
+	"Striker/Ready","Striker/Clipout","Striker/Clipin","Uzi/Fire","Uzi/EnemyFire",
+	"Uzi/Clipout","Uzi/Clipin","Uzi/Cock","Uzi/FireSilent","Ak47/Fire","AK47/Enemyfire",
+	"Ak47/Clipout","Ak47/Clipin","Ak47/Cock","Ak47/Grenadefire","ak47/grenadeopen",
+	"ak47/grenadeload","ak47/grenadeclose","Barrett/Fire","Barrett/Clipout","Barrett/Clipin",
+	"Barrett/Boltback","Barrett/Boltfwd","Barrett/Explode","Barrett/ZoomIn","MGL/Fire",
+	"MGL/Open","MGL/Load","MGL/Close","M60/FireLoop","M60/FireStop","M60/BeltMove",
+	"M60/GripOn","M60/GripOff","M60/Open","M60/Load","M60/Close","M60/Bolt","M60/Enemyfire",
+	"grenade/throw","grenade/bounce1","grenade/bounce2","grenade/bounce3","grenade/bounce4",
+	"grenade/explode1","grenade/explode2","grenade/explode3","grenade/elecexplode",
+	"grenade/pickup","grenade/melee","Flash/fire","doors/dr1_start","doors/dr1_mid",
+	"doors/dr1_stop","doors/openquick","doors/closequick","doors/slamquick","plats/liftstart",
+	"plats/liftmove","plats/liftstop","plats/slowstart","plats/slowmove","plats/slowstop",
+	"bcase1","bcase2","bcase3","bcase4","scases1","scases2","scases3","scasesb1",
+	"scasesb2","sc1","sc2","sc3","sc4","sc5","sc6","lc1","lc2","lc3","lc4","lc5",
+	"lc6","Bullet/Ricochet1","Bullet/Ricochet2","Bullet/Ricochet3","Bullet/Ricochet4",
+	"Bullet/Ricochet5","Bullet/HitFlesh1","Bullet/HitFlesh2","Bullet/HitFlesh3","Bullet/HitFlesh4",
+	"Bullet/HitFlesh5","Bullet/HitMetal1","Bullet/HitMetal2","Bullet/HitMetal3","Bullet/HitMetal4",
+	"Misc/Bodyfall01","Misc/Bodyfall02","Misc/Bodyfall03","Misc/Bodyfall04","Misc/Bodyfall05",
+	"Misc/Bodyfall06","Misc/Bodyfall07","Misc/Bodyfall08","Misc/Bodyfall09","Misc/Bodyfall10",
+	"Misc/Bodyfall11","Misc/Bodyfall12","Misc/Bodyfall13","explosion1","explosion2",
+	"explosion3","explosion4","explosion5","explosion6","explosion7","barrelx1","barrelx2",
+	"barrelx3","barrelx4","Burning/Male1","Burning/Male2","Burning/Male3","Burning/Male4",
+	"Burning/Male5","Burning/Male6","Burning/Male7","Burning/Male8","Burning/Male9",
+	"Burning/Female1","Burning/Female2","Burning/Female3","Burning/Female4","Burning/Female5",
+	"Burning/Female6","Burning/Female7","Tasered/Male1","Tasered/Male2","Tasered/Male3",
+	"Tasered/Male4","Tasered/Male5","Tasered/Male6","Tasered/Male7","Tasered/Male8",
+	"Tasered/Male9","Tasered/Male10","Tasered/Female1","Tasered/Female2","Tasered/Female3",
+	"Tasered/Female4","Tasered/Female5","UAV1/Missile","UAV1/BayOpen","UAV1/Death",
+	"UAV1/Active","UAV1/MissileHit1","UAV1/MissileHit2","UAV1/MissileHit3","Seekerbot/See",
+	"Seekerbot/Pain","Seekerbot/Alert","Skimmer/See1","Skimmer/See2","Skimmer/See3",
+	"Skimmer/See4","Skimmer/See5","Skimmer/Pain1","Skimmer/Pain2","Skimmer/Pain3",
+	"Skimmer/Death1","Skimmer/Death2","Skimmer/Death3","Skimmer/Death4","Skimmer/Burst",
+	"Sights/Male01/01","Sights/Male01/02","Sights/Male01/03","Sights/Male01/04","Sights/Male01/05",
+	"Sights/Male01/06","Sights/Male01/07","Pains/Male01/01","Pains/Male01/02","Pains/Male01/03",
+	"Pains/Male01/04","Pains/Male01/05","Pains/Male01/06","Pains/Male01/07","Deaths/Male01/01",
+	"Deaths/Male01/02","Deaths/Male01/03","Deaths/Male01/04","Deaths/Male01/05","Deaths/Male01/06",
+	"Deaths/Male01/07","Deaths/Male01/08","Deaths/Male01/09","Deaths/Male01/10","Sights/Male02/01",
+	"Sights/Male02/02","Sights/Male02/03","Sights/Male02/04","Sights/Male02/05","Sights/Male02/06",
+	"Sights/Male02/07","Sights/Male02/08","Sights/Male02/09","Pains/Male02/01","Pains/Male02/02",
+	"Pains/Male02/03","Pains/Male02/04","Deaths/Male02/01","Deaths/Male02/02","Deaths/Male02/03",
+	"Deaths/Male02/04","Deaths/Male02/05","Deaths/Male02/06","Deaths/Male02/07","Deaths/Male02/08",
+	"Deaths/Male02/09","Deaths/Male02/10","Sights/Male03/01","Sights/Male03/02","Sights/Male03/03",
+	"Sights/Male03/04","Sights/Male03/05","Sights/Male03/06","Pains/Male03/01","Pains/Male03/02",
+	"Sights/Male04/01","Sights/Male04/02","Sights/Male04/03","Sights/Male04/04","Sights/Male04/05",
+	"Sights/Male04/06","Sights/Male04/07","Sights/Male04/08","Sights/Male04/09","Sights/Male04/10",
+	"Sights/Male04/11","Sights/Male04/12","Sights/Male04/13","Sights/Male04/14","Sights/Male04/15",
+	"Sights/Male04/16","Sights/Male04/17","Sights/Male04/18","Pains/Male04/01","Pains/Male04/02",
+	"Pains/Male04/03","Pains/Male04/04","Pains/Male04/05","Pains/Male04/06","Pains/Male04/07",
+	"Pains/Male04/08","Pains/Male04/09","Pains/Male04/10","Pains/Male04/11","Pains/Male04/12",
+	"Pains/Male04/13","Pains/Male04/14","Pains/Male04/15","Pains/Male04/16","Deaths/Male04/01",
+	"Deaths/Male04/02","Deaths/Male04/03","Deaths/Male04/04","Deaths/Male04/05","Deaths/Male04/06",
+	"Deaths/Male04/07","Deaths/Male04/08","Deaths/Male04/09","Deaths/Male04/10","Deaths/Male04/11",
+	"Sights/Male05/01","Sights/Male05/02","Sights/Male05/03","Sights/Male05/04","Sights/Male05/05",
+	"Sights/Male05/06","Sights/Male05/07","Sights/Male05/08","Pains/Male05/01","Pains/Male05/02",
+	"Pains/Male05/03","Pains/Male05/04","Pains/Male05/05","Pains/Male05/06","Pains/Male05/07",
+	"Pains/Male05/08","Deaths/Male05/01","Deaths/Male05/02","Deaths/Male05/03","Deaths/Male05/04",
+	"Deaths/Male05/05","Deaths/Male05/06","Deaths/Male05/07","Deaths/Male05/08","Deaths/Male05/09",
+	"Sights/Male06/01","Sights/Male06/02","Sights/Male06/03","Sights/Male06/04","Sights/Male06/05",
+	"Sights/Male06/06","Sights/Male06/07","Sights/Male06/08","Sights/Male06/09","Sights/Male06/10",
+	"Sights/Male06/11","Sights/Male06/12","Sights/Male06/13","Sights/Male06/14","Sights/Male06/15",
+	"Pains/Male06/01","Pains/Male06/02","Pains/Male06/03","Pains/Male06/04","Pains/Male06/05",
+	"Pains/Male06/06","Pains/Male06/07","Pains/Male06/08","Deaths/Male06/01","Deaths/Male06/02",
+	"Deaths/Male06/03","Deaths/Male06/04","Deaths/Male06/05","Deaths/Male06/06","Deaths/Male06/07",
+	"Deaths/Male06/08","Deaths/Male06/09","Deaths/Male06/10","Sights/Male07/01","Sights/Male07/02",
+	"Sights/Male07/03","Sights/Male07/04","Sights/Male07/05","Sights/Male07/06","Sights/Male07/07",
+	"Sights/Male07/08","Sights/Male07/09","Sights/Male07/10","Sights/Male07/11","Sights/Male07/12",
+	"Sights/Male07/13","Sights/Male07/14","Sights/Male07/15","Sights/Male07/16","Sights/Male07/17",
+	"Sights/Male07/18","Sights/Male07/19","Sights/Male07/20","Sights/Male07/21","Sights/Male07/22",
+	"Sights/Male07/23","Sights/Male07/24","Sights/Male07/25","Sights/Male07/26","Sights/Male07/27",
+	"Sights/Male07/28","Sights/Male07/29","Sights/Male07/30","Sights/Male07/31","Sights/Male07/32",
+	"Sights/Male07/33","Sights/Male07/34","Sights/Male07/35","Sights/Male07/36","Sights/Male07/37",
+	"Pains/Male07/01","Pains/Male07/02","Pains/Male07/03","Pains/Male07/04","Pains/Male07/05",
+	"Pains/Male07/06","Pains/Male07/07","Deaths/Male07/01","Deaths/Male07/02","Deaths/Male07/03",
+	"Deaths/Male07/04","Deaths/Male07/05","Deaths/Male07/06","Deaths/Male07/07","Sights/Male08/01",
+	"Sights/Male08/02","Sights/Male08/03","Sights/Male08/04","Sights/Male08/05","Sights/Male08/06",
+	"Sights/Male08/07","Sights/Male08/08","Sights/Male08/09","Sights/Male08/10","Sights/Male08/11",
+	"Sights/Male08/12","Sights/Male08/13","Sights/Male08/14","Sights/Male08/15","Sights/Male08/16",
+	"Sights/Male08/17","Pains/Male08/01","Pains/Male08/02","Pains/Male08/03","Pains/Male08/04",
+	"Pains/Male08/05","Pains/Male08/06","Pains/Male08/07","Pains/Male08/08","Pains/Male08/09",
+	"Throws/Male08/01","Throws/Male08/02","Deaths/Male08/01","Deaths/Male08/02","Deaths/Male08/03",
+	"Deaths/Male08/04","Deaths/Male08/05","Sights/Male09/01","Sights/Male09/02","Sights/Male09/03",
+	"Sights/Male09/04","Sights/Male09/05","Sights/Male09/06","Sights/Male09/07","Sights/Male09/08",
+	"Sights/Male09/09","Sights/Male09/10","Sights/Male09/11","Sights/Male09/12","Sights/Male09/13",
+	"Pains/Male09/01","Pains/Male09/02","Pains/Male09/03","Pains/Male09/04","Pains/Male09/05",
+	"Throws/Male09/01","Deaths/Male09/01","Deaths/Male09/02","Deaths/Male09/03","Deaths/Male09/04",
+	"Deaths/Male09/05","Sights/Male10/01","Sights/Male10/02","Sights/Male10/03","Sights/Male10/04",
+	"Sights/Male10/05","Sights/Male10/06","Sights/Male10/07","Sights/Male10/08","Sights/Male10/09",
+	"Sights/Male10/10","Sights/Male10/11","Sights/Male10/12","Sights/Male10/13","Sights/Male10/14",
+	"Sights/Male10/15","Sights/Male10/16","Sights/Male10/17","Sights/Male10/18","Sights/Male10/19",
+	"Sights/Male10/20","Sights/Male10/21","Sights/Male10/22","Sights/Male10/23","Sights/Male11/01",
+	"Sights/Male11/02","Sights/Male11/03","Sights/Male11/04","Sights/Male11/05","Sights/Male11/06",
+	"Sights/Male11/07","Sights/Male11/08","Sights/Male11/09","Sights/Male11/10","Sights/Male11/11",
+	"Sights/Male11/12","Sights/Male11/13","Sights/Male11/14","Sights/Male11/15","Sights/Male11/16",
+	"Sights/Male11/17","Sights/Male11/18","Sights/Male11/19","Sights/Male11/20","Sights/Male11/21",
+	"Sights/Male11/22","Sights/Male11/23","Sights/Male11/24","Sights/Male11/25","Sights/Male11/26",
+	"Sights/Male11/27","Sights/Male11/28","Sights/Male11/29","Sights/Male11/30","Sights/Male11/31",
+	"Sights/Male11/32","Sights/Male11/33","Sights/Male11/34","Sights/Male11/35","Sights/Male11/36",
+	"Sights/Male11/37","Sights/Male11/38","Sights/Male11/39","Sights/Male11/40","Scientist/See1",
+	"Scientist/See2","Scientist/See3","Scientist/See4","Scientist/See5","Scientist/See6",
+	"Scientist/Death1","Scientist/Death2","Scientist/Death3","Scientist/Death4","Scientist/Death5",
+	"Scientist/Pain1","Scientist/Pain2","Scientist/Pain3","Scientist/Pain4","Scientist/Pain5",
+	"Scientist/Blaster","Scientist/BlasterHit","Sights/Female01/01","Sights/Female01/02",
+	"Sights/Female01/03","Sights/Female01/04","Sights/Female01/05","Sights/Female01/06",
+	"Sights/Female01/07","Pains/Female01/01","Pains/Female01/02","Pains/Female01/03",
+	"Pains/Female01/04","Pains/Female01/05","Pains/Female01/06","Deaths/Female01/01",
+	"Deaths/Female01/02","Deaths/Female01/03","Deaths/Female01/04","Deaths/Female01/05",
+	"Deaths/Female01/06","Sights/Female02/01","Sights/Female02/02","Sights/Female02/03",
+	"Sights/Female02/04","Sights/Female02/05","Sights/Female02/06","Sights/Female02/07",
+	"Sights/Female02/08","Sights/Female02/09","Sights/Female02/10","Sights/Female02/11",
+	"Sights/Female02/12","Sights/Female02/13","Sights/Female02/14","Sights/Female02/15",
+	"Sights/Female02/16","Sights/Female02/17","Sights/Female02/18","Sights/Female02/19",
+	"Sights/Female02/20","Sights/Female02/21","Sights/Female02/22","Sights/Female02/23",
+	"Sights/Female02/24","Sights/Female02/25","Sights/Female02/26","Sights/Female02/27",
+	"Sights/Female02/28","Sights/Female02/29","Sights/Female02/30","Pains/Female02/01",
+	"Pains/Female02/02","Pains/Female02/03","Pains/Female02/04","Pains/Female02/05",
+	"Pains/Female02/06","Deaths/Female02/01","Deaths/Female02/02","Deaths/Female02/03",
+	"Deaths/Female02/04","Deaths/Female02/05","Deaths/Female02/06","Deaths/Female02/07",
+	"Sights/Female03/01","Sights/Female03/02","Sights/Female03/03","Sights/Female03/04",
+	"Sights/Female03/05","Sights/Female03/06","Sights/Female03/07","Sights/Female03/08",
+	"Sights/Female03/09","Sights/Female03/10","Sights/Female03/11","Sights/Female03/12",
+	"Sights/Female03/13","Sights/Female03/14","Sights/Female03/15","Sights/Female03/16",
+	"Sights/Female03/17","Sights/Female03/18","Sights/Female03/19","Sights/Female03/20",
+	"Sights/Female03/21","Sights/Female03/22","Sights/Female03/23","Sights/Female03/24",
+	"Sights/Female03/25","Pains/Female03/01","Pains/Female03/02","Pains/Female03/03",
+	"Pains/Female03/04","Pains/Female03/05","Pains/Female03/06","Pains/Female03/07",
+	"Pains/Female03/08","Deaths/Female03/01","Deaths/Female03/02","Deaths/Female03/03",
+	"Deaths/Female03/04","Deaths/Female03/05","Deaths/Female03/06","Sights/Wesker01",
+	"Sights/Wesker02","Sights/Wesker03","Sights/Wesker04","Sights/Wesker05","Sights/Wesker06",
+	"Sights/Wesker07","Sights/Wesker08","Sights/Wesker09","Sights/Wesker10","Sights/Wesker11",
+	"Sights/Wesker12","RareSights/Wesker01","RareSights/Wesker02","RareSights/Wesker03",
+	"RareSights/Wesker04","RareSights/Wesker05","RareSights/Wesker06","RareSights/Wesker07",
+	"RareSights/Wesker08","Active/Wesker01","Active/Wesker02","Active/Wesker03","Active/Wesker04",
+	"Active/Wesker05","Active/Wesker06","Active/Wesker07","Pains/Wesker01","Pains/Wesker02",
+	"Pains/Wesker03","Pains/Wesker04","Pains/Wesker05","Pains/Wesker06","Pains/Wesker07",
+	"Pains/Wesker08","Pains/Wesker09","Pains/Wesker00","Pains/Wesker01","Deaths/Wesker01",
+	"Deaths/Wesker02","Deaths/Wesker03","Deaths/Wesker04","Deaths/Wesker05","Deaths/Wesker06",
+	"Deaths/Wesker07","Deaths/Wesker08","Deaths/Wesker09","Sights/MrFalcon/01","Sights/MrFalcon/02",
+	"Sights/MrFalcon/03","Sights/MrFalcon/04","Sights/MrFalcon/05","Sights/MrFalcon/06",
+	"Sights/MrFalcon/07","Sights/MrFalcon/08","RareSights/MrFalcon/01","RareSights/MrFalcon/02",
+	"RareSights/MrFalcon/03","RareSights/MrFalcon/04","RareSights/MrFalcon/05","RareSights/MrFalcon/06",
+	"RareSights/MrFalcon/07","Pains/MrFalcon/01","Pains/MrFalcon/02","Pains/MrFalcon/03",
+	"Pains/MrFalcon/04","Pains/MrFalcon/05","Pains/MrFalcon/06","Pains/MrFalcon/07",
+	"Pains/MrFalcon/08","Pains/MrFalcon/09","Pains/MrFalcon/10","Pains/MrFalcon/11",
+	"Pains/MrFalcon/12","Pains/MrFalcon/13","Pains/MrFalcon/14","Pains/MrFalcon/15",
+	"HeavyPains/MrFalcon/01","HeavyPains/MrFalcon/02","HeavyPains/MrFalcon/03","HeavyPains/MrFalcon/04",
+	"HeavyPains/MrFalcon/05","HeavyPains/MrFalcon/06","Firing/MrFalcon/01","Firing/MrFalcon/02",
+	"Firing/MrFalcon/03","Firing/MrFalcon/04","Firing/MrFalcon/05","Firing/MrFalcon/06",
+	"Firing/MrFalcon/07","Reloading/MrFalcon/01","Reloading/MrFalcon/02","Reloading/MrFalcon/03",
+	"Reloading/MrFalcon/04","Reloading/MrFalcon/05","Reloading/MrFalcon/06","Reloading/MrFalcon/07",
+	"UberDeaths/MrFalcon/01","UberDeaths/MrFalcon/02","UberDeaths/MrFalcon/03","UberDeaths/MrFalcon/04",
+	"Bum/Sight1","Bum/Sight2","Bum/Sight3","Bum/Sight4","Bum/Sight5","Bum/Sight6",
+	"Bum/Pain","Bum/Death","Bum/Active1","Bum/Active2","Bum/Active3","Bum/Active4",
+	"Bum/Active5","FemCiv/Sight1","FemCiv/Sight2","FemCiv/Sight3","FemCiv/Sight4",
+	"FemCiv/Sight5","FemCiv/Pain1","FemCiv/Pain2","FemCiv/Pain3","FemCiv/Saved1",
+	"FemCiv/Saved2","FemCiv/Saved3","FemCiv/Saved4","MaleCiv/Sight1","MaleCiv/Sight2",
+	"MaleCiv/Sight3","MaleCiv/Sight4","MaleCiv/Sight5","MaleCiv/Pain1","MaleCiv/Pain2",
+	"MaleCiv/Pain3","MaleCiv/Pain4","MaleCiv/Pain5","MaleCiv/Pain6","MaleCiv/Pain7",
+	"MaleCiv/Pain8","MaleCiv/Death1","MaleCiv/Death2","MaleCiv/Death3","MaleCiv/Saved1",
+	"MaleCiv/Saved2","Stryker/Saved","caleb/sight1","caleb/sight2","caleb/sight3",
+	"caleb/sight4","caleb/sight5","caleb/sight6","caleb/sight7","caleb/active1","caleb/active2",
+	"caleb/active3","caleb/pain1","caleb/pain2","caleb/pain3","caleb/pain4","caleb/pain5",
+	"caleb/die1","caleb/die2","caleb/die3","caleb/die4","caleb/die5"
 }
-
-Intermission Doom2Cast
-{
-	Cast
-	{
-		CastClass = "PistolThug1"
-		CastName = "Matt Damon as Pistol Thug"
-	}
-	Cast
-	{
-		CastClass = "Cop2"
-		CastName = "Keifer Sutherland as Police Rookie"
-	}
-	Cast
-	{
-		CastClass = "Cop1"
-		CastName = "Robert Patrick as Police Sergeant"
-	}
-	
-	Cast
-	{
-		CastClass = "MagnumFemale"
-		CastName = "Rachel Ticotin as Magnum Lady"
-	}
-	Link = Doom2Cast	// restart cast call
-} */

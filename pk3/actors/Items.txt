@@ -1,5 +1,4 @@
 // Ammos
-
 ACTOR 9mmAmmo : Ammo
 {
 	Inventory.Amount 8
@@ -7,7 +6,7 @@ ACTOR 9mmAmmo : Ammo
 	Ammo.BackpackAmount 15
 	Ammo.BackpackMaxAmount 300
 	Inventory.Icon "9MMPB0"
-	Scale 0.15
+	Scale .15
 	Inventory.PickupMessage "Picked up some 9mm ammo."
 	Inventory.PickupSound "Beretta/Ready"
 	Tag "9x19mm"
@@ -24,7 +23,6 @@ ACTOR 9mmAmmoSmall : 9mmAmmo
 	Inventory.Amount 6
 	Inventory.PickupMessage "Picked up a bit of 9mm ammo."
 	Inventory.PickupSound "Beretta/Drop"
-	+DROPPED
 	States
 	{
 	Spawn:
@@ -38,7 +36,7 @@ ACTOR 9mmAmmoLarge : 9mmAmmo replaces Shell
 	Inventory.Amount 20
 	Inventory.PickupMessage "Picked up a box of 9mm ammo."
 	Inventory.PickupSound "Uzi/Clipout"
-	Scale 0.2
+	Scale .2
 	States
 	{
 	Spawn:
@@ -54,7 +52,7 @@ ACTOR 12gaAmmo : Ammo
 	Ammo.BackpackAmount 6
 	Ammo.BackpackMaxAmount 96
 	Inventory.Icon "12GPA0"
-	Scale 0.25
+	Scale .25
 	Inventory.PickupMessage "Picked up a box of 12-gauge ammo."
 	Inventory.PickupSound "Striker/Load"
 	Tag "12g Shell"
@@ -71,7 +69,6 @@ ACTOR 12gaAmmoSmall : 12gaAmmo
 	Inventory.Amount 5
 	Inventory.PickupMessage "Picked up a handful of 12-gauge shells."
 	Inventory.PickupSound "Striker/Eject"
-	+DROPPED
 	States
 	{
 	Spawn:
@@ -87,7 +84,7 @@ ACTOR 762mmAmmo : Ammo replaces ShellBox
 	Ammo.BackpackAmount 15
 	Ammo.BackpackMaxAmount 400
 	Inventory.Icon "762PA0"
-	Scale 0.15
+	Scale .15
 	Inventory.PickupMessage "Picked up some 7.62mm ammo."
 	Inventory.PickupSound "AK47/Clipout"
 	Tag "7.62mm"
@@ -104,7 +101,7 @@ ACTOR 762mmAmmoLarge : 762mmAmmo replaces CellPack
 	Inventory.Amount 90
 	Inventory.PickupMessage "Picked up a box of 7.62mm ammo."
 	Inventory.PickupSound "M60/Load"
-	Scale 0.4
+	Scale .4
 	States
 	{
 	Spawn:
@@ -120,7 +117,7 @@ ACTOR 44MagAmmo : Ammo
 	Ammo.BackpackAmount 4
 	Ammo.BackpackMaxAmount 84
 	Inventory.Icon "44MPB0"
-	Scale 0.2
+	Scale .2
 	Inventory.PickupMessage "Picked up a box of .44 Magnum ammo."
 	Inventory.PickupSound "Mateba/Open"
 	Tag ".44 Magnum"
@@ -137,8 +134,7 @@ ACTOR 44MagAmmoSmall : 44MagAmmo
 	Inventory.Amount 2
 	Inventory.PickupMessage "Picked up a used .44 Magnum cylinder."
 	Inventory.PickupSound "Mateba/Out"
-	Scale 0.13
-	+DROPPED
+	Scale .13
 	States
 	{
 	Spawn:
@@ -154,7 +150,7 @@ ACTOR 50BMGAmmo : Ammo replaces RocketBox
 	Ammo.BackpackAmount 1
 	Ammo.BackpackMaxAmount 50
 	Inventory.Icon "AMRAA0"
-	Scale 0.2
+	Scale .2
 	Inventory.PickupMessage "Picked up some .50 BMG ammo."
 	Inventory.PickupSound "Barrett/Clipout"
 	Tag ".50 BMG"
@@ -173,7 +169,7 @@ ACTOR 40mmAmmo : Ammo replaces Cell
 	Ammo.BackpackAmount 3
 	Ammo.BackpackMaxAmount 60
 	Inventory.Icon "AMRAA0"
-	Scale 0.3
+	Scale .3
 	Inventory.PickupMessage "Picked up some 40mm HE grenades."
 	Inventory.PickupSound "MGL/Load"
 	Tag "40mm HE Grenade"
@@ -188,10 +184,9 @@ ACTOR 40mmAmmo : Ammo replaces Cell
 Actor WWTBackpack : BackpackItem
 {
 	Height 26
-	ConversationID 187
 	Inventory.PickupMessage "Picked up an ammo pack."
 	Inventory.PickupSound "Pickups/Backpack"
-	Scale 0.25
+	Scale .25
 	States
 	{
 	Spawn:
@@ -208,8 +203,7 @@ ACTOR BackpackSpawner replaces Backpack
 	States
 	{
 	Spawn:
-		TNT1 A 0
-		TNT1 A 1 A_Fall
+		TNT1 A 1 NODELAY A_Fall
 		Stop
 	}
 }
@@ -228,10 +222,9 @@ ACTOR BulletSpawner2 : RandomSpawner replaces ClipBox
 }
 
 // Armors
-
 ACTOR WWTArmorBonus : ArmorBonus replaces ArmorBonus
 {
-	Scale 0.2
+	Scale .2
 	Inventory.PickupMessage "Picked up an armor pad."
 	Inventory.PickupSound "Pickups/Armor1"
 	States
@@ -248,10 +241,10 @@ ACTOR WWTKevlarArmor : BasicArmorPickup replaces GreenArmor
 	Inventory.PickupSound "Pickups/Armor2"
 	Armor.SaveAmount 100
 	Armor.SavePercent 75
-	DamageFactor "Enemy9mm", 0.5
-	DamageFactor "EnemyShotgun", 0.2
-	DamageFactor "Enemy762mm", 1.0
-	Scale 0.4
+	DamageFactor "Enemy9mm",.5
+	DamageFactor "EnemyShotgun",.2
+	DamageFactor "Enemy762mm",1.0
+	Scale .4
 	States
 	{
 	Spawn:
@@ -267,10 +260,10 @@ ACTOR WWTCompositeArmor : BasicArmorPickup replaces BlueArmor
 	Inventory.PickupSound "Pickups/Armor3"
 	Armor.SaveAmount 150
 	Armor.SavePercent 50
-	DamageFactor "Enemy9mm", 0.2
-	DamageFactor "EnemyShotgun", 0.2
-	DamageFactor "Enemy762mm", 0.4
-	Scale 0.5
+	DamageFactor "Enemy9mm",.2
+	DamageFactor "EnemyShotgun",.2
+	DamageFactor "Enemy762mm",.4
+	Scale .5
 	States
 	{
 	Spawn:
@@ -289,7 +282,7 @@ ACTOR SupershieldArmor : BasicArmorPickup
 ACTOR SupershieldArmor2x : SupershieldArmor
 {
 	Armor.SaveAmount 500
-	Armor.SavePercent 100	
+	Armor.SavePercent 100
 }
 
 ACTOR SupershieldInvulnEffect : PowerInvulnerable
@@ -308,31 +301,11 @@ ACTOR SupershieldInvulnItem : PowerupGiver
 	Powerup.Color BlueMap
 }
 
-
-
-ACTOR SuperSupershieldItem : CustomInventory
-{
-	Inventory.PickupMessage "Received a vial of refined Isotope-556."
-	Inventory.PickupSound "Pickups/Vial"
-	Scale 0.2
-	States
-	{
-	Spawn:
-		VIAL A 10 Bright
-		VIAL A 10
-		Loop
-	Pickup:
-		VIAL A 0 A_GiveInventory("SupershieldArmor2x", 1)
-		VIAL A 0 A_GiveInventory("SupershieldInvulnItem", 1)
-		Stop
-	}
-}
-
 ACTOR SupershieldItem : CustomInventory
 {
 	Inventory.PickupMessage "Found an unrefined Isotope-556 plant."
 	Inventory.PickupSound "Pickups/Plant"
-	Scale 0.2
+	Scale .2
 	States
 	{
 	Spawn:
@@ -340,14 +313,29 @@ ACTOR SupershieldItem : CustomInventory
 		HERB A 10
 		Loop
 	Pickup:
-		VIAL A 0 A_GiveInventory("SupershieldArmor", 1)
-		VIAL A 0 A_GiveInventory("SupershieldInvulnItem", 1)
+		VIAL A 0 A_GiveInventory("SupershieldArmor")
+		VIAL A 0 A_GiveInventory("SupershieldInvulnItem")
 		Stop
 	}
 }
 
-// Health
+ACTOR SuperSupershieldItem : SupershieldItem
+{
+	Inventory.PickupMessage "Received a vial of refined Isotope-556."
+	Inventory.PickupSound "Pickups/Vial"
+	States
+	{
+	Spawn:
+		VIAL A 10 Bright
+		VIAL A 10
+		Loop
+	Pickup:
+		VIAL A 0 A_GiveInventory("SupershieldArmor2x")
+		Goto Super::Pickup+1
+	}
+}
 
+// Health
 ACTOR PowerBooze : Health
 {
 	+COUNTITEM
@@ -357,7 +345,7 @@ ACTOR PowerBooze : Health
 	Inventory.MaxAmount 200
 	Inventory.PickupMessage "Received some strong booze."
 	Inventory.PickupSound "Pickups/Booze"
-	Scale 0.5
+	Scale .5
 	States
 	{
 	Spawn:
@@ -371,7 +359,7 @@ ACTOR WeakBooze : PowerBooze
 {
 	Inventory.Amount 25
 	Inventory.PickupMessage "Found some cheap booze."
-	Scale 0.6
+	Scale .6
 	States
 	{
 	Spawn:
@@ -383,7 +371,7 @@ ACTOR WeakBooze : PowerBooze
 
 ACTOR WWTBandage : HealthBonus replaces HealthBonus
 {
-	Scale 0.075
+	Scale .075
 	Inventory.PickupMessage "Picked up a MediPatch."
 	Inventory.PickupSound "Pickups/MedSmall"
 	States
@@ -396,7 +384,7 @@ ACTOR WWTBandage : HealthBonus replaces HealthBonus
 
 ACTOR WWTGauze : Stimpack replaces Stimpack
 {
-	Scale 0.1
+	Scale .1
 	Inventory.PickupMessage "Picked up a HealFast(tm) bandage."
 	Inventory.PickupSound "Pickups/MedMedium"
 	States
@@ -409,10 +397,10 @@ ACTOR WWTGauze : Stimpack replaces Stimpack
 
 ACTOR WWTMedkit : Medikit replaces Medikit
 {
-	Scale 0.08
+	Scale .08
 	Inventory.PickupMessage "Picked up a medical kit."
 	Inventory.PickupSound "Pickups/MedLarge"
-	Health.LowMessage 25, "Picked up a badly needed medical kit."
+	Health.LowMessage 25,"Picked up a badly needed medical kit."
 	States
 	{
 	Spawn:
@@ -422,12 +410,11 @@ ACTOR WWTMedkit : Medikit replaces Medikit
 }
 
 // Others
-
 ACTOR IbexUpgradeKit : CustomInventory
 {
 	Inventory.PickupMessage "Received an IBEX Upgrade Kit."
 	Inventory.PickupSound "Pickups/Ibex"
-	Scale 0.4
+	Scale .4
 	States
 	{
 	Spawn:
@@ -444,7 +431,7 @@ ACTOR SuperBattery : CustomInventory
 {
 	Inventory.PickupMessage "Found a Thunderbolt battery."
 	Inventory.PickupSound "Taser/Upgrade"
-	Scale 0.25
+	Scale .25
 	States
 	{
 	Spawn:
@@ -452,7 +439,7 @@ ACTOR SuperBattery : CustomInventory
 		9VLT A 10
 		Loop
 	Pickup:
-		9VLT A 0 A_GiveInventory("TaserExp", 999)
+		9VLT A 0 A_GiveInventory("TaserExp",20)
 		Stop
 	}
 }
@@ -489,8 +476,8 @@ ACTOR StrongBlueprint : CustomInventory
 		BMAP B 10
 		Loop
 	Pickup:
-		BMAP B 0 A_GiveInventory("WeakBlueprint", 1)
-		BMAP B 0 A_GiveInventory("WWTScanner", 1)
+		BMAP B 0 A_GiveInventory("WeakBlueprint")
+		BMAP B 0 A_GiveInventory("WWTScanner")
 		Stop
 	}
 }
@@ -506,10 +493,10 @@ ACTOR WWTScanner : PowerupGiver
 ACTOR WeakKickLevel : Medikit
 {
 	Inventory.PickupMessage "Found some painkillers."
-	Health.LowMessage 25, "Painkillers. Geez, could get addicted at this rate..."
+	Health.LowMessage 25,"Painkillers. Geez, could get addicted at this rate..."
 	Inventory.PickupSound "Pickups/Pills"
 	Inventory.Amount 100
-	Scale 0.6
+	Scale .6
 	States
 	{
 	Spawn:
@@ -523,7 +510,7 @@ ACTOR StrongKickLevel : CustomInventory
 {
 	Inventory.PickupMessage "Received spiritual enlightenment."
 	Inventory.PickupSound "Pickups/Scroll"
-	Scale 0.5
+	Scale .5
 	States
 	{
 	Spawn:
@@ -531,14 +518,14 @@ ACTOR StrongKickLevel : CustomInventory
 		SCRL A 10
 		Loop
 	Pickup:
-		SCRL A 0 A_GiveInventory("KickExp", 999)
+		SCRL A 0 A_GiveInventory("KickExp",50)
 		Stop
 	}
 }
 
 ACTOR StrongKoin : CustomInventory
 {
-	Scale 0.1
+	Scale .1
 	+COUNTITEM
 	+INVENTORY.FANCYPICKUPSOUND
 	+INVENTORY.ALWAYSPICKUP
@@ -552,8 +539,8 @@ ACTOR StrongKoin : CustomInventory
 		KOIN A 10
 		Loop
 	Pickup:
-		KOIN A 0 A_GiveInventory("PowerBooze", 1)
-		KOIN A 0 A_GiveInventory("WWTCompositeArmor", 150)
+		KOIN A 0 A_GiveInventory("PowerBooze")
+		KOIN A 0 A_GiveInventory("WWTCompositeArmor",150)
 		Stop
 	}
 }

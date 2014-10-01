@@ -1,6 +1,3 @@
-clearplayerclasses
-addplayerclass WildWeaselPlayer
-
 addkeysection "Terrorists!" TerroristsKeys
 addmenukey "Throw Grenade" throwgrenade
 addmenukey "Toggle Melee Type" toggletaser

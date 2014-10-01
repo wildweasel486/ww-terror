@@ -55,70 +55,69 @@ const int STUNTIME = 105; // Thanks, Kate.
 #include "actors/civilians/OfficeExec.txt"
 #include "actors/civilians/CoatGuy.txt"
 
-Actor WildWeaselPlayer : DoomPlayer 
+Actor WWTPlayer : DoomPlayer
 {
+	Player.DisplayName "John SomeGuyWithAPistol"
 	GibHealth -50
 	Player.InvulnerabilityMode "reflective"
 	Player.StartItem "Beretta"
 	Player.StartItem "WWTFists"
-	Player.StartItem "BerettaLoaded" 15
-	Player.StartItem "MatebaLoaded" 3
-	Player.StartItem "UziLoaded" 16
-	Player.StartItem "AK47Loaded" 15
-	Player.StartItem "StrikerLoaded" 6
-	Player.StartItem "BarrettLoaded" 3
-	Player.StartItem "MGLLoaded" 3
-	Player.StartItem "M60Loaded" 50
-	Player.StartItem "9mmAmmo" 30
-	Player.StartItem "GrenadePickup" 1
+	Player.StartItem "BerettaLoaded",15
+	Player.StartItem "MatebaLoaded",3
+	Player.StartItem "UziLoaded",16
+	Player.StartItem "AK47Loaded",15
+	Player.StartItem "StrikerLoaded",6
+	Player.StartItem "BarrettLoaded",3
+	Player.StartItem "MGLLoaded",3
+	Player.StartItem "M60Loaded",50
+	Player.StartItem "9mmAmmo",30
+	Player.StartItem "GrenadePickup"
 	Player.ViewHeight 49
 	Player.AttackZOffset 17
-	Player.ColorRange 0 0
+	Player.ColorRange 0,0
 	Player.AttackZOffset 18
 	Player.CrouchSprite ""
-	Player.DisplayName "Weasel"
 	Player.SoundClass "Weasel"
-	DamageFactor "PlayerTaser", 0.05
+	DamageFactor "PlayerTaser",.05
 	Scale 1.1
+	Player.WeaponSlot 1,Beretta
+	Player.WeaponSlot 2,Mateba
+	Player.WeaponSlot 3,WWTStriker
+	Player.WeaponSlot 4,WWTUzi
+	Player.WeaponSlot 5,WWTAK47
+	Player.WeaponSlot 6,Barrett
+	Player.WeaponSlot 7,MGL140
+	Player.WeaponSlot 8,WWTM60
 	States
 	{
 	Spawn:
 		WEAS A 1
-   		Loop
-   	See:
-      	WEAS ABCD 6
-      	goto Spawn
-    Pain:
-		WEAS G 0
-        WEAS G 3 A_Pain
-        Goto Spawn
+		Loop
+	See:
+		WEAS ABCD 6
+		Loop
+	Pain:
+		WEAS G 3 A_Pain
+		Goto Spawn
 	Pain.PlayerElectricGrenade:
 	Pain.PlayerTaser:
 	Pain.EnemyTaser:
-		WEAS G 0 A_SetBlend("00 55 FF", 0.5, 10)
-		WEAS G 5 SetPlayerProperty(0, 1, PROP_TOTALLYFROZEN)
-		WEAS G 1 SetPlayerProperty(0, 0, PROP_TOTALLYFROZEN)
+		WEAS G 0 A_SetBlend("00 55 FF",0.5,10)
+		WEAS G 6 ACS_NamedExecuteAlways("Tased",0)
 		Goto Spawn
 	Pain.EnemyFlash:
-		WEAS G 0 A_SetBlend("77 77 77", 1.0, 175)
+		WEAS G 0 A_SetBlend("77 77 77",1.0,175)
 		WEAS G 3 A_Pain
 		Goto Spawn
 	Missile:
-		WEAS E 12 
+		WEAS E 12
 		Goto Spawn
 	Melee:
 		WEAS F 6 BRIGHT
 		Goto Missile
 	Death:
 		WEAS H 5 A_PlayerScream
-		WEAS I 5 
-		WEAS J 5 A_NoBlocking
-		WEAS K 5
-		WEAS L -1
-		Stop
-	XDeath:
-		WEAS H 5
-		WEAS I 5 A_XScream
+		WEAS I 5
 		WEAS J 5 A_NoBlocking
 		WEAS K 5
 		WEAS L -1

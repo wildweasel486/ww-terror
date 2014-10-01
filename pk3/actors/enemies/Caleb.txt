@@ -1,22 +1,9 @@
-ACTOR CalebPistolTracer : Tracer
-{
-	Damage (random(6,9))
-	Speed 40
-	FastSpeed 70
-	DamageType "EnemyBullet"
-	DamageType "Enemy9mm"
-}
-
-
 ACTOR Caleb : WWTBadGuy replaces WolfensteinSS
 {
-	YScale 0.5
-	XScale 0.55
-	Radius 20
-	Height 56
+	YScale .5
+	XScale .55
 	Health 50
 	Speed 16
-	PainChance 255
 	SeeSound "Sights/Caleb"
 	PainSound "Pains/Caleb"
 	DeathSound "Deaths/Caleb"
@@ -25,8 +12,6 @@ ACTOR Caleb : WWTBadGuy replaces WolfensteinSS
 	DropItem "Mateba"
 	DropItem "Mateba"
 	Obituary "%o's not really a match for crazy gunslingers."
-	MONSTER
-	+FLOORCLIP
 	States
 	{
 	Spawn:
@@ -39,30 +24,30 @@ ACTOR Caleb : WWTBadGuy replaces WolfensteinSS
 		CALB G 5 Fast A_FaceTarget
 	Missile2:
 	    CALB G 0 A_Jump(80,"Laugh")
-		CALB G 0 A_PlayWeaponSound("Mateba/EnemyFire")
-		CALF A 0 A_CustomMissile("CalebPistolTracer", 42, -10, frandom(-6.0,6.0))
-		CALF A 2 BRIGHT A_CustomMissile("CalebPistolTracer", 42, 10, frandom(-3.0,3.0))
+		CALB G 0 A_PlaySound("Mateba/EnemyFire",CHAN_WEAPON)
+		CALF A 0 A_CustomMissile("CalebPistolTracer",42,-10,frandom(-6.0,6.0))
+		CALF A 2 BRIGHT A_CustomMissile("CalebPistolTracer",42,10,frandom(-3.0,3.0))
 		CALB G 2
 		CALB G 4 A_FaceTarget
-		CALB G 0 A_PlayWeaponSound("Mateba/EnemyFire")
-		CALF A 0 A_CustomMissile("CalebPistolTracer", 42, -10, frandom(-6.0,6.0))
-		CALF A 2 BRIGHT A_CustomMissile("CalebPistolTracer", 42, 10, frandom(-3.0,3.0))
+		CALB G 0 A_PlaySound("Mateba/EnemyFire",CHAN_WEAPON)
+		CALF A 0 A_CustomMissile("CalebPistolTracer",42,-10,frandom(-6.0,6.0))
+		CALF A 2 BRIGHT A_CustomMissile("CalebPistolTracer",42,10,frandom(-3.0,3.0))
 		CALB G 2
 		CALB G 4 A_FaceTarget
-		CALB G 0 A_PlayWeaponSound("Mateba/EnemyFire")
-		CALF A 0 A_CustomMissile("CalebPistolTracer", 42, -10, frandom(-6.0,6.0))
-		CALF A 2 BRIGHT A_CustomMissile("CalebPistolTracer", 42, 10, frandom(-3.0,3.0))
+		CALB G 0 A_PlaySound("Mateba/EnemyFire",CHAN_WEAPON)
+		CALF A 0 A_CustomMissile("CalebPistolTracer",42,-10,frandom(-6.0,6.0))
+		CALF A 2 BRIGHT A_CustomMissile("CalebPistolTracer",42,10,frandom(-3.0,3.0))
 		CALB G 2
 		CALB G 4 A_FaceTarget
-		CALB G 0 A_PlayWeaponSound("Mateba/EnemyFire")
-		CALF A 0 A_CustomMissile("CalebPistolTracer", 42, -10, frandom(-6.0,6.0))
-		CALF A 2 BRIGHT A_CustomMissile("CalebPistolTracer", 42, 10, frandom(-3.0,3.0))
+		CALB G 0 A_PlaySound("Mateba/EnemyFire",CHAN_WEAPON)
+		CALF A 0 A_CustomMissile("CalebPistolTracer",42,-10,frandom(-6.0,6.0))
+		CALF A 2 BRIGHT A_CustomMissile("CalebPistolTracer",42,10,frandom(-3.0,3.0))
 		CALB G 2 A_MonsterRefire(108,"Laugh")
-		CALB G 5 A_MonsterRefire(120, "See")
-		Goto Missile2
+		CALB G 5 A_MonsterRefire(120,"See")
+		Loop
 	Laugh:
 		CALB H 3
-		CALF B 3 A_PlaySound("Actives/Caleb", 5)
+		CALF B 3 A_PlaySound("Actives/Caleb",5)
 		CALB H 3
 		CALF B 3
 		CALB H 3
@@ -94,15 +79,11 @@ ACTOR Caleb : WWTBadGuy replaces WolfensteinSS
 		CALD BCD 3
 		CALD E 3 A_PlaySound("Misc/Bodyfall")
 		CALD FG 3
-		CALD H 3 A_Playsound ("Pains/Caleb", 5)
-		CALD I 3
-		CALD H 3 
-		CALD J 3
-		CALD H 3 A_Playsound ("Pains/Caleb", 6)
-		CALD I 3
-		CALD H 3 
-		CALD J 3
-		CALD H 3 A_Playsound ("Pains/Caleb", 7)
+		CALD H 3 A_Playsound("Pains/Caleb",5)
+		CALD IHJ 3
+		CALD H 3 A_Playsound("Pains/Caleb",6)
+		CALD IHJ 3
+		CALD H 3 A_Playsound("Pains/Caleb",7)
 	    CALD K 3
 	    CALD M 3 A_PlaySound("Misc/Bodyfall")
 		CALD N 3 A_NoBlocking

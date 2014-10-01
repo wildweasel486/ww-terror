@@ -2,65 +2,51 @@ ACTOR Undercover : WWTBadGuy
 {
 	YScale 0.4
 	XScale 0.45
-	Radius 20
-	Height 56
 	Health 110
 	Speed 12
-	PainChance 255
 	SeeSound "Sights/Female02"
 	PainSound "Pains/Female02"
 	DeathSound "Deaths/Female02"
 	DropItem "WWTUzi"
 	DropItem "9mmAmmoLarge" 42
-	DamageFactor "EnemyBullet", 0.3
-	DamageFactor "EnemyGrenade", 0.3
-	DamageFactor "PlayerPistol", 0.5
-	DamageFactor "PlayerUzi", 0.5
-	DamageFactor "PlayerMelee", 2.0
+	DamageFactor "EnemyBullet",0.3
+	DamageFactor "EnemyGrenade",0.3
+	DamageFactor "PlayerPistol",0.5
+	DamageFactor "PlayerUzi",0.5
+	DamageFactor "PlayerMelee",2.0
 	Obituary "%o was given the silent treatment."
-	MONSTER
-	+FLOORCLIP
 	States
 	{
 	Spawn:
-		FTAS A 0 A_GiveInventory("IsFemale", 1)
+		FTAS A 0 NODELAY A_GiveInventory("IsFemale")
 		UNDR A 1 A_Look
-		Loop
+		Wait
 	See:
-		FTAS A 0 A_GiveInventory("IsFemale", 1)
 		UNDR BCDE 6 A_Chase
 		Loop
 	Missile:
 		UNDR FGG 3 A_FaceTarget
-		UNDR G 0 A_JumpIf(CallACS("IsNightmare") >= 4, "MissileNightmare")
-		UNDR G 0 A_PlayWeaponSound("Uzi/FireSilent")
-		UNDR H 2 BRIGHT A_CustomMissile("EnemySMGTracer", 44, 0, frandom(-2.0,2.0))
+		UNDR G 0 A_PlaySound("Uzi/FireSilent",CHAN_WEAPON)
+		UNDR H 2 BRIGHT A_CustomMissile("EnemySMGTracer",44,0,frandom(-2.0,2.0))
 		UNDR G 1 A_FaceTarget
-		UNDR G 0 A_PlayWeaponSound("Uzi/FireSilent")
-		UNDR H 2 BRIGHT A_CustomMissile("EnemySMGTracer", 44, 0, frandom(-2.0,2.0))
+		UNDR G 0 A_PlaySound("Uzi/FireSilent",CHAN_WEAPON)
+		UNDR H 2 BRIGHT A_CustomMissile("EnemySMGTracer",44,0,frandom(-2.0,2.0))
 		UNDR G 1 A_FaceTarget
-		UNDR G 0 A_PlayWeaponSound("Uzi/FireSilent")
-		UNDR H 2 BRIGHT A_CustomMissile("EnemySMGTracer", 44, 0, frandom(-2.0,2.0))
+		UNDR G 0 A_PlaySound("Uzi/FireSilent",CHAN_WEAPON)
+		UNDR H 2 BRIGHT A_CustomMissile("EnemySMGTracer",44,0,frandom(-2.0,2.0))
+		UNDR G 0 A_JumpIf(CallACS("IsNightmare") >= 4,"MissileNightmare")
 		UNDR G 1 A_FaceTarget
-		UNDR G 0 A_PlayWeaponSound("Uzi/FireSilent")
-		UNDR H 2 BRIGHT A_CustomMissile("EnemySMGTracer", 44, 0, frandom(-2.0,2.0))
+		UNDR G 0 A_PlaySound("Uzi/FireSilent",CHAN_WEAPON)
+		UNDR H 2 BRIGHT A_CustomMissile("EnemySMGTracer",44,0,frandom(-2.0,2.0))
 		UNDR G 1 A_FaceTarget
-		UNDR G 0 A_PlayWeaponSound("Uzi/FireSilent")
-		UNDR H 2 BRIGHT A_CustomMissile("EnemySMGTracer", 44, 0, frandom(-2.0,2.0))
+		UNDR G 0 A_PlaySound("Uzi/FireSilent",CHAN_WEAPON)
+		UNDR H 2 BRIGHT A_CustomMissile("EnemySMGTracer",44,0,frandom(-2.0,2.0))
 		UNDR G 2
 		Goto See
 	MissileNightmare:
-		UNDR G 0 A_PlayWeaponSound("Uzi/FireSilent")
-		UNDR H 2 BRIGHT A_CustomMissile("EnemySMGTracer", 44, 0, frandom(-2.0,2.0))
-		UNDR G 1 A_FaceTarget
-		UNDR G 0 A_PlayWeaponSound("Uzi/FireSilent")
-		UNDR H 2 BRIGHT A_CustomMissile("EnemySMGTracer", 44, 0, frandom(-2.0,2.0))
-		UNDR G 2 A_FaceTarget
-		UNDR G 0 A_PlayWeaponSound("Uzi/FireSilent")
-		UNDR H 2 BRIGHT A_CustomMissile("EnemySMGTracer", 44, 0, frandom(-2.0,2.0))
 		UNDR G 2
-		UNDR F 3 A_MonsterRefire(32, "See")
-		Goto MissileNightmare
+		UNDR F 3 A_MonsterRefire(32,"See")
+		Goto Missile+3
 	Pain.PlayerElectricGrenade:
 	Pain.PlayerTaser:
 	Pain.EnemyTaser:
