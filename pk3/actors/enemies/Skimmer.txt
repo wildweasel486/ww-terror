@@ -1,24 +1,15 @@
 // UAV type 2
 // Sprite source: Terminator Rampage by Bethesda Softworks
 
-ACTOR Skimmer : WWTBadGuy replaces PainElemental
+ACTOR Skimmer : WWTRobot replaces PainElemental
 {
-	Health 300
-	Radius 31
-	Height 56
-	Mass 400
+	Height 45
 	Speed 8
-	Painchance 255
 	PainSound "Skimmer/Pain"
 	ActiveSound "Skimmer/See"
 	SeeSound "Skimmer/See"
 	DeathSound "Skimmer/Death"
 	Obituary "%o was skimmed over like the morning news."
-	MONSTER
-	+FLOAT
-	+NOGRAVITY
-	+NOBLOOD
-	+DONTRIP
 	+SPAWNCEILING
 	States
 	{
@@ -30,55 +21,43 @@ ACTOR Skimmer : WWTBadGuy replaces PainElemental
 		Loop
 	Missile:
 		SKIM A 12 A_FaceTarget
-		SKIM B 0 A_PlayWeaponSound("Skimmer/Burst")
-		SKIM B 0 BRIGHT A_CustomMissile("EnemySMGTracer", 26, 35)
+		SKIM B 0 A_PlaySound("Skimmer/Burst",CHAN_WEAPON)
+		SKIM B 0 A_CustomMissile("EnemySMGTracer",26,35)
 		COP3 G 0 A_SpawnItemEx("BulletCasing",24,-24,40,8,2,4,random(-55,-80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
 		COP3 G 0 A_SpawnItemEx("BulletCasing",24,-24,40,8,2,4,random(55,80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
-		SKIM B 2 BRIGHT A_CustomMissile("EnemySMGTracer", 26, -35)
+		SKIM B 2 BRIGHT A_CustomMissile("EnemySMGTracer",26,-35)
 		SKIM A 1
-		SKIM B 0 BRIGHT A_CustomMissile("EnemySMGTracer", 26, 35)
+		SKIM B 0 A_CustomMissile("EnemySMGTracer",26,35)
 		COP3 G 0 A_SpawnItemEx("BulletCasing",24,-24,40,8,2,4,random(-55,-80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
 		COP3 G 0 A_SpawnItemEx("BulletCasing",24,-24,40,8,2,4,random(55,80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
-		SKIM B 2 BRIGHT A_CustomMissile("EnemySMGTracer", 26, -35)
+		SKIM B 2 BRIGHT A_CustomMissile("EnemySMGTracer",26,-35)
 		SKIM A 1
-		SKIM B 0 BRIGHT A_CustomMissile("EnemySMGTracer", 26, 35)
+		SKIM B 0 A_CustomMissile("EnemySMGTracer",26,35)
 		COP3 G 0 A_SpawnItemEx("BulletCasing",24,-24,40,8,2,4,random(-55,-80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
 		COP3 G 0 A_SpawnItemEx("BulletCasing",24,-24,40,8,2,4,random(55,80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
-		SKIM B 2 BRIGHT A_CustomMissile("EnemySMGTracer", 26, -35)
+		SKIM B 2 BRIGHT A_CustomMissile("EnemySMGTracer",26,-35)
 		SKIM A 1
-		SKIM B 0 BRIGHT A_CustomMissile("EnemySMGTracer", 26, 35)
+		SKIM B 0 A_CustomMissile("EnemySMGTracer",26,35)
 		COP3 G 0 A_SpawnItemEx("BulletCasing",24,-24,40,8,2,4,random(-55,-80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
 		COP3 G 0 A_SpawnItemEx("BulletCasing",24,-24,40,8,2,4,random(55,80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
-		SKIM B 2 BRIGHT A_CustomMissile("EnemySMGTracer", 26, -35)
+		SKIM B 2 BRIGHT A_CustomMissile("EnemySMGTracer",26,-35)
 		SKIM A 1
-		SKIM B 0 BRIGHT A_CustomMissile("EnemySMGTracer", 26, 35)
+		SKIM B 0 A_CustomMissile("EnemySMGTracer",26,35)
 		COP3 G 0 A_SpawnItemEx("BulletCasing",24,-24,40,8,2,4,random(-55,-80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
 		COP3 G 0 A_SpawnItemEx("BulletCasing",24,-24,40,8,2,4,random(55,80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
-		SKIM B 2 BRIGHT A_CustomMissile("EnemySMGTracer", 26, -35)
+		SKIM B 2 BRIGHT A_CustomMissile("EnemySMGTracer",26,-35)
 		SKIM A 1
-		SKIM B 0 BRIGHT A_CustomMissile("EnemySMGTracer", 26, 35)
+		SKIM B 0 A_CustomMissile("EnemySMGTracer",26,35)
 		COP3 G 0 A_SpawnItemEx("BulletCasing",24,-24,40,8,2,4,random(-55,-80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
 		COP3 G 0 A_SpawnItemEx("BulletCasing",24,-24,40,8,2,4,random(55,80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
-		SKIM B 2 BRIGHT A_CustomMissile("EnemySMGTracer", 26, -35)
+		SKIM B 2 BRIGHT A_CustomMissile("EnemySMGTracer",26,-35)
 		SKIM A 1
 		Goto See
 	Pain.PlayerElectricGrenade:
 	Pain.PlayerTaser:
 	Pain.EnemyTaser:
 		SKIM A 0
-	Tased:
-		"----" A 0 A_ChangeFlag ("NoPain", 1)
-		"----" A 0 A_Gravity
-		"----" A 0 A_SetUserVar ("user_stuntime", (STUNTIME / 2))
-	TasedLoop:
-		"----" A 1 BRIGHT
-		"----" A 1
-		"----" A 0 A_JumpIf (user_stuntime == 0, 2)
-		"----" A 0 A_SetUserVar ("user_stuntime", user_stuntime - 1)
-		Loop
-		"----" A 0 A_NoGravity
-		"----" A 0 A_ChangeFlag ("NoPain", 0)
-		Goto See
+		Goto Tased
 	Pain:
 		SKIM AAAAAAAAAA 0 A_SpawnItemEx("BulletIneffectiveSpark",0,0,32,frandom(-2.0,2.0),frandom(-2.0,2.0),frandom(3.0,6.0),frandom(0.0,359.9),SXF_NOCHECKPOSITION)
 	Pain.Fire:
@@ -86,7 +65,7 @@ ACTOR Skimmer : WWTBadGuy replaces PainElemental
 		SKIM A 1 A_Pain
 		Goto See
 	Death.PlayerGrenadeFire:
-		"----" A 0 A_GiveToTarget("GrenadeExp", 1)
+		"----" A 0 A_GiveToTarget("GrenadeExp")
 	Death.Fire:
 	Death:
 		SKIM A 0 A_StopSound(CHAN_BODY)

@@ -2,22 +2,17 @@ ACTOR CopTaser : WWTBadGuy
 {
 	YScale 0.35
 	XScale 0.4
-	Radius 20
-	Height 56
 	Health 90
 	Speed 20
-	PainChance 255
 	MeleeRange 64
 	SeeSound "Sights/Male02"
 	PainSound "Pains/Male02"
 	DeathSound "Deaths/Male04"
-	DamageFactor "EnemyBullet", 0.3
-	DamageFactor "EnemyGrenade", 0.3
-	DropItem "WWTTaserPickup", 16
+	DamageFactor "EnemyBullet",0.3
+	DamageFactor "EnemyGrenade",0.3
+	DropItem "WWTTaserPickup",16
 	Obituary "%o's cries of \"Don't tase me, bro!\" went unanswered."
-	DropItem "SuperBattery", 2
-	MONSTER
-	+FLOORCLIP
+	DropItem "SuperBattery",2
 	States
 	{
 	Spawn:
@@ -28,16 +23,16 @@ ACTOR CopTaser : WWTBadGuy
 		Loop
 	Melee:
 		COP2 FG 4 A_FaceTarget
-		COP2 H 0 A_PlaySound("Taser/Zap", CHAN_BODY)
-		COP2 H 1 BRIGHT A_CustomMeleeAttack((2), "Taser/Hit", "", "EnemyTaser", 0)
+		COP2 H 0 A_PlaySound("Taser/Zap",CHAN_BODY)
+		COP2 H 1 BRIGHT A_CustomMeleeAttack(2,"Taser/Hit","","EnemyTaser",0)
 		COP2 G 1
-		COP2 H 1 BRIGHT A_CustomMeleeAttack((2), "Taser/Hit", "", "EnemyTaser", 0)
+		COP2 H 1 BRIGHT A_CustomMeleeAttack(2,"Taser/Hit","","EnemyTaser",0)
 		COP2 G 1
-		COP2 H 1 BRIGHT A_CustomMeleeAttack((2), "Taser/Hit", "", "EnemyTaser", 0)
+		COP2 H 1 BRIGHT A_CustomMeleeAttack(2,"Taser/Hit","","EnemyTaser",0)
 		COP2 G 1
-		COP2 H 1 BRIGHT A_CustomMeleeAttack((2), "Taser/Hit", "", "EnemyTaser", 0)
+		COP2 H 1 BRIGHT A_CustomMeleeAttack(2,"Taser/Hit","","EnemyTaser",0)
 		COP2 G 1
-		COP2 H 1 BRIGHT A_CustomMeleeAttack((2), "Taser/Hit", "", "EnemyTaser", 0)
+		COP2 H 1 BRIGHT A_CustomMeleeAttack(2,"Taser/Hit","","EnemyTaser",0)
 		COP2 G 8
 		COP2 F 4
 		Goto See

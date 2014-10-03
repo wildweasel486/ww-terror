@@ -63,16 +63,16 @@ ListMenu "HelpSection1-1"
 	StaticText 4, 42, "This in-game manual should help you decipher the true meaning of Christmas."
 	StaticText 4, 49, "Actually, that's a bald-faced lie - but if you ever wanted to know what"
 	StaticText 4, 56, "something does in the mod, this is the best place to look."
-	
+
 	StaticText 4, 70, "You play the role of John SomeGuyWithAPistol as he slaughters terrorists"
 	StaticText 4, 77, "by the thousands, saves the hostages from a terrible fate of wandering"
 	StaticText 4, 84, "through a video game for eternity, and kicks a lot of stuff."
-	
+
 	StaticText 4, 98, "If you have any questions about the mod that I have not answered in"
 	StaticText 4, 105, "this help file, please get in touch with me via the ZDoom Forums"
 	StaticText 4, 112, "(screen name: wildweasel), IRC (irc.esper.net, channel #zdoom),"
 	StaticText 4, 119, "or email (wild.weasel@gmail.com)."
-	
+
 	StaticText 4, 133, "Don't forget: this mod is FREE. If you paid money for it, especially"
 	StaticText 4, 140, "to a fellow calling himself Michael J. Hardy, then you have been"
 	StaticText 4, 147, "utterly ripped off. (Not that I've ever had that happen to my own mod...)"
@@ -340,11 +340,11 @@ ListMenu "HelpSection4-1"
 	StaticText 4, 70, "teleportation devices. If you encounter a hostage, simply run up to them and hit"
 	StaticText 4, 77, "the USE key to give them a device. They will be instantly beamed to a nearby"
 	StaticText 4, 84, "debriefing center, and they will drop useful items to aid you in your assault."
-	
+
 	StaticText 4, 98, "If a hostage is executed, don't fret - you will still receive items from dead"
 	StaticText 4, 105, "hostages, but bear in mind that the reward for rescuing one is always better"
 	StaticText 4, 112, "than the item you'll find on their corpse."
-	
+
 	Font "Smallfont", "Untranslated"
 	Position 20, 190
 	Linespacing 10
@@ -377,7 +377,7 @@ ListMenu "HelpSection4-2"
 	StaticText 4, 154, "history of abusing painkillers has taken a toll on his body, rendering him"
 	StaticText 4, 161, "incapable of actually putting his knowledge to use. However, save his ass"
 	StaticText 4, 168, "from the bad guys, and he'll teach you what he knows."
-	
+
 	Font "Smallfont", "Untranslated"
 	Position 20, 190
 	Linespacing 10
@@ -451,16 +451,16 @@ ListMenu "CreditsPage"
 	StaticText 4, 60, "Based on sprites from William Shatner's TekWar."
 	StaticText 4, 70, "For more detailed credits, see individual PK3 folders."
 	StaticText 4, 80, "Non-resource credits follow."
-	
+
 	StaticText 4, 100, "The vast majority of this mod's code was by me"
 	StaticText 4, 110, "(wildweasel). The bullet tracers were borrowed"
 	StaticText 4, 120, "from my own WW-Nazis, whose spark effects were"
 	StaticText 4, 130, "originally coded by Caligari87, for HaloGuns2.wad."
-	
+
 	StaticText 4, 150, "The Taser's pain state effects, many updates and"
 	StaticText 4, 160, "fixes to some enemies, and some other things I"
 	StaticText 4, 170, "probably forgot were done by Kate/Pink Silver."
-	
+
 	Position 20, 190
 	Linespacing 10
 	TextItem "Next Page", "n", "CreditsPage2"
@@ -472,15 +472,15 @@ ListMenu "CreditsPage2"
 	StaticText 4, 0, "The Taser's puff effects and chain-lightning"
 	StaticText 4, 10, "effect were kindly offered by Xaser from his"
 	StaticText 4, 20, "mod, Psychic."
-	
+
 	StaticText 4, 40, "The flame-death effects are on loan from Kinsie's"
 	StaticText 4, 50, "Reelism mod, and were originally written by"
 	StaticText 4, 60, "SolarSnowfall."
-	
+
 	StaticText 4, 80, "I also borrowed the RepelShock effects from"
 	StaticText 4, 90, "LittleWhiteMouse's Hammerhound enemy, from the"
 	StaticText 4, 100, "Boss Monster Resource Wad."
-	
+
 	StaticText 4, 120, "Much thanks must go to BouncyTEM, who not only"
 	StaticText 4, 130, "provided the voice of main villain Mr. Falcon, but"
 	StaticText 4, 140, "also saved me a lot of work implementing a"
@@ -507,7 +507,7 @@ ListMenu "CreditsPage3"
 	StaticText 4, 100, "people for being assholes doesn't mean that I"
 	StaticText 4, 110, "don't thank you for all the help and"
 	StaticText 4, 120, "encouragement. =P"
-	
+
 	StaticText 4, 140, "I almost forgot to include Marty Kirra in this"
 	StaticText 4, 150, "list as well - while he hasn't done much in this"
 	StaticText 4, 160, "mod compared to others I've made, he did provide"
@@ -528,7 +528,7 @@ ListMenu "CreditsPage4"
 	StaticText 4, 40, "NamelessFragger, EksFaktr, susanismyalias, dire51,"
 	StaticText 4, 50, "Dooz, and muteKi, and all the other awesome"
 	StaticText 4, 60, "folks whose names I forgot to note down at the time."
-	
+
 	StaticText 4, 80, "Finally, much of this mod simply would not be"
 	StaticText 4, 90, "possible if it were not for the tireless efforts"
 	StaticText 4, 100, "of the people behind the ZDoom Wiki. I check it"
@@ -719,4 +719,33 @@ ListMenu "TempExampleMenu"
 	Position 20, 190
 	Linespacing 10
 	TextItem "Next Page", "n", "HelpSectionXX"
+}
+
+OptionMenu "OptionsMenu"
+{
+	Title "OPTIONS"
+	Submenu "Customize Controls",		"CustomizeControls"
+	Submenu "Mouse options",			"MouseOptions"
+	Submenu "Joystick options",			"JoystickOptions"
+	StaticText " "
+	Submenu "Player Setup",				"PlayerMenu"
+	Submenu "Gameplay Options",			"GameplayOptions"
+	Submenu "Compatibility Options",	"CompatibilityOptions"
+	Submenu "Automap Options",			"AutomapOptions"
+	Submenu "HUD Options",				"HUDOptions"
+	Submenu "Miscellaneous Options",	"MiscOptions"
+	Submenu "Sound Options",			"SoundOptions"
+	Submenu "Display Options",			"VideoOptions"
+	Submenu "Set video mode",			"VideoModeMenu"
+	StaticText " "
+	SafeCommand "Reset to defaults",	"reset2defaults"
+	SafeCommand	"Reset to last saved",	"reset2saved"
+	Command "Go to console",			"menuconsole"
+	StaticText " "
+	Submenu "Terrorists! Options",		"TerroristsOptions"
+}
+OptionMenu "TerroristsOptions"
+{
+	Title "Terrorists! Options"
+	Option "Auto-Reload","autoreload","OnOff"
 }

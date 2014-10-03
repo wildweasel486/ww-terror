@@ -1,21 +1,11 @@
-ACTOR WWTCoatGuy : SwitchableDecoration
+ACTOR WWTCoatGuy : WWTCivilian
 {
-	MONSTER
-	-COUNTKILL
-	+FRIGHTENED
-	+USESPECIAL
-	+LOOKALLAROUND
-	YScale 0.35
-	XScale 0.4
-	Radius 24
-	Height 56
-	Health 50
+	YScale .35
+	XScale .4
 	Speed 5
-	PainChance 256
 	SeeSound "Bum/Sight"
 	DeathSound "MaleCiv/Pain"
 	PainSound "MaleCiv/Pain"
-	Activation "THINGSPEC_Activate"
 	States
 	{
 	Spawn:
@@ -23,13 +13,13 @@ ACTOR WWTCoatGuy : SwitchableDecoration
 		Loop
 	See:
 		CIV3 B 3 A_Wander
-		CIV3 B 3 A_SpawnItemEx("HalpSign", 0, 0, 64)
+		CIV3 B 3 A_SpawnItemEx("HalpSign",0,0,64)
 		CIV3 C 3 A_Wander
-		CIV3 C 3 A_SpawnItemEx("HalpSign", 0, 0, 64)
+		CIV3 C 3 A_SpawnItemEx("HalpSign",0,0,64)
 		CIV3 D 3 A_Wander
-		CIV3 D 3 A_SpawnItemEx("HalpSign", 0, 0, 64)
+		CIV3 D 3 A_SpawnItemEx("HalpSign",0,0,64)
 		CIV3 E 3 A_Wander
-		CIV3 E 3 A_SpawnItemEx("HalpSign", 0, 0, 64)
+		CIV3 E 3 A_SpawnItemEx("HalpSign",0,0,64)
 		Loop
 	Pain:
 		CIV3 F 10 A_Pain
@@ -38,9 +28,9 @@ ACTOR WWTCoatGuy : SwitchableDecoration
 		CIV3 HG 5
 		Goto See
 	Death:
-		CIV3 J 0 A_ChangeFlag(USESPECIAL, 0)
+		CIV3 J 0 A_ChangeFlag(USESPECIAL,0)
 		CIV3 K 3 A_Scream
-		CIV3 L 3 A_SpawnItemEx("WeakKickLevel",0,0,0,0,0,6)
+		CIV3 L 3 A_SpawnItemEx("WeakKickLevel",0,0,0,0,0,6,0,SXF_NOCHECKPOSITION)
 		CIV3 MNOPQR 3
 		CIV3 S 3 A_PlaySound("misc/bodyfall")
 		CIV3 T 3 A_NoBlocking
@@ -48,17 +38,10 @@ ACTOR WWTCoatGuy : SwitchableDecoration
 		Stop
 	Death.Telefrag:
 	Active:
-		CIV3 A 0 A_ChangeFlag(SOLID, 0)
-		CIV3 A 0 A_ChangeFlag(SHOOTABLE, 0)
-		CIV3 A 0 A_NoBlocking
 		CIV3 A 0 A_PlaySound("MaleCiv/Saved")
-		CIV3 A 0 A_SpawnItemEx("StrongKickLevel",-8,0,0,0,0,6)
-		CIV3 A 0 A_SpawnItemEx("WeakKickLevel",8,0,0,0,0,6)
-		CIV3 A 0 A_Jump(256, "Warpout")
-		Goto Warpout
-	Warpout:
-		CIV3 A 1 A_FadeOut(0.02)
-		Loop
+		CIV3 A 0 A_SpawnItemEx("StrongKickLevel",-8,0,0,0,0,6,0,SXF_NOCHECKPOSITION)
+		CIV3 A 0 A_SpawnItemEx("WeakKickLevel",8,0,0,0,0,6,0,SXF_NOCHECKPOSITION)
+		Goto Leaving
 	}
 }
 

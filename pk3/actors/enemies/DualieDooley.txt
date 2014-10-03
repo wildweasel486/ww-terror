@@ -2,8 +2,6 @@ ACTOR DualieDooley : WWTBadGuy replaces Archvile
 {
 	YScale 0.35
 	XScale 0.4
-	Radius 20
-	Height 56
 	Health 400
 	Speed 11
 	PainChance 256
@@ -13,19 +11,17 @@ ACTOR DualieDooley : WWTBadGuy replaces Archvile
 	DeathSound "Deaths/Male04"
 	DropItem "WWTUzi"
 	DropItem "WWTUzi"
-	DamageFactor "EnemyBullet", 0.3
-	DamageFactor "EnemyGrenade", 0.3
-	DamageFactor "EnemyTaser", 0.1
-	DamageFactor "PlayerPistol", 0.4
-	DamageFactor "PlayerUzi", 0.4
-	DamageFactor "PlayerShotgun", 0.5
-	DamageFactor "PlayerAK", 0.7
-	DamageFactor "PlayerM60", 0.7
-	DamageFactor "PlayerMagnum", 0.8
-	DamageFactor "PlayerMelee", 2.0
+	DamageFactor "EnemyBullet",0.3
+	DamageFactor "EnemyGrenade",0.3
+	DamageFactor "EnemyTaser",0.1
+	DamageFactor "PlayerPistol",0.4
+	DamageFactor "PlayerUzi",0.4
+	DamageFactor "PlayerShotgun",0.5
+	DamageFactor "PlayerAK",0.7
+	DamageFactor "PlayerM60",0.7
+	DamageFactor "PlayerMagnum",0.8
+	DamageFactor "PlayerMelee",2.0
 	Obituary "%o was bullet-hosed by \"Dualie\" Dooley."
-	MONSTER
-	+FLOORCLIP
 	+MISSILEMORE
 	+MISSILEEVENMORE
 	+QUICKTORETALIATE
@@ -40,32 +36,32 @@ ACTOR DualieDooley : WWTBadGuy replaces Archvile
 	Missile:
 		DTHG HF 8 A_FaceTarget
 	MissileHold:
-		DTHG G 0 A_JumpIfInventory("UziLoaded", 8, "Reload")
-		DTHG G 0 A_PlayWeaponSound("Uzi/EnemyFire")
+		DTHG G 0 A_JumpIfInventory("UziLoaded",8,"Reload")
+		DTHG G 0 A_PlaySound("Uzi/EnemyFire",CHAN_WEAPON)
 		COP3 G 0 A_SpawnItemEx("BulletCasing",24,-24,40,8,2,4,random(55,80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
-		DTHG F 1 BRIGHT A_CustomMissile("EnemyDualiesTracer", 50, 0, frandom(-6.0,6.0), 0, frandom (-3.0,3.0))
-		DTHG G 0 A_PlayWeaponSound("Uzi/EnemyFire")
+		DTHG F 1 BRIGHT A_CustomMissile("EnemyDualiesTracer",50,0,frandom(-6.0,6.0),0,frandom(-3.0,3.0))
+		DTHG G 0 A_PlaySound("Uzi/EnemyFire",CHAN_WEAPON)
 		COP3 G 0 A_SpawnItemEx("BulletCasing",24,-24,40,8,2,4,random(55,80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
-		DTHG G 1 BRIGHT A_CustomMissile("EnemyDualiesTracer", 50, 0, frandom(-6.0,6.0), 0, frandom (-3.0,3.0))
-		DTHG G 0 A_PlayWeaponSound("Uzi/EnemyFire")
+		DTHG G 1 BRIGHT A_CustomMissile("EnemyDualiesTracer",50,0,frandom(-6.0,6.0),0,frandom(-3.0,3.0))
+		DTHG G 0 A_PlaySound("Uzi/EnemyFire",CHAN_WEAPON)
 		COP3 G 0 A_SpawnItemEx("BulletCasing",24,-24,40,8,2,4,random(55,80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
-		DTHG F 1 BRIGHT A_CustomMissile("EnemyDualiesTracer", 50, 0, frandom(-6.0,6.0), 0, frandom (-3.0,3.0))
-		DTHG G 0 A_PlayWeaponSound("Uzi/EnemyFire")
+		DTHG F 1 BRIGHT A_CustomMissile("EnemyDualiesTracer",50,0,frandom(-6.0,6.0),0,frandom(-3.0,3.0))
+		DTHG G 0 A_PlaySound("Uzi/EnemyFire",CHAN_WEAPON)
 		COP3 G 0 A_SpawnItemEx("BulletCasing",24,-24,40,8,2,4,random(55,80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
-		DTHG G 1 BRIGHT A_CustomMissile("EnemyDualiesTracer", 50, 0, frandom(-6.0,6.0), 0, frandom (-3.0,3.0))
-		DTHG G 0 A_PlayWeaponSound("Uzi/EnemyFire")
+		DTHG G 1 BRIGHT A_CustomMissile("EnemyDualiesTracer",50,0,frandom(-6.0,6.0),0,frandom(-3.0,3.0))
+		DTHG G 0 A_PlaySound("Uzi/EnemyFire",CHAN_WEAPON)
 		COP3 G 0 A_SpawnItemEx("BulletCasing",24,-24,40,8,2,4,random(55,80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
-		DTHG F 1 BRIGHT A_CustomMissile("EnemyDualiesTracer", 50, 0, frandom(-6.0,6.0), 0, frandom (-3.0,3.0))
-		DTHG G 0 A_PlayWeaponSound("Uzi/EnemyFire")
+		DTHG F 1 BRIGHT A_CustomMissile("EnemyDualiesTracer",50,0,frandom(-6.0,6.0),0,frandom(-3.0,3.0))
+		DTHG G 0 A_PlaySound("Uzi/EnemyFire",CHAN_WEAPON)
 		COP3 G 0 A_SpawnItemEx("BulletCasing",24,-24,40,8,2,4,random(55,80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
-		DTHG G 1 BRIGHT A_CustomMissile("EnemyDualiesTracer", 50, 0, frandom(-6.0,6.0), 0, frandom (-3.0,3.0))
-		DTHG G 0 A_PlayWeaponSound("Uzi/EnemyFire")
+		DTHG G 1 BRIGHT A_CustomMissile("EnemyDualiesTracer",50,0,frandom(-6.0,6.0),0,frandom(-3.0,3.0))
+		DTHG G 0 A_PlaySound("Uzi/EnemyFire",CHAN_WEAPON)
 		COP3 G 0 A_SpawnItemEx("BulletCasing",24,-24,40,8,2,4,random(55,80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
-		DTHG F 1 BRIGHT A_CustomMissile("EnemyDualiesTracer", 50, 0, frandom(-6.0,6.0), 0, frandom (-3.0,3.0))
-		DTHG G 0 A_PlayWeaponSound("Uzi/EnemyFire")
+		DTHG F 1 BRIGHT A_CustomMissile("EnemyDualiesTracer",50,0,frandom(-6.0,6.0),0,frandom(-3.0,3.0))
+		DTHG G 0 A_PlaySound("Uzi/EnemyFire",CHAN_WEAPON)
 		COP3 G 0 A_SpawnItemEx("BulletCasing",24,-24,40,8,2,4,random(55,80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
-		DTHG G 1 BRIGHT A_CustomMissile("EnemyDualiesTracer", 50, 0, frandom(-6.0,6.0), 0, frandom (-3.0,3.0))
-		DTHG G 0 A_GiveInventory("UziLoaded",1)
+		DTHG G 1 BRIGHT A_CustomMissile("EnemyDualiesTracer",50,0,frandom(-6.0,6.0),0,frandom(-3.0,3.0))
+		DTHG G 0 A_GiveInventory("UziLoaded")
 		DTHG G 1 A_MonsterRefire(40,"See")
 		Goto MissileHold
 	Reload:
@@ -77,7 +73,7 @@ ACTOR DualieDooley : WWTBadGuy replaces Archvile
 		DTHG H 4 A_PlaySound("Uzi/Cock")
 		DTHG F 5
 		DTHG H 4 A_PlaySound("Uzi/Cock")
-		DTHG F 5 A_TakeInventory("UziLoaded",999)
+		DTHG F 5 A_TakeInventory("UziLoaded")
 		Goto See
 	Pain.PlayerPistol:
 	Pain.PlayerUzi:

@@ -12,39 +12,27 @@ ACTOR M60Levelup : Inventory
 	Inventory.MaxAmount 3
 }
 
-ACTOR M60Maxed : Inventory
-{
-	Inventory.MaxAmount 1
-}
-
-ACTOR M60Mounted : Inventory
-{
-	Inventory.MaxAmount 1
-}
+ACTOR M60Mounted : Inventory{}
 
 ACTOR M60Loaded : Ammo
 {
+	Tag "7.62mm"
 	Inventory.MaxAmount 200
 	+IGNORESKILL
 }
 
 ACTOR WWTM60 : WWTWeapon replaces BFG9000
 {
-	Weapon.SlotNumber 8
 	Weapon.AmmoType1 "M60Loaded"
 	Weapon.AmmoUse1 1
-	Weapon.AmmoGive1 0
 	Weapon.AmmoType2 "762mmAmmo"
 	Weapon.AmmoGive2 100
-	Weapon.AmmoUse2 0
+	Weapon.AmmoUse2 1
 	Inventory.PickupMessage "$WWTWEP8PICK"
 	Inventory.PickupSound "M60/Bolt"
 	Inventory.Icon "M60ICON"
-	Scale 0.65
+	Scale .65
 	Tag "$WWTWEP8NAME"
-	+Weapon.Ammo_Optional
-	+Weapon.NoAutoFire
-	+Weapon.NoAlert
 	States
 	{
 	Spawn:
@@ -60,28 +48,31 @@ ACTOR WWTM60 : WWTWeapon replaces BFG9000
 		"####" "#" 1 Offset(68,85)
 		"####" "#" 1 Offset(56,83) A_JumpIfInventory("M60Loaded", 1, "ReadyAnim2")
 		Goto ReadyAnim2Unloaded
-	Ready:
-		M60G A 0 A_JumpIfInventory("M60Loaded",1,1)
-		Goto ReadyEmpty
-		M60G A 0 A_JumpIfInventory("M60Mounted", 1, "ReadyMounted")
-		M60G A 1 A_WeaponReady(WRF_ALLOWZOOM|WRF_ALLOWRELOAD)
-		Loop
-	ReadyMounted:
-		M60S A 1 A_WeaponReady(WRF_ALLOWZOOM|WRF_ALLOWRELOAD)
-		Goto Ready
-	ReadyEmpty:
-		M60G F 0 A_JumpIfInventory("M60Mounted", 1, "ReadyMountedEmpty")
-		M60G F 1 A_WeaponReady(WRF_ALLOWZOOM|WRF_ALLOWRELOAD)
-		Goto Ready
-	ReadyMountedEmpty:
-		M60S F 1 A_WeaponReady(WRF_ALLOWZOOM|WRF_ALLOWRELOAD)
+	ReadyAnim2Unloaded:
+		M60G F 1 Offset(47,70)
+		M60G F 1 Offset(45,65)
+		M60G F 1 Offset(44,63)
+		M60G F 1 Offset(40,60)
+		M60G F 1 Offset(36,56)
+		M60G F 1 Offset(32,50)
+		M60G F 1 Offset(26,44)
+		M60G F 1 Offset(18,38)
+		M60G F 1 Offset(12,33)
+		M60G F 1 Offset(6,32)
+		M60G F 1 Offset(1,32)
+		M60G F 1 Offset(-2,33)
+		M60G F 1 Offset(-4,34)
+		M60G F 1 Offset(-3,34)
+		M60G F 1 Offset(-2,33)
+		M60G F 1 Offset(-1,33)
 		Goto Ready
 	Deselect:
 		M60G A 0 A_StopSound(CHAN_WEAPON)
-		M60G A 0 A_JumpIfInventory("M60Mounted", 1, "DeselectMounted")
-		M60M A 0 A_JumpIfInventory("M60Loaded", 1, 1)
-		Goto DeselectLoopEmpty
-		M60M A 1 A_PlaySound("M60/BeltMove", 5)
+		M60G A 0 A_JumpIfInventory("M60Mounted",1,"DeselectMounted")
+		M60M A 0 A_JumpIfInventory("M60Loaded",1,1)
+		M60E C 1 A_Lower
+		Wait
+		M60M A 1 A_PlaySound("M60/BeltMove",5)
 		M60M B 1
 	DeselectLoop:
 		M60M C 1 Offset(3,32)
@@ -96,14 +87,11 @@ ACTOR WWTM60 : WWTWeapon replaces BFG9000
 		"####" C 1 Offset(90,91)
 		TNT1 A 0 A_Lower
 		Wait
-	DeselectLoopEmpty:
-		M60E C 1 A_Lower
-		Loop
 	DeselectMounted:
-		M60M G 0 A_JumpIfInventory("M60Loaded", 1, 1)
+		M60M G 0 A_JumpIfInventory("M60Loaded",1,1)
 		Goto DeselectMountedEmpty
-		M60M G 1 Offset(-2,34) A_PlaySound("M60/GripOff", 5)
-		M60M F 1 Offset(-5,36) A_TakeInventory("M60Mounted", 1)
+		M60M G 1 Offset(-2,34) A_PlaySound("M60/GripOff",5)
+		M60M F 1 Offset(-5,36) A_TakeInventory("M60Mounted")
 		M60M E 1 Offset(-6,37)
 		M60M D 1 Offset(-7,38)
 		M60M C 1 Offset(-8,39)
@@ -111,192 +99,219 @@ ACTOR WWTM60 : WWTWeapon replaces BFG9000
 		M60M C 1 Offset(-10,42)
 		M60M C 1 Offset(-11,43)
 		M60M C 1 Offset(-12,45)
-		M60M C 1 Offset(-13,47) A_PlaySound("M60/BeltMove", 5)
+		M60M C 1 Offset(-13,47) A_PlaySound("M60/BeltMove",5)
 		M60M C 1 Offset(-14,52)
 		M60M C 1 Offset(-15,55)
 		M60M C 1 Offset(-16,59)
 		M60M C 1 Offset(-14,55)
 		M60M C 1 Offset(-12,50)
-		M60M C 1 Offset(-10,47) 
-		M60M C 1 Offset(-8,44) 
+		M60M C 1 Offset(-10,47)
+		M60M C 1 Offset(-8,44)
 		M60M C 1 Offset(-5,42)
 		M60M C 1 Offset(-4,40)
 		M60M C 1 Offset(-3,38)
 		Goto DeselectLoop
-	DeselectMountedEmpty:
-		M60E G 1 Offset(-2,34) A_PlaySound("M60/GripOff", 5)
-		M60E F 1 Offset(-5,36) A_TakeInventory("M60Mounted", 1)
-		M60E E 1 Offset(-6,37)
-		M60E D 1 Offset(-7,38)
-		M60E C 1 Offset(-8,39)
-		M60E C 1 Offset(-9,41) ACS_NamedExecute("PlayerSpeed",0,100,0,0)
-		M60E C 1 Offset(-10,42)
-		M60E C 1 Offset(-11,43)
-		M60E C 1 Offset(-12,45)
-		M60E C 1 Offset(-13,47)
-		M60E C 1 Offset(-14,52)
-		M60E C 1 Offset(-15,55)
-		M60E C 1 Offset(-16,59)
-		M60E C 1 Offset(-14,55)
-		M60E C 1 Offset(-12,50)
-		M60E C 1 Offset(-10,47) 
-		M60E C 1 Offset(-8,44) 
-		M60E C 1 Offset(-5,42)
-		M60E C 1 Offset(-4,40)
-		M60E C 1 Offset(-3,38)
-		Goto DeselectLoopEmpty
+	Ready:
+		M60G A 0 A_JumpIfInventory("M60Loaded",1,1)
+		Goto ReadyEmpty
+		M60G A 0 A_JumpIfInventory("M60Mounted",1,"ReadyMounted")
+		M60G A 0 A_JumpIfInventory("M60Loaded",0,2)
+		M60G A 0 A_JumpIfInventory("762mmAmmo",1,2)
+		M60G A 1 A_WeaponReady(WRF_ALLOWZOOM)
+		Loop
+		M60G A 1 A_WeaponReady(WRF_ALLOWZOOM|WRF_ALLOWRELOAD)
+		Loop
+	ReadyMounted:
+		M60S A 0 A_JumpIfInventory("M60Loaded",0,2)
+		M60S A 0 A_JumpIfInventory("762mmAmmo",1,2)
+		M60S A 1 A_WeaponReady(WRF_ALLOWZOOM)
+		Goto Ready
+		M60S A 1 A_WeaponReady(WRF_ALLOWZOOM|WRF_ALLOWRELOAD)
+		Goto Ready
+	ReadyEmpty:
+		M60G F 0 A_JumpIfInventory("M60Mounted",1,"ReadyEmptyMounted")
+		M60G F 0 A_JumpIfInventory("M60Loaded",0,2)
+		M60G F 0 A_JumpIfInventory("762mmAmmo",1,2)
+		M60G F 1 A_WeaponReady(WRF_ALLOWZOOM)
+		Goto Ready
+		M60G F 1 A_WeaponReady(WRF_ALLOWZOOM|WRF_ALLOWRELOAD)
+		Goto Ready
+	ReadyEmptyMounted:
+		M60S F 0 A_JumpIfInventory("M60Loaded",0,2)
+		M60S F 0 A_JumpIfInventory("762mmAmmo",1,2)
+		M60S F 1 A_WeaponReady(WRF_ALLOWZOOM)
+		Goto Ready
+		M60S F 1 A_WeaponReady(WRF_ALLOWZOOM|WRF_ALLOWRELOAD)
+		Goto Ready
 	Fire:
-		M60G A 0 A_JumpIfInventory("M60Mounted", 1, "FireMounted")
-		M60G A 0 A_PlaySound("M60/FireLoop", CHAN_WEAPON, 1.0, 1)
-		M60G A 0 A_JumpIfInventory("M60Levelup", 3, "HoldLevel3")
-		M60G A 0 A_JumpIfInventory("M60Levelup", 2, "HoldLevel2")
-		M60G A 0 A_JumpIfInventory("M60Levelup", 1, "Hold")
+		M60G A 0 A_PlaySound("M60/FireLoop",CHAN_WEAPON,1.0,1)
+		M60G A 0 A_JumpIfInventory("M60Mounted",1,"FireMounted")
+		M60G A 0 A_JumpIfInventory("M60Levelup",3,"FireLevel3")
+		M60G A 0 A_JumpIfInventory("M60Levelup",2,"FireLevel2")
+		M60G A 0 A_JumpIfInventory("M60Levelup",1,2)
 		M60G A 0 ACS_NamedExecute("PlayerSpeed",0,75,0,0)
-		Goto Hold
-	Hold:
-		"####" A 0 A_JumpIfNoAmmo("Dryfire")
+		"####" A 0 A_JumpIfInventory("M60Loaded",1,1)
+		Goto DryFire
 		"####" A 0 A_AlertMonsters
 		"####" A 0 A_GunFlash
 		"####" A 0 A_SpawnItemEx("RifleCasing",24,-32,40,8,2,4,random(-55,-80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
-		"####" B 1 BRIGHT A_FireCustomMissile("PlayerM60Tracer", frandom(-1.0,1.0), 1, 7, 0, 0, frandom(-1.0,1.0))
+		"####" B 1 BRIGHT A_FireCustomMissile("PlayerM60Tracer",frandom(-1.0,1.0),1,7,0,0,frandom(-1.0,1.0))
 		"####" A 0 A_SpawnItemEx("M60Spacer",24,-32,40,6,4,4,random(-55,-80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
 		"####" C 1 Offset(1,34) A_SetPitch(pitch - 2.2)
-		"####" A 0 A_JumpIfNoAmmo("Dryfire")
+		"####" A 0 A_JumpIfInventory("M60Loaded",1,1)
+		Goto DryFire
 		"####" A 0 A_SpawnItemEx("RifleCasing",24,-32,40,8,2,4,random(-55,-80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
-		"####" B 1 Offset(2,34) BRIGHT A_FireCustomMissile("PlayerM60Tracer", frandom(-1.0,1.0), 1, 7, 0, 0, frandom(-1.0,1.0))
+		"####" B 1 Offset(2,34) BRIGHT A_FireCustomMissile("PlayerM60Tracer",frandom(-1.0,1.0),1,7,0,0,frandom(-1.0,1.0))
 		"####" A 0 A_SpawnItemEx("M60Spacer",24,-32,40,6,4,4,random(-55,-80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
 		"####" D 1 Offset(1,33) A_SetPitch(pitch - 2.2)
-		"####" A 0 A_JumpIfNoAmmo("Dryfire")
+		"####" A 0 A_JumpIfInventory("M60Loaded",1,1)
+		Goto DryFire
 		"####" A 0 A_SpawnItemEx("RifleCasing",24,-32,40,8,2,4,random(-55,-80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
-		"####" B 1 Offset(3,35) BRIGHT A_FireCustomMissile("PlayerM60Tracer", frandom(-1.0,1.0), 1, 7, 0, 0, frandom(-1.0,1.0))
+		"####" B 1 Offset(3,35) BRIGHT A_FireCustomMissile("PlayerM60Tracer",frandom(-1.0,1.0),1,7,0,0,frandom(-1.0,1.0))
 		"####" A 0 A_SpawnItemEx("M60Spacer",24,-32,40,6,4,4,random(-55,-80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
 		"####" E 1 Offset(2,34) A_SetPitch(pitch - 2.2)
 		"####" A 0 A_Refire
 		"####" A 0 ACS_NamedExecute("PlayerSpeed",0,100,0,0)
 		"####" A 0 A_StopSound(CHAN_WEAPON)
-		"####" A 1 A_PlaySound("M60/FireStop", CHAN_WEAPON)
+		"####" A 1 A_PlaySound("M60/FireStop",CHAN_WEAPON)
+		"####" A 0 A_CheckReload
 		Goto Ready
-	HoldLevel2:
-		"####" A 0 A_JumpIfNoAmmo("Dryfire")
+	FireLevel2:
+		"####" A 0 A_JumpIfInventory("M60Loaded",1,1)
+		Goto DryFire
 		"####" A 0 A_AlertMonsters
 		"####" A 0 A_GunFlash
 		"####" A 0 A_SpawnItemEx("RifleCasing",24,-32,40,8,2,4,random(-55,-80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
-		"####" B 1 BRIGHT A_FireCustomMissile("PlayerM60Tracer", frandom(-1.0,1.0), 1, 7, 0, 0, frandom(-1.0,1.0))
+		"####" B 1 BRIGHT A_FireCustomMissile("PlayerM60Tracer",frandom(-1.0,1.0),1,7,0,0,frandom(-1.0,1.0))
 		"####" A 0 A_SpawnItemEx("M60Spacer",24,-32,40,6,4,4,random(-55,-80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
 		"####" C 1 Offset(1,34) A_SetPitch(pitch - 1.4)
-		"####" A 0 A_JumpIfNoAmmo("Dryfire")
+		"####" A 0 A_JumpIfInventory("M60Loaded",1,1)
+		Goto DryFire
 		"####" A 0 A_SpawnItemEx("RifleCasing",24,-32,40,8,2,4,random(-55,-80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
-		"####" B 1 Offset(2,34) BRIGHT A_FireCustomMissile("PlayerM60Tracer", frandom(-1.0,1.0), 1, 7, 0, 0, frandom(-1.0,1.0))
+		"####" B 1 Offset(2,34) BRIGHT A_FireCustomMissile("PlayerM60Tracer",frandom(-1.0,1.0),1,7,0,0,frandom(-1.0,1.0))
 		"####" A 0 A_SpawnItemEx("M60Spacer",24,-32,40,6,4,4,random(-55,-80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
 		"####" D 1 Offset(1,33) A_SetPitch(pitch - 1.4)
-		"####" A 0 A_JumpIfNoAmmo("Dryfire")
+		"####" A 0 A_JumpIfInventory("M60Loaded",1,1)
+		Goto DryFire
 		"####" A 0 A_SpawnItemEx("RifleCasing",24,-32,40,8,2,4,random(-55,-80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
-		"####" B 1 Offset(3,35) BRIGHT A_FireCustomMissile("PlayerM60Tracer", frandom(-1.0,1.0), 1, 7, 0, 0, frandom(-1.0,1.0))
+		"####" B 1 Offset(3,35) BRIGHT A_FireCustomMissile("PlayerM60Tracer",frandom(-1.0,1.0),1,7,0,0,frandom(-1.0,1.0))
 		"####" A 0 A_SpawnItemEx("M60Spacer",24,-32,40,6,4,4,random(-55,-80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
 		"####" E 1 Offset(2,34) A_SetPitch(pitch - 1.4)
 		"####" A 0 A_Refire
 		"####" A 0 ACS_NamedExecute("PlayerSpeed",0,100,0,0)
 		"####" A 0 A_StopSound(CHAN_WEAPON)
-		"####" A 1 A_PlaySound("M60/FireStop", CHAN_WEAPON)
+		"####" A 1 A_PlaySound("M60/FireStop",CHAN_WEAPON)
+		"####" A 0 A_CheckReload
 		Goto Ready
-	HoldLevel3:
-		"####" A 0 A_JumpIfNoAmmo("Dryfire")
+	FireLevel3:
+		"####" A 0 A_JumpIfInventory("M60Loaded",1,1)
+		Goto DryFire
 		"####" A 0 A_AlertMonsters
 		"####" A 0 A_GunFlash
 		"####" A 0 A_SpawnItemEx("RifleCasing",24,-32,40,8,2,4,random(-55,-80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
-		"####" B 1 BRIGHT A_FireCustomMissile("PlayerM60TracerFaster", frandom(-1.0,1.0), 1, 7, 0, 0, frandom(-1.0,1.0))
+		"####" B 1 BRIGHT A_FireCustomMissile("PlayerM60TracerFaster",frandom(-1.0,1.0),1,7,0,0,frandom(-1.0,1.0))
 		"####" A 0 A_SpawnItemEx("M60Spacer",24,-32,40,6,4,4,random(-55,-80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
 		"####" C 1 Offset(1,34) A_SetPitch(pitch - 1.4)
-		"####" A 0 A_JumpIfNoAmmo("Dryfire")
+		"####" A 0 A_JumpIfInventory("M60Loaded",1,1)
+		Goto DryFire
 		"####" A 0 A_SpawnItemEx("RifleCasing",24,-32,40,8,2,4,random(-55,-80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
-		"####" B 1 Offset(2,34) BRIGHT A_FireCustomMissile("PlayerM60TracerFaster", frandom(-1.0,1.0), 1, 7, 0, 0, frandom(-1.0,1.0))
+		"####" B 1 Offset(2,34) BRIGHT A_FireCustomMissile("PlayerM60TracerFaster",frandom(-1.0,1.0),1,7,0,0,frandom(-1.0,1.0))
 		"####" A 0 A_SpawnItemEx("M60Spacer",24,-32,40,6,4,4,random(-55,-80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
 		"####" D 1 Offset(1,33) A_SetPitch(pitch - 1.4)
-		"####" A 0 A_JumpIfNoAmmo("Dryfire")
+		"####" A 0 A_JumpIfInventory("M60Loaded",1,1)
+		Goto DryFire
 		"####" A 0 A_SpawnItemEx("RifleCasing",24,-32,40,8,2,4,random(-55,-80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
-		"####" B 1 Offset(3,35) BRIGHT A_FireCustomMissile("PlayerM60TracerFaster", frandom(-1.0,1.0), 1, 7, 0, 0, frandom(-1.0,1.0))
+		"####" B 1 Offset(3,35) BRIGHT A_FireCustomMissile("PlayerM60TracerFaster",frandom(-1.0,1.0),1,7,0,0,frandom(-1.0,1.0))
 		"####" A 0 A_SpawnItemEx("M60Spacer",24,-32,40,6,4,4,random(-55,-80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
 		"####" E 1 Offset(2,34) A_SetPitch(pitch - 1.4)
 		"####" A 0 A_Refire
 		"####" A 0 ACS_NamedExecute("PlayerSpeed",0,100,0,0)
 		"####" A 0 A_StopSound(CHAN_WEAPON)
-		"####" A 1 A_PlaySound("M60/FireStop", CHAN_WEAPON)
+		"####" A 1 A_PlaySound("M60/FireStop",CHAN_WEAPON)
+		"####" A 0 A_CheckReload
 		Goto Ready
 	FireMounted:
-		M60S A 0 A_JumpIfNoAmmo("Dryfire")
-		M60S A 0 A_PlaySound("M60/FireLoop", CHAN_WEAPON, 1.0, 1)
-		M60S A 0 A_JumpIfInventory("M60Levelup", 3, "HoldMountedLevel3")
-		M60S A 0 A_JumpIfInventory("M60Levelup", 1, "HoldMounted") 
+		M60S A 0 A_JumpIfInventory("M60Loaded",1,1)
+		Goto DryFire
+		M60S A 0 A_JumpIfInventory("M60Levelup",3,"FireMountedLevel3")
+		M60S A 0 A_JumpIfInventory("M60Levelup",1,2)
 		M60S A 0 ACS_NamedExecute("PlayerSpeed",0,40,0,0)
-	HoldMounted:
-		"####" A 0 A_JumpIfNoAmmo("Dryfire")
+		"####" A 0 A_JumpIfInventory("M60Loaded",1,1)
+		Goto DryFire
 		"####" A 0 A_AlertMonsters
 		"####" A 0 A_GunFlash
 		"####" A 0 A_SpawnItemEx("RifleCasing",24,-32,40,8,2,4,random(-55,-80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
-		"####" B 1 BRIGHT A_FireCustomMissile("PlayerM60Tracer", frandom(-1.0,1.0), 1, 7, 0, 0, frandom(-1.0, 1.0))
+		"####" B 1 BRIGHT A_FireCustomMissile("PlayerM60Tracer",frandom(-1.0,1.0),1,7,0,0,frandom(-1.0,1.0))
 		"####" A 0 A_SpawnItemEx("M60Spacer",24,-32,40,6,4,4,random(-55,-80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
-		"####" C 1 Offset(1,34) A_SetPitch(pitch - 0.8)
-		"####" A 0 A_JumpIfNoAmmo("Dryfire")
+		"####" C 1 Offset(1,34) A_SetPitch(pitch - .8)
+		"####" A 0 A_JumpIfInventory("M60Loaded",1,1)
+		Goto DryFire
 		"####" A 0 A_SpawnItemEx("RifleCasing",24,-32,40,8,2,4,random(-55,-80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
-		"####" B 1 Offset(2,34) BRIGHT A_FireCustomMissile("PlayerM60Tracer", frandom(-1.0,1.0), 1, 7, 0, 0, frandom(-1.0, 1.0))
+		"####" B 1 Offset(2,34) BRIGHT A_FireCustomMissile("PlayerM60Tracer",frandom(-1.0,1.0),1,7,0,0,frandom(-1.0,1.0))
 		"####" A 0 A_SpawnItemEx("M60Spacer",24,-32,40,6,4,4,random(-55,-80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
-		"####" D 1 Offset(1,33) A_SetPitch(pitch - 0.8)
-		"####" A 0 A_JumpIfNoAmmo("Dryfire")
+		"####" D 1 Offset(1,33) A_SetPitch(pitch - .8)
+		"####" A 0 A_JumpIfInventory("M60Loaded",1,1)
+		Goto DryFire
 		"####" A 0 A_SpawnItemEx("RifleCasing",24,-32,40,8,2,4,random(-55,-80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
-		"####" B 1 Offset(3,35) BRIGHT A_FireCustomMissile("PlayerM60Tracer", frandom(-1.0,1.0), 1, 7, 0, 0, frandom(-1.0, 1.0))
+		"####" B 1 Offset(3,35) BRIGHT A_FireCustomMissile("PlayerM60Tracer",frandom(-1.0,1.0),1,7,0,0,frandom(-1.0,1.0))
 		"####" A 0 A_SpawnItemEx("M60Spacer",24,-32,40,6,4,4,random(-55,-80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
-		"####" E 1 Offset(2,34) A_SetPitch(pitch - 0.8)
-		"####" A 0 A_Refire("HoldMounted")
+		"####" E 1 Offset(2,34) A_SetPitch(pitch - .8)
+		"####" A 0 A_Refire
 		"####" A 0 ACS_NamedExecute("PlayerSpeed",0,50,0,0)
-		"####" A 0 A_StopSound(CHAN_WEAPON)
-		"####" A 1 A_PlaySound("M60/FireStop", CHAN_WEAPON)
+		"####" A 1 A_PlaySound("M60/FireStop",CHAN_WEAPON)
+		"####" A 0 A_CheckReload
 		Goto Ready
-	HoldMountedLevel3:
-		"####" A 0 A_JumpIfNoAmmo("Dryfire")
+	FireMountedLevel3:
+		"####" A 0 A_JumpIfInventory("M60Loaded",1,1)
+		Goto DryFire
 		"####" A 0 A_AlertMonsters
 		"####" A 0 A_GunFlash
 		"####" A 0 A_SpawnItemEx("RifleCasing",24,-32,40,8,2,4,random(-55,-80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
-		"####" B 1 BRIGHT A_FireCustomMissile("PlayerM60TracerFaster", frandom(-1.0,1.0), 1, 7, 0, 0, frandom(-1.0, 1.0))
+		"####" B 1 BRIGHT A_FireCustomMissile("PlayerM60TracerFaster",frandom(-1.0,1.0),1,7,0,0,frandom(-1.0,1.0))
 		"####" A 0 A_SpawnItemEx("M60Spacer",24,-32,40,6,4,4,random(-55,-80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
-		"####" C 1 Offset(1,34) A_SetPitch(pitch - 0.8)
-		"####" A 0 A_JumpIfNoAmmo("Dryfire")
+		"####" C 1 Offset(1,34) A_SetPitch(pitch - .8)
+		"####" A 0 A_JumpIfInventory("M60Loaded",1,1)
+		Goto DryFire
 		"####" A 0 A_SpawnItemEx("RifleCasing",24,-32,40,8,2,4,random(-55,-80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
-		"####" B 1 Offset(2,34) BRIGHT A_FireCustomMissile("PlayerM60TracerFaster", frandom(-1.0,1.0), 1, 7, 0, 0, frandom(-1.0, 1.0))
+		"####" B 1 Offset(2,34) BRIGHT A_FireCustomMissile("PlayerM60TracerFaster",frandom(-1.0,1.0),1,7,0,0,frandom(-1.0,1.0))
 		"####" A 0 A_SpawnItemEx("M60Spacer",24,-32,40,6,4,4,random(-55,-80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
-		"####" D 1 Offset(1,33) A_SetPitch(pitch - 0.8)
-		"####" A 0 A_JumpIfNoAmmo("Dryfire")
+		"####" D 1 Offset(1,33) A_SetPitch(pitch - .8)
+		"####" A 0 A_JumpIfInventory("M60Loaded",1,1)
+		Goto DryFire
 		"####" A 0 A_SpawnItemEx("RifleCasing",24,-32,40,8,2,4,random(-55,-80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
-		"####" B 1 Offset(3,35) BRIGHT A_FireCustomMissile("PlayerM60TracerFaster", frandom(-1.0,1.0), 1, 7, 0, 0, frandom(-1.0, 1.0))
+		"####" B 1 Offset(3,35) BRIGHT A_FireCustomMissile("PlayerM60TracerFaster",frandom(-1.0,1.0),1,7,0,0,frandom(-1.0,1.0))
 		"####" A 0 A_SpawnItemEx("M60Spacer",24,-32,40,6,4,4,random(-55,-80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
-		"####" E 1 Offset(2,34) A_SetPitch(pitch - 0.8)
-		"####" A 0 A_Refire("HoldMounted")
+		"####" E 1 Offset(2,34) A_SetPitch(pitch - .8)
+		"####" A 0 A_Refire
 		"####" A 0 ACS_NamedExecute("PlayerSpeed",0,50,0,0)
-		"####" A 0 A_StopSound(CHAN_WEAPON)
-		"####" A 1 A_PlaySound("M60/FireStop", CHAN_WEAPON)
+		"####" A 1 A_PlaySound("M60/FireStop",CHAN_WEAPON)
+		"####" A 0 A_CheckReload
 		Goto Ready
 	Dryfire:
 		"####" F 0 A_StopSound(CHAN_WEAPON)
-		"####" F 1 A_PlaySound("Dryfire/Rifle", CHAN_WEAPON)
+		"####" F 0 A_JumpIf(CallACS("Autoreload")==1,"Reload")
+		"####" F 1 A_PlaySound("Dryfire/Rifle",CHAN_WEAPON)
 		"####" F 1 Offset(2,34)
 		"####" F 1 Offset(1,33) A_ClearRefire
-		"####" F 0 A_JumpIfInventory("M60Mounted", 1, 1)
+		"####" F 0 A_JumpIfInventory("M60Mounted",1,1)
 		Goto SpeedResetUnmounted
 		"####" F 0 ACS_NamedExecute("PlayerSpeed",0,50,0,0)
-		Goto Ready
+		"####" A 0 A_Jump(256,2)
 	SpeedResetUnmounted:
 		"####" F 0 ACS_NamedExecute("PlayerSpeed",0,100,0,0)
+		"####" A 0 A_CheckReload
 		Goto Ready
 	Reload:
-		"####" "#" 0 A_JumpIfInventory("M60Loaded", 200, 2)
-		"####" "#" 0 A_JumpIfInventory("762mmAmmo", 1, 2)
-		"####" "#" 1
+		"####" A 0 A_JumpIfInventory("762mmAmmo",1,2)
+		"####" A 1 A_CheckReload
 		Goto Ready
-		M60M A 0 A_JumpIfInventory("M60Mounted", 1, "ReloadUnmount")
-		M60M A 0 A_JumpIfNoAmmo("ReloadStartEmpty")
+		M60M A 0 A_JumpIfInventory("M60Mounted",1,"ReloadUnmount")
+		M60M A 0 A_JumpIfInventory("M60Loaded",1,1)
+		Goto ReloadStartEmpty
 		M60M A 1 Offset(1,33)
 		M60M B 1 Offset(2,34)
 	ReloadContinue:
-		M60M C 1 Offset(3,34) A_PlaySound("M60/Open", 5)
+		M60M C 1 Offset(3,34) A_PlaySound("M60/Open",5)
 		M60M C 1 Offset(4,37)
 		M60M C 1 Offset(5,39)
 		M60M C 1 Offset(6,42)
@@ -307,7 +322,7 @@ ACTOR WWTM60 : WWTWeapon replaces BFG9000
 		M60M C 1 Offset(11,60)
 		M60M C 1 Offset(12,65)
 		M60M C 1 Offset(13,70)
-		M60M C 1 Offset(14,75) A_PlaySound("M60/Load", 5)
+		M60M C 1 Offset(14,75) A_PlaySound("M60/Load",5)
 		M60M C 1 Offset(15,86)
 		M60M C 1 Offset(16,92)
 		M60M C 1 Offset(17,98)
@@ -327,7 +342,7 @@ ACTOR WWTM60 : WWTWeapon replaces BFG9000
 		M60E A 1 Offset(1,33)
 		M60E B 1 Offset(2,34)
 	ReloadContinueEmpty:
-		M60E C 1 Offset(3,34) A_PlaySound("M60/Open", 5)
+		M60E C 1 Offset(3,34) A_PlaySound("M60/Open",5)
 		M60E C 1 Offset(4,37)
 		M60E C 1 Offset(5,39)
 		M60E C 1 Offset(6,42)
@@ -338,7 +353,7 @@ ACTOR WWTM60 : WWTWeapon replaces BFG9000
 		M60E C 1 Offset(11,60)
 		M60E C 1 Offset(12,65)
 		M60E C 1 Offset(13,70)
-		M60E C 1 Offset(14,75) A_PlaySound("M60/Load", 5)
+		M60E C 1 Offset(14,75) A_PlaySound("M60/Load",5)
 		M60E C 1 Offset(15,86)
 		M60E C 1 Offset(16,92)
 		M60E C 1 Offset(17,98)
@@ -355,10 +370,10 @@ ACTOR WWTM60 : WWTWeapon replaces BFG9000
 		M60E C 1 Offset(28,110)
 		Goto ReloadWork
 	ReloadWork:
-		M60M C 0 A_GiveInventory("M60Loaded", 1)
-		M60M C 0 A_TakeInventory("762mmAmmo", 1)
-		M60M C 0 A_JumpIfInventory("M60Loaded", 200, "ReloadFinish")
-		M60M C 0 A_JumpIfInventory("762mmAmmo", 1, "ReloadWork")
+		M60M C 0 A_GiveInventory("M60Loaded")
+		M60M C 0 A_TakeInventory("762mmAmmo",1)
+		M60M C 0 A_JumpIfInventory("M60Loaded",200,"ReloadFinish")
+		M60M C 0 A_JumpIfInventory("762mmAmmo",1,"ReloadWork")
 	ReloadFinish:
 		M60M C 1 Offset(30,111)
 		M60M C 1 Offset(31,111)
@@ -389,7 +404,7 @@ ACTOR WWTM60 : WWTWeapon replaces BFG9000
 		M60M C 1 Offset(55,111)
 		M60M C 1 Offset(56,110)
 		M60M C 1 Offset(57,111)
-		M60M C 1 Offset(58,110) A_PlaySound("M60/Close", 5)
+		M60M C 1 Offset(58,110) A_PlaySound("M60/Close",5)
 		M60M C 1 Offset(59,108)
 		M60M C 1 Offset(58,104)
 		M60M C 1 Offset(57,99)
@@ -397,7 +412,7 @@ ACTOR WWTM60 : WWTWeapon replaces BFG9000
 		M60M C 1 Offset(54,88)
 	ReadyAnim2:
 		M60M C 1 Offset(51,80)
-		M60M C 1 Offset(47,70) A_PlaySound("M60/Bolt", 5)
+		M60M C 1 Offset(47,70) A_PlaySound("M60/Bolt",5)
 		M60M C 1 Offset(45,65)
 		M60M C 1 Offset(44,63)
 		M60M C 1 Offset(46,65)
@@ -417,8 +432,8 @@ ACTOR WWTM60 : WWTWeapon replaces BFG9000
 		M60M C 1 Offset(32,50)
 		M60M C 1 Offset(26,44)
 		M60M C 1 Offset(18,38)
-		M60M C 0 A_JumpIfInventory("M60Mounted", 1, "ReloadMountedFinish")
-		M60M C 1 Offset(12,33) A_PlaySound("M60/BeltMove", 5)
+		M60M C 0 A_JumpIfInventory("M60Mounted",1,"ReloadMountedFinish")
+		M60M C 1 Offset(12,33) A_PlaySound("M60/BeltMove",5)
 		M60M C 1 Offset(6,32)
 		M60M C 1 Offset(1,32) ACS_NamedExecute("PlayerSpeed",0,100,0,0)
 		M60M C 1 Offset(-2,33)
@@ -428,39 +443,22 @@ ACTOR WWTM60 : WWTWeapon replaces BFG9000
 		M60M C 1 Offset(-1,33)
 		M60M BA 1
 		Goto Ready
-	ReadyAnim2Unloaded:
-		M60G F 1 Offset(47,70)
-		M60G F 1 Offset(45,65)
-		M60G F 1 Offset(44,63)
-		M60G F 1 Offset(40,60)
-		M60G F 1 Offset(36,56)
-		M60G F 1 Offset(32,50)
-		M60G F 1 Offset(26,44)
-		M60G F 1 Offset(18,38)
-		M60G F 1 Offset(12,33)
-		M60G F 1 Offset(6,32)
-		M60G F 1 Offset(1,32)
-		M60G F 1 Offset(-2,33)
-		M60G F 1 Offset(-4,34)
-		M60G F 1 Offset(-3,34)
-		M60G F 1 Offset(-2,33)
-		M60G F 1 Offset(-1,33)
-		Goto Ready
 	ReloadMountedFinish:
 		M60M C 1 Offset(16,39)
 		M60M C 1 Offset(14,38) ACS_NamedExecute("PlayerSpeed",0,50,0,0)
 		M60M C 1 Offset(12,37)
-		M60M C 1 Offset(10,36) 
-		M60M C 1 Offset(8,35) 
+		M60M C 1 Offset(10,36)
+		M60M C 1 Offset(8,35)
 		M60M C 1 Offset(5,34)
 		M60M D 1 Offset(4,33)
 		M60M E 1 Offset(3,32)
 		M60M F 1 Offset(2,32)
-		M60M G 1 Offset(1,32) A_PlaySound("M60/GripOn", 5)
+		M60M G 1 Offset(1,32) A_PlaySound("M60/GripOn",5)
 		Goto Ready
 	ReloadUnmount:
-		M60M G 0 A_JumpIfNoAmmo("ReloadUnmountEmpty")
-		M60M G 1 Offset(-2,34) A_PlaySound("M60/GripOff", 5)
+		M60M G 0 A_JumpIfInventory("M60Loaded",1,1)
+		Goto ReloadUnmountEmpty
+		M60M G 1 Offset(-2,34) A_PlaySound("M60/GripOff",5)
 		M60M F 1 Offset(-5,36)
 		M60M E 1 Offset(-6,37)
 		M60M D 1 Offset(-7,38)
@@ -472,7 +470,7 @@ ACTOR WWTM60 : WWTWeapon replaces BFG9000
 		M60M C 1 Offset(-1,33)
 		Goto ReloadContinue
 	ReloadUnmountEmpty:
-		M60E G 1 Offset(-2,34) A_PlaySound("M60/GripOff", 5)
+		M60E G 1 Offset(-2,34) A_PlaySound("M60/GripOff",5)
 		M60E F 1 Offset(-5,36)
 		M60E E 1 Offset(-6,37)
 		M60E D 1 Offset(-7,38)
@@ -484,10 +482,11 @@ ACTOR WWTM60 : WWTWeapon replaces BFG9000
 		M60E C 1 Offset(-1,33)
 		Goto ReloadContinueEmpty
 	Zoom:
-		M60M A 0 A_JumpIfInventory("M60Mounted", 1, "UnZoom")
-		M60M A 0 A_JumpIfNoAmmo("ZoomEmpty")
-		M60M A 1 Offset(-2,34) A_PlaySound("M60/BeltMove", 5)
-		M60M B 1 Offset(-5,36) A_GiveInventory("M60Mounted", 1)
+		M60M A 0 A_JumpIfInventory("M60Mounted",1,"UnZoom")
+		M60M A 0 A_JumpIfInventory("M60Loaded",1,1)
+		Goto ZoomEmpty
+		M60M A 1 Offset(-2,34) A_PlaySound("M60/BeltMove",5)
+		M60M B 1 Offset(-5,36) A_GiveInventory("M60Mounted")
 		M60M C 1 Offset(-6,37)
 		M60M C 1 Offset(-7,38)
 		M60M C 1 Offset(-8,39)
@@ -501,17 +500,17 @@ ACTOR WWTM60 : WWTWeapon replaces BFG9000
 		M60M C 1 Offset(-16,59)
 		M60M C 1 Offset(-14,55)
 		M60M C 1 Offset(-12,50)
-		M60M C 1 Offset(-10,47) 
-		M60M C 1 Offset(-8,44) 
+		M60M C 1 Offset(-10,47)
+		M60M C 1 Offset(-8,44)
 		M60M C 1 Offset(-5,42)
 		M60M D 1 Offset(-4,40)
 		M60M E 1 Offset(-3,38)
 		M60M F 1 Offset(-2,36)
-		M60M G 1 Offset(-1,34) A_PlaySound("M60/GripOn", 5)
+		M60M G 1 Offset(-1,34) A_PlaySound("M60/GripOn",5)
 		Goto Ready
 	ZoomEmpty:
 		M60E C 1 Offset(-2,34)
-		M60E C 1 Offset(-5,36) A_GiveInventory("M60Mounted", 1)
+		M60E C 1 Offset(-5,36) A_GiveInventory("M60Mounted")
 		M60E C 1 Offset(-6,37)
 		M60E C 1 Offset(-7,38)
 		M60E C 1 Offset(-8,39)
@@ -525,18 +524,19 @@ ACTOR WWTM60 : WWTWeapon replaces BFG9000
 		M60E C 1 Offset(-16,59)
 		M60E C 1 Offset(-14,55)
 		M60E C 1 Offset(-12,50)
-		M60E C 1 Offset(-10,47) 
-		M60E C 1 Offset(-8,44) 
+		M60E C 1 Offset(-10,47)
+		M60E C 1 Offset(-8,44)
 		M60E C 1 Offset(-5,42)
 		M60E D 1 Offset(-4,40)
 		M60E E 1 Offset(-3,38)
 		M60E F 1 Offset(-2,36)
-		M60E G 1 Offset(-1,34) A_PlaySound("M60/GripOn", 5)
+		M60E G 1 Offset(-1,34) A_PlaySound("M60/GripOn",5)
 		Goto Ready
 	UnZoom:
-		M60M G 0 A_JumpIfNoAmmo("UnZoomEmpty")
-		M60M G 1 Offset(-2,34) A_PlaySound("M60/GripOff", 5)
-		M60M F 1 Offset(-5,36) A_TakeInventory("M60Mounted", 1)
+		M60M G 0 A_JumpIfInventory("M60Loaded",1,1)
+		Goto UnZoomEmpty
+		M60M G 1 Offset(-2,34) A_PlaySound("M60/GripOff",5)
+		M60M F 1 Offset(-5,36) A_TakeInventory("M60Mounted")
 		M60M E 1 Offset(-6,37)
 		M60M D 1 Offset(-7,38)
 		M60M C 1 Offset(-8,39)
@@ -544,14 +544,14 @@ ACTOR WWTM60 : WWTWeapon replaces BFG9000
 		M60M C 1 Offset(-10,42)
 		M60M C 1 Offset(-11,43)
 		M60M C 1 Offset(-12,45)
-		M60M C 1 Offset(-13,47) A_PlaySound("M60/BeltMove", 5)
+		M60M C 1 Offset(-13,47) A_PlaySound("M60/BeltMove",5)
 		M60M C 1 Offset(-14,52)
 		M60M C 1 Offset(-15,55)
 		M60M C 1 Offset(-16,59)
 		M60M C 1 Offset(-14,55)
 		M60M C 1 Offset(-12,50)
-		M60M C 1 Offset(-10,47) 
-		M60M C 1 Offset(-8,44) 
+		M60M C 1 Offset(-10,47)
+		M60M C 1 Offset(-8,44)
 		M60M C 1 Offset(-5,42)
 		M60M C 1 Offset(-4,40)
 		M60M C 1 Offset(-3,38)
@@ -559,8 +559,8 @@ ACTOR WWTM60 : WWTWeapon replaces BFG9000
 		M60M A 1 Offset(-1,34)
 		Goto Ready
 	UnZoomEmpty:
-		M60E G 1 Offset(-2,34) A_PlaySound("M60/GripOff", 5)
-		M60E F 1 Offset(-5,36) A_TakeInventory("M60Mounted", 1)
+		M60E G 1 Offset(-2,34) A_PlaySound("M60/GripOff",5)
+		M60E F 1 Offset(-5,36) A_TakeInventory("M60Mounted")
 		M60E E 1 Offset(-6,37)
 		M60E D 1 Offset(-7,38)
 		M60E C 1 Offset(-8,39)
@@ -574,8 +574,8 @@ ACTOR WWTM60 : WWTWeapon replaces BFG9000
 		M60E C 1 Offset(-16,59)
 		M60E C 1 Offset(-14,55)
 		M60E C 1 Offset(-12,50)
-		M60E C 1 Offset(-10,47) 
-		M60E C 1 Offset(-8,44) 
+		M60E C 1 Offset(-10,47)
+		M60E C 1 Offset(-8,44)
 		M60E C 1 Offset(-5,42)
 		M60E C 1 Offset(-4,40)
 		M60E C 1 Offset(-3,38)
@@ -583,8 +583,8 @@ ACTOR WWTM60 : WWTWeapon replaces BFG9000
 		M60E C 1 Offset(-1,34)
 		Goto Ready
 	AltfireReturn:
-		M60G A 0 A_JumpIfInventory("M60Mounted", 1, "AltfireReturnMounted")
-		M60G A 0 Offset(-30,82) A_JumpIfInventory("M60Loaded", 1, 2)
+		M60G A 0 A_JumpIfInventory("M60Mounted",1,"AltfireReturnMounted")
+		M60G A 0 Offset(-30,82) A_JumpIfInventory("M60Loaded",1,2)
 		M60G F 0 Offset(-30,82)
 		Goto AltfireReturnResume
 		M60G A 0 Offset(-30,82)
@@ -597,10 +597,10 @@ ACTOR WWTM60 : WWTWeapon replaces BFG9000
 		"####" "#" 1 Offset(-10,44)
 		"####" "#" 1 Offset(-5,38)
 		"####" "#" 1 Offset(-1,35)
-		"####" "#" 0 A_JumpIfInventory("M60Loaded", 1, "Ready")
+		"####" "#" 0 A_JumpIfInventory("M60Loaded",1,"Ready")
 		Goto ReadyEmpty
 	AltfireReturnMounted:
-		M60S A 0 Offset(-30,82) A_JumpIfInventory("M60Loaded", 1, 2)
+		M60S A 0 A_JumpIfInventory("M60Loaded",1,2)
 		M60S F 0 Offset(-30,82)
 		Goto AltfireReturnResume
 		M60S A 0 Offset(-30,82)
@@ -608,7 +608,6 @@ ACTOR WWTM60 : WWTWeapon replaces BFG9000
 	Flash:
 		TNT1 A 2 A_Light2
 		TNT1 A 2 A_Light1
-		TNT1 A 1 A_Light0
 		Goto LightDone
 	}
 }

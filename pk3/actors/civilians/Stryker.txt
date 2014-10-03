@@ -1,21 +1,10 @@
-ACTOR WWTStrykerHostage : SwitchableDecoration replaces InvulnerabilitySphere
+ACTOR WWTStrykerHostage : WWTCivilian replaces InvulnerabilitySphere
 {
-	MONSTER
-	-COUNTKILL
-	+FRIGHTENED
-	+USESPECIAL
-	+LOOKALLAROUND
-	YScale 0.4
-	XScale 0.45
-	Radius 24
-	Height 56
-	Health 50
-	Speed 0
-	PainChance 256
+	YScale .4
+	XScale .45
 	SeeSound "MaleCiv/Sight"
 	DeathSound "MaleCiv/Pain"
 	PainSound "MaleCiv/Pain"
-	Activation "THINGSPEC_Activate"
 	States
 	{
 	Spawn:
@@ -23,30 +12,23 @@ ACTOR WWTStrykerHostage : SwitchableDecoration replaces InvulnerabilitySphere
 		Loop
 	See:
 		HMK1 A 6 A_Wander
-		HMK1 A 0 A_SpawnItemEx("HalpSign", 0, 0, 64)
+		HMK1 A 0 A_SpawnItemEx("HalpSign",0,0,64)
 		Loop
 	Pain:
 		HMK1 B 5 A_Pain
 		Goto See
 	Death:
-		HMK1 C 0 A_ChangeFlag(USESPECIAL, 0)
+		HMK1 C 0 A_ChangeFlag(USESPECIAL,0)
 		HMK1 C 4 A_Scream
-		HMK1 D 4 A_SpawnItemEx("SupershieldItem",0,0,0,0,0,6)
+		HMK1 D 4 A_SpawnItemEx("SupershieldItem",0,0,0,0,0,6,0,SXF_NOCHECKPOSITION)
 		HMK1 E 5 A_PlaySound("misc/bodyfall")
 		HMK1 F 5 A_NoBlocking
 		HMK1 F -1
 		Stop
 	Death.Telefrag:
 	Active:
-		HMK1 A 0 A_ChangeFlag(SOLID, 0)
-		HMK1 A 0 A_ChangeFlag(SHOOTABLE, 0)
-		HMK1 A 0 A_NoBlocking
 		HMK1 A 0 A_PlaySound("Stryker/Saved")
-		HMK1 A 0 A_SpawnItemEx("SuperSupershieldItem",0,0,0,0,0,6)
-		HMK1 A 0 A_Jump(256, "Warpout")
-		Goto Warpout
-	Warpout:
-		HMK1 A 1 A_FadeOut(0.02)
-		Loop
+		HMK1 A 0 A_SpawnItemEx("SuperSupershieldItem",0,0,0,0,0,6,0,SXF_NOCHECKPOSITION)
+		Goto Leaving
 	}
 }

@@ -10,13 +10,9 @@ ACTOR StrikerLevelup : Inventory
 	Inventory.MaxAmount 3
 }
 
-ACTOR StrikerMaxed : Inventory
-{
-	Inventory.MaxAmount 1
-}
-
 ACTOR StrikerLoaded : Ammo
 {
+	Tag "12g Shell"
 	Inventory.MaxAmount 12
 	+IGNORESKILL
 }
@@ -31,54 +27,43 @@ ACTOR StrikerLoadSeq : Inventory
 	Inventory.MaxAmount 3 // Indicates number of shells "in hand" when reloading - it'll pause for a short moment to grab more.
 }
 
-ACTOR StrikerLoading : Inventory
-{
-	Inventory.MaxAmount 1 // So that the altfire eject sequence doesn't make you reload.
-}
+ACTOR StrikerLoading : Inventory{}	// So that the altfire eject sequence doesn't make you reload.
 
 ACTOR WWTStriker : WWTWeapon replaces Chaingun
 {
 	Weapon.AmmoType1 "StrikerLoaded"
-	Weapon.AmmoGive1 0
 	Weapon.AmmoUse1 1
 	Weapon.AmmoType2 "12gaAmmo"
 	Weapon.AmmoGive2 10
-	Weapon.AmmoUse2 0
-	Weapon.SlotNumber 3
+	Weapon.AmmoUse2 1
 	Radius 32
 	Height 20
-	Scale 0.6
+	Scale .6
 	Tag "$WWTWEP3NAME"
 	Inventory.PickupMessage "$WWTWEP3PICK"
 	Inventory.PickupSound "Striker/Pickup"
 	Inventory.Icon "STKPA0"
-	+Weapon.Ammo_Optional
-	+Weapon.NoAutoFire
-	+Weapon.NoAlert
 	States
 	{
 	Spawn:
 		STKP A -1
 		Stop
 	Select:
-	ReadyAnim:
 		TNT1 A 15
 		STKG E 1 Offset(90,91)
 		STKG E 1 Offset(75,81)
 		STKG E 1 Offset(60,71)
 		STKG E 1 Offset(48,61)
-		STKG E 1 Offset(38,51) A_PlaySound("Striker/Pickup", 5)
+		STKG E 1 Offset(38,51) A_PlaySound("Striker/Pickup",5)
 		STKG E 1 Offset(29,43)
 		STKG E 1 Offset(20,36)
 		STKG A 1 Offset(11,35)
-		STKG A 1 Offset(6,33) A_PlaySound("Striker/Ready", 6)
+		STKG A 1 Offset(6,33) A_PlaySound("Striker/Ready",6)
 		STKG A 1 Offset(3,32)
-	Ready:
-		STKG A 1 A_WeaponReady(WRF_ALLOWRELOAD)
-		Loop
+		Goto Ready
 	Deselect:
 		STKG A 0 A_StopSound(CHAN_WEAPON)
-		STKG A 0 A_TakeInventory("StrikerLoading", 1)
+		STKG A 0 A_TakeInventory("StrikerLoading")
 		"####" A 1 Offset(3,32)
 		"####" A 1 Offset(6,33)
 		"####" A 1 Offset(11,35)
@@ -91,84 +76,93 @@ ACTOR WWTStriker : WWTWeapon replaces Chaingun
 		"####" A 1 Offset(90,91)
 		TNT1 A 0 A_Lower
 		Wait
+	Ready:
+		STKG A 0 A_JumpIfInventory("StrikerFired",1,4)
+		STKG A 0 A_JumpIfInventory("StrikerLoaded",0,2)
+		STKG A 0 A_JumpIfInventory("12gaAmmo",1,2)
+		STKG A 1 A_WeaponReady
+		Loop
+		STKG A 1 A_WeaponReady(WRF_ALLOWRELOAD)
+		Loop
 	Fire:
-		STKG A 0 A_JumpIfNoAmmo("DryFire")
-		//STKG A 0 A_JumpIfInventory("StrikerLevelup", 3, "FireLevel3")
-		STKG A 0 A_JumpIfInventory("StrikerLevelup", 2, "FireLevel2")
-		STKG A 0 A_JumpIfInventory("StrikerLevelup", 1, "FireLevel1")
-		STKG B 0 A_PlayWeaponSound("Striker/Fire")
-		STKG B 0 A_GiveInventory("StrikerFired", 1)
+		STKG A 0 A_JumpIfInventory("StrikerLoaded",1,1)
+		Goto DryFire
+		STKG A 0 A_JumpIfInventory("StrikerLevelup",2,"FireLevel2")
+		STKG A 0 A_JumpIfInventory("StrikerLevelup",1,"FireLevel1")
+		STKG B 0 A_PlaySound("Striker/Fire",CHAN_WEAPON)
+		STKG B 0 A_GiveInventory("StrikerFired")
 		STKG B 0 A_GunFlash
 		STKG B 0 A_AlertMonsters
-		STKG B 0 A_TakeInventory("StrikerLoading", 1)
-		STKG BBBBBBB 0 BRIGHT A_FireCustomMissile("PlayerShotgunTracer", frandom(-3.0, 3.0), 0, 9, 0, 0, frandom(-3.0, 3.0))
-		STKG B 1 BRIGHT A_FireCustomMissile("PlayerShotgunTracer", frandom(-3.0, 3.0), 1, 9, 0, 0, frandom(-3.0, 3.0))
+		STKG B 0 A_TakeInventory("StrikerLoading")
+		STKG BBBBBBBB 0 A_FireCustomMissile("PlayerShotgunTracer",frandom(-3.0,3.0),0,9,0,0,frandom(-3.0,3.0))
+		STKG B 1 BRIGHT A_TakeInventory("StrikerLoaded",1,TIF_NOTAKEINFINITE)
 		STKG C 1 BRIGHT Offset(4,34) A_SetPitch(pitch - 2.0)
 		STKG D 1 BRIGHT Offset(12,38) A_SetPitch(pitch - 1.5)
 		STKG D 1 BRIGHT Offset(24,38) A_SetPitch(pitch - 1.0)
-		STKG A 1 Offset(16,40) A_SetPitch(pitch - 0.5)
-		STKG A 1 Offset(8,36) A_SetPitch(pitch + 0.9)
-		STKG A 1 Offset(4,34) A_SetPitch(pitch + 0.7)
-		STKG A 1 Offset(2,32) A_SetPitch(pitch + 0.5)
-		STKG A 1 A_SetPitch(pitch + 0.3)
+		STKG A 1 Offset(16,40) A_SetPitch(pitch - .5)
+		STKG A 1 Offset(8,36) A_SetPitch(pitch + .9)
+		STKG A 1 Offset(4,34) A_SetPitch(pitch + .7)
+		STKG A 1 Offset(2,32) A_SetPitch(pitch + .5)
+		STKG A 1 A_SetPitch(pitch + .3)
+		STKG A 0 A_CheckReload
 		Goto Ready
 	FireLevel1:
-		STKG B 0 A_PlayWeaponSound("Striker/Fire")
-		STKG B 0 A_GiveInventory("StrikerFired", 1)
+		STKG B 0 A_PlaySound("Striker/Fire",CHAN_WEAPON)
+		STKG B 0 A_GiveInventory("StrikerFired")
 		STKG B 0 A_GunFlash
 		STKG B 0 A_AlertMonsters
-		STKG B 0 A_TakeInventory("StrikerLoading", 1)
-		STKG BBBBBBB 0 BRIGHT A_FireCustomMissile("PlayerShotgunTracer", frandom(-1.5, 1.5), 0, 9, 0, 0, frandom(-1.5, 1.5))
-		STKG B 1 BRIGHT A_FireCustomMissile("PlayerShotgunTracer", frandom(-1.5, 1.5), 1, 9, 0, 0, frandom(-1.5, 1.5))
+		STKG B 0 A_TakeInventory("StrikerLoading")
+		STKG BBBBBBBB 0 A_FireCustomMissile("PlayerShotgunTracer",frandom(-1.5,1.5),0,9,0,0,frandom(-1.5,1.5))
+		STKG B 1 BRIGHT A_TakeInventory("StrikerLoaded",1,TIF_NOTAKEINFINITE)
 		STKG C 1 BRIGHT Offset(4,34) A_SetPitch(pitch - 2.0)
 		STKG D 1 BRIGHT Offset(12,38) A_SetPitch(pitch - 1.5)
 		STKG D 1 BRIGHT Offset(24,38) A_SetPitch(pitch - 1.0)
-		STKG A 1 Offset(16,40) A_SetPitch(pitch - 0.5)
-		STKG A 1 Offset(8,36) A_SetPitch(pitch + 0.9)
-		STKG A 1 Offset(4,34) A_SetPitch(pitch + 0.7)
-		STKG A 1 Offset(2,32) A_SetPitch(pitch + 0.5)
-		STKG A 1 A_SetPitch(pitch + 0.3)
+		STKG A 1 Offset(16,40) A_SetPitch(pitch - .5)
+		STKG A 1 Offset(8,36) A_SetPitch(pitch + .9)
+		STKG A 1 Offset(4,34) A_SetPitch(pitch + .7)
+		STKG A 1 Offset(2,32) A_SetPitch(pitch + .5)
+		STKG A 1 A_SetPitch(pitch + .3)
+		STKG A 0 A_CheckReload
 		Goto Ready
 	FireLevel2:
-		STKG B 0 A_PlayWeaponSound("Striker/Fire")
-		STKG B 0 A_TakeInventory("StrikerFired", 1)
+		STKG B 0 A_PlaySound("Striker/Fire",CHAN_WEAPON)
+		STKG B 0 A_TakeInventory("StrikerFired",1)
 		STKG B 0 A_GunFlash
 		STKG B 0 A_AlertMonsters
-		STKG B 0 A_TakeInventory("StrikerLoading", 1)
-		STKG BBBBBBB 0 BRIGHT A_FireCustomMissile("PlayerShotgunTracer", frandom(-1.5, 1.5), 0, 9, 0, 0, frandom(-1.5, 1.5))
-		STKG B 1 BRIGHT A_FireCustomMissile("PlayerShotgunTracer", frandom(-1.5, 1.5), 1, 9, 0, 0, frandom(-1.5, 1.5))
+		STKG B 0 A_TakeInventory("StrikerLoading")
+		STKG BBBBBBBB 0 A_FireCustomMissile("PlayerShotgunTracer",frandom(-1.5,1.5),0,9,0,0,frandom(-1.5,1.5))
+		STKG B 1 BRIGHT A_TakeInventory("StrikerLoaded",1,TIF_NOTAKEINFINITE)
 		STKG C 1 BRIGHT Offset(4,34) A_SpawnItemEx("ShellCasing",28,-12,36,2,1,1,random(-55,-80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
 		STKG D 1 BRIGHT Offset(12,38) A_SetPitch(pitch - 1.5)
 		STKG D 1 BRIGHT Offset(24,38) A_SetPitch(pitch - 1.0)
-		STKG A 1 Offset(16,40) A_SetPitch(pitch - 0.5)
-		STKG A 1 Offset(8,36) A_SetPitch(pitch + 0.9)
-		STKG A 1 Offset(4,34) A_SetPitch(pitch + 0.7)
-		STKG A 1 Offset(2,32) A_SetPitch(pitch + 0.5)
-		STKG A 1 A_SetPitch(pitch + 0.3)
+		STKG A 1 Offset(16,40) A_SetPitch(pitch - .5)
+		STKG A 1 Offset(8,36) A_SetPitch(pitch + .9)
+		STKG A 1 Offset(4,34) A_SetPitch(pitch + .7)
+		STKG A 1 Offset(2,32) A_SetPitch(pitch + .5)
+		STKG A 1 A_SetPitch(pitch + .3)
+		STKG A 0 A_CheckReload
 		Goto Ready
 	Dryfire:
+		TNT1 A 0 A_JumpIf(CallACS("Autoreload")==1,"Reload")
 		STKG A 1 A_PlaySound("Dryfire/Rifle",6)
 		STKG A 1 Offset(2,34)
 		STKG A 1 Offset(1,33)
-		Goto Ready		
-	Reload:
-		STKG A 0 A_JumpIfInventory("StrikerFired", 1, "EmptyFirst")
-	ReloadCheck:
-		STKG A 0 A_JumpIfInventory("StrikerLoaded", 12, 2)
-		STKG A 0 A_JumpIfInventory("12gaAmmo", 1, 2)
-		STKG A 1
 		Goto Ready
-		STKG A 0 A_JumpIfInventory("StrikerLevelup", 3, "ReloadLevel3")
-		STKG E 1 Offset(4,40) A_TakeInventory("StrikerLoadSeq", 3)
+	Reload:
+		STKG A 0 A_JumpIfInventory("StrikerFired",1,"EmptyFirst")
+		"####" A 1 A_JumpIfInventory("12gaAmmo",1,1)
+		Goto Ready
+		STKG A 0 A_JumpIfInventory("StrikerLevelup",3,"ReloadLevel3")
+		STKG E 1 Offset(4,40) A_TakeInventory("StrikerLoadSeq")
 		STKG E 1 Offset(8,46)
 		STKG E 1 Offset(11,50)
 		STKG E 1 Offset(13,52)
 		STKG E 1 Offset(14,53)
 	ReloadWork:
-		STKG A 0 A_JumpIfInventory("StrikerLoadSeq", 3, "GetMoreShells")
-		STKG A 0 A_TakeInventory("12gaAmmo", 1)
-		STKG A 0 A_GiveInventory("StrikerLoaded", 1)
-		STKG E 1 Offset(12,55) A_PlaySound("Striker/Load", 5)
+		STKG A 0 A_JumpIfInventory("StrikerLoadSeq",3,"GetMoreShells")
+		STKG A 0 A_TakeInventory("12gaAmmo",1)
+		STKG A 0 A_GiveInventory("StrikerLoaded")
+		STKG E 1 Offset(12,55) A_PlaySound("Striker/Load",5)
 		STKG E 1 Offset(11,55) A_WeaponReady(WRF_NOBOB)
 		STKG E 1 Offset(10,56) A_WeaponReady(WRF_NOBOB)
 		STKG E 1 Offset(9,56) A_WeaponReady(WRF_NOBOB)
@@ -176,19 +170,19 @@ ACTOR WWTStriker : WWTWeapon replaces Chaingun
 		STKG E 1 Offset(8,56) A_WeaponReady(WRF_NOBOB)
 		STKG E 1 Offset(9,57) A_WeaponReady(WRF_NOBOB)
 		STKG E 1 Offset(11,56) A_WeaponReady(WRF_NOBOB)
-		STKG E 1 Offset(12,53) A_GiveInventory("StrikerLoadSeq", 1)
-		STKG A 0 A_JumpIfInventory("StrikerLoaded", 12, "ReloadFinish")
-		STKG A 0 A_JumpIfInventory("12gaAmmo", 1, "ReloadWork")
+		STKG E 1 Offset(12,53) A_GiveInventory("StrikerLoadSeq")
+		STKG A 0 A_JumpIfInventory("StrikerLoaded",12,"ReloadFinish")
+		STKG A 0 A_JumpIfInventory("12gaAmmo",1,"ReloadWork")
 		Goto ReloadFinish
 	ReloadFinish:
-		STKG E 1 Offset(11,53) A_PlaySound("Striker/Ready", 5)
+		STKG E 1 Offset(11,53) A_PlaySound("Striker/Ready",5)
 		STKG A 1 Offset(9,50)
 		STKG A 1 Offset(5,45)
 		STKG A 1 Offset(2,39)
 		STKG A 1 Offset(1,35)
 		Goto Ready
 	EmptyFirst:
-		STKG E 1 Offset(2,38) A_PlaySound("Striker/Pickup", 5)
+		STKG E 1 Offset(2,38) A_PlaySound("Striker/Pickup",5)
 		STKG E 1 Offset(5,42)
 		STKG E 1 Offset(8,46)
 		STKG E 1 Offset(10,48)
@@ -212,7 +206,7 @@ ACTOR WWTStriker : WWTWeapon replaces Chaingun
 		STKG E 1 Offset(2,39)
 		STKG E 1 Offset(1,35)
 		STKG E 1 Offset(1,33)
-		Goto ReloadCheck
+		Goto Reload+1
 	GetMoreShells:
 		STKG E 1 Offset(14,57) A_WeaponReady(WRF_NOBOB)
 		STKG E 1 Offset(13,59) A_WeaponReady(WRF_NOBOB)
@@ -224,10 +218,10 @@ ACTOR WWTStriker : WWTWeapon replaces Chaingun
 		STKG E 1 Offset(11,62) A_WeaponReady(WRF_NOBOB)
 		STKG E 1 Offset(12,60) A_WeaponReady(WRF_NOBOB)
 		STKG E 1 Offset(13,58) A_WeaponReady(WRF_NOBOB)
-		STKG E 1 Offset(14,56) A_TakeInventory("StrikerLoadSeq", 3)
+		STKG E 1 Offset(14,56) A_TakeInventory("StrikerLoadSeq")
 		Goto ReloadWork
 	ReloadLevel3:
-		STKG E 1 Offset(3,34) A_PlaySound("Striker/Clipout", 5)
+		STKG E 1 Offset(3,34) A_PlaySound("Striker/Clipout",5)
 		STKG E 1 Offset(4,37)
 		STKG E 1 Offset(5,39)
 		STKG E 1 Offset(6,42)
@@ -248,12 +242,12 @@ ACTOR WWTStriker : WWTWeapon replaces Chaingun
 		STKG E 1 Offset(22,112)
 		STKG E 1 Offset(25,109)
 	ReloadWorkLevel3:
-		STKG E 0 A_TakeInventory("12gaAmmo", 1)
-		STKG E 0 A_GiveInventory("StrikerLoaded", 1)
-		STKG E 0 A_JumpIfInventory("StrikerLoaded", 12, "ReloadFinishLevel3")
-		STKG E 0 A_JumpIfInventory("12gaAmmo", 1, "ReloadWorkLevel3")
+		STKG E 0 A_TakeInventory("12gaAmmo",1)
+		STKG E 0 A_GiveInventory("StrikerLoaded",1)
+		STKG E 0 A_JumpIfInventory("StrikerLoaded",12,"ReloadFinishLevel3")
+		STKG E 0 A_JumpIfInventory("12gaAmmo",1,"ReloadWorkLevel3")
 	ReloadFinishLevel3:
-		STKG E 1 Offset(28,100) A_PlaySound("Striker/Clipin", 5)
+		STKG E 1 Offset(28,100) A_PlaySound("Striker/Clipin",5)
 		STKG E 1 Offset(29,90)
 		STKG E 1 Offset(28,79)
 		STKG E 1 Offset(27,70)
@@ -265,7 +259,7 @@ ACTOR WWTStriker : WWTWeapon replaces Chaingun
 		STKG E 1 Offset(12,33)
 		STKG A 1 Offset(6,32)
 		STKG A 1 Offset(1,32)
-		STKG A 1 Offset(-2,33) A_PlaySound("Striker/Ready", 5)
+		STKG A 1 Offset(-2,33) A_PlaySound("Striker/Ready",5)
 		STKG A 1 Offset(-3,34)
 		STKG A 1 Offset(-1,33)
 		Goto Ready
@@ -281,7 +275,6 @@ ACTOR WWTStriker : WWTWeapon replaces Chaingun
 	Flash:
 		TNT1 A 2 A_Light2
 		TNT1 A 2 A_Light1
-		TNT1 A 1 A_Light0
 		Goto LightDone
 	}
 }

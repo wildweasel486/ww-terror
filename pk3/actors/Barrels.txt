@@ -6,22 +6,22 @@ ACTOR WWTBarrelSpawner : RandomSpawner replaces ExplosiveBarrel
 
 ACTOR WeaselBarrel : ExplosiveBarrel
 {
-	DamageFactor "PlayerMelee", 0.1
-	DamageFactor "Fire", 2.0
+	DamageFactor "PlayerMelee",.1
+	DamageFactor "Fire",2.0
 	DeathSound "world/barrelx"
 	States
 	{
 	Spawn:
 		NBAR A -1
-		Loop
+		Stop
 	Death:
-		NBAR A 5 BRIGHT
+		NBAR "#" 5 BRIGHT
 		EXP1 A 2 BRIGHT A_SetTranslucent(0.85,1)
 		EXP1 B 2 BRIGHT A_Scream
 		EXP1 C 2 BRIGHT A_NoBlocking
 		EXP1 D 2 BRIGHT Radius_Quake(5,10,0,7,0)
 		EXP1 E 2 BRIGHT A_MissileAttack
-		EXP1 F 2 BRIGHT A_Explode(128,128,1)
+		EXP1 F 2 BRIGHT A_Explode
 		EXP1 GHIJKL 2 BRIGHT
 		EXP1 M 2 BRIGHT A_SetTranslucent(0.55,1)
 		EXP1 N 2 BRIGHT A_SetTranslucent(0.20,1)
@@ -35,18 +35,6 @@ ACTOR WeaselBarrel2 : WeaselBarrel
 	{
 	Spawn:
 		NBAR B -1
-		Loop
-	Death:
-		NBAR B 5 BRIGHT
-		EXP1 A 2 BRIGHT A_SetTranslucent(0.85,1)
-		EXP1 B 2 BRIGHT A_Scream
-		EXP1 C 2 BRIGHT A_NoBlocking
-		EXP1 D 2 BRIGHT Radius_Quake(5,10,0,7,0)
-		EXP1 E 2 BRIGHT A_MissileAttack
-		EXP1 F 2 BRIGHT A_Explode(128,128,1)
-		EXP1 GHIJKL 2 BRIGHT
-		EXP1 M 2 BRIGHT A_SetTranslucent(0.55,1)
-		EXP1 N 2 BRIGHT A_SetTranslucent(0.20,1)
 		Stop
 	}
 }
