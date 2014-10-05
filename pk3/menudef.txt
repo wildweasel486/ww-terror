@@ -749,4 +749,5 @@ OptionMenu "TerroristsOptions"
 	Title "Terrorists! Options"
 	Option "Auto-Reload","autoreload","OnOff"
 	Option "Weapon Experience","allowlevelup","OnOff"
+	Slider "Shell Casing Lifetime","casinglifetime",100,9000,100
 }

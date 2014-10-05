@@ -11,6 +11,11 @@ Script "NoLevelup"(void)
 	SetResultValue(GetCVar("allowlevelup"));
 }
 
+Script "ShellLifetime"(void)
+{
+	SetResultValue(GetCVar("casinglifetime"));
+}
+
 //Being tased seems a bit buggy, so I moved it to ACS for a more reliable completion
 Script "Tased"(void)
 {
