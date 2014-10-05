@@ -65,7 +65,7 @@ Actor WWTPlayer : DoomPlayer
 	Player.StartItem "BerettaLoaded",15
 	Player.StartItem "MatebaLoaded",3
 	Player.StartItem "UziLoaded",16
-	Player.StartItem "AK47Loaded",15
+	Player.StartItem "AK47Loaded",10
 	Player.StartItem "StrikerLoaded",6
 	Player.StartItem "BarrettLoaded",3
 	Player.StartItem "MGLLoaded",3
