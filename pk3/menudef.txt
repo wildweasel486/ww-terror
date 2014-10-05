@@ -748,4 +748,5 @@ OptionMenu "TerroristsOptions"
 {
 	Title "Terrorists! Options"
 	Option "Auto-Reload","autoreload","OnOff"
+	Option "Weapon Experience","allowlevelup","OnOff"
 }

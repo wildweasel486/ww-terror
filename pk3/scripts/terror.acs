@@ -6,6 +6,11 @@ Script "AutoReload"(void)
 	SetResultValue(GetCVar("autoreload"));
 }
 
+Script "NoLevelup"(void)
+{
+	SetResultValue(GetCVar("allowlevelup"));
+}
+
 //Being tased seems a bit buggy, so I moved it to ACS for a more reliable completion
 Script "Tased"(void)
 {
