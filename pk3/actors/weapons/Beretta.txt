@@ -7,7 +7,7 @@
 
 ACTOR BerettaExp : Inventory
 {
-	Inventory.MaxAmount 25
+	Inventory.MaxAmount 1000
 }
 
 ACTOR BerettaLevelup : Inventory

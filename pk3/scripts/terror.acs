@@ -72,7 +72,7 @@ Script "InstantLevelup"(void)
 			GiveInventory("BerettaLoaded",999);
 			GiveInventory("9mmAmmo",999);
 		}
-		GiveInventory("BerettaExp",25);
+		GiveInventory("BerettaExp",999);
 	}
 	If(CheckWeapon("Mateba"))
 	{
@@ -82,7 +82,7 @@ Script "InstantLevelup"(void)
 			GiveInventory("MatebaLoaded",999);
 			GiveInventory("44MagAmmo",999);
 		}
-		GiveInventory("MatebaExp",30);
+		GiveInventory("MatebaExp",999);
 	}
 	If(CheckWeapon("WWTStriker"))
 	{
@@ -92,7 +92,7 @@ Script "InstantLevelup"(void)
 			GiveInventory("StrikerLoaded",999);
 			GiveInventory("12gaAmmo",999);
 		}
-		GiveInventory("StrikerExp",40);
+		GiveInventory("StrikerExp",999);
 	}
 	If(CheckWeapon("WWTUzi"))
 	{
@@ -102,7 +102,7 @@ Script "InstantLevelup"(void)
 			GiveInventory("UziLoaded",999);
 			GiveInventory("9mmAmmo",999);
 		}
-		GiveInventory("UziExp",60);
+		GiveInventory("UziExp",999);
 	}
 	If(CheckWeapon("WWTAK47"))
 	{
@@ -112,7 +112,7 @@ Script "InstantLevelup"(void)
 			GiveInventory("AK47Loaded",999);
 			GiveInventory("762mmAmmo",999);
 		}
-		GiveInventory("AK47Exp",60);
+		GiveInventory("AK47Exp",999);
 	}
 	If(CheckWeapon("Barrett"))
 	{
@@ -122,7 +122,7 @@ Script "InstantLevelup"(void)
 			GiveInventory("BarrettLoaded",999);
 			GiveInventory("50BMGAmmo",999);
 		}
-		GiveInventory("BarrettExp",50);
+		GiveInventory("BarrettExp",999);
 	}
 	If(CheckWeapon("MGL140"))
 	{
@@ -132,7 +132,7 @@ Script "InstantLevelup"(void)
 			GiveInventory("MGLLoaded",999);
 			GiveInventory("40mmAmmo",999);
 		}
-		GiveInventory("MGLExp",50);
+		GiveInventory("MGLExp",999);
 	}
 	If(CheckWeapon("WWTM60"))
 	{
@@ -142,7 +142,7 @@ Script "InstantLevelup"(void)
 			GiveInventory("M60Loaded",999);
 			GiveInventory("762mmAmmo",999);
 		}
-		GiveInventory("M60Exp",100);
+		GiveInventory("M60Exp",999);
 	}
 }
 
@@ -157,7 +157,7 @@ Script "GunExp" Enter
 		// And now the sound of John Denver being strangled with an if/else.
 
 		// The Mighty Foot
-		if(CheckInventory("KickExp")>=50)
+		if(CheckInventory("KickExp")>=GetCVar("ww_wepMexp"))
 		{
 			if(CheckInventory("KickLevelup")>2)
 				TakeInventory("KickExp",999);
@@ -175,7 +175,7 @@ Script "GunExp" Enter
 			}
 		}
 		// Taser
-		if(CheckInventory("TaserExp")>=20)
+		if(CheckInventory("TaserExp")>=GetCVar("ww_wepTexp"))
 		{
 			if(CheckInventory("TaserLevelup")>2)
 				TakeInventory("TaserExp",999);
@@ -193,7 +193,7 @@ Script "GunExp" Enter
 			}
 		}
 		// Grenades
-		if(CheckInventory("GrenadeExp")>=25)
+		if(CheckInventory("GrenadeExp")>=GetCVar("ww_wepGexp"))
 		{
 			if(CheckInventory("GrenadeLevelup")>2)
 				TakeInventory("GrenadeExp",999);
@@ -211,7 +211,7 @@ Script "GunExp" Enter
 			}
 		}
 		// Beretta
-		if(CheckInventory("BerettaExp")>=25)
+		if(CheckInventory("BerettaExp")>=GetCVar("ww_wep1exp"))
 		{
 			if(CheckInventory("BerettaLevelup")>2)
 				TakeInventory("BerettaExp",999);
@@ -229,7 +229,7 @@ Script "GunExp" Enter
 			}
 		}
 		// Mateba
-		if(CheckInventory("MatebaExp")>=30)
+		if(CheckInventory("MatebaExp")>=GetCVar("ww_wep2exp"))
 		{
 			if(CheckInventory("MatebaLevelup")>2)
 				TakeInventory("MatebaExp",999);
@@ -247,7 +247,7 @@ Script "GunExp" Enter
 			}
 		}
 		// Striker
-		if(CheckInventory("StrikerExp")>=40)
+		if(CheckInventory("StrikerExp")>=GetCVar("ww_wep3exp"))
 		{
 			if(CheckInventory("StrikerLevelup")>2)
 				TakeInventory("StrikerExp",999);
@@ -265,7 +265,7 @@ Script "GunExp" Enter
 			}
 		}
 		// Uzi
-		if(CheckInventory("UziExp")>=60)
+		if(CheckInventory("UziExp")>=GetCVar("ww_wep4exp"))
 		{
 			if(CheckInventory("UziLevelup")>2)
 				TakeInventory("UziExp",999);
@@ -283,7 +283,7 @@ Script "GunExp" Enter
 			}
 		}
 		// AK47
-		if(CheckInventory("AK47Exp")>=60)
+		if(CheckInventory("AK47Exp")>=GetCVar("ww_wep5exp"))
 		{
 			if(CheckInventory("AK47Levelup")>2)
 				TakeInventory("AK47Exp",999);
@@ -304,7 +304,7 @@ Script "GunExp" Enter
 			}
 		}
 		// Barrett
-		if(CheckInventory("BarrettExp")>=50)
+		if(CheckInventory("BarrettExp")>=GetCVar("ww_wep6exp"))
 		{
 			if(CheckInventory("BarrettLevelup")>2)
 				TakeInventory("BarrettExp",999);
@@ -322,7 +322,7 @@ Script "GunExp" Enter
 			}
 		}
 		// MGL
-		if(CheckInventory("MGLExp")>=50)
+		if(CheckInventory("MGLExp")>=GetCVar("ww_wep7exp"))
 		{
 			if(CheckInventory("MGLLevelup")>2)
 				TakeInventory("MGLExp",999);
@@ -340,7 +340,7 @@ Script "GunExp" Enter
 			}
 		}
 		// M60
-		if(CheckInventory("M60Exp")>=100)
+		if(CheckInventory("M60Exp")>=GetCVar("ww_wep8exp"))
 		{
 			if(CheckInventory("M60Levelup")>2)
 				TakeInventory("M60Exp",999);

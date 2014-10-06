@@ -3,7 +3,7 @@
 
 ACTOR BarrettExp : Inventory
 {
-	Inventory.MaxAmount 50
+	Inventory.MaxAmount 1000
 }
 
 ACTOR BarrettLevelup : Inventory

@@ -2,3 +2,16 @@ user bool autoreload = false;
 server bool allowlevelup = true;
 server int casinglifetime = 1000;
 server int recoilamount = 1;
+
+// Weapon level scale cvars
+server int ww_wepMexp = 50;
+server int ww_wepTexp = 20;
+server int ww_wepGexp = 25;
+server int ww_wep1exp = 25;
+server int ww_wep2exp = 30;
+server int ww_wep3exp = 40;
+server int ww_wep4exp = 60;
+server int ww_wep5exp = 60;
+server int ww_wep6exp = 50;
+server int ww_wep7exp = 50;
+server int ww_wep8exp = 100;

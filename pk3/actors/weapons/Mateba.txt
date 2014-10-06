@@ -4,7 +4,7 @@
 
 ACTOR MatebaExp : Inventory
 {
-	Inventory.MaxAmount 30
+	Inventory.MaxAmount 1000
 }
 
 ACTOR MatebaLevelup : Inventory

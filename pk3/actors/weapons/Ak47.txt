@@ -5,7 +5,7 @@
 
 ACTOR AK47Exp : Inventory
 {
-	Inventory.MaxAmount 60
+	Inventory.MaxAmount 1000
 }
 
 ACTOR AK47Levelup : Inventory

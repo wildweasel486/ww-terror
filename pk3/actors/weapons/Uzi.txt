@@ -6,7 +6,7 @@
 
 ACTOR UziExp : Inventory
 {
-	Inventory.MaxAmount 60
+	Inventory.MaxAmount 1000
 }
 
 ACTOR UziLevelup : Inventory

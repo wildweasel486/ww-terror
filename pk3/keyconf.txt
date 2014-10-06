@@ -8,3 +8,6 @@ defaultbind f "toggletaser"
 alias ww_levelup "give berettaexp 999; give matebaexp 999; give strikerexp 999; give uziexp 999; give ak47exp 999; give barrettexp 999; give mglexp 999; give m60exp 999; give grenadeexp 999; give taserexp 999; give kickexp 999; echo Upgrade complete."
 alias ww_9000volts "give WWTTaserPickup; echo Meet the bug zapper."
 alias ww_fragout "give GrenadePickup 9; echo Pineapples."
+
+alias ww_expdefault "ww_wepMexp 50; ww_wepTexp 20; ww_wepGexp 25; ww_wep1exp 25; ww_wep2exp 30; ww_wep3exp 40; ww_wep4exp 60; ww_wep7exp 50; ww_wep8exp 100"
+alias ww_expdoubledefault "ww_wepMexp 100; ww_wepTexp 40; ww_wepGexp 50; ww_wep1exp 50; ww_wep2exp 60; ww_wep3exp 80; ww_wep4exp 120; ww_wep7exp 100; ww_wep8exp 200"

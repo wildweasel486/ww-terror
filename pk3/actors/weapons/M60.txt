@@ -4,7 +4,7 @@
 
 ACTOR M60Exp : Inventory
 {
-	Inventory.MaxAmount 100
+	Inventory.MaxAmount 1000
 }
 
 ACTOR M60Levelup : Inventory
