@@ -16,6 +16,11 @@ Script "ShellLifetime"(void)
 	SetResultValue(GetCVar("casinglifetime"));
 }
 
+Script "RecoilAmount"(void)
+{
+	SetResultValue(GetCVar("recoilamount"));
+}
+
 //Being tased seems a bit buggy, so I moved it to ACS for a more reliable completion
 Script "Tased"(void)
 {

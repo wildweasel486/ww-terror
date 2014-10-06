@@ -180,9 +180,9 @@ ACTOR Beretta : WWTWeapon replaces Pistol
 		BRTF A 0 A_GunFlash
 		BRTF A 0 A_AlertMonsters
 		BRTF A 1 Offset(2,34) BRIGHT A_FireCustomMissile("PlayerPistolTracer",frandom(-1.2,1.2),1,8,0,0,frandom(-1.2,1.2))
-		BRTF A 0 A_SetPitch(pitch - .4)
+		BRTF A 0 A_SetPitch(pitch - (.4 * CallACS("RecoilAmount")))
 		BRTG B 1 Offset(5,37) A_SpawnItemEx("BulletCasing",24,-24,40,8,2,4,random(-55,-80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
-		BRTG C 1 Offset(6,38) A_SetPitch(pitch - .4)
+		BRTG C 1 Offset(6,38) A_SetPitch(pitch - (.4 * CallACS("RecoilAmount")))
 		BRTG A 0 A_JumpIfInventory("BerettaLoaded",1,1)
 		Goto FireSlideback
 		BRTG D 1 Offset(8,39)
@@ -198,9 +198,9 @@ ACTOR Beretta : WWTWeapon replaces Pistol
 		BRTF A 0 A_GunFlash
 		BRTF A 0 A_AlertMonsters
 		BRTF A 1 Offset(2,34) BRIGHT A_FireCustomMissile("PlayerPistolTracer",frandom(-1.2,1.2),1,8,0,0,frandom(-1.2,1.2))
-		BRTF A 0 A_SetPitch(pitch - .4)
+		BRTF A 0 A_SetPitch(pitch - (.4 * CallACS("RecoilAmount")))
 		BRTG B 1 Offset(5,37) A_SpawnItemEx("BulletCasing",24,-24,40,8,2,4,random(-55,-80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
-		BRTG C 1 Offset(6,38) A_SetPitch(pitch - .4)
+		BRTG C 1 Offset(6,38) A_SetPitch(pitch - (.4 * CallACS("RecoilAmount")))
 		BRTG A 0 A_JumpIfInventory("BerettaLoaded",1,1)
 		Goto FireSlideback
 		BRTG D 1 Offset(8,39) A_WeaponReady(WRF_NOBOB)
@@ -217,9 +217,9 @@ ACTOR Beretta : WWTWeapon replaces Pistol
 		BRTF A 0 A_GunFlash
 		BRTF A 0 A_AlertMonsters
 		BRTF A 1 Offset(2,34) BRIGHT A_FireCustomMissile("PlayerPistolTracerFaster",frandom(-0.5,0.5),1,8,0,0,frandom(-0.5,0.5))
-		BRTF A 0 A_SetPitch(pitch - .2)
+		BRTF A 0 A_SetPitch(pitch - (.2 * CallACS("RecoilAmount")))
 		BRTG B 1 Offset(5,37) A_SpawnItemEx("BulletCasing",24,-24,40,8,2,4,random(-55,-80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
-		BRTG C 1 Offset(6,38) A_SetPitch(pitch - .2)
+		BRTG C 1 Offset(6,38) A_SetPitch(pitch - (.2 * CallACS("RecoilAmount")))
 		BRTG A 0 A_JumpIfInventory("BerettaLoaded",1,1)
 		Goto FireSlideback
 		BRTG D 1 Offset(8,39) A_WeaponReady(WRF_NOBOB)
@@ -240,9 +240,9 @@ ACTOR Beretta : WWTWeapon replaces Pistol
 		BRTF B 0 A_AlertMonsters
 		BRTF B 0 A_GiveInventory("BerettaBurstSeq")
 		BRTF B 1 Offset(2,34) BRIGHT A_FireCustomMissile("PlayerPistolTracerFaster",frandom(-0.5,0.5),1,8,0,0,frandom(-0.5,0.5))
-		BRTF B 0 A_SetPitch(pitch - .2)
+		BRTF B 0 A_SetPitch(pitch - (.2 * CallACS("RecoilAmount")))
 		BRTB B 1 Offset(5,37) A_SpawnItemEx("BulletCasing",24,-24,40,8,2,4,random(-55,-80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
-		BRTB C 0 Offset(6,38) A_SetPitch(pitch - .2)
+		BRTB C 0 Offset(6,38) A_SetPitch(pitch - (.2 * CallACS("RecoilAmount")))
 		BRTB A 0 A_JumpIfInventory("BerettaLoaded",1,1)
 		Goto FireSlidebackBurst
 		BRTB C 1 A_Refire

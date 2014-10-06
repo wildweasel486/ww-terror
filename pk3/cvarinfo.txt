@@ -1,3 +1,4 @@
 user bool autoreload = false;
 server bool allowlevelup = true;
 server int casinglifetime = 1000;
+server int recoilamount = 1;
