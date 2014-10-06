@@ -419,6 +419,7 @@ statusbar fullscreen,fullscreenoffsets
 	DrawKeyBar 9,horizontal,9,2,-40;
 }
 
+// Weapon and ammo list popup
 Statusbar PopupStatus,forcescaled
 {
 	DrawShader 440,100,vertical,-60,100;
