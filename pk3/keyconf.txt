@@ -9,5 +9,7 @@ alias ww_levelup "give berettaexp 999; give matebaexp 999; give strikerexp 999; 
 alias ww_9000volts "give WWTTaserPickup; echo Meet the bug zapper."
 alias ww_fragout "give GrenadePickup 9; echo Pineapples."
 
-alias ww_expdefault "ww_wepMexp 50; ww_wepTexp 20; ww_wepGexp 25; ww_wep1exp 25; ww_wep2exp 30; ww_wep3exp 40; ww_wep4exp 60; ww_wep7exp 50; ww_wep8exp 100"
-alias ww_expdoubledefault "ww_wepMexp 100; ww_wepTexp 40; ww_wepGexp 50; ww_wep1exp 50; ww_wep2exp 60; ww_wep3exp 80; ww_wep4exp 120; ww_wep7exp 100; ww_wep8exp 200"
+alias ww_expdefault "ww_wepMexp 50; ww_wepTexp 20; ww_wepGexp 25; ww_wep1exp 25; ww_wep2exp 30; ww_wep3exp 40; ww_wep4exp 60; ww_wep5exp 50; ww_wep6exp 40; ww_wep7exp 50; ww_wep8exp 100"
+alias ww_expdoubledefault "ww_wepMexp 100; ww_wepTexp 40; ww_wepGexp 50; ww_wep1exp 50; ww_wep2exp 60; ww_wep3exp 80; ww_wep4exp 120; ww_wep4exp 120; ww_wep5exp 100; ww_wep6exp 80;  ww_wep7exp 100; ww_wep8exp 200"
+alias ww_expquaddefault "ww_wepMexp 200; ww_wepTexp 80; ww_wepGexp 100; ww_wep1exp 100; ww_wep2exp 120; ww_wep3exp 160; ww_wep4exp 240; ww_wep4exp 240; ww_wep5exp 200; ww_wep6exp 160;  ww_wep7exp 200; ww_wep8exp 400"
+alias ww_expeightdefault "ww_wepMexp 400; ww_wepTexp 160; ww_wepGexp 200; ww_wep1exp 200; ww_wep2exp 240; ww_wep3exp 320; ww_wep4exp 480; ww_wep4exp 480; ww_wep5exp 400; ww_wep6exp 320; ww_wep7exp 400; ww_wep8exp 800"
