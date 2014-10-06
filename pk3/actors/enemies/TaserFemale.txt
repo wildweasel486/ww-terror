@@ -11,7 +11,7 @@ ACTOR TaserFemale : WWTBadGuy
 	DamageFactor "EnemyBullet",0.3
 	DamageFactor "EnemyGrenade",0.3
 	Obituary "%o has second thoughts about female empowerment."
-	DropItem "SuperBattery",2
+	DropItem "SuperBattery",4
 	States
 	{
 	Spawn:

@@ -10,6 +10,7 @@ ACTOR Bomber2 : WWTBadGuy replaces Fatso
 	DeathSound "Deaths/Male08"
 	DropItem "GrenadePickup",128
 	DropItem "GrenadePickup",64
+	DropItem "GrenadeUpgradeKit", 24
 	DamageFactor "EnemyBullet",0.3
 	DamageFactor "EnemyGrenade",0.0
 	DamageFactor "PlayerGrenade",0.3
