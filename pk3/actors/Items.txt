@@ -429,7 +429,7 @@ ACTOR IbexUpgradeKit : CustomInventory
 
 ACTOR SuperBattery : CustomInventory
 {
-	Inventory.PickupMessage "Found a Thunderbolt battery."
+	Inventory.PickupMessage "Found a Thunderbolt battery. (Taser upgrade!)"
 	Inventory.PickupSound "Taser/Upgrade"
 	Scale .25
 	States
@@ -439,7 +439,24 @@ ACTOR SuperBattery : CustomInventory
 		9VLT A 10
 		Loop
 	Pickup:
-		9VLT A 0 A_GiveInventory("TaserExp",20)
+		9VLT A 0 A_GiveInventory("TaserExp",999)
+		Stop
+	}
+}
+
+ACTOR GrenadeUpgradeKit : CustomInventory
+{
+	Inventory.PickupMessage "Found a pile of grenade parts. (Grenade upgrade!)"
+	Inventory.PickupSound "Grenade/Upgrade"
+	Scale .25
+	States
+	{
+	Spawn:
+		JNK9 A 10 BRIGHT
+		JNK9 A 10
+		Loop
+	Pickup:
+		JNK9 A 0 A_GiveInventory("GrenadeExp",999)
 		Stop
 	}
 }
@@ -518,7 +535,7 @@ ACTOR StrongKickLevel : CustomInventory
 		SCRL A 10
 		Loop
 	Pickup:
-		SCRL A 0 A_GiveInventory("KickExp",50)
+		SCRL A 0 A_GiveInventory("KickExp",999)
 		Stop
 	}
 }

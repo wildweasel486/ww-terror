@@ -184,6 +184,7 @@ grenade/elecexplode grnelec
 $limit grenade/elecexplode 0
 grenade/pickup grnpick
 grenade/melee grnhit
+grenade/upgrade grnupg
 
 Flash/fire Flashfir
 

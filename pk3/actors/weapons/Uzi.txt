@@ -6,7 +6,7 @@
 
 ACTOR UziExp : Inventory
 {
-	Inventory.MaxAmount 60
+	Inventory.MaxAmount 1000
 }
 
 ACTOR UziLevelup : Inventory
@@ -113,7 +113,7 @@ ACTOR WWTUzi : WWTWeapon replaces Shotgun
 		"####" B 0 A_AlertMonsters
 		"####" B 1 BRIGHT A_FireCustomMissile("PlayerUziTracer",frandom(-1.2,1.2),1,8,0,0,frandom(-1.2,1.2))
 		"####" B 0 A_SpawnItemEx("BulletCasing",24,-24,40,8,2,4,random(-55,-80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
-		"####" C 1 BRIGHT A_SetPitch(pitch - .9)
+		"####" C 1 BRIGHT A_SetPitch(pitch - (.9 * CallACS("RecoilAmount")))
 		"####" B 0 A_JumpIfInventory("UziSeq",1,"Fire2")
 		"####" A 0 Offset(4,36) A_GiveInventory("UziSeq")
 	FireResume:
@@ -135,7 +135,7 @@ ACTOR WWTUzi : WWTWeapon replaces Shotgun
 		"####" B 0 A_AlertMonsters
 		"####" B 1 BRIGHT A_FireCustomMissile("PlayerUziTracer",frandom(-1.2,1.2),1,8,0,0,frandom(-1.2,1.2))
 		"####" B 0 A_SpawnItemEx("BulletCasing",24,-24,40,8,2,4,random(-55,-80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
-		"####" C 1 BRIGHT A_SetPitch(pitch - .3)
+		"####" C 1 BRIGHT A_SetPitch(pitch - (.3 * CallACS("RecoilAmount")))
 		"####" B 0 A_JumpIfInventory("UziSeq",1,"Fire2Level1")
 		"####" A 0 Offset(4,36) A_GiveInventory("UziSeq")
 	FireResumeLevel1:
@@ -157,14 +157,14 @@ ACTOR WWTUzi : WWTWeapon replaces Shotgun
 		"####" B 0 A_AlertMonsters
 		"####" B 1 BRIGHT A_FireCustomMissile("PlayerUziTracer",frandom(-1.2,1.2),1,8,0,0,frandom(-1.2,1.2))
 		"####" B 0 A_SpawnItemEx("BulletCasing",24,-24,40,8,2,4,random(-55,-80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
-		"####" C 1 BRIGHT A_SetPitch(pitch - .4)
+		"####" C 1 BRIGHT A_SetPitch(pitch - (.4 * CallACS("RecoilAmount")))
 		"####" A 0 Offset(4,36)
 		Goto FireResumeLevel1
 	FireLevel3:
 		"####" B 0 A_PlaySound("Uzi/FireSilent",CHAN_WEAPON)
 		"####" B 1 BRIGHT A_FireCustomMissile("PlayerUziTracer",frandom(-0.9,0.9),1,8,0,0,frandom(-0.9,0.9))
 		"####" B 0 A_SpawnItemEx("BulletCasing",24,-24,40,8,2,4,random(-55,-80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
-		"####" C 1 BRIGHT A_SetPitch(pitch - .3)
+		"####" C 1 BRIGHT A_SetPitch(pitch - (.3 * CallACS("RecoilAmount")))
 		"####" A 0 Offset(4,36)
 		Goto FireResumeLevel1
 	Dryfire:

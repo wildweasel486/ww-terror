@@ -9,6 +9,7 @@ ACTOR Bomber1 : WWTBadGuy
 	PainSound "Pains/Male03"
 	DeathSound "Deaths/Male02"
 	DropItem "GrenadePickup",84
+	DropItem "GrenadeUpgradeKit", 24
 	DamageFactor "EnemyBullet",0.3
 	DamageFactor "EnemyGrenade",0.0
 	DamageFactor "PlayerGrenade",0.5

@@ -22,7 +22,7 @@ ACTOR BulletCasing
 		"####" ABCDEF 0 A_Jump(256,"Death1")
 		Stop
 	Death1:
-		"####" "#" 1000
+		"####" "#" 1 A_SetTics(CallACS("ShellLifetime"))
 		"####" "#" 1 A_FadeOut(0.05)
 		Wait
 	}
@@ -113,7 +113,7 @@ ACTOR SpentClipPistol : BulletCasing	//Pistol Clip
 	Death:
 		CLP1 I 0
 	Death1:
-		"####" "#" 1000
+		"####" "#" 1 A_SetTics(CallACS("ShellLifetime"))
 		"####" "#" 1 A_FadeOut(0.05)
 		Wait
 	}

@@ -748,4 +748,26 @@ OptionMenu "TerroristsOptions"
 {
 	Title "Terrorists! Options"
 	Option "Auto-Reload","autoreload","OnOff"
+	Slider "Shell Casing Lifetime","casinglifetime",100,9000,100
+	Slider "Weapon Recoil Multiplier","recoilamount",0,20,1
+	StaticText ""
+	StaticText "Weapon Experience Scaling", 1
+	Option "Weapons Gain Experience","allowlevelup","OnOff"
+	Slider "Melee","ww_wepMexp",5,995,5
+	Slider "$WWTTASERSHORT","ww_wepTexp",5,995,5
+	Slider "Grenades","ww_wepGexp",5,995,5
+	Slider "$WWTWEP1NAME","ww_wep1exp",5,995,5
+	Slider "$WWTWEP2NAME","ww_wep2exp",5,995,5
+	Slider "$WWTWEP3NAME","ww_wep3exp",5,995,5
+	Slider "$WWTWEP4NAME","ww_wep4exp",5,995,5
+	Slider "$WWTWEP5NAME","ww_wep5exp",5,995,5
+	Slider "$WWTWEP6NAME","ww_wep6exp",5,995,5
+	Slider "$WWTWEP7NAME","ww_wep7exp",5,995,5
+	Slider "$WWTWEP8NAME","ww_wep8exp",5,995,5
+	StaticText ""
+	SafeCommand "Reset to 0.5X Default Scaling","ww_exphalfdefault"
+	SafeCommand "Reset to 1X Default Scaling","ww_expdefault"
+	SafeCommand "Reset to 2X Default Scaling","ww_expdoubledefault"
+	SafeCommand "Reset to 4X Default Scaling","ww_expquaddefault"
+	SafeCommand "Reset to 8X Default Scaling","ww_expeightdefault"
 }

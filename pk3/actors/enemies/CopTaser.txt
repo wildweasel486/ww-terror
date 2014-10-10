@@ -12,7 +12,7 @@ ACTOR CopTaser : WWTBadGuy
 	DamageFactor "EnemyGrenade",0.3
 	DropItem "WWTTaserPickup",16
 	Obituary "%o's cries of \"Don't tase me, bro!\" went unanswered."
-	DropItem "SuperBattery",2
+	DropItem "SuperBattery",4
 	States
 	{
 	Spawn:

@@ -15,7 +15,7 @@
 
 ACTOR MGLExp : Inventory
 {
-	Inventory.MaxAmount 50
+	Inventory.MaxAmount 1000
 }
 
 ACTOR MGLLevelup : Inventory
@@ -90,18 +90,18 @@ ACTOR MGL140 : WWTWeapon replaces PlasmaRifle
 		MGLG A 0 A_JumpIfInventory("MGLLevelUp",1,"FireLevel1")
 		MGLG A 1 Bright Offset(3,35) A_FireCustomMissile("PlayerLauncherGrenade",0,1,8)
 	FireContinue:
-		MGLG B 1 Bright Offset(6,38) A_SetPitch(pitch - 1.5)
-		MGLG C 1 Bright Offset(9,42) A_SetPitch(pitch - 1.2)
-		MGLG A 1 Bright Offset(12,46) A_SetPitch(pitch - .9)
-		MGLG A 1 Offset(13,48) A_SetPitch(pitch - .6)
-		MGLG A 1 Offset(12,45) A_SetPitch(pitch - .3)
-		MGLG A 1 Offset(10,42) A_SetPitch(pitch + .1)
-		MGLG A 1 Offset(8,39) A_SetPitch(pitch + .2)
-		MGLG A 1 Offset(6,36) A_SetPitch(pitch + .3)
-		MGLG A 1 Offset(3,34) A_SetPitch(pitch + .4)
-		MGLG A 1 Offset(1,33) A_SetPitch(pitch + .5)
-		MGLG A 1 Offset(-1,31) A_SetPitch(pitch + .3)
-		MGLG A 1 Offset(-1,32) A_SetPitch(pitch + .1)
+		MGLG B 1 Bright Offset(6,38) A_SetPitch(pitch - (1.5 * CallACS("RecoilAmount")))
+		MGLG C 1 Bright Offset(9,42) A_SetPitch(pitch - (1.2 * CallACS("RecoilAmount")))
+		MGLG A 1 Bright Offset(12,46) A_SetPitch(pitch - (.9 * CallACS("RecoilAmount")))
+		MGLG A 1 Offset(13,48) A_SetPitch(pitch - (.6 * CallACS("RecoilAmount")))
+		MGLG A 1 Offset(12,45) A_SetPitch(pitch - (.3 * CallACS("RecoilAmount")))
+		MGLG A 1 Offset(10,42) A_SetPitch(pitch + (.1 * CallACS("RecoilAmount")))
+		MGLG A 1 Offset(8,39) A_SetPitch(pitch + (.2 * CallACS("RecoilAmount")))
+		MGLG A 1 Offset(6,36) A_SetPitch(pitch + (.3 * CallACS("RecoilAmount")))
+		MGLG A 1 Offset(3,34) A_SetPitch(pitch + (.4 * CallACS("RecoilAmount")))
+		MGLG A 1 Offset(1,33) A_SetPitch(pitch + (.5 * CallACS("RecoilAmount")))
+		MGLG A 1 Offset(-1,31) A_SetPitch(pitch + (.3 * CallACS("RecoilAmount")))
+		MGLG A 1 Offset(-1,32) A_SetPitch(pitch + (.1 * CallACS("RecoilAmount")))
 		MGLG A 0 A_CheckReload
 		Goto Ready
 	FireLevel1:

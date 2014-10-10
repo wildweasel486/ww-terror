@@ -1,6 +1,6 @@
 ACTOR GrenadeExp : Inventory
 {
-	Inventory.MaxAmount 25
+	Inventory.MaxAmount 1000
 }
 
 ACTOR GrenadeLevelup : Inventory
