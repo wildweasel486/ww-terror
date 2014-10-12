@@ -198,7 +198,7 @@ ACTOR KickSeq : Inventory // Combo sequence for upgrades.
 
 ACTOR KickExp : Inventory
 {
-	Inventory.MaxAmount 50
+	Inventory.MaxAmount 1000
 }
 
 ACTOR KickLevelup : Inventory
@@ -213,7 +213,7 @@ ACTOR KickBlastAngle : Inventory
 
 ACTOR TaserExp : Inventory
 {
-	Inventory.MaxAmount 20
+	Inventory.MaxAmount 1000
 }
 
 ACTOR TaserLevelup : Inventory

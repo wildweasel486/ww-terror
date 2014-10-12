@@ -439,7 +439,7 @@ ACTOR SuperBattery : CustomInventory
 		9VLT A 10
 		Loop
 	Pickup:
-		9VLT A 0 A_GiveInventory("TaserExp",999)
+		9VLT A 0 A_GiveInventory("TaserExp",1000)
 		Stop
 	}
 }
@@ -456,7 +456,7 @@ ACTOR GrenadeUpgradeKit : CustomInventory
 		JNK9 A 10
 		Loop
 	Pickup:
-		JNK9 A 0 A_GiveInventory("GrenadeExp",999)
+		JNK9 A 0 A_GiveInventory("GrenadeExp",1000)
 		Stop
 	}
 }
@@ -535,7 +535,7 @@ ACTOR StrongKickLevel : CustomInventory
 		SCRL A 10
 		Loop
 	Pickup:
-		SCRL A 0 A_GiveInventory("KickExp",999)
+		SCRL A 0 A_GiveInventory("KickExp",1000)
 		Stop
 	}
 }
