@@ -72,7 +72,7 @@ Script "InstantLevelup"(void)
 			GiveInventory("BerettaLoaded",999);
 			GiveInventory("9mmAmmo",999);
 		}
-		GiveInventory("BerettaExp",999);
+		GiveInventory("BerettaExp",1000);
 	}
 	If(CheckWeapon("Mateba"))
 	{
@@ -82,7 +82,7 @@ Script "InstantLevelup"(void)
 			GiveInventory("MatebaLoaded",999);
 			GiveInventory("44MagAmmo",999);
 		}
-		GiveInventory("MatebaExp",999);
+		GiveInventory("MatebaExp",1000);
 	}
 	If(CheckWeapon("WWTStriker"))
 	{
@@ -92,7 +92,7 @@ Script "InstantLevelup"(void)
 			GiveInventory("StrikerLoaded",999);
 			GiveInventory("12gaAmmo",999);
 		}
-		GiveInventory("StrikerExp",999);
+		GiveInventory("StrikerExp",1000);
 	}
 	If(CheckWeapon("WWTUzi"))
 	{
@@ -102,7 +102,7 @@ Script "InstantLevelup"(void)
 			GiveInventory("UziLoaded",999);
 			GiveInventory("9mmAmmo",999);
 		}
-		GiveInventory("UziExp",999);
+		GiveInventory("UziExp",1000);
 	}
 	If(CheckWeapon("WWTAK47"))
 	{
@@ -112,7 +112,7 @@ Script "InstantLevelup"(void)
 			GiveInventory("AK47Loaded",999);
 			GiveInventory("762mmAmmo",999);
 		}
-		GiveInventory("AK47Exp",999);
+		GiveInventory("AK47Exp",1000);
 	}
 	If(CheckWeapon("Barrett"))
 	{
@@ -122,7 +122,7 @@ Script "InstantLevelup"(void)
 			GiveInventory("BarrettLoaded",999);
 			GiveInventory("50BMGAmmo",999);
 		}
-		GiveInventory("BarrettExp",999);
+		GiveInventory("BarrettExp",1000);
 	}
 	If(CheckWeapon("MGL140"))
 	{
@@ -132,7 +132,7 @@ Script "InstantLevelup"(void)
 			GiveInventory("MGLLoaded",999);
 			GiveInventory("40mmAmmo",999);
 		}
-		GiveInventory("MGLExp",999);
+		GiveInventory("MGLExp",1000);
 	}
 	If(CheckWeapon("WWTM60"))
 	{
@@ -142,7 +142,7 @@ Script "InstantLevelup"(void)
 			GiveInventory("M60Loaded",999);
 			GiveInventory("762mmAmmo",999);
 		}
-		GiveInventory("M60Exp",999);
+		GiveInventory("M60Exp",1000);
 	}
 }
 
@@ -160,7 +160,7 @@ Script "GunExp" Enter
 		if(CheckInventory("KickExp")>=GetCVar("ww_wepMexp"))
 		{
 			if(CheckInventory("KickLevelup")>2)
-				TakeInventory("KickExp",999);
+				TakeInventory("KickExp",1000);
 			else
 			{
 				GiveInventory("KickLevelup",1);
@@ -171,14 +171,14 @@ Script "GunExp" Enter
 					HudMessage(s:"A Certain Stranger...\nKICK COMBO ENDS IN SHOCKWAVE"; HUDMSG_TYPEON|HUDMSG_LOG,0,-1,0.1,0.6,3.0,0.01,0.75);
 				if(CheckInventory("KickLevelup")==3)
 					HudMessage(s:"Way of the Exploding Foot\nKICKS EXPLODE ON CONTACT"; HUDMSG_TYPEON|HUDMSG_LOG,0,-1,0.1,0.6,3.0,0.01,0.75);
-				TakeInventory("KickExp",999);
+				TakeInventory("KickExp",1000);
 			}
 		}
 		// Taser
 		if(CheckInventory("TaserExp")>=GetCVar("ww_wepTexp"))
 		{
 			if(CheckInventory("TaserLevelup")>2)
-				TakeInventory("TaserExp",999);
+				TakeInventory("TaserExp",1000);
 			else
 			{
 				GiveInventory("TaserLevelup",1);
@@ -189,14 +189,14 @@ Script "GunExp" Enter
 					HudMessage(s:"Direct-Current\nDAMAGE++"; HUDMSG_TYPEON|HUDMSG_LOG,0,-1,0.1,0.6,3.0,0.01,0.75);
 				if(CheckInventory("TaserLevelup")==3)
 					HudMessage(s:"A Little Help from Comrade Nikola\nCHAIN-LIGHTNING EFFECT ADDED\nHANDLE WITH CARE!!"; HUDMSG_TYPEON|HUDMSG_LOG,0,-1,0.1,0.6,3.0,0.01,0.75);
-				TakeInventory("TaserExp",999);
+				TakeInventory("TaserExp",1000);
 			}
 		}
 		// Grenades
 		if(CheckInventory("GrenadeExp")>=GetCVar("ww_wepGexp"))
 		{
 			if(CheckInventory("GrenadeLevelup")>2)
-				TakeInventory("GrenadeExp",999);
+				TakeInventory("GrenadeExp",1000);
 			else
 			{
 				GiveInventory("GrenadeLevelup",1);
@@ -207,14 +207,14 @@ Script "GunExp" Enter
 					HudMessage(l:"WWTGREN2NAME",s:"\nELECTRICAL DAMAGE\nSTUNS ENEMIES"; HUDMSG_TYPEON|HUDMSG_LOG,0,-1,0.1,0.6,3.0,0.01,0.75);
 				if(CheckInventory("GrenadeLevelup")==3)
 					HudMessage(l:"WWTGREN3NAME",s:"\nCONSTANT FIRE DAMAGE"; HUDMSG_TYPEON|HUDMSG_LOG,0,-1,0.1,0.6,3.0,0.01,0.75);
-				TakeInventory("GrenadeExp",999);
+				TakeInventory("GrenadeExp",1000);
 			}
 		}
 		// Beretta
 		if(CheckInventory("BerettaExp")>=GetCVar("ww_wep1exp"))
 		{
 			if(CheckInventory("BerettaLevelup")>2)
-				TakeInventory("BerettaExp",999);
+				TakeInventory("BerettaExp",1000);
 			else
 			{
 				GiveInventory("BerettaLevelup",1);
@@ -225,14 +225,14 @@ Script "GunExp" Enter
 					HudMessage(s:"Cop-Killer Ammo\nMUZZLE VELOCITY ++\nBULLETS PIERCE ARMOR"; HUDMSG_TYPEON|HUDMSG_LOG,0,-1,0.1,0.6,3.0,0.01,0.75);
 				if(CheckInventory("BerettaLevelup")==3)
 					HudMessage(l:"WWTWEP1UPGRADENAME",s:"\nBURST FIRE (PRESS ",k:"+zoom",s:" TO ENABLE)\nMAGAZINE SIZE ++"; HUDMSG_TYPEON|HUDMSG_LOG,0,-1,0.1,0.6,3.0,0.01,0.75);
-				TakeInventory("BerettaExp",999);
+				TakeInventory("BerettaExp",1000);
 			}
 		}
 		// Mateba
 		if(CheckInventory("MatebaExp")>=GetCVar("ww_wep2exp"))
 		{
 			if(CheckInventory("MatebaLevelup")>2)
-				TakeInventory("MatebaExp",999);
+				TakeInventory("MatebaExp",1000);
 			else
 			{
 				GiveInventory("MatebaLevelup",1);
@@ -243,14 +243,14 @@ Script "GunExp" Enter
 					HudMessage(s:"Carbine Conversion Kit\nRECOIL --\nFIRE RATE ++\nACCURACY ++"; HUDMSG_TYPEON|HUDMSG_LOG,0,-1,0.1,0.6,3.0,0.01,0.75);
 				if(CheckInventory("MatebaLevelup")==3)
 					HudMessage(s:"Competition Scope\nZOOM FEATURE ADDED\nPRESS ",k:"+zoom",s:" TO ACTIVATE"; HUDMSG_TYPEON|HUDMSG_LOG,0,-1,0.1,0.6,3.0,0.01,0.75);
-				TakeInventory("MatebaExp",999);
+				TakeInventory("MatebaExp",1000);
 			}
 		}
 		// Striker
 		if(CheckInventory("StrikerExp")>=GetCVar("ww_wep3exp"))
 		{
 			if(CheckInventory("StrikerLevelup")>2)
-				TakeInventory("StrikerExp",999);
+				TakeInventory("StrikerExp",1000);
 			else
 			{
 				GiveInventory("StrikerLevelup",1);
@@ -261,14 +261,14 @@ Script "GunExp" Enter
 					HudMessage(s:"Improved Blowback System\nSHELLS EJECT AUTOMATICALLY"; HUDMSG_TYPEON|HUDMSG_LOG,0,-1,0.1,0.6,3.0,0.01,0.75);
 				if(CheckInventory("StrikerLevelup")==3)
 					HudMessage(s:"Detachable Magazine\nRELOAD SPEED ++"; HUDMSG_TYPEON|HUDMSG_LOG,0,-1,0.1,0.6,3.0,0.01,0.75);
-				TakeInventory("StrikerExp",999);
+				TakeInventory("StrikerExp",1000);
 			}
 		}
 		// Uzi
 		if(CheckInventory("UziExp")>=GetCVar("ww_wep4exp"))
 		{
 			if(CheckInventory("UziLevelup")>2)
-				TakeInventory("UziExp",999);
+				TakeInventory("UziExp",1000);
 			else
 			{
 				GiveInventory("UziLevelup",1);
@@ -279,14 +279,14 @@ Script "GunExp" Enter
 					HudMessage(s:"Titanium Bolt\nFIRE RATE ++"; HUDMSG_TYPEON|HUDMSG_LOG,0,-1,0.1,0.6,3.0,0.01,0.75);
 				if(CheckInventory("UziLevelup")==3)
 					HudMessage(s:"Sound/Flash Suppressor\nGUNSHOT NOISE --"; HUDMSG_TYPEON|HUDMSG_LOG,0,-1,0.1,0.6,3.0,0.01,0.75);
-				TakeInventory("UziExp",999);
+				TakeInventory("UziExp",1000);
 			}
 		}
 		// AK47
 		if(CheckInventory("AK47Exp")>=GetCVar("ww_wep5exp"))
 		{
 			if(CheckInventory("AK47Levelup")>2)
-				TakeInventory("AK47Exp",999);
+				TakeInventory("AK47Exp",1000);
 			else
 			{
 				GiveInventory("AK47Levelup",1);
@@ -300,14 +300,14 @@ Script "GunExp" Enter
 					HudMessage(s:"Grenade Launcher\nPRESS ",k:"+zoom",s:" TO FIRE"; HUDMSG_TYPEON|HUDMSG_LOG,0,-1,0.1,0.6,3.0,0.01,0.75);
 					GiveInventory("40mmAmmo",1);
 				}
-				TakeInventory("AK47Exp",999);
+				TakeInventory("AK47Exp",1000);
 			}
 		}
 		// Barrett
 		if(CheckInventory("BarrettExp")>=GetCVar("ww_wep6exp"))
 		{
 			if(CheckInventory("BarrettLevelup")>2)
-				TakeInventory("BarrettExp",999);
+				TakeInventory("BarrettExp",1000);
 			else
 			{
 				GiveInventory("BarrettLevelup",1);
@@ -318,14 +318,14 @@ Script "GunExp" Enter
 					HudMessage(s:"Concussive Ammo\nDAMAGE ++\nSHOTS EXPLODE ON CONTACT"; HUDMSG_TYPEON|HUDMSG_LOG,0,-1,0.1,0.6,3.0,0.01,0.75);
 				if(CheckInventory("BarrettLevelup")==3)
 					HudMessage(s:"Nitro Express Ammo\n\nMUZZLE VELOCITY ++\nSHOTS PIERCE THROUGH ENEMIES"; HUDMSG_TYPEON|HUDMSG_LOG,0,-1,0.1,0.6,3.0,0.01,0.75);
-				TakeInventory("BarrettExp",999);
+				TakeInventory("BarrettExp",1000);
 			}
 		}
 		// MGL
 		if(CheckInventory("MGLExp")>=GetCVar("ww_wep7exp"))
 		{
 			if(CheckInventory("MGLLevelup")>2)
-				TakeInventory("MGLExp",999);
+				TakeInventory("MGLExp",1000);
 			else
 			{
 				GiveInventory("MGLLevelup",1);
@@ -336,14 +336,14 @@ Script "GunExp" Enter
 					HudMessage(s:"Shaped-Tip Rounds\nDIRECT DAMAGE ++"; HUDMSG_TYPEON|HUDMSG_LOG,0,-1,0.1,0.6,3.0,0.01,0.75);
 				if(CheckInventory("MGLLevelup")==3)
 					HudMessage(s:"Incendiary Payload\nSHOTS DEAL CONTINUOUS DAMAGE"; HUDMSG_TYPEON|HUDMSG_LOG,0,-1,0.1,0.6,3.0,0.01,0.75);
-				TakeInventory("MGLExp",999);
+				TakeInventory("MGLExp",1000);
 			}
 		}
 		// M60
 		if(CheckInventory("M60Exp")>=GetCVar("ww_wep8exp"))
 		{
 			if(CheckInventory("M60Levelup")>2)
-				TakeInventory("M60Exp",999);
+				TakeInventory("M60Exp",1000);
 			else
 			{
 				GiveInventory("M60Levelup",1);
@@ -354,7 +354,7 @@ Script "GunExp" Enter
 					HudMessage(s:"Recoil-Control Stock\nHIP-FIRE RECOIL --"; HUDMSG_TYPEON|HUDMSG_LOG,0,-1,0.1,0.6,3.0,0.01,0.75);
 				if(CheckInventory("M60Levelup")==3)
 					HudMessage(s:"Improved Gas System\nDAMAGE ++\nMUZZLE VELOCITY ++"; HUDMSG_TYPEON|HUDMSG_LOG,0,-1,0.1,0.6,3.0,0.01,0.75);
-				TakeInventory("M60Exp",999);
+				TakeInventory("M60Exp",1000);
 			}
 		}
 		Delay(1);
