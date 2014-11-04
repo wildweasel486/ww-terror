@@ -33,6 +33,7 @@ skill Terrornormal
 	Name = "True Lies"
 	PicName = "WWSKILL2"
 	ACSReturn = 2
+	DefaultSkill
 }
 
 skill Terrorhard
@@ -42,7 +43,6 @@ skill Terrorhard
 	PicName = "WWSKILL3"
 	Key = "3"
 	ACSReturn = 3
-	DefaultSkill
 }
 
 skill Terrornightmare
