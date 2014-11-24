@@ -2,7 +2,9 @@
 
 ACTOR WWTAR10Magazine : Ammo
 {
+	Tag "7.62mm"
 	Inventory.MaxAmount 30
+	+IGNORESKILL
 }
 
 ACTOR AR10Jammed : Inventory{}
