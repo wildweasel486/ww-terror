@@ -16,6 +16,7 @@ ACTOR WWTEnforcer : WWTBadGuy replaces BaronOfHell
 	DamageFactor "PlayerUzi",0.3
 	DamageFactor "PlayerShotgun",0.3
 	DamageFactor "PlayerAK",0.7
+	DamageFactor "PlayerAR",0.7
 	DamageFactor "PlayerM60",0.7
 	DamageFactor "PlayerMagnum",0.6
 	DamageFactor "PlayerMelee",2.0

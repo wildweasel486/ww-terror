@@ -29,6 +29,7 @@ ACTOR MrFalcon : WWTBadGuy replaces SpiderMastermind
 	DamageFactor "PlayerUzi",0.4
 	DamageFactor "PlayerShotgun",0.4
 	DamageFactor "PlayerAK",0.9
+	DamageFactor "PlayerAR",0.9
 	DamageFactor "PlayerM60",0.9
 	DamageFactor "PlayerMagnum",0.7
 	DamageFactor "PlayerMelee",2.0

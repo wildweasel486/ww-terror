@@ -144,6 +144,17 @@ statusbar normal
 				DrawBar "Subrfull","Subrempt",M60Exp,Horizontal,174,189;
 			}
 		}
+		IsSelected WWTAR10
+		{
+			InInventory AR10LevelUp,4
+			{
+				DrawImage "Subrmax",174,189;
+			}
+			else
+			{
+				DrawBar "Subrfull","Subrempt",AR10Exp,Horizontal,174,189;
+			}
+		}
 	}
 	Else
 	{
@@ -286,6 +297,17 @@ statusbar normal
 				DrawBar "subrfl43","subrmt43",M60Exp,Horizontal,137,189;
 			}
 		}
+		IsSelected WWTAR10
+		{
+			InInventory AR10LevelUp,4
+			{
+				DrawImage "Subrmax",137,189;
+			}
+			else
+			{
+				DrawBar "Subrfull","Subrempt",AR10Exp,Horizontal,137,189;
+			}
+		}
 	}
 }
 
@@ -367,6 +389,19 @@ statusbar fullscreen,fullscreenoffsets
 			DrawImage "UpBarMax",-66,-14;
 		}
 	}
+	IsSelected WWTAR10
+	{
+		DrawImage "ARXPMAX",-90,-37;
+		DrawBar "UpBarFul","UpBarEmp",AR10Exp,horizontal,-70,-17;
+		InInventory AR10Jammed
+		{
+			DrawString SMALLFONT,Red,"JAMMED!",-30,-35,0,Alignment(right);
+		}
+		InInventory AR10LevelUp,4
+		{
+			DrawImage "UpBarMax",-66,-14;
+		}
+	}
 
 	DrawNumber 3,BIGNUMS,White,Ammo1,Alignment(right),-72,-30,1;
 	DrawNumber 3,BIGFONT,White,Ammo2,Alignment(right),-5,-27,1;
@@ -434,7 +469,6 @@ Statusbar PopupStatus,forcescaled
 		DrawNumber 1,SMALLFONT,LightBlue,"BerettaLevelup",Alignment(right),10,192;
 		DrawNumber 3,SMALLFONT,White,Ammo BerettaLoaded,Alignment(right),40,185,1;
 	}
-
 	InInventory Mateba
 	{
 		DrawImage "MATPA0",110,195,centerbottom;
@@ -446,7 +480,6 @@ Statusbar PopupStatus,forcescaled
 		DrawNumber 1,SMALLFONT,LightBlue,"MatebaLevelup",Alignment(right),90,192;
 		DrawNumber 3,SMALLFONT,White,Ammo MatebaLoaded,Alignment(right),120,185,1;
 	}
-
 	InInventory WWTStriker
 	{
 		DrawImage "STKPA0",195,195,centerbottom;
@@ -458,7 +491,6 @@ Statusbar PopupStatus,forcescaled
 		DrawNumber 1,SMALLFONT,LightBlue,"StrikerLevelup",Alignment(right),170,192;
 		DrawNumber 3,SMALLFONT,White,Ammo StrikerLoaded,Alignment(right),205,185,1;
 	}
-
 	InInventory WWTUzi
 	{
 		DrawImage "UZIPA0",35,165,centerbottom;
@@ -470,7 +502,6 @@ Statusbar PopupStatus,forcescaled
 		DrawNumber 1,SMALLFONT,LightBlue,"UziLevelup",Alignment(right),10,162;
 		DrawNumber 3,SMALLFONT,White,Ammo UziLoaded,Alignment(right),40,155,1;
 	}
-
 	InInventory WWTAK47
 	{
 		DrawImage "AKMICON",125,165,centerbottom;
@@ -482,7 +513,6 @@ Statusbar PopupStatus,forcescaled
 		DrawNumber 1,SMALLFONT,LightBlue,"AK47Levelup",Alignment(right),90,162;
 		DrawNumber 3,SMALLFONT,White,Ammo AK47Loaded,Alignment(right),120,155,1;
 	}
-
 	InInventory MGL140
 	{
 		DrawImage "MGLPA0",200,165,centerbottom;
@@ -494,7 +524,6 @@ Statusbar PopupStatus,forcescaled
 		DrawNumber 1,SMALLFONT,LightBlue,"MGLLevelup",Alignment(right),170,162;
 		DrawNumber 3,SMALLFONT,White,Ammo MGLLoaded,Alignment(right),205,155,1;
 	}
-
 	InInventory Barrett
 	{
 		DrawImage "AMRICON",48,130,centerbottom;
@@ -506,7 +535,6 @@ Statusbar PopupStatus,forcescaled
 		DrawNumber 1,SMALLFONT,LightBlue,"BarrettLevelup",Alignment(right),10,132;
 		DrawNumber 3,SMALLFONT,White,Ammo BarrettLoaded,Alignment(right),40,125,1;
 	}
-
 	InInventory WWTM60
 	{
 		DrawImage "M60ICON",120,132,centerbottom;
@@ -517,6 +545,17 @@ Statusbar PopupStatus,forcescaled
 		}
 		DrawNumber 1,SMALLFONT,LightBlue,"M60Levelup",Alignment(right),90,132;
 		DrawNumber 3,SMALLFONT,White,Ammo M60Loaded,Alignment(right),120,125,1;
+	}
+	InInventory WWTAR10
+	{
+		DrawImage "AR10ICON",125,165,centerbottom;
+		DrawBar "UpBarFul","UpBarEmp",AR10Exp,horizontal,90,163;
+		InInventory AR10LevelUp,4
+		{
+			DrawImage "UpBarMax",94,166;
+		}
+		DrawNumber 1,SMALLFONT,LightBlue,"AR10Levelup",Alignment(right),90,162;
+		DrawNumber 3,SMALLFONT,White,Ammo WWTAR10Magazine,Alignment(right),120,155,1;
 	}
 
 	DrawImage "GRENICN2",175,135,centerbottom;

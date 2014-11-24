@@ -7,7 +7,7 @@ ACTOR ARThug2 : WWTBadGuy
 	SeeSound "Sights/Male10"
 	PainSound "Pains/Male06"
 	DeathSound "Deaths/Male06"
-	DropItem "WWTAk47" 84
+	DropItem "WWTRifleSpawner" 84
 	DropItem "762mmAmmo" 84
 	DamageFactor "EnemyBullet",0.3
 	DamageFactor "EnemyGrenade",0.3

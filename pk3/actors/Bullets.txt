@@ -326,6 +326,18 @@ ACTOR PlayerBarrettTracerLevel3 : PlayerBarrettTracer
 	+NOBOSSRIP
 }
 
+ACTOR PlayerAR10Tracer : Tracer
+{
+	Damage (random(20,24))
+	DamageType "PlayerAR"
+	Speed 150
+}
+ACTOR PlayerAR10TracerSilent : Tracer
+{
+	Damage (random(16,18))
+	DamageType "PlayerAR"
+	Speed 100
+}
 
 // Enemy weapon tracers. In addition to damage numbers and speeds,
 // these also must have DamageType "EnemyBullet" so enemies can't kill each other

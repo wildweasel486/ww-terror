@@ -18,6 +18,7 @@ const int STUNTIME = 105; // Thanks, Kate.
 #include "actors/weapons/MGL140.txt"
 #include "actors/weapons/M60.txt"
 #include "actors/weapons/Grenades.txt"
+#include "actors/weapons/M16.txt"
 #include "actors/enemies/BaseEnemy.txt"
 #include "actors/enemies/spawners.txt"
 #include "actors/enemies/PistolThug1.txt"
@@ -66,6 +67,7 @@ Actor WWTPlayer : DoomPlayer
 	Player.StartItem "MatebaLoaded",3
 	Player.StartItem "UziLoaded",16
 	Player.StartItem "AK47Loaded",10
+	Player.StartItem "WWTAR10Magazine",15
 	Player.StartItem "StrikerLoaded",6
 	Player.StartItem "BarrettLoaded",3
 	Player.StartItem "MGLLoaded",3
@@ -84,7 +86,7 @@ Actor WWTPlayer : DoomPlayer
 	Player.WeaponSlot 2,Mateba
 	Player.WeaponSlot 3,WWTStriker
 	Player.WeaponSlot 4,WWTUzi
-	Player.WeaponSlot 5,WWTAK47
+	Player.WeaponSlot 5,WWTAK47,WWTAR10
 	Player.WeaponSlot 6,Barrett
 	Player.WeaponSlot 7,MGL140
 	Player.WeaponSlot 8,WWTM60

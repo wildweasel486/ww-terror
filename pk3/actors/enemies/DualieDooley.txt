@@ -18,6 +18,7 @@ ACTOR DualieDooley : WWTBadGuy replaces Archvile
 	DamageFactor "PlayerUzi",0.4
 	DamageFactor "PlayerShotgun",0.5
 	DamageFactor "PlayerAK",0.7
+	DamageFactor "PlayerAR",0.7
 	DamageFactor "PlayerM60",0.7
 	DamageFactor "PlayerMagnum",0.8
 	DamageFactor "PlayerMelee",2.0

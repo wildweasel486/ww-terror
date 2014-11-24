@@ -3304,4 +3304,1357 @@ Graphic HELP, 320, 200
 	Patch STCFN087, 203, 45
 }
 
+Sprite A10GA0, 203, 123
+{
+	Offset -114, -45
+	Patch ARIFLEA, 73, 40
+	Patch HANDFORE, 6, 56
+}
+
+Sprite A10GB0, 203, 123
+{
+	Offset -117, -48
+	Patch ARIFLEF, 38, 14
+	Patch HANDFORE, 6, 56
+}
+
+Sprite A10GC0, 203, 123
+{
+	Offset -116, -47
+	Patch ARIFLEC, 73, 40
+	Patch HANDFORE, 6, 56
+}
+
+Sprite A10GD0, 203, 123
+{
+	Offset -115, -46
+	Patch ARIFLEB, 73, 40
+	Patch HANDFORE, 6, 56
+}
+
+Sprite A10RA0, 203, 123
+{
+	Offset -114, -45
+	Patch HANDULOD, -93, 66
+	Patch ARIFLEA, 73, 40
+}
+
+Sprite A10RB0, 203, 123
+{
+	Offset -114, -45
+	Patch HANDULOD, -100, 78
+	Patch ARIFLEA, 73, 40
+}
+
+Sprite A10RC0, 203, 123
+{
+	Offset -114, -45
+	Patch ARIFLEA, 73, 40
+	Patch HANDULOD, -103, 87
+}
+
+Sprite A10RD0, 203, 123
+{
+	Offset -114, -45
+	Patch ARIFLEA, 73, 40
+	Patch HANDULOD, -89, 79
+}
+
+Sprite A10RE0, 203, 123
+{
+	Offset -114, -45
+	Patch ARIFLEA, 73, 40
+	Patch HANDCHMB, 45, 68
+}
+
+Sprite A10RF0, 203, 123
+{
+	Offset -114, -45
+	Patch ARIFLEA, 73, 40
+	Patch HANDCHMB, 59, 42
+}
+
+Sprite A10RG0, 203, 123
+{
+	Offset -114, -45
+	Patch ARIFLEA, 73, 40
+	Patch HANDCHMB, 63, 37
+}
+
+Sprite A10RH0, 203, 123
+{
+	Offset -114, -45
+	Patch ARIFLEB, 73, 40
+	Patch HANDCHMB, 72, 43
+}
+
+Sprite A10RI0, 203, 123
+{
+	Offset -114, -45
+	Patch ARIFLEC, 73, 40
+	Patch HANDCHMB, 80, 47
+}
+
+Sprite A10RJ0, 203, 123
+{
+	Offset -114, -45
+	Patch ARIFLEC, 73, 40
+	Patch HANDCHMB, 71, 53
+}
+
+Sprite A10RK0, 203, 123
+{
+	Offset -114, -45
+	Patch ARIFLEC, 73, 40
+	Patch HANDCCK2, -62, 66
+}
+
+Sprite A10RL0, 203, 123
+{
+	Offset -114, -45
+	Patch ARIFLEC, 73, 40
+	Patch HANDCCK2, -69, 71
+}
+
+Sprite A10RM0, 203, 123
+{
+	Offset -114, -45
+	Patch ARIFLEC, 73, 40
+	Patch HANDCCK2, -76, 75
+}
+
+Sprite A10RN0, 203, 123
+{
+	Offset -114, -45
+	Patch ARIFLEC, 73, 40
+	Patch HANDCCK2, -79, 91
+}
+
+Sprite A10RO0, 203, 123
+{
+	Offset -114, -45
+	Patch HANDUPR2, -75, 84
+	{
+		FlipX
+	}
+	Patch ARIFLEC, 73, 40
+}
+
+Sprite A10RP0, 203, 123
+{
+	Offset -114, -45
+	Patch HANDUPR2, -69, 82
+	{
+		FlipX
+	}
+	Patch ARIFLEC, 73, 40
+}
+
+Sprite A10RQ0, 203, 123
+{
+	Offset -114, -45
+	Patch HANDUPR2, -74, 98
+	{
+		FlipX
+	}
+	Patch ARIFLEC, 73, 40
+}
+
+Sprite A10RR0, 203, 123
+{
+	Offset -114, -45
+	Patch ARIFLEC, 73, 40
+}
+
+Sprite A10RS0, 203, 123
+{
+	Offset -114, -45
+	Patch ARLOADA, 73, 39
+}
+
+Sprite A10RT0, 203, 123
+{
+	Offset -114, -45
+	Patch ARLOADB, 73, 39
+}
+
+Sprite A10RU0, 203, 123
+{
+	Offset -114, -45
+	Patch ARLOADC, 73, 38
+}
+
+Sprite A10RV0, 203, 123
+{
+	Offset -114, -45
+	Patch ARLOADD, 73, 37
+}
+
+Sprite A10RW0, 203, 123
+{
+	Offset -114, -45
+	Patch ARIFLEC, 73, 40
+	Patch HANDPNCH, -143, 113
+	{
+		FlipX
+	}
+}
+
+Sprite A10RX0, 203, 123
+{
+	Offset -114, -45
+	Patch ARIFLEC, 73, 40
+	Patch HANDPNCH, -132, 106
+	{
+		FlipX
+	}
+}
+
+Sprite A10RY0, 203, 123
+{
+	Offset -114, -45
+	Patch ARIFLEC, 73, 40
+	Patch HANDPNCH, -128, 104
+	{
+		FlipX
+	}
+}
+
+Sprite A10RZ0, 203, 123
+{
+	Offset -114, -45
+	Patch ARIFLEB, 73, 40
+	Patch HANDPNCH, -125, 102
+	{
+		FlipX
+	}
+}
+
+Sprite A10SA0, 203, 123
+{
+	Offset -114, -45
+	Patch ARIFLEA, 73, 40
+	Patch HANDPNCH, -124, 100
+	{
+		FlipX
+	}
+}
+
+Sprite A10SB0, 203, 123
+{
+	Offset -114, -45
+	Patch ARIFLEA, 73, 40
+	Patch HANDPNCH, -139, 115
+	{
+		FlipX
+	}
+}
+
+Sprite A10SC0, 203, 123
+{
+	Offset -114, -45
+	Patch ARIFLEA, 73, 40
+}
+
+Sprite A10SD0, 203, 123
+{
+	Offset -114, -45
+	Patch ARIFLEA, 73, 40
+	Patch HANDULOD, -111, 101
+}
+
+Sprite A10JA0, 203, 123
+{
+	Offset -114, -45
+	Patch ARIFLEA, 73, 40
+	Patch HANDPNCH, -143, 113
+	{
+		FlipX
+	}
+}
+
+Sprite A10JB0, 203, 123
+{
+	Offset -114, -45
+	Patch ARIFLEA, 73, 40
+	Patch HANDPNCH, -132, 106
+	{
+		FlipX
+	}
+}
+
+Sprite A10JC0, 203, 123
+{
+	Offset -114, -45
+	Patch ARIFLEA, 73, 40
+	Patch HANDPNCH, -128, 104
+	{
+		FlipX
+	}
+}
+
+Sprite A10JD0, 203, 123
+{
+	Offset -114, -45
+	Patch ARIFLEA, 73, 40
+	Patch HANDPNCH, -125, 102
+	{
+		FlipX
+	}
+}
+
+Sprite A10JE0, 203, 123
+{
+	Offset -114, -45
+	Patch ARIFLEA, 73, 40
+	Patch HANDPNCH, -124, 100
+	{
+		FlipX
+	}
+}
+
+Sprite A10JF0, 203, 123
+{
+	Offset -114, -45
+	Patch ARIFLEA, 73, 40
+	Patch HANDPNCH, -139, 115
+	{
+		FlipX
+	}
+}
+
+Sprite A10JG0, 203, 123
+{
+	Offset -114, -45
+	Patch ARIFLEA, 73, 40
+}
+
+Sprite A12GA0, 203, 123
+{
+	Offset -114, -45
+	Patch UZIGRIP, 77, 74
+	Patch AMRGRIP, -50, 76
+	{
+		FlipX
+	}
+	Patch ARIFLEA, 73, 40
+}
+
+Sprite A12GB0, 203, 123
+{
+	Offset -117, -48
+	Patch UZIGRIP, 77, 74
+	Patch AMRGRIP, -50, 76
+	{
+		FlipX
+	}
+	Patch ARIFLEF, 38, 14
+}
+
+Sprite A12GC0, 203, 123
+{
+	Offset -116, -47
+	Patch UZIGRIP, 77, 74
+	Patch AMRGRIP, -50, 76
+	{
+		FlipX
+	}
+	Patch ARIFLEC, 73, 40
+}
+
+Sprite A12GD0, 203, 123
+{
+	Offset -115, -46
+	Patch UZIGRIP, 77, 74
+	Patch AMRGRIP, -50, 76
+	{
+		FlipX
+	}
+	Patch ARIFLEB, 73, 40
+}
+
+Sprite A12RA0, 203, 123
+{
+	Offset -114, -45
+	Patch HANDULOD, -93, 66
+	Patch UZIGRIP, 77, 74
+	Patch ARIFLEA, 73, 40
+}
+
+Sprite A12RB0, 203, 123
+{
+	Offset -114, -45
+	Patch HANDULOD, -100, 78
+	Patch UZIGRIP, 77, 74
+	Patch ARIFLEA, 73, 40
+}
+
+Sprite A12RC0, 203, 123
+{
+	Offset -114, -45
+	Patch HANDULOD, -103, 87
+	Patch UZIGRIP, 77, 74
+	Patch ARIFLEA, 73, 40
+}
+
+Sprite A12RD0, 203, 123
+{
+	Offset -114, -45
+	Patch UZIGRIP, 77, 74
+	Patch ARIFLEA, 73, 40
+	Patch HANDULOD, -89, 79
+}
+
+Sprite A12RE0, 203, 123
+{
+	Offset -114, -45
+	Patch UZIGRIP, 77, 74
+	Patch ARIFLEA, 73, 40
+	Patch HANDCHMB, 45, 68
+}
+
+Sprite A12RF0, 203, 123
+{
+	Offset -114, -45
+	Patch UZIGRIP, 77, 74
+	Patch ARIFLEA, 73, 40
+	Patch HANDCHMB, 59, 42
+}
+
+Sprite A12RG0, 203, 123
+{
+	Offset -114, -45
+	Patch UZIGRIP, 77, 74
+	Patch ARIFLEA, 73, 40
+	Patch HANDCHMB, 63, 37
+}
+
+Sprite A12RH0, 203, 123
+{
+	Offset -114, -45
+	Patch UZIGRIP, 77, 74
+	Patch ARIFLEB, 73, 40
+	Patch HANDCHMB, 72, 43
+}
+
+Sprite A12RI0, 203, 123
+{
+	Offset -114, -45
+	Patch UZIGRIP, 77, 74
+	Patch ARIFLEC, 73, 40
+	Patch HANDCHMB, 80, 47
+}
+
+Sprite A12RJ0, 203, 123
+{
+	Offset -114, -45
+	Patch UZIGRIP, 77, 74
+	Patch ARIFLEC, 73, 40
+	Patch HANDCHMB, 71, 53
+}
+
+Sprite A12RK0, 203, 123
+{
+	Offset -114, -45
+	Patch UZIGRIP, 77, 74
+	Patch ARIFLEC, 73, 40
+	Patch HANDCCK2, -62, 66
+}
+
+Sprite A12RL0, 203, 123
+{
+	Offset -114, -45
+	Patch UZIGRIP, 77, 74
+	Patch ARIFLEC, 73, 40
+	Patch HANDCCK2, -69, 71
+}
+
+Sprite A12RM0, 203, 123
+{
+	Offset -114, -45
+	Patch UZIGRIP, 77, 74
+	Patch ARIFLEC, 73, 40
+	Patch HANDCCK2, -76, 75
+}
+
+Sprite A12RN0, 203, 123
+{
+	Offset -114, -45
+	Patch UZIGRIP, 77, 74
+	Patch ARIFLEC, 73, 40
+	Patch HANDCCK2, -79, 91
+}
+
+Sprite A12RO0, 203, 123
+{
+	Offset -114, -45
+	Patch UZIGRIP, 77, 74
+	Patch HANDUPR2, -75, 84
+	{
+		FlipX
+	}
+	Patch ARIFLEC, 73, 40
+}
+
+Sprite A12RP0, 203, 123
+{
+	Offset -114, -45
+	Patch UZIGRIP, 77, 74
+	Patch HANDUPR2, -69, 82
+	{
+		FlipX
+	}
+	Patch ARIFLEC, 73, 40
+}
+
+Sprite A12RQ0, 203, 123
+{
+	Offset -114, -45
+	Patch UZIGRIP, 77, 74
+	Patch HANDUPR2, -74, 98
+	{
+		FlipX
+	}
+	Patch ARIFLEC, 73, 40
+}
+
+Sprite A12RR0, 203, 123
+{
+	Offset -114, -45
+	Patch UZIGRIP, 77, 74
+	Patch ARIFLEC, 73, 40
+}
+
+Sprite A12RS0, 203, 123
+{
+	Offset -114, -45
+	Patch ARGRIPR1, 77, 73
+	Patch ARLOADA, 73, 39
+}
+
+Sprite A12RT0, 203, 123
+{
+	Offset -114, -45
+	Patch ARGRIPR2, 78, 73
+	Patch ARLOADB, 73, 39
+}
+
+Sprite A12RU0, 203, 123
+{
+	Offset -114, -45
+	Patch ARGRIPR3, 77, 72
+	Patch ARLOADC, 73, 38
+}
+
+Sprite A12RV0, 203, 123
+{
+	Offset -114, -45
+	Patch ARGRIPR4, 77, 71
+	Patch ARLOADD, 73, 37
+}
+
+Sprite A12RW0, 203, 123
+{
+	Offset -114, -45
+	Patch UZIGRIP, 77, 74
+	Patch ARIFLEC, 73, 40
+	Patch HANDPNCH, -143, 113
+	{
+		FlipX
+	}
+}
+
+Sprite A12RX0, 203, 123
+{
+	Offset -114, -45
+	Patch UZIGRIP, 77, 74
+	Patch ARIFLEC, 73, 40
+	Patch HANDPNCH, -132, 106
+	{
+		FlipX
+	}
+}
+
+Sprite A12RY0, 203, 123
+{
+	Offset -114, -45
+	Patch UZIGRIP, 77, 74
+	Patch ARIFLEC, 73, 40
+	Patch HANDPNCH, -128, 104
+	{
+		FlipX
+	}
+}
+
+Sprite A12RZ0, 203, 123
+{
+	Offset -114, -45
+	Patch UZIGRIP, 77, 74
+	Patch ARIFLEB, 73, 40
+	Patch HANDPNCH, -125, 102
+	{
+		FlipX
+	}
+}
+
+Sprite A12SA0, 203, 123
+{
+	Offset -114, -45
+	Patch UZIGRIP, 77, 74
+	Patch ARIFLEA, 73, 40
+	Patch HANDPNCH, -124, 100
+	{
+		FlipX
+	}
+}
+
+Sprite A12SB0, 203, 123
+{
+	Offset -114, -45
+	Patch UZIGRIP, 77, 74
+	Patch ARIFLEA, 73, 40
+	Patch HANDPNCH, -139, 115
+	{
+		FlipX
+	}
+}
+
+Sprite A12SC0, 203, 123
+{
+	Offset -114, -45
+	Patch UZIGRIP, 77, 74
+	Patch ARIFLEA, 73, 40
+}
+
+Sprite A12SD0, 203, 123
+{
+	Offset -114, -45
+	Patch UZIGRIP, 77, 74
+	Patch ARIFLEA, 73, 40
+	Patch HANDULOD, -111, 101
+}
+
+Sprite A13GA0, 203, 123
+{
+	Offset -114, -45
+	Patch UZIGRIP, 77, 74
+	Patch AMRGRIP, -50, 76
+	{
+		FlipX
+	}
+	Patch ARIFLEA, 73, 40
+	Patch MATSCOPE, 128, 36
+}
+
+Sprite A13GB0, 203, 123
+{
+	Offset -117, -48
+	Patch UZIGRIP, 77, 74
+	Patch AMRGRIP, -50, 76
+	{
+		FlipX
+	}
+	Patch ARIFLEF, 38, 14
+	Patch MATSCOPE, 128, 36
+}
+
+Sprite A13GC0, 203, 123
+{
+	Offset -116, -47
+	Patch UZIGRIP, 77, 74
+	Patch AMRGRIP, -50, 76
+	{
+		FlipX
+	}
+	Patch ARIFLEC, 73, 40
+	Patch MATSCOPE, 128, 36
+}
+
+Sprite A13GD0, 203, 123
+{
+	Offset -115, -46
+	Patch UZIGRIP, 77, 74
+	Patch AMRGRIP, -50, 76
+	{
+		FlipX
+	}
+	Patch ARIFLEB, 73, 40
+	Patch MATSCOPE, 128, 36
+}
+
+Sprite A13RA0, 203, 123
+{
+	Offset -114, -45
+	Patch HANDULOD, -93, 66
+	Patch UZIGRIP, 77, 74
+	Patch ARIFLEA, 73, 40
+	Patch MATSCOPE, 128, 36
+}
+
+Sprite A13RB0, 203, 123
+{
+	Offset -114, -45
+	Patch HANDULOD, -100, 78
+	Patch UZIGRIP, 77, 74
+	Patch ARIFLEA, 73, 40
+	Patch MATSCOPE, 128, 36
+}
+
+Sprite A13RC0, 203, 123
+{
+	Offset -114, -45
+	Patch HANDULOD, -103, 87
+	Patch UZIGRIP, 77, 74
+	Patch ARIFLEA, 73, 40
+	Patch MATSCOPE, 128, 36
+}
+
+Sprite A13RD0, 203, 123
+{
+	Offset -114, -45
+	Patch UZIGRIP, 77, 74
+	Patch ARIFLEA, 73, 40
+	Patch HANDULOD, -89, 79
+	Patch MATSCOPE, 128, 36
+}
+
+Sprite A13RE0, 203, 123
+{
+	Offset -114, -45
+	Patch UZIGRIP, 77, 74
+	Patch ARIFLEA, 73, 40
+	Patch HANDCHMB, 45, 68
+	Patch MATSCOPE, 128, 36
+}
+
+Sprite A13RF0, 203, 123
+{
+	Offset -114, -45
+	Patch UZIGRIP, 77, 74
+	Patch ARIFLEA, 73, 40
+	Patch HANDCHMB, 59, 42
+	Patch MATSCOPE, 128, 36
+}
+
+Sprite A13RG0, 203, 123
+{
+	Offset -114, -45
+	Patch UZIGRIP, 77, 74
+	Patch ARIFLEA, 73, 40
+	Patch HANDCHMB, 63, 37
+	Patch MATSCOPE, 128, 36
+}
+
+Sprite A13RH0, 203, 123
+{
+	Offset -114, -45
+	Patch UZIGRIP, 77, 74
+	Patch ARIFLEB, 73, 40
+	Patch HANDCHMB, 72, 43
+	Patch MATSCOPE, 128, 36
+}
+
+Sprite A13RI0, 203, 123
+{
+	Offset -114, -45
+	Patch UZIGRIP, 77, 74
+	Patch ARIFLEC, 73, 40
+	Patch HANDCHMB, 80, 47
+	Patch MATSCOPE, 128, 36
+}
+
+Sprite A13RJ0, 203, 123
+{
+	Offset -114, -45
+	Patch UZIGRIP, 77, 74
+	Patch ARIFLEC, 73, 40
+	Patch HANDCHMB, 71, 53
+	Patch MATSCOPE, 128, 36
+}
+
+Sprite A13RK0, 203, 123
+{
+	Offset -114, -45
+	Patch UZIGRIP, 77, 74
+	Patch ARIFLEC, 73, 40
+	Patch HANDCCK2, -62, 66
+	Patch MATSCOPE, 128, 36
+}
+
+Sprite A13RL0, 203, 123
+{
+	Offset -114, -45
+	Patch UZIGRIP, 77, 74
+	Patch ARIFLEC, 73, 40
+	Patch HANDCCK2, -69, 71
+	Patch MATSCOPE, 128, 36
+}
+
+Sprite A13RM0, 203, 123
+{
+	Offset -114, -45
+	Patch UZIGRIP, 77, 74
+	Patch ARIFLEC, 73, 40
+	Patch HANDCCK2, -76, 75
+	Patch MATSCOPE, 128, 36
+}
+
+Sprite A13RN0, 203, 123
+{
+	Offset -114, -45
+	Patch UZIGRIP, 77, 74
+	Patch ARIFLEC, 73, 40
+	Patch HANDCCK2, -79, 91
+	Patch MATSCOPE, 128, 36
+}
+
+Sprite A13RO0, 203, 123
+{
+	Offset -114, -45
+	Patch UZIGRIP, 77, 74
+	Patch HANDUPR2, -75, 84
+	{
+		FlipX
+	}
+	Patch ARIFLEC, 73, 40
+	Patch MATSCOPE, 128, 36
+}
+
+Sprite A13RP0, 203, 123
+{
+	Offset -114, -45
+	Patch UZIGRIP, 77, 74
+	Patch HANDUPR2, -69, 82
+	{
+		FlipX
+	}
+	Patch ARIFLEC, 73, 40
+	Patch MATSCOPE, 128, 36
+}
+
+Sprite A13RQ0, 203, 123
+{
+	Offset -114, -45
+	Patch UZIGRIP, 77, 74
+	Patch HANDUPR2, -74, 98
+	{
+		FlipX
+	}
+	Patch ARIFLEC, 73, 40
+	Patch MATSCOPE, 128, 36
+}
+
+Sprite A13RR0, 203, 123
+{
+	Offset -114, -45
+	Patch UZIGRIP, 77, 74
+	Patch ARIFLEC, 73, 40
+	Patch MATSCOPE, 128, 36
+}
+
+Sprite A13RS0, 203, 123
+{
+	Offset -114, -45
+	Patch ARGRIPR1, 77, 73
+	Patch ARLOADA, 73, 39
+	Patch ARACOGR1, 131, 38
+}
+
+Sprite A13RT0, 203, 123
+{
+	Offset -114, -45
+	Patch ARGRIPR2, 78, 73
+	Patch ARLOADB, 73, 39
+	Patch ARACOGR2, 134, 41
+}
+
+Sprite A13RU0, 203, 123
+{
+	Offset -114, -45
+	Patch ARGRIPR3, 77, 72
+	Patch ARLOADC, 73, 38
+	Patch ARACOGR3, 136, 42
+}
+
+Sprite A13RV0, 203, 123
+{
+	Offset -114, -45
+	Patch ARGRIPR4, 77, 71
+	Patch ARLOADD, 73, 37
+	Patch ARACOGR4, 138, 46
+}
+
+Sprite A13RW0, 203, 123
+{
+	Offset -114, -45
+	Patch UZIGRIP, 77, 74
+	Patch ARIFLEC, 73, 40
+	Patch MATSCOPE, 128, 36
+	Patch HANDPNCH, -143, 113
+	{
+		FlipX
+	}
+}
+
+Sprite A13RX0, 203, 123
+{
+	Offset -114, -45
+	Patch UZIGRIP, 77, 74
+	Patch ARIFLEC, 73, 40
+	Patch MATSCOPE, 128, 36
+	Patch HANDPNCH, -132, 106
+	{
+		FlipX
+	}
+}
+
+Sprite A13RY0, 203, 123
+{
+	Offset -114, -45
+	Patch UZIGRIP, 77, 74
+	Patch ARIFLEC, 73, 40
+	Patch MATSCOPE, 128, 36
+	Patch HANDPNCH, -128, 104
+	{
+		FlipX
+	}
+}
+
+Sprite A13RZ0, 203, 123
+{
+	Offset -114, -45
+	Patch UZIGRIP, 77, 74
+	Patch ARIFLEB, 73, 40
+	Patch MATSCOPE, 128, 36
+	Patch HANDPNCH, -125, 102
+	{
+		FlipX
+	}
+}
+
+Sprite A13SA0, 203, 123
+{
+	Offset -114, -45
+	Patch UZIGRIP, 77, 74
+	Patch ARIFLEA, 73, 40
+	Patch MATSCOPE, 128, 36
+	Patch HANDPNCH, -124, 100
+	{
+		FlipX
+	}
+}
+
+Sprite A13SB0, 203, 123
+{
+	Offset -114, -45
+	Patch UZIGRIP, 77, 74
+	Patch ARIFLEA, 73, 40
+	Patch MATSCOPE, 128, 36
+	Patch HANDPNCH, -139, 115
+	{
+		FlipX
+	}
+}
+
+Sprite A13SC0, 203, 123
+{
+	Offset -114, -45
+	Patch UZIGRIP, 77, 74
+	Patch ARIFLEA, 73, 40
+	Patch MATSCOPE, 128, 36
+}
+
+Sprite A13SD0, 203, 123
+{
+	Offset -114, -45
+	Patch UZIGRIP, 77, 74
+	Patch ARIFLEA, 73, 40
+	Patch MATSCOPE, 128, 36
+	Patch HANDULOD, -111, 101
+}
+
+Sprite A14GA0, 203, 123
+{
+	Offset -129, -45
+	Patch UZIGRIP, 77, 74
+	Patch UZISUPPR, 57, 41
+	Patch AMRGRIP, -50, 76
+	{
+		FlipX
+	}
+	Patch ARIFLEA, 73, 40
+	Patch MATSCOPE, 128, 36
+}
+
+Sprite A14GB0, 203, 123
+{
+	Offset -132, -48
+	Patch UZIGRIP, 77, 74
+	Patch UZISUPPR, 57, 41
+	Patch AMRGRIP, -50, 76
+	{
+		FlipX
+	}
+	Patch ARIFLEC, 73, 40
+	Patch MATSCOPE, 128, 36
+}
+
+Sprite A14GC0, 203, 123
+{
+	Offset -131, -47
+	Patch UZIGRIP, 77, 74
+	Patch UZISUPPR, 57, 41
+	Patch AMRGRIP, -50, 76
+	{
+		FlipX
+	}
+	Patch ARIFLEC, 73, 40
+	Patch MATSCOPE, 128, 36
+}
+
+Sprite A14GD0, 203, 123
+{
+	Offset -130, -46
+	Patch UZIGRIP, 77, 74
+	Patch UZISUPPR, 57, 41
+	Patch AMRGRIP, -50, 76
+	{
+		FlipX
+	}
+	Patch ARIFLEB, 73, 40
+	Patch MATSCOPE, 128, 36
+}
+
+Sprite A14RA0, 203, 123
+{
+	Offset -129, -45
+	Patch HANDULOD, -93, 66
+	Patch UZIGRIP, 77, 74
+	Patch UZISUPPR, 57, 41
+	Patch ARIFLEA, 73, 40
+	Patch MATSCOPE, 128, 36
+}
+
+Sprite A14RB0, 203, 123
+{
+	Offset -129, -45
+	Patch HANDULOD, -100, 78
+	Patch UZIGRIP, 77, 74
+	Patch UZISUPPR, 57, 41
+	Patch ARIFLEA, 73, 40
+	Patch MATSCOPE, 128, 36
+}
+
+Sprite A14RC0, 203, 123
+{
+	Offset -129, -45
+	Patch HANDULOD, -103, 87
+	Patch UZIGRIP, 77, 74
+	Patch UZISUPPR, 57, 41
+	Patch ARIFLEA, 73, 40
+	Patch MATSCOPE, 128, 36
+}
+
+Sprite A14RD0, 203, 123
+{
+	Offset -129, -45
+	Patch UZIGRIP, 77, 74
+	Patch UZISUPPR, 57, 41
+	Patch ARIFLEA, 73, 40
+	Patch HANDULOD, -89, 79
+	Patch MATSCOPE, 128, 36
+}
+
+Sprite A14RE0, 203, 123
+{
+	Offset -129, -45
+	Patch UZIGRIP, 77, 74
+	Patch UZISUPPR, 57, 41
+	Patch ARIFLEA, 73, 40
+	Patch HANDCHMB, 45, 68
+	Patch MATSCOPE, 128, 36
+}
+
+Sprite A14RF0, 203, 123
+{
+	Offset -129, -45
+	Patch UZIGRIP, 77, 74
+	Patch UZISUPPR, 57, 41
+	Patch ARIFLEA, 73, 40
+	Patch HANDCHMB, 59, 42
+	Patch MATSCOPE, 128, 36
+}
+
+Sprite A14RG0, 203, 123
+{
+	Offset -129, -45
+	Patch UZIGRIP, 77, 74
+	Patch UZISUPPR, 57, 41
+	Patch ARIFLEA, 73, 40
+	Patch HANDCHMB, 63, 37
+	Patch MATSCOPE, 128, 36
+}
+
+Sprite A14RH0, 203, 123
+{
+	Offset -129, -45
+	Patch UZIGRIP, 77, 74
+	Patch UZISUPPR, 57, 41
+	Patch ARIFLEB, 73, 40
+	Patch HANDCHMB, 72, 43
+	Patch MATSCOPE, 128, 36
+}
+
+Sprite A14RI0, 203, 123
+{
+	Offset -129, -45
+	Patch UZIGRIP, 77, 74
+	Patch UZISUPPR, 57, 41
+	Patch ARIFLEC, 73, 40
+	Patch HANDCHMB, 80, 47
+	Patch MATSCOPE, 128, 36
+}
+
+Sprite A14RJ0, 203, 123
+{
+	Offset -129, -45
+	Patch UZIGRIP, 77, 74
+	Patch UZISUPPR, 57, 41
+	Patch ARIFLEC, 73, 40
+	Patch HANDCHMB, 71, 53
+	Patch MATSCOPE, 128, 36
+}
+
+Sprite A14RK0, 203, 123
+{
+	Offset -129, -45
+	Patch UZIGRIP, 77, 74
+	Patch UZISUPPR, 57, 41
+	Patch ARIFLEC, 73, 40
+	Patch HANDCCK2, -62, 66
+	Patch MATSCOPE, 128, 36
+}
+
+Sprite A14RL0, 203, 123
+{
+	Offset -129, -45
+	Patch UZIGRIP, 77, 74
+	Patch UZISUPPR, 57, 41
+	Patch ARIFLEC, 73, 40
+	Patch HANDCCK2, -69, 71
+	Patch MATSCOPE, 128, 36
+}
+
+Sprite A14RM0, 203, 123
+{
+	Offset -129, -45
+	Patch UZIGRIP, 77, 74
+	Patch UZISUPPR, 57, 41
+	Patch ARIFLEC, 73, 40
+	Patch HANDCCK2, -76, 75
+	Patch MATSCOPE, 128, 36
+}
+
+Sprite A14RN0, 203, 123
+{
+	Offset -129, -45
+	Patch UZIGRIP, 77, 74
+	Patch UZISUPPR, 57, 41
+	Patch ARIFLEC, 73, 40
+	Patch HANDCCK2, -79, 91
+	Patch MATSCOPE, 128, 36
+}
+
+Sprite A14RO0, 203, 123
+{
+	Offset -129, -45
+	Patch UZIGRIP, 77, 74
+	Patch UZISUPPR, 57, 41
+	Patch HANDUPR2, -75, 84
+	{
+		FlipX
+	}
+	Patch ARIFLEC, 73, 40
+	Patch MATSCOPE, 128, 36
+}
+
+Sprite A14RP0, 203, 123
+{
+	Offset -129, -45
+	Patch UZIGRIP, 77, 74
+	Patch UZISUPPR, 57, 41
+	Patch HANDUPR2, -69, 82
+	{
+		FlipX
+	}
+	Patch ARIFLEC, 73, 40
+	Patch MATSCOPE, 128, 36
+}
+
+Sprite A14RQ0, 203, 123
+{
+	Offset -129, -45
+	Patch UZIGRIP, 77, 74
+	Patch UZISUPPR, 57, 41
+	Patch HANDUPR2, -74, 98
+	{
+		FlipX
+	}
+	Patch ARIFLEC, 73, 40
+	Patch MATSCOPE, 128, 36
+}
+
+Sprite A14RR0, 203, 123
+{
+	Offset -129, -45
+	Patch UZIGRIP, 77, 74
+	Patch UZISUPPR, 57, 41
+	Patch ARIFLEC, 73, 40
+	Patch MATSCOPE, 128, 36
+}
+
+Sprite A14RS0, 203, 123
+{
+	Offset -129, -45
+	Patch ARSUPPR1, 61, 39
+	Patch ARGRIPR1, 77, 73
+	Patch ARLOADA, 73, 39
+	Patch ARACOGR1, 131, 38
+}
+
+Sprite A14RT0, 203, 123
+{
+	Offset -129, -45
+	Patch ARSUPPR2, 66, 41
+	Patch ARSUPPR2, 63, 38
+	Patch ARGRIPR2, 78, 73
+	Patch ARLOADB, 73, 39
+	Patch ARACOGR2, 134, 41
+}
+
+Sprite A14RU0, 203, 123
+{
+	Offset -129, -45
+	Patch ARSUPPR3, 66, 37
+	Patch ARGRIPR3, 77, 72
+	Patch ARLOADC, 73, 38
+	Patch ARACOGR3, 136, 42
+}
+
+Sprite A14RV0, 203, 123
+{
+	Offset -129, -45
+	Patch ARSUPPR4, 69, 35
+	Patch ARGRIPR4, 77, 71
+	Patch ARLOADD, 73, 37
+	Patch ARACOGR4, 138, 46
+}
+
+Sprite A14RW0, 203, 123
+{
+	Offset -129, -45
+	Patch UZIGRIP, 77, 74
+	Patch UZISUPPR, 57, 41
+	Patch ARIFLEC, 73, 40
+	Patch MATSCOPE, 128, 36
+	Patch HANDPNCH, -143, 113
+	{
+		FlipX
+	}
+}
+
+Sprite A14RX0, 203, 123
+{
+	Offset -129, -45
+	Patch UZIGRIP, 77, 74
+	Patch UZISUPPR, 57, 41
+	Patch ARIFLEC, 73, 40
+	Patch MATSCOPE, 128, 36
+	Patch HANDPNCH, -132, 106
+	{
+		FlipX
+	}
+}
+
+Sprite A14RY0, 203, 123
+{
+	Offset -129, -45
+	Patch UZIGRIP, 77, 74
+	Patch UZISUPPR, 57, 41
+	Patch ARIFLEC, 73, 40
+	Patch MATSCOPE, 128, 36
+	Patch HANDPNCH, -128, 104
+	{
+		FlipX
+	}
+}
+
+Sprite A14RZ0, 203, 123
+{
+	Offset -129, -45
+	Patch UZIGRIP, 77, 74
+	Patch UZISUPPR, 57, 41
+	Patch ARIFLEB, 73, 40
+	Patch MATSCOPE, 128, 36
+	Patch HANDPNCH, -125, 102
+	{
+		FlipX
+	}
+}
+
+Sprite A14SA0, 203, 123
+{
+	Offset -129, -45
+	Patch UZIGRIP, 77, 74
+	Patch UZISUPPR, 57, 41
+	Patch ARIFLEA, 73, 40
+	Patch MATSCOPE, 128, 36
+	Patch HANDPNCH, -124, 100
+	{
+		FlipX
+	}
+}
+
+Sprite A14SB0, 203, 123
+{
+	Offset -129, -45
+	Patch UZIGRIP, 77, 74
+	Patch UZISUPPR, 57, 41
+	Patch ARIFLEA, 73, 40
+	Patch MATSCOPE, 128, 36
+	Patch HANDPNCH, -139, 115
+	{
+		FlipX
+	}
+}
+
+Sprite A14SC0, 203, 123
+{
+	Offset -129, -45
+	Patch UZIGRIP, 77, 74
+	Patch UZISUPPR, 57, 41
+	Patch ARIFLEA, 73, 40
+	Patch MATSCOPE, 128, 36
+}
+
+Sprite A14SD0, 203, 123
+{
+	Offset -129, -45
+	Patch UZIGRIP, 77, 74
+	Patch UZISUPPR, 57, 41
+	Patch ARIFLEA, 73, 40
+	Patch MATSCOPE, 128, 36
+	Patch HANDULOD, -111, 101
+}
+
+Graphic AR10ICON, 77, 21
+{
+	Patch A10PA0, 0, 0
+}
+
+Graphic ARXPMAX, 77, 21
+{
+	Patch A10PA0, 0, 0
+}
+
 // End of texture definitions
