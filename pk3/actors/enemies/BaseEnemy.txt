@@ -51,6 +51,11 @@ ACTOR WWTBadGuy
 		"----" A 0 A_GiveToTarget("AK47Exp")
 		"----" A 0 A_Jump(256,"Death")
 		Stop
+	Death.PlayerAR:
+		"----" A 0 A_JumpIf(CallACS("NoLevelup")==0,2)
+		"----" A 0 A_GiveToTarget("AR10Exp")
+		"----" A 0 A_Jump(256,"Death")
+		Stop
 	Death.Player50BMG:
 		"----" A 0 A_JumpIf(CallACS("NoLevelup")==0,2)
 		"----" A 0 A_GiveToTarget("BarrettExp")

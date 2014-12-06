@@ -1414,3 +1414,13 @@ $random Sights/Caleb{caleb/sight1 caleb/sight2 caleb/sight3 caleb/sight4 caleb/s
 $random Actives/Caleb{caleb/active1 caleb/active2 caleb/active3}
 $random Pains/Caleb{caleb/pain1 caleb/pain2 caleb/pain3 caleb/pain4 caleb/pain5}
 $random Deaths/Caleb{caleb/die1 caleb/die2 caleb/die3 caleb/die4 caleb/die5}
+
+ar10/firesingle AR10Fire
+ar10/fireloop AR10Loop
+ar10/fireloopdecay AR10Dcay
+ar10/firesilent AR10Supr
+ar10/boltpull AR10Lod0
+ar10/magout AR10Lod1
+ar10/magin AR10Lod2
+ar10/release AR10Lod3
+ar10/unjam ARUnjam

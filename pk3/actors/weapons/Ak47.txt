@@ -22,7 +22,7 @@ ACTOR Ak47Loaded : Ammo
 
 ACTOR AK47GrenadeSeq : Inventory{}
 
-ACTOR WWTAK47 : WWTWeapon replaces SuperShotgun
+ACTOR WWTAK47 : WWTWeapon
 {
 	Radius 32
 	Scale .5

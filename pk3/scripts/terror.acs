@@ -21,6 +21,11 @@ Script "RecoilAmount"(void)
 	SetResultValue(GetCVar("recoilamount"));
 }
 
+Script "Rifles"(void)
+{
+	SetResultValue(GetCVar("rifles"));
+}
+
 //Being tased seems a bit buggy, so I moved it to ACS for a more reliable completion
 Script "Tased"(void)
 {
@@ -143,6 +148,16 @@ Script "InstantLevelup"(void)
 			GiveInventory("762mmAmmo",999);
 		}
 		GiveInventory("M60Exp",1000);
+	}
+	If (CheckWeapon("WWTAR10"))
+	{
+		If (CheckInventory("AR10LevelUp")==4)	//FOUR levels
+		{
+			HudMessage(s:"Weapon already at maximum level.\nFilling ammunition instead..."; HUDMSG_TYPEON|HUDMSG_LOG,0,-1,0.1,0.6,3.0,0.01,0.75);
+			GiveInventory("WWTAR10Magazine",999);
+			GiveInventory("762mmAmmo",999);
+		}
+		GiveInventory("AR10Exp",1000);
 	}
 }
 
@@ -355,6 +370,26 @@ Script "GunExp" Enter
 				if(CheckInventory("M60Levelup")==3)
 					HudMessage(s:"Improved Gas System\nDAMAGE ++\nMUZZLE VELOCITY ++"; HUDMSG_TYPEON|HUDMSG_LOG,0,-1,0.1,0.6,3.0,0.01,0.75);
 				TakeInventory("M60Exp",1000);
+			}
+		}
+		// M16
+		if(CheckInventory("AR10Exp")>=GetCVar("ww_wep5aexp"))
+		{
+			if(CheckInventory("AR10Levelup")>3)
+				TakeInventory("AR10Exp",1000);
+			else
+			{
+				GiveInventory("AR10Levelup",1);
+				HudMessage(l:"WWTWEP5ANAME",s:" reached Marksman Level ",d:(CheckInventory("AR10Levelup")); HUDMSG_TYPEON|HUDMSG_LOG,0,-1,0.1,0.5,3.0,0.01,0.75);
+				if(CheckInventory("AR10Levelup")==1)
+					HudMessage(s:"Receiver Tune-Up\nWEAPON NO LONGER JAMS"; HUDMSG_TYPEON|HUDMSG_LOG,0,-1,0.1,0.6,3.0,0.01,0.75);
+				if(CheckInventory("AR10Levelup")==2)
+					HudMessage(s:"Front Foregrip\nRECOIL --\nACCURACY +"; HUDMSG_TYPEON|HUDMSG_LOG,0,-1,0.1,0.6,3.0,0.01,0.75);
+				if(CheckInventory("AR10Levelup")==3)
+					HudMessage(s:"Advanced Combat Optical Sight\nACCURACY ++"; HUDMSG_TYPEON|HUDMSG_LOG,0,-1,0.1,0.6,3.0,0.01,0.75);
+				if(CheckInventory("AR10Levelup")==4)
+					HudMessage(s:"Subsonic Suppression System\nMUZZLE VELOCITY -\nDAMAGE -\nRATE OF FIRE -\nGUNSHOT NOISE --"; HUDMSG_TYPEON|HUDMSG_LOG,0,-1,0.1,0.6,3.0,0.01,0.75);
+				TakeInventory("AR10Exp",1000);
 			}
 		}
 		Delay(1);

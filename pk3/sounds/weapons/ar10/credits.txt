@@ -1,0 +1,9 @@
+This awesome firing sound collection comes from Killing Floor by Tripwire Interactive.
+The awesome silenced firing sound comes from Duesto on freesound.org.
+
+The reload sounds come from the following sources:
+- 141572__yzhamua__m4a1-reload.mp3
+- 107804__j1987__gunreload-8.mp3
+- 104408__nanashi__slide-released.wav
+- 100240__robkinsons__gunreload.wav
+All four of which came from Freesound.org and are licensed under Creative Commons.

@@ -751,6 +751,9 @@ OptionMenu "TerroristsOptions"
 	Slider "Shell Casing Lifetime","casinglifetime",100,9000,100
 	Slider "Weapon Recoil Multiplier","recoilamount",0,20,1
 	StaticText ""
+	Option "Alternate Assault Rifle","rifles","YesNo"
+	//Option "Assault Rifle","rifles","Rifles"
+	StaticText ""
 	StaticText "Weapon Experience Scaling", 1
 	Option "Weapons Gain Experience","allowlevelup","OnOff"
 	Slider "Melee","ww_wepMexp",5,995,5
@@ -761,6 +764,7 @@ OptionMenu "TerroristsOptions"
 	Slider "$WWTWEP3NAME","ww_wep3exp",5,995,5
 	Slider "$WWTWEP4NAME","ww_wep4exp",5,995,5
 	Slider "$WWTWEP5NAME","ww_wep5exp",5,995,5
+	Slider "$WWTWEP5ANAME","ww_wep5aexp",5,995,5
 	Slider "$WWTWEP6NAME","ww_wep6exp",5,995,5
 	Slider "$WWTWEP7NAME","ww_wep7exp",5,995,5
 	Slider "$WWTWEP8NAME","ww_wep8exp",5,995,5
@@ -770,4 +774,11 @@ OptionMenu "TerroristsOptions"
 	SafeCommand "Reset to 2X Default Scaling","ww_expdoubledefault"
 	SafeCommand "Reset to 4X Default Scaling","ww_expquaddefault"
 	SafeCommand "Reset to 8X Default Scaling","ww_expeightdefault"
+}
+
+//LANGUAGE strings don't seem to be supported there...
+OptionValue "Rifles"
+{
+	0,"$WWTWEP5NAME"
+	1,"$WWTWEP5ANAME"
 }
