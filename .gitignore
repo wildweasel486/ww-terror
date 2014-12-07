@@ -43,7 +43,7 @@ Temporary Items
 .apdisk
 
 # Temporary PK3 files
-ww-terror.pk3
+*.pk3
 
 # Backups
 *.bak
