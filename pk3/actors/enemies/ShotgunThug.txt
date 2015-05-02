@@ -3,7 +3,6 @@ ACTOR ShotgunThug : WWTBadGuy
 	YScale 0.4
 	XScale 0.45
 	Health 85
-	Speed 12
 	SeeSound "Sights/Male05"
 	PainSound "Pains/Male05"
 	DeathSound "Deaths/Male05"
@@ -17,9 +16,6 @@ ACTOR ShotgunThug : WWTBadGuy
 	Spawn:
 		GTHG A 1 A_Look
 		Loop
-	See:
-		GTHG BCDE 6 A_Chase
-		Loop
 	Missile:
 		GTHG F 3 A_PlaySound("Striker/Load")
 		GTHG GGG 3 A_FaceTarget
@@ -32,9 +28,7 @@ ACTOR ShotgunThug : WWTBadGuy
 		Goto See
 		GTHG G 10 A_MonsterRefire(32,"See")
 		Goto Missile+4
-	Pain.PlayerElectricGrenade:
 	Pain.PlayerTaser:
-	Pain.EnemyTaser:
 		GTHG I 0
 		Goto Tased
 	Pain:

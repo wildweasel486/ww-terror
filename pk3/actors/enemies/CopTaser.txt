@@ -3,7 +3,7 @@ ACTOR CopTaser : WWTBadGuy
 	YScale 0.35
 	XScale 0.4
 	Health 90
-	Speed 20
+	Speed 10
 	MeleeRange 64
 	SeeSound "Sights/Male02"
 	PainSound "Pains/Male02"
@@ -19,7 +19,14 @@ ACTOR CopTaser : WWTBadGuy
 		COP2 A 1 A_Look
 		Loop
 	See:
-		COP2 BCDE 4 Fast A_Chase
+		COP2 B 2 Fast A_Chase
+		COP2 B 2 Fast A_Chase("","")
+		COP2 C 2 Fast A_Chase
+		COP2 C 2 Fast A_Chase("","")
+		COP2 D 2 Fast A_Chase
+		COP2 D 2 Fast A_Chase("","")
+		COP2 E 2 Fast A_Chase
+		COP2 E 2 Fast A_Chase("","")
 		Loop
 	Melee:
 		COP2 FG 4 A_FaceTarget
@@ -36,9 +43,7 @@ ACTOR CopTaser : WWTBadGuy
 		COP2 G 8
 		COP2 F 4
 		Goto See
-	Pain.PlayerElectricGrenade:
 	Pain.PlayerTaser:
-	Pain.EnemyTaser:
 		COP2 I 0
 		Goto Tased
 	Pain:

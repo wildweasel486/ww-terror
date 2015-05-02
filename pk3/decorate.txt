@@ -56,10 +56,9 @@ const int STUNTIME = 105; // Thanks, Kate.
 #include "actors/civilians/OfficeExec.txt"
 #include "actors/civilians/CoatGuy.txt"
 
-Actor WWTPlayer : DoomPlayer
+ACTOR WWTPlayer : PlayerPawn
 {
 	Player.DisplayName "John SomeGuyWithAPistol"
-	GibHealth -50
 	Player.InvulnerabilityMode "reflective"
 	Player.StartItem "Beretta"
 	Player.StartItem "WWTFists"
@@ -75,10 +74,7 @@ Actor WWTPlayer : DoomPlayer
 	Player.StartItem "9mmAmmo",30
 	Player.StartItem "GrenadePickup"
 	Player.ViewHeight 49
-	Player.AttackZOffset 17
-	Player.ColorRange 0,0
 	Player.AttackZOffset 18
-	Player.CrouchSprite ""
 	Player.SoundClass "Weasel"
 	DamageFactor "PlayerTaser",.05
 	Scale 1.1
@@ -93,15 +89,14 @@ Actor WWTPlayer : DoomPlayer
 	States
 	{
 	Spawn:
-		WEAS A 1
-		Loop
+		WEAS A -1
+		Stop
 	See:
 		WEAS ABCD 6
 		Loop
 	Pain:
 		WEAS G 3 A_Pain
 		Goto Spawn
-	Pain.PlayerElectricGrenade:
 	Pain.PlayerTaser:
 	Pain.EnemyTaser:
 		WEAS G 0 A_SetBlend("00 55 FF",0.5,10)

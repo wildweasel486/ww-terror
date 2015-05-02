@@ -60,9 +60,7 @@ ACTOR ARThug2 : WWTBadGuy
 	Pain:
 		KTHG I 3 A_Pain
 		Goto See
-	Pain.PlayerElectricGrenade:
 	Pain.PlayerTaser:
-	Pain.EnemyTaser:
 		KTHG I 0
 		Goto Tased
 	Death:

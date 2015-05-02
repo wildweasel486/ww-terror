@@ -3,7 +3,7 @@ ACTOR DualieDooley : WWTBadGuy replaces Archvile
 	YScale 0.35
 	XScale 0.4
 	Health 400
-	Speed 11
+	Speed 3.66666667
 	PainChance 256
 	Mass 9000
 	SeeSound "Sights/Male11"
@@ -32,7 +32,22 @@ ACTOR DualieDooley : WWTBadGuy replaces Archvile
 		DTHG A 1 A_Look
 		Loop
 	See:
-		DTHG BBCCDDEE 3 A_Chase
+		DTHG B 1 A_Chase
+		DTHG BB 1 A_Chase("","")
+		DTHG B 1 A_Chase
+		DTHG BB 1 A_Chase("","")
+		DTHG C 1 A_Chase
+		DTHG CC 1 A_Chase("","")
+		DTHG C 1 A_Chase
+		DTHG CC 1 A_Chase("","")
+		DTHG D 1 A_Chase
+		DTHG DD 1 A_Chase("","")
+		DTHG D 1 A_Chase
+		DTHG DD 1 A_Chase("","")
+		DTHG E 1 A_Chase
+		DTHG EE 1 A_Chase("","")
+		DTHG E 1 A_Chase
+		DTHG EE 1 A_Chase("","")
 		Loop
 	Missile:
 		DTHG HF 8 A_FaceTarget
@@ -82,9 +97,7 @@ ACTOR DualieDooley : WWTBadGuy replaces Archvile
 		DTHG IIIIIIIIII 0 A_SpawnItemEx("BulletIneffectiveSpark",0,0,32,frandom(-2.0,2.0),frandom(-2.0,2.0),frandom(3.0,6.0),frandom(0.0,359.9),SXF_NOCHECKPOSITION)
 		DTHG I 3 A_PlaySound("Bullet/HitMetal")
 		Goto See
-	Pain.PlayerElectricGrenade:
 	Pain.PlayerTaser:
-	Pain.EnemyTaser:
 		DTHG I 0
 		Goto Tased
 	Pain:

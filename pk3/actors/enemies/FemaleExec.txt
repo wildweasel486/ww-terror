@@ -3,7 +3,7 @@ ACTOR FemaleExec : WWTBadGuy
 	XScale 0.4
 	YScale 0.35
 	Health 100
-	Speed 18
+	Speed 6
 	SeeSound "Sights/Female03"
 	PainSound "Pains/Female03"
 	DeathSound "Deaths/Female03"
@@ -21,11 +21,18 @@ ACTOR FemaleExec : WWTBadGuy
 	States
 	{
 	Spawn:
-		FXEC A 0 NODELAY A_GiveInventory("IsFemale")
+		FXEC A 0 NODELAY A_SetUserVar("user_female",1)
 		FXEC A 1 A_Look
 		Wait
 	See:
-		FXEC BCDE 3 A_Chase
+		FXEC B 1 A_Chase
+		FXEC BB 1 A_Chase("","")
+		FXEC C 1 A_Chase
+		FXEC CC 1 A_Chase("","")
+		FXEC D 1 A_Chase
+		FXEC DD 1 A_Chase("","")
+		FXEC E 1 A_Chase
+		FXEC EE 1 A_Chase("","")
 		Loop
 	Missile:
 		FXEC FG 4 A_FaceTarget
@@ -40,9 +47,7 @@ ACTOR FemaleExec : WWTBadGuy
 		FXEC JJJJJJJJJJ 0 A_SpawnItemEx("BulletIneffectiveSpark",0,0,32,frandom(-2.0,2.0),frandom(-2.0,2.0),frandom(3.0,6.0),frandom(0.0,359.9),SXF_NOCHECKPOSITION)
 		FXEC J 3 A_PlaySound("Bullet/HitMetal")
 		Goto See
-	Pain.PlayerElectricGrenade:
 	Pain.PlayerTaser:
-	Pain.EnemyTaser:
 		FXEC J 0
 		Goto Tased
 	Pain:

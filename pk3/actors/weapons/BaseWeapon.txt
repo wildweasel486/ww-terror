@@ -148,23 +148,23 @@ ACTOR WWTWeapon : Weapon replaces Fist
 		TAZR A 1 Offset(10,15) A_Refire("TaserHold")
 		Goto TaserReturn
 	TaserHoldLevel1:
-		TAZR B 1 Offset(12,13) BRIGHT A_CustomPunch(2,1,0,"TaserPuff",100)
+		TAZR B 1 Offset(12,13) BRIGHT A_CustomPunch(2,1,0,"TaserFirePuff",100)
 		TAZR A 1 Offset(13,12)
-		TAZR C 1 Offset(14,11) BRIGHT A_CustomPunch(2,1,0,"TaserPuff",100)
+		TAZR C 1 Offset(14,11) BRIGHT A_CustomPunch(2,1,0,"TaserFirePuff",100)
 		TAZR A 1 Offset(13,12)
-		TAZR D 1 Offset(12,11) BRIGHT A_CustomPunch(2,1,0,"TaserPuff",100)
+		TAZR D 1 Offset(12,11) BRIGHT A_CustomPunch(2,1,0,"TaserFirePuff",100)
 		TAZR A 1 Offset(13,12)
-		TAZR E 1 Offset(12,13) BRIGHT A_CustomPunch(2,1,0,"TaserPuff",100)
+		TAZR E 1 Offset(12,13) BRIGHT A_CustomPunch(2,1,0,"TaserFirePuff",100)
 		TAZR A 1 Offset(10,15) A_Refire("TaserHold")
 		Goto TaserReturn
 	TaserHoldLevel2:
-		TAZR B 1 Offset(12,13) BRIGHT A_CustomPunch(3,1,0,"TaserPuff",100)
+		TAZR B 1 Offset(12,13) BRIGHT A_CustomPunch(3,1,0,"TaserFirePuff",100)
 		TAZR A 1 Offset(13,12)
-		TAZR C 1 Offset(14,11) BRIGHT A_CustomPunch(3,1,0,"TaserPuff",100)
+		TAZR C 1 Offset(14,11) BRIGHT A_CustomPunch(3,1,0,"TaserFirePuff",100)
 		TAZR A 1 Offset(13,12)
-		TAZR D 1 Offset(12,11) BRIGHT A_CustomPunch(3,1,0,"TaserPuff",100)
+		TAZR D 1 Offset(12,11) BRIGHT A_CustomPunch(3,1,0,"TaserFirePuff",100)
 		TAZR A 1 Offset(13,12)
-		TAZR E 1 Offset(12,13) BRIGHT A_CustomPunch(3,1,0,"TaserPuff",100)
+		TAZR E 1 Offset(12,13) BRIGHT A_CustomPunch(3,1,0,"TaserFirePuff",100)
 		TAZR A 1 Offset(10,15) A_Refire("TaserHold")
 		Goto TaserReturn
 	TaserHoldLevel3:
@@ -250,24 +250,32 @@ ACTOR WWTTaserPickup : CustomInventory replaces Chainsaw
 	}
 }
 
-actor WWTKickPuff
+ACTOR WWTKickPuff
 {
 	+NOBLOCKMAP
 	+NOGRAVITY
 	+PUFFONACTORS
 	+THRUGHOST
 	+NOEXTREMEDEATH
-	attacksound "Kick/wall"
-	seesound "Kick/hit"
+	+HITTRACER
+	AttackSound "Kick/wall"
+	SeeSound "Kick/hit"
 	Obituary "%o got %hself clobbered by %k's roundhouse kick."
 	DamageType "PlayerMelee"
-	states
+	States
 	{
-	Spawn:
 	Melee:
 	Crash:
+	Spawn:
+		TNT1 A 0 NODELAY A_CheckFlag("ISMONSTER",2,AAPTR_TRACER)
+		TNT1 A 0 A_Jump(256,3)
+		TNT1 A 0 A_JumpIf(CallACS("NoLevelup")==0,2)
+		TNT1 A 0 A_JumpIfHealthLower(1,"Kill1",AAPTR_TRACER)
 		TNT1 A 1
-		stop
+		Stop
+	Kill1:
+		TNT1 A 0 A_GiveToTarget("KickExp")
+		Goto Spawn+4
 	}
 }
 
@@ -288,9 +296,17 @@ ACTOR WWTExplosiveKickPuff : WWTKickPuff
 	Crash:
 	Melee:
 	Spawn:
-		FRME A 1 Bright A_Quake(7,10,0,96,"grenade/explode")
-		FRME BCDEFGHIHJKLMNOPQRS 1 bright
-		stop
+		TNT1 A 0 NODELAY A_CheckFlag("ISMONSTER",2,AAPTR_TRACER)
+		TNT1 A 0 A_Jump(256,3)
+		TNT1 A 0 A_JumpIf(CallACS("NoLevelup")==0,2)
+		TNT1 A 0 A_JumpIfHealthLower(1,"Kill1",AAPTR_TRACER)
+		FRME A 1 BRIGHT A_Quake(7,10,0,96,"grenade/explode")
+		FRME BCDEFGHIHJKLMNOPQRS 1 BRIGHT
+		Stop
+	Kill1:
+		TNT1 A 0 A_GiveToTarget("KickExp")
+		Goto Spawn+4
+
 	}
 }
 

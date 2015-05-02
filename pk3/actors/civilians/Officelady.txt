@@ -35,7 +35,6 @@ ACTOR WWTOfficelady : WWTCivilian replaces BlurSphere
 		CIV1 O 5 A_NoBlocking
 		CIV1 O -1
 		Stop
-	Death.Telefrag:
 	Active:
 		CIV1 A 0 A_PlaySound("FemCiv/Saved")
 		CIV1 A 0 A_SpawnItemEx("IbexUpgradeKit",0,0,0,0,0,6,0,SXF_NOCHECKPOSITION)

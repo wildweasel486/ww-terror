@@ -51,20 +51,14 @@ ACTOR UAV1 : WWTRobot replaces Cacodemon
 		UAV1 B 10
 		UAV1 ABCDE 5
 		Goto See
-	Pain.PlayerElectricGrenade:
 	Pain.PlayerTaser:
-	Pain.EnemyTaser:
 		UAV1 A 0
 		Goto Tased
 	Pain:
 		UAV1 GGGGGGGGGG 0 A_SpawnItemEx("BulletIneffectiveSpark",0,0,32,frandom(-2.0,2.0),frandom(-2.0,2.0),frandom(3.0,6.0),frandom(0.0,359.9),SXF_NOCHECKPOSITION)
 	Pain.Fire:
-	Pain.PlayerGrenadeFire:
 		UAV1 G 1 A_Pain
 		Goto See
-	Death.PlayerGrenadeFire:
-		"----" A 0 A_GiveToTarget("GrenadeExp")
-	Death.Fire:
 	Death:
 		UAV1 A 0 A_StopSound(CHAN_BODY)
 		UAV1 G 2 A_Scream

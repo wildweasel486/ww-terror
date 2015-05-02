@@ -4,7 +4,7 @@
 ACTOR Skimmer : WWTRobot replaces PainElemental
 {
 	Height 45
-	Speed 8
+	Speed 2.66666667
 	PainSound "Skimmer/Pain"
 	ActiveSound "Skimmer/See"
 	SeeSound "Skimmer/See"
@@ -17,7 +17,7 @@ ACTOR Skimmer : WWTRobot replaces PainElemental
 		SKIM A 5 A_Look
 		Loop
 	See:
-		SKIM A 3 A_Chase
+		SKIM A 1 A_Chase
 		Loop
 	Missile:
 		SKIM A 12 A_FaceTarget
@@ -53,20 +53,14 @@ ACTOR Skimmer : WWTRobot replaces PainElemental
 		SKIM B 2 BRIGHT A_CustomMissile("EnemySMGTracer",26,-35)
 		SKIM A 1
 		Goto See
-	Pain.PlayerElectricGrenade:
 	Pain.PlayerTaser:
-	Pain.EnemyTaser:
 		SKIM A 0
 		Goto Tased
 	Pain:
 		SKIM AAAAAAAAAA 0 A_SpawnItemEx("BulletIneffectiveSpark",0,0,32,frandom(-2.0,2.0),frandom(-2.0,2.0),frandom(3.0,6.0),frandom(0.0,359.9),SXF_NOCHECKPOSITION)
 	Pain.Fire:
-	Pain.PlayerGrenadeFire:
 		SKIM A 1 A_Pain
 		Goto See
-	Death.PlayerGrenadeFire:
-		"----" A 0 A_GiveToTarget("GrenadeExp")
-	Death.Fire:
 	Death:
 		SKIM A 0 A_StopSound(CHAN_BODY)
 		SKIM A 2 A_Scream

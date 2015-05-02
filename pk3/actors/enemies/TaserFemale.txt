@@ -3,7 +3,7 @@ ACTOR TaserFemale : WWTBadGuy
 	XScale 0.38
 	YScale 0.33
 	Health 80
-	Speed 18
+	Speed 6
 	SeeSound "Sights/Female01"
 	PainSound "Pains/Female01"
 	DeathSound "Deaths/Female01"
@@ -15,11 +15,18 @@ ACTOR TaserFemale : WWTBadGuy
 	States
 	{
 	Spawn:
-		FTAS A 0 NODELAY A_GiveInventory("IsFemale")
+		FTAS A 0 NODELAY A_SetUserVar("user_female",1)
 		FTAS A 1 A_Look
 		Wait
 	See:
-		FTAS BCDE 3 A_Chase
+		FTAS B 1 A_Chase
+		FTAS BB 1 A_Chase("","")
+		FTAS C 1 A_Chase
+		FTAS CC 1 A_Chase("","")
+		FTAS D 1 A_Chase
+		FTAS DD 1 A_Chase("","")
+		FTAS E 1 A_Chase
+		FTAS EE 1 A_Chase("","")
 		Loop
 	Melee:
 		FTAS FH 4 A_FaceTarget
@@ -36,9 +43,7 @@ ACTOR TaserFemale : WWTBadGuy
 		FTAS H 8
 		FTAS F 4
 		Goto See
-	Pain.PlayerElectricGrenade:
 	Pain.PlayerTaser:
-	Pain.EnemyTaser:
 		FTAS I 0
 		Goto Tased
 	Pain:

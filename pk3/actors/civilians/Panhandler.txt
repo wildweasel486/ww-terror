@@ -1,11 +1,11 @@
 ACTOR WWTCivilian : SwitchableDecoration
 {
-	MONSTER
+	Monster
+	-ISMONSTER
 	-COUNTKILL
 	+FRIGHTENED
 	+USESPECIAL
 	+LOOKALLAROUND
-	+NOTAUTOAIMED
 	Radius 24
 	Height 56
 	Health 50
@@ -20,6 +20,9 @@ ACTOR WWTCivilian : SwitchableDecoration
 		"----" A 0 A_NoBlocking
 		"----" A 1 A_FadeOut(0.02)
 		Wait
+	Death.Telefrag:
+		"----" A 1 A_Jump(256,"Active")
+		Stop
 	}
 }
 
@@ -51,7 +54,6 @@ ACTOR WWTPanhandler : WWTCivilian
 		BUMM H 5 A_NoBlocking
 		BUMM I -1
 		Stop
-	Death.Telefrag:
 	Active:
 		BUM1 A 0
 		"----" A 0 A_PlaySound("Bum/Active")
@@ -67,7 +69,6 @@ ACTOR WWTPanhandler2 : WWTPanhandler
 	Spawn:
 		BUM2 A 10 A_Look
 		Loop
-	Death.Telefrag:
 	Active:
 		BUM2 A 0
 		Goto Super::Active+1
@@ -81,7 +82,6 @@ ACTOR WWTPanhandler3 : WWTPanhandler
 	Spawn:
 		BUM3 A 10 A_Look
 		Loop
-	Death.Telefrag:
 	Active:
 		BUM3 A 0
 		Goto Super::Active+1
@@ -95,7 +95,6 @@ ACTOR WWTPanhandler4 : WWTPanhandler
 	Spawn:
 		BUM4 A 10 A_Look
 		Loop
-	Death.Telefrag:
 	Active:
 		BUM4 A 0
 		Goto Super::Active+1
@@ -109,7 +108,6 @@ ACTOR WWTPanhandler5 : WWTPanhandler
 	Spawn:
 		BUM5 A 10 A_Look
 		Loop
-	Death.Telefrag:
 	Active:
 		BUM5 A 0
 		Goto Super::Active+1
@@ -123,7 +121,6 @@ ACTOR WWTPanhandler6 : WWTPanhandler
 	Spawn:
 		BUM6 A 10 A_Look
 		Loop
-	Death.Telefrag:
 	Active:
 		BUM6 A 0
 		Goto Super::Active+1
@@ -137,7 +134,6 @@ ACTOR WWTPanhandler7 : WWTPanhandler
 	Spawn:
 		BUM7 A 10 A_Look
 		Loop
-	Death.Telefrag:
 	Active:
 		BUM7 A 0
 		Goto Super::Active+1
@@ -151,7 +147,6 @@ ACTOR WWTPanhandler8 : WWTPanhandler
 	Spawn:
 		BUM8 A 10 A_Look
 		Loop
-	Death.Telefrag:
 	Active:
 		BUM8 A 0
 		Goto Super::Active+1
@@ -165,7 +160,6 @@ ACTOR WWTPanhandler9 : WWTPanhandler
 	Spawn:
 		BUM9 A 10 A_Look
 		Loop
-	Death.Telefrag:
 	Active:
 		BUM9 A 0
 		Goto Super::Active+1
@@ -178,7 +172,6 @@ ACTOR WWTPanhandlerA : WWTPanhandler
 	Spawn:
 		BUMA A 10 A_Look
 		Loop
-	Death.Telefrag:
 	Active:
 		BUMA A 0
 		Goto Super::Active+1
@@ -191,7 +184,6 @@ ACTOR WWTPanhandlerB : WWTPanhandler
 	Spawn:
 		BUMB A 10 A_Look
 		Loop
-	Death.Telefrag:
 	Active:
 		BUMB A 0
 		Goto Super::Active+1
@@ -204,7 +196,6 @@ ACTOR WWTPanhandlerC : WWTPanhandler
 	Spawn:
 		BUMC A 10 A_Look
 		Loop
-	Death.Telefrag:
 	Active:
 		BUMC A 0
 		Goto Super::Active+1

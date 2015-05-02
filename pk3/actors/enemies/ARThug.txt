@@ -3,7 +3,7 @@ ACTOR ARThug : WWTBadGuy
 	YScale 0.3
 	XScale 0.35
 	Health 90
-	Speed 11
+	Speed 5.5
 	SeeSound "Sights/Male07"
 	PainSound "Pains/Male07"
 	DeathSound "Deaths/Male07"
@@ -27,7 +27,22 @@ ACTOR ARThug : WWTBadGuy
 		ATHG A 1 A_Look
 		Loop
 	See:
-		ATHG BBCCDDEE 4 Fast A_Chase
+		ATHG B 2 Fast A_Chase
+		ATHG B 2 Fast A_Chase("","")
+		ATHG B 2 Fast A_Chase
+		ATHG B 2 Fast A_Chase("","")
+		ATHG C 2 Fast A_Chase
+		ATHG C 2 Fast A_Chase("","")
+		ATHG C 2 Fast A_Chase
+		ATHG C 2 Fast A_Chase("","")
+		ATHG D 2 Fast A_Chase
+		ATHG D 2 Fast A_Chase("","")
+		ATHG D 2 Fast A_Chase
+		ATHG D 2 Fast A_Chase("","")
+		ATHG E 2 Fast A_Chase
+		ATHG E 2 Fast A_Chase("","")
+		ATHG E 2 Fast A_Chase
+		ATHG E 2 Fast A_Chase("","")
 		Loop
 	Missile:
 		ATHG F 0 A_JumpIfInventory("AK47Loaded",12,"Reload")
@@ -62,9 +77,7 @@ ACTOR ARThug : WWTBadGuy
 		ATHG IIIIIIIIII 0 A_SpawnItemEx("BulletIneffectiveSpark",0,0,32,frandom(-2.0,2.0),frandom(-2.0,2.0),frandom(3.0,6.0),frandom(0.0,359.9),SXF_NOCHECKPOSITION)
 		ATHG I 3 A_PlaySound("Bullet/HitMetal")
 		Goto See
-	Pain.PlayerElectricGrenade:
 	Pain.PlayerTaser:
-	Pain.EnemyTaser:
 		ATHG I 0
 		Goto Tased
 	Pain:

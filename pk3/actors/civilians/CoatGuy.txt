@@ -36,7 +36,6 @@ ACTOR WWTCoatGuy : WWTCivilian
 		CIV3 T 3 A_NoBlocking
 		CIV3 U -1
 		Stop
-	Death.Telefrag:
 	Active:
 		CIV3 A 0 A_PlaySound("MaleCiv/Saved")
 		CIV3 A 0 A_SpawnItemEx("StrongKickLevel",-8,0,0,0,0,6,0,SXF_NOCHECKPOSITION)

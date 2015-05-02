@@ -2,7 +2,6 @@ ACTOR SilentJ : WWTBadGuy
 {
 	Scale 0.35
 	Health 50
-	Speed 12
 	SeeSound "Sights/Male01"
 	PainSound "Pains/Male01"
 	DeathSound "Deaths/Male01"
@@ -20,9 +19,6 @@ ACTOR SilentJ : WWTBadGuy
 	Spawn:
 		ORAN A 1 A_Look
 		Loop
-	See:
-		ORAN BCDE 6 A_Chase
-		Loop
 	Missile:
 		ORAN F 10 A_FaceTarget
 		ORAN G 0 A_PlaySound("Beretta/Silent",CHAN_WEAPON)
@@ -36,9 +32,7 @@ ACTOR SilentJ : WWTBadGuy
 		ORAN H 5
 		ORAN F 4
 		Goto See
-	Pain.PlayerElectricGrenade:
 	Pain.PlayerTaser:
-	Pain.EnemyTaser:
 		ORAN I 0
 		Goto Tased
 	Pain.PlayerPistol:

@@ -3,7 +3,7 @@ ACTOR MagnumThug : WWTBadGuy
 	YScale 0.35
 	XScale 0.4
 	Health 50
-	Speed 16
+	Speed 5.33333333
 	SeeSound "Sights/Male06"
 	PainSound "Pains/Male06"
 	DeathSound "Deaths/Male06"
@@ -21,7 +21,14 @@ ACTOR MagnumThug : WWTBadGuy
 		MTHG A 1 A_Look
 		Loop
 	See:
-		MTHG BCDE 6 Fast A_Chase
+		MTHG B 2 Fast A_Chase
+		MTHG BB 2 Fast A_Chase("","")
+		MTHG C 2 Fast A_Chase
+		MTHG CC 2 Fast A_Chase("","")
+		MTHG D 2 Fast A_Chase
+		MTHG DD 2 Fast A_Chase("","")
+		MTHG E 2 Fast A_Chase
+		MTHG EE 2 Fast A_Chase("","")
 		Loop
 	Missile:
 		MTHG F 10 Fast A_FaceTarget
@@ -40,9 +47,7 @@ ACTOR MagnumThug : WWTBadGuy
 		MTHG IIIIIIIIII 0 A_SpawnItemEx("BulletIneffectiveSpark",0,0,32,frandom(-2.0,2.0),frandom(-2.0,2.0),frandom(3.0,6.0),frandom(0.0,359.9),SXF_NOCHECKPOSITION)
 		MTHG I 3 A_PlaySound("Bullet/HitMetal")
 		Goto See
-	Pain.PlayerElectricGrenade:
 	Pain.PlayerTaser:
-	Pain.EnemyTaser:
 		MTHG I 0
 		Goto Tased
 	Pain:

@@ -3,7 +3,6 @@ ACTOR PistolThug1 : WWTBadGuy
 	XScale 0.5
 	YScale 0.45
 	Health 25
-	Speed 12
 	SeeSound "Sights/Male01"
 	PainSound "Pains/Male01"
 	DeathSound "Deaths/Male01"
@@ -15,9 +14,6 @@ ACTOR PistolThug1 : WWTBadGuy
 	{
 	Spawn:
 		PTHG A 1 A_Look
-		Loop
-	See:
-		PTHG BCDE 6 A_Chase
 		Loop
 	Missile:
 		PTHG F 10 A_FaceTarget
@@ -34,9 +30,7 @@ ACTOR PistolThug1 : WWTBadGuy
 		PTHG H 10
 		PTHG A 5 A_TakeInventory("BerettaLoaded",7)
 		Goto Missile
-	Pain.PlayerElectricGrenade:
 	Pain.PlayerTaser:
-	Pain.EnemyTaser:
 		PTHG I 0
 		Goto Tased
 	Pain:

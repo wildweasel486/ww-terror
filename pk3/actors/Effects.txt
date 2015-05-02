@@ -22,7 +22,7 @@ ACTOR RepelShock // Borrowed from LWM's Hammerhound.
 
 ACTOR DIExplosion
 {
-	RENDERSTYLE ADD
+	RenderStyle Add
 	Radius 1
 	Height 1
 	Scale 1.5
@@ -55,10 +55,10 @@ ACTOR SparkSpawner
 	SeeSound "Bullet/HitMetal"
 	States
 	{
-	Spawn:
 	Death:
 	Crash:
-		PUFF A 2 BRIGHT A_SpawnDebris("BulletIneffectiveSpark")
+	Spawn:
+		PUFF A 2 BRIGHT NODELAY A_SpawnDebris("BulletIneffectiveSpark")
 		PUFF B 2 BRIGHT A_SetTranslucent(0.9,0)
 		PUFF CD 2 BRIGHT
 		Stop
@@ -87,8 +87,7 @@ Actor Fire
 	States
 	{
 	Spawn:
-		TNT1 A 0
-		TNT1 A 0 A_SpawnItemEx("SmallFlame",0,0,0,0,0,0,0,128)
+		TNT1 A 0 NODELAY A_SpawnItemEx("SmallFlame",0,0,0,0,0,0,0,128)
 		TNT1 A 1 A_SpawnItemEx("FlameProj1A",0,0,0,0,0,0,0,128)
 		TNT1 A 0 A_SpawnItemEx("Ember1",0,0,0,0,0,0,0,128)
 		TNT1 A 1 A_SpawnItemEx("FlameProj1B",0,0,0,0,0,0,0,128)
@@ -230,8 +229,7 @@ Actor FireImpact
 	States
 	{
 	Spawn:
-		TNT1 A 0
-		TNT1 A 0 A_Explode(10,32)
+		TNT1 A 0 NODELAY A_Explode(10,32)
 		TNT1 A 0 A_PlaySound("SFX/FireLoop1",6,1,1)
 		TNT1 A 0 A_SpawnItemEx("SmallFlame",0,0,0,0,0,0,0,128)
 		TNT1 A 0 A_Jump(216,3)
@@ -271,8 +269,8 @@ Actor SmallFlame
 	}
 }
 
-Actor MediumFlame : SmallFlame { }
-Actor LargeFlame : SmallFlame { }
+Actor MediumFlame : SmallFlame{}
+Actor LargeFlame : SmallFlame{}
 
 //Flames and particles
 Actor Flame1A : FlameProj1A
@@ -310,8 +308,7 @@ Actor Flame4A : Flame1A
 	States
 	{
 	Spawn:
-		FLM1 A 0
-		FLM1 A 0 ThrustThingZ(0,Random(4,12),0,0)
+		FLM1 A 0 NODELAY ThrustThingZ(0,Random(4,12),0,0)
 		FLM1 A 0 ThrustThing(Random(0,255),Random(0,2),0,0)
 		Goto Flame1A::Spawn+3
 	}
@@ -353,8 +350,7 @@ Actor Flame7A : Flame4A
 	States
 	{
 	Spawn:
-		FLM1 A 0
-		FLM1 A 0 ThrustThingZ(0,Random(8,24),0,0)
+		FLM1 A 0 NODELAY ThrustThingZ(0,Random(8,24),0,0)
 		FLM1 A 0 ThrustThing(Random(0,255),Random(0,4),0,0)
 		Goto Flame1A::Spawn+3
 	}
@@ -391,11 +387,9 @@ Actor Ember1 : Flame1A
 	States
 	{
 	Spawn:
-		EMBR A 0
-		EMBR A 0 ThrustThingZ(0,Random(4,16),0,0)
+		EMBR A 0 NODELAY ThrustThingZ(0,Random(4,16),0,0)
 		EMBR A 0 ThrustThing(Random(0,255),Random(0,1),0,0)
 		EMBR A 32 Bright
-		Goto Death
 	Death:
 		EMBR A 2 Bright A_FadeOut(0.1)
 		Loop
@@ -407,8 +401,7 @@ Actor Ember2 : Ember1
 	States
 	{
 	Spawn:
-		EMBR A 0
-		EMBR A 0 ThrustThingZ(0,Random(4,16),0,0)
+		EMBR A 0 NODELAY ThrustThingZ(0,Random(4,16),0,0)
 		EMBR A 0 ThrustThing(Random(0,255),Random(0,1),0,0)
 		EMBR A 64 Bright
 		Goto Death
@@ -419,7 +412,6 @@ Actor HalpSign
 {
 	Scale .15
 	RenderStyle Translucent
-	Alpha 1.0
 	+NOGRAVITY
 	+NOINTERACTION
 	States
@@ -436,6 +428,7 @@ Actor HalpSign
 
 actor TaserPuff
 {
+	+HITTRACER
 	+NOBLOCKMAP
 	+NOGRAVITY
 	+PUFFONACTORS
@@ -449,33 +442,49 @@ actor TaserPuff
 	Scale .3
 	states
 	{
-	Spawn:
 	Melee:
 	Crash:
+	Spawn:
+		TNT1 A 0 NODELAY A_CheckFlag("ISMONSTER",2,AAPTR_TRACER)
+		TNT1 A 0 A_Jump(256,3)
+		TNT1 A 0 A_JumpIf(CallACS("NoLevelup")==0,2)
+		TNT1 A 0 A_JumpIfHealthLower(1,"Kill",AAPTR_TRACER)
+	Finish:
 		ZAP1 AABCD 2 Bright
 		ZAP1 E 2 Bright A_SetTranslucent(0.40,1)
 		ZAP1 F 2 Bright A_SetTranslucent(0.55,1)
 		ZAP1 E 2 Bright A_SetTranslucent(0.30,1)
 		ZAP1 D 2 Bright A_SetTranslucent(0.10,1)
 		Stop
+	Kill:
+		TNT1 A 0 A_GiveToTarget("TaserExp")
+		TNT1 A 0 A_Jump(256,"Finish")
+		Stop
 	}
 }
-
-actor TaserChainPuff : TaserPuff
+ACTOR TaserFirePuff : TaserPuff
+{
+	DeathType Fire
+}
+ACTOR TaserChainPuff : TaserFirePuff
 {
 	+PUFFGETSOWNER
 	var int user_theta;
 	Scale .5
 	states
 	{
-	Spawn:
 	Melee:
 	Crash:
-		TESL E 0 A_CustomMissile("TeslaTracer1A",0,0,user_theta,CMF_AIMDIRECTION | CMF_TRACKOWNER)
+	Spawn:
+		TNT1 A 0 NODELAY A_CheckFlag("ISMONSTER",2,AAPTR_TRACER)
+		TNT1 A 0 A_Jump(256,3)
+		TNT1 A 0 A_JumpIf(CallACS("NoLevelup")==0,2)
+		TNT1 A 0 A_JumpIfHealthLower(1,"Kill",AAPTR_TRACER)
+	Finish:
+		TESL E 0 A_CustomMissile("TeslaTracer1A",0,0,user_theta,CMF_AIMDIRECTION|CMF_TRACKOWNER)
 		TESL E 0 A_SetUserVar("user_theta",user_theta + 20)
-		TESL E 0 A_JumpIf(user_theta >= 360,"Death")
+		TESL E 0 A_JumpIf(user_theta >= 360,1)
 		Loop
-	Death:
 		ZAP1 AABCD 2 Bright
 		ZAP1 E 2 Bright A_SetTranslucent(0.40,1)
 		ZAP1 F 2 Bright A_SetTranslucent(0.55,1)
@@ -490,6 +499,7 @@ actor TaserChainPuff : TaserPuff
 
 ACTOR TeslaTracer1A : FastProjectile
 {
+	+HITTRACER
 	Height 8
 	Radius 6
 	Speed 100
@@ -497,6 +507,7 @@ ACTOR TeslaTracer1A : FastProjectile
 	Alpha .8
 	PROJECTILE
 	Damagetype "PlayerTaser"
+	DeathType Fire
 	Obituary "%o couldn't handle %k's shocking revelation."
 	var int user_theta;
 	Damage 2
@@ -507,6 +518,11 @@ ACTOR TeslaTracer1A : FastProjectile
 		TNT1 A 1
 		Stop
 	Death:
+		TNT1 A 0 A_CheckFlag("ISMONSTER",2,AAPTR_TRACER)
+		TNT1 A 0 A_Jump(256,3)
+		TNT1 A 0 A_JumpIf(CallACS("NoLevelup")==0,2)
+		TNT1 A 0 A_JumpIfHealthLower(1,"Kill",AAPTR_TRACER)
+	Finish:
 		ZAP1 AABCD 2 Bright
 		ZAP1 E 2 Bright A_SetTranslucent(0.40,1)
 		ZAP1 F 2 Bright A_SetTranslucent(0.55,1)
@@ -514,9 +530,17 @@ ACTOR TeslaTracer1A : FastProjectile
 		ZAP1 D 2 Bright A_SetTranslucent(0.10,1)
 		Stop
 	XDeath:
+		TNT1 A 0 A_CheckFlag("ISMONSTER",2,AAPTR_TRACER)
+		TNT1 A 0 A_Jump(256,3)
+		TNT1 A 0 A_JumpIf(CallACS("NoLevelup")==0,2)
+		TNT1 A 0 A_JumpIfHealthLower(1,"Kill2",AAPTR_TRACER)
+	Finish2:
 		TESL E 0 A_CustomMissile("TeslaTracer1A",0,0,user_theta,CMF_AIMDIRECTION | CMF_TRACKOWNER)
 		TESL E 0 A_SetUserVar("user_theta",user_theta + 20)
 		TESL E 0 A_JumpIf(user_theta >= 360,"Death")
 		Loop
+	Kill2:
+		TNT1 A 0 A_GiveToTarget("TaserExp")
+		Goto Finish2
 	}
 }

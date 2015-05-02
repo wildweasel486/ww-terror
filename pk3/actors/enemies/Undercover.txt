@@ -3,7 +3,6 @@ ACTOR Undercover : WWTBadGuy
 	YScale 0.4
 	XScale 0.45
 	Health 110
-	Speed 12
 	SeeSound "Sights/Female02"
 	PainSound "Pains/Female02"
 	DeathSound "Deaths/Female02"
@@ -18,12 +17,9 @@ ACTOR Undercover : WWTBadGuy
 	States
 	{
 	Spawn:
-		FTAS A 0 NODELAY A_GiveInventory("IsFemale")
+		UNDR A 0 NODELAY A_SetUserVar("user_female",1)
 		UNDR A 1 A_Look
 		Wait
-	See:
-		UNDR BCDE 6 A_Chase
-		Loop
 	Missile:
 		UNDR FGG 3 A_FaceTarget
 		UNDR G 0 A_PlaySound("Uzi/FireSilent",CHAN_WEAPON)
@@ -47,9 +43,7 @@ ACTOR Undercover : WWTBadGuy
 		UNDR G 2
 		UNDR F 3 A_MonsterRefire(32,"See")
 		Goto Missile+3
-	Pain.PlayerElectricGrenade:
 	Pain.PlayerTaser:
-	Pain.EnemyTaser:
 		UNDR I 0
 		Goto Tased
 	Pain.PlayerPistol:
