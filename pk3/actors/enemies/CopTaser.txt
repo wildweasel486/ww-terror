@@ -3,7 +3,7 @@ ACTOR CopTaser : WWTBadGuy
 	YScale 0.35
 	XScale 0.4
 	Health 90
-	Speed 10
+	Speed 5
 	MeleeRange 64
 	SeeSound "Sights/Male02"
 	PainSound "Pains/Male02"
@@ -19,14 +19,26 @@ ACTOR CopTaser : WWTBadGuy
 		COP2 A 1 A_Look
 		Loop
 	See:
-		COP2 B 2 Fast A_Chase
-		COP2 B 2 Fast A_Chase("","")
-		COP2 C 2 Fast A_Chase
-		COP2 C 2 Fast A_Chase("","")
-		COP2 D 2 Fast A_Chase
-		COP2 D 2 Fast A_Chase("","")
-		COP2 E 2 Fast A_Chase
-		COP2 E 2 Fast A_Chase("","")
+		COP2 B 0 A_JumpIf(CallACS("IsNightmare") >= 4,"See2")
+		COP2 B 1 A_Chase
+		COP2 BBB 1 A_Chase("","")
+		COP2 C 1 A_Chase
+		COP2 CCC 1 A_Chase("","")
+		COP2 D 1 A_Chase
+		COP2 DDD 1 A_Chase("","")
+		COP2 E 1 A_Chase
+		COP2 EEE 1 A_Chase("","")
+		Loop
+	See2:
+		TNT1 A 0 A_SetSpeed(10)
+		COP2 B 1 A_Chase
+		COP2 B 1 A_Chase("","")
+		COP2 C 1 A_Chase
+		COP2 C 1 A_Chase("","")
+		COP2 D 1 A_Chase
+		COP2 D 1 A_Chase("","")
+		COP2 E 1 A_Chase
+		COP2 E 1 A_Chase("","")
 		Loop
 	Melee:
 		COP2 FG 4 A_FaceTarget

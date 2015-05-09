@@ -6,7 +6,8 @@ ACTOR WeaselBarrel : ExplosiveBarrel replaces ExplosiveBarrel
 	States
 	{
 	Spawn:
-		NBAR AB -1 NODELAY A_Jump(128,1)
+		NBAR A -1 NODELAY A_Jump(128,1)
+		NBAR B -1
 		Stop
 	Death:
 		NBAR "#" 5 BRIGHT

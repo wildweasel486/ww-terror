@@ -20,36 +20,36 @@ ACTOR MagnumFemale : WWTBadGuy
 		Wait
 	Missile:
 		PGR2 FG 5 Fast A_FaceTarget
-		PGR2 H 0 A_JumpIfInventory("MatebaLoaded",6,"Reload")
+		PGR2 H 0 A_JumpIf(user_spent>=6,"Reload")
 		PGR2 H 0 A_PlaySound("Mateba/EnemyFire",CHAN_WEAPON)
 		PGR2 H 2 BRIGHT A_CustomMissile("EnemyMagnumTracer",45,0,frandom(-2.0,2.0))
-		PGR2 H 2 A_GiveInventory("MatebaLoaded")
+		PGR2 H 2 A_SetUserVar("user_spent",user_spent+1)
 		PGR2 H 7 Fast A_FaceTarget
-		PGR2 H 0 A_JumpIfInventory("MatebaLoaded",6,"Reload")
+		PGR2 H 0 A_JumpIf(user_spent>=6,"Reload")
 		PGR2 H 0 A_PlaySound("Mateba/EnemyFire",CHAN_WEAPON)
 		PGR2 H 2 BRIGHT A_CustomMissile("EnemyMagnumTracer",45,0,frandom(-2.0,2.0))
-		PGR2 H 2 A_GiveInventory("MatebaLoaded")
+		PGR2 H 2 A_SetUserVar("user_spent",user_spent+1)
 		PGR2 H 7 Fast A_FaceTarget
-		PGR2 H 0 A_JumpIfInventory("MatebaLoaded",6,"Reload")
+		PGR2 H 0 A_JumpIf(user_spent>=6,"Reload")
 		PGR2 H 0 A_PlaySound("Mateba/EnemyFire",CHAN_WEAPON)
 		PGR2 H 2 BRIGHT A_CustomMissile("EnemyMagnumTracer",45,0,frandom(-2.0,2.0))
-		PGR2 H 2 A_GiveInventory("MatebaLoaded")
+		PGR2 H 2 A_SetUserVar("user_spent",user_spent+1)
 		PGR2 H 7 Fast A_FaceTarget
-		PGR2 H 0 A_JumpIfInventory("MatebaLoaded",6,"Reload")
+		PGR2 H 0 A_JumpIf(user_spent>=6,"Reload")
 		PGR2 H 0 A_PlaySound("Mateba/EnemyFire",CHAN_WEAPON)
 		PGR2 H 2 BRIGHT A_CustomMissile("EnemyMagnumTracer",45,0,frandom(-2.0,2.0))
-		PGR2 H 2 A_GiveInventory("MatebaLoaded")
+		PGR2 H 2 A_SetUserVar("user_spent",user_spent+1)
 		PGR2 H 7 Fast A_FaceTarget
-		PGR2 H 0 A_JumpIfInventory("MatebaLoaded",6,"Reload")
+		PGR2 H 0 A_JumpIf(user_spent>=6,"Reload")
 		PGR2 H 0 A_PlaySound("Mateba/EnemyFire",CHAN_WEAPON)
 		PGR2 H 2 BRIGHT A_CustomMissile("EnemyMagnumTracer",45,0,frandom(-2.0,2.0))
-		PGR2 H 2 A_GiveInventory("MatebaLoaded")
+		PGR2 H 2 A_SetUserVar("user_spent",user_spent+1)
 		PGR2 H 7 Fast A_FaceTarget
-		PGR2 H 0 A_JumpIfInventory("MatebaLoaded",6,"Reload")
+		PGR2 H 0 A_JumpIf(user_spent>=6,"Reload")
 		PGR2 H 0 A_PlaySound("Mateba/EnemyFire",CHAN_WEAPON)
 		PGR2 H 2 BRIGHT A_CustomMissile("EnemyMagnumTracer",45,0,frandom(-2.0,2.0))
-		PGR2 H 2 A_GiveInventory("MatebaLoaded")
-		PGR2 H 0 A_JumpIfInventory("MatebaLoaded",6,"Reload")
+		PGR2 H 2 A_SetUserVar("user_spent",user_spent+1)
+		PGR2 H 0 A_JumpIf(user_spent>=6,"Reload")
 		Goto See
 	Reload:
 		PGR2 G 15
@@ -58,7 +58,7 @@ ACTOR MagnumFemale : WWTBadGuy
 		PGR2 F 10 A_PlaySound("Mateba/Out",CHAN_WEAPON)
 		PGR2 G 10 A_PlaySound("Mateba/In",CHAN_WEAPON)
 		PGR2 A 10 A_PlaySound("Mateba/Close",CHAN_WEAPON)
-		PGR2 A 0 A_TakeInventory("MatebaLoaded")
+		PGR2 A 0 A_SetUserVar("user_spent",0)
 		Goto See
 	Pain.PlayerTaser:
 		PGR2 I 0

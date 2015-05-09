@@ -12,7 +12,6 @@ ACTOR FemaleExec : WWTBadGuy
 	DamageFactor "PlayerPistol",0.4
 	DamageFactor "PlayerUzi",0.4
 	DamageFactor "PlayerShotgun",0.4
-	DamageFactor "PlayerAK",0.9
 	DamageFactor "PlayerAR",0.9
 	DamageFactor "PlayerM60",0.9
 	DamageFactor "PlayerMagnum",0.7

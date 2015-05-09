@@ -1,6 +1,6 @@
 ACTOR BulletCasing
 {
-	PROJECTILE
+	Projectile
 	-NOGRAVITY
 	-NOBLOCKMAP
 	+BOUNCEONACTORS

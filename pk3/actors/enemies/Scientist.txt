@@ -42,7 +42,6 @@ ACTOR ScientistPlasmaBall : FastProjectile
 	Height 8
 	Speed 20
 	Damage (20)
-	PROJECTILE
 	SeeSound "Scientist/Blaster"
 	DeathSound "Scientist/BlasterHit"
 	MissileType "ScientistMissileTrail"

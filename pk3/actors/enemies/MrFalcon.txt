@@ -1,11 +1,6 @@
 // Mr. Falcon.
 // Amazingly hammy voice kindly provided by BouncyTEM.
 
-ACTOR MrFalconReload : Inventory
-{
-	Inventory.MaxAmount 6
-}
-
 ACTOR MrFalcon : WWTBadGuy replaces SpiderMastermind
 {
 	YScale 0.35
@@ -28,7 +23,6 @@ ACTOR MrFalcon : WWTBadGuy replaces SpiderMastermind
 	DamageFactor "PlayerPistol",0.4
 	DamageFactor "PlayerUzi",0.4
 	DamageFactor "PlayerShotgun",0.4
-	DamageFactor "PlayerAK",0.9
 	DamageFactor "PlayerAR",0.9
 	DamageFactor "PlayerM60",0.9
 	DamageFactor "PlayerMagnum",0.7
@@ -69,22 +63,22 @@ ACTOR MrFalcon : WWTBadGuy replaces SpiderMastermind
 		LTHG EE 1 A_Chase("","")
 		Loop
 	Missile:
-		LTHG F 0 A_JumpIfInventory("MrFalconReload",6,"Reload")
+		LTHG F 0 A_JumpIf(user_spent>=6,"Reloading")
 		LTHG F 0 A_PlaySound("Firing/MrFalcon",CHAN_AUTO)
 		LTHG F 8 Fast A_PlaySound("MGL/Close",CHAN_AUTO,1.0,0,0.4)
 		LTHG G 8 Fast A_FaceTarget
 		LTHG G 0 A_PlaySound("MGL/Fire",CHAN_AUTO,1.0,0,0.4)
 		LTHG G 2 BRIGHT A_CustomMissile("EnemyLauncherGrenade",46,0,frandom(-3.0,3.0),CMF_OFFSETPITCH,frandom(-3.0,3.0))
-		LTHG G 10 A_GiveInventory("MrFalconReload")
+		LTHG G 10 A_SetUserVar("user_spent",user_spent+1)
 		Goto See
 	Reload:
 		LTHG F 0 A_PlaySound("Reloading/MrFalcon",CHAN_VOICE)
 		LTHG F 10 A_PlaySound("MGL/Open",CHAN_WEAPON)
 	Reloading:
-		LTHG G 0 A_TakeInventory("MrFalconReload",1)
+		LTHG G 0 A_SetUserVar("user_spent",user_spent-1)
 		LTHG G 7 Fast A_PlaySound("MGL/Load",CHAN_WEAPON)
 		LTHG F 5
-		LTHG F 0 A_JumpIfInventory("MrFalconReload",1,"Reloading")
+		LTHG F 0 A_JumpIf(user_spent>=1,"Reloading")
 		LTHG A 5 A_PlaySound("MGL/Close",CHAN_WEAPON)
 		Goto See
 	Pain.PlayerTaser:

@@ -3,7 +3,7 @@ ACTOR Punchy : WWTBadGuy
 	YScale 0.35
 	XScale 0.4
 	Health 90
-	Speed 11
+	Speed 5.5
 	MeleeRange 64
 	SeeSound "Sights/Male03"
 	PainSound "Pains/Male03"
@@ -18,7 +18,11 @@ ACTOR Punchy : WWTBadGuy
 		PUNK A 1 A_Look
 		Loop
 	See:
-		PUNK BBCCDDEE 2 Fast A_Chase
+		PUNK BBBBCCCCDDDDEEEE 1 A_Chase
+		Loop
+	See2:
+		TNT1 A 0 A_SetSpeed(11)
+		PUNK BBCCDDEE 1 A_Chase
 		Loop
 	Melee:
 		PUNK FG 2 A_FaceTarget

@@ -17,7 +17,6 @@ ACTOR DualieDooley : WWTBadGuy replaces Archvile
 	DamageFactor "PlayerPistol",0.4
 	DamageFactor "PlayerUzi",0.4
 	DamageFactor "PlayerShotgun",0.5
-	DamageFactor "PlayerAK",0.7
 	DamageFactor "PlayerAR",0.7
 	DamageFactor "PlayerM60",0.7
 	DamageFactor "PlayerMagnum",0.8
@@ -51,8 +50,7 @@ ACTOR DualieDooley : WWTBadGuy replaces Archvile
 		Loop
 	Missile:
 		DTHG HF 8 A_FaceTarget
-	MissileHold:
-		DTHG G 0 A_JumpIfInventory("UziLoaded",8,"Reload")
+		DTHG G 0 A_JumpIf(user_spent>=8,"Reload")
 		DTHG G 0 A_PlaySound("Uzi/EnemyFire",CHAN_WEAPON)
 		COP3 G 0 A_SpawnItemEx("BulletCasing",24,-24,40,8,2,4,random(55,80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
 		DTHG F 1 BRIGHT A_CustomMissile("EnemyDualiesTracer",50,0,frandom(-6.0,6.0),0,frandom(-3.0,3.0))
@@ -77,9 +75,9 @@ ACTOR DualieDooley : WWTBadGuy replaces Archvile
 		DTHG G 0 A_PlaySound("Uzi/EnemyFire",CHAN_WEAPON)
 		COP3 G 0 A_SpawnItemEx("BulletCasing",24,-24,40,8,2,4,random(55,80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
 		DTHG G 1 BRIGHT A_CustomMissile("EnemyDualiesTracer",50,0,frandom(-6.0,6.0),0,frandom(-3.0,3.0))
-		DTHG G 0 A_GiveInventory("UziLoaded")
+		DTHG G 0 A_SetUserVar("user_spent",user_spent+1)
 		DTHG G 1 A_MonsterRefire(40,"See")
-		Goto MissileHold
+		Goto Missile+2
 	Reload:
 		DTHG FF 4 A_PlaySound("Uzi/Clipout")
 		DTHG HF 6
@@ -89,7 +87,7 @@ ACTOR DualieDooley : WWTBadGuy replaces Archvile
 		DTHG H 4 A_PlaySound("Uzi/Cock")
 		DTHG F 5
 		DTHG H 4 A_PlaySound("Uzi/Cock")
-		DTHG F 5 A_TakeInventory("UziLoaded")
+		DTHG F 5 A_SetUserVar("user_spent",0)
 		Goto See
 	Pain.PlayerPistol:
 	Pain.PlayerUzi:
