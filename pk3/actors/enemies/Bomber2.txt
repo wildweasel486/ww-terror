@@ -74,7 +74,7 @@ ACTOR Bomber2 : WWTBadGuy replaces Fatso
 		BMB2 I 0
 		Goto Tased
 	Pain:
-		BOM2 I 3 A_Pain
+		BMB2 I 3 A_Pain
 		Goto See
 	Death:
 		BMB2 J 3 A_Scream
