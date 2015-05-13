@@ -6,6 +6,7 @@ ACTOR WWTCivilian : SwitchableDecoration
 	+FRIGHTENED
 	+USESPECIAL
 	+LOOKALLAROUND
+	+NOTAUTOAIMED
 	Radius 24
 	Height 56
 	Health 50
