@@ -392,6 +392,7 @@ ACTOR TaserPuff
 	+THRUGHOST
 	+NOEXTREMEDEATH
 	+BLOODLESSIMPACT
+	+PUFFGETSOWNER
 	attacksound "Taser/wall"
 	seesound "Taser/hit"
 	Obituary "%o was a victim of %k's police brutality."
@@ -402,7 +403,8 @@ ACTOR TaserPuff
 	Melee:
 	Crash:
 	Spawn:
-		TNT1 A 0 NODELAY A_CheckFlag("ISMONSTER",2,AAPTR_TRACER)
+		TNT1 A 1
+		TNT1 A 0 A_CheckFlag("ISMONSTER",2,AAPTR_TRACER)
 		TNT1 A 0 A_Jump(256,3)
 		TNT1 A 0 A_JumpIf(CallACS("NoLevelup")==0,2)
 		TNT1 A 0 A_JumpIfHealthLower(1,"Kill",AAPTR_TRACER)
@@ -425,7 +427,6 @@ ACTOR TaserFirePuff : TaserPuff
 }
 ACTOR TaserChainPuff : TaserFirePuff
 {
-	+PUFFGETSOWNER
 	var int user_theta;
 	Scale .5
 	states
@@ -433,7 +434,8 @@ ACTOR TaserChainPuff : TaserFirePuff
 	Melee:
 	Crash:
 	Spawn:
-		TNT1 A 0 NODELAY A_CheckFlag("ISMONSTER",2,AAPTR_TRACER)
+		TNT1 A 1
+		TNT1 A 0 A_CheckFlag("ISMONSTER",2,AAPTR_TRACER)
 		TNT1 A 0 A_Jump(256,3)
 		TNT1 A 0 A_JumpIf(CallACS("NoLevelup")==0,2)
 		TNT1 A 0 A_JumpIfHealthLower(1,"Kill",AAPTR_TRACER)

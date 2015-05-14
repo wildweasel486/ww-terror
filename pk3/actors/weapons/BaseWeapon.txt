@@ -102,15 +102,7 @@ ACTOR WWTWeapon : Weapon replaces Fist
 		TNT1 A 0 A_TakeInventory("KickSeq")
 		TNT1 A 1 A_Jump(256,"AltfireReturn")
 	KickFinisherLevel3:
-		TNT1 A 1 A_SetAngle(angle - 30.0)
-		TNT1 A 1 A_SetAngle(angle - 30.0)
-		TNT1 A 1 A_SetAngle(angle - 30.0)
-		TNT1 A 1 A_SetAngle(angle - 30.0)
-		TNT1 A 1 A_SetAngle(angle - 30.0)
-		TNT1 A 1 A_SetAngle(angle - 30.0)
-		TNT1 A 1 A_SetAngle(angle - 30.0)
-		TNT1 A 1 A_SetAngle(angle - 30.0)
-		TNT1 A 1 A_SetAngle(angle - 30.0)
+		TNT1 AAAAAAAAA 1 A_SetAngle(angle - 30.0)
 		TNT1 A 0 A_PlaySound("Kick/Swing",CHAN_WEAPON)
 		KICK C 1 Offset(-180,50) A_SetAngle(angle - 30.0)
 		KICK C 1 Offset(-150,32) A_SetAngle(angle - 30.0)
@@ -258,6 +250,7 @@ ACTOR WWTKickPuff
 	+THRUGHOST
 	+NOEXTREMEDEATH
 	+HITTRACER
+	+PUFFGETSOWNER
 	AttackSound "Kick/wall"
 	SeeSound "Kick/hit"
 	Obituary "%o got %hself clobbered by %k's roundhouse kick."
@@ -267,7 +260,8 @@ ACTOR WWTKickPuff
 	Melee:
 	Crash:
 	Spawn:
-		TNT1 A 0 NODELAY A_CheckFlag("ISMONSTER",2,AAPTR_TRACER)
+		TNT1 A 1
+		TNT1 A 0 A_CheckFlag("ISMONSTER",2,AAPTR_TRACER)
 		TNT1 A 0 A_Jump(256,3)
 		TNT1 A 0 A_JumpIf(CallACS("NoLevelup")==0,2)
 		TNT1 A 0 A_JumpIfHealthLower(1,"Kill1",AAPTR_TRACER)
@@ -296,7 +290,8 @@ ACTOR WWTExplosiveKickPuff : WWTKickPuff
 	Crash:
 	Melee:
 	Spawn:
-		TNT1 A 0 NODELAY A_CheckFlag("ISMONSTER",2,AAPTR_TRACER)
+		TNT1 A 1
+		TNT1 A 0 A_CheckFlag("ISMONSTER",2,AAPTR_TRACER)
 		TNT1 A 0 A_Jump(256,3)
 		TNT1 A 0 A_JumpIf(CallACS("NoLevelup")==0,2)
 		TNT1 A 0 A_JumpIfHealthLower(1,"Kill1",AAPTR_TRACER)
