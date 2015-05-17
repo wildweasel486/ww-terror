@@ -17,23 +17,32 @@ ACTOR Tracer : FastProjectile
 		Loop
 	Death:
 	Crash:
-		TNT1 A 0 A_CheckFlag("ISMONSTER",2,AAPTR_TRACER)
-		TNT1 A 0 A_Jump(256,3)
-		TNT1 A 0 A_JumpIf(CallACS("NoLevelup")==0,2)
-		TNT1 A 0 A_JumpIfHealthLower(1,"Kill",AAPTR_TRACER)
-	Kill:
 		PUFF A 2 BRIGHT A_SpawnDebris("TracerSpark")
 		PUFF B 1 BRIGHT A_SetTranslucent(0.9,0)
 		PUFF B 1 BRIGHT A_PlaySound("Bullet/Ricochet",CHAN_BODY,.5)
 		PUFF CD 2 BRIGHT
 		Stop
 	XDeath:
-		TNT1 A 0 A_CheckFlag("ISMONSTER",2,AAPTR_TRACER)
-		TNT1 A 0 A_Jump(256,3)
-		TNT1 A 0 A_JumpIf(CallACS("NoLevelup")==0,2)
-		TNT1 A 0 A_JumpIfHealthLower(1,"Kill2",AAPTR_TRACER)
-	Kill2:
 		TNT1 A 3 A_PlaySound("Bullet/HitFlesh",CHAN_BODY,.5)
+		Stop
+	}
+}
+
+ACTOR AlreadyKilled : Inventory{}
+ACTOR KillCheck : CustomInventory
+{
+	States
+	{
+	Pickup:
+		TNT1 A 0 A_CheckFlag("ISMONSTER","None")
+		TNT1 A 0 A_JumpIf(CallACS("NoLevelup")==0,"None")
+		TNT1 A 0 A_JumpIfInventory("AlreadyKilled",1,"None")
+		TNT1 A 0 A_JumpIfHealthLower(1,1)
+		Stop
+		TNT1 A 0 A_GiveInventory("AlreadyKilled")
+		Goto Win
+	None:
+		TNT1 A 0
 		Stop
 	}
 }
@@ -101,10 +110,7 @@ ACTOR PlayerLauncherGrenade
 		SGRN A -1
 		Stop
 	Death:
-		TNT1 A 0 A_CheckFlag("ISMONSTER",2,AAPTR_TRACER)
-		TNT1 A 0 A_Jump(256,3)
-		TNT1 A 0 A_JumpIf(CallACS("NoLevelup")==0,2)
-		TNT1 A 0 A_JumpIfHealthLower(1,"Kill",AAPTR_TRACER)
+		TNT1 A 0 A_GiveInventory("KillCheckMGL",1,AAPTR_TRACER)
 		FRME A 0 A_AlertMonsters
 		FRME A 0 A_SetScale(1.75,1.75)
 		FRME A 0 A_SetTranslucent(0.75,1)
@@ -114,9 +120,16 @@ ACTOR PlayerLauncherGrenade
 		FRME B 1 BRIGHT A_Quake(7,10,0,256,0)
 		FRME CDEFGHIHJKLMNOPQRS 1 BRIGHT
 		stop
-	Kill:
+	}
+}
+
+ACTOR KillCheckMGL : KillCheck
+{
+	States
+	{
+	Win:
 		TNT1 A 0 A_GiveToTarget("MGLExp")
-		Goto Death+4
+		Stop
 	}
 }
 
@@ -153,10 +166,7 @@ ACTOR PlayerLauncherGrenadeFaster : FastProjectile
 		SGRN A -1
 		Stop
 	Death:
-		TNT1 A 0 A_CheckFlag("ISMONSTER",2,AAPTR_TRACER)
-		TNT1 A 0 A_Jump(256,3)
-		TNT1 A 0 A_JumpIf(CallACS("NoLevelup")==0,2)
-		TNT1 A 0 A_JumpIfHealthLower(1,"Kill",AAPTR_TRACER)
+		TNT1 A 0 A_GiveInventory("KillCheckMGL",1,AAPTR_TRACER)
 		FRME A 0 A_AlertMonsters
 		FRME A 0 A_SetScale(1.75,1.75)
 		FRME A 0 A_SetTranslucent(0.75,1)
@@ -166,9 +176,6 @@ ACTOR PlayerLauncherGrenadeFaster : FastProjectile
 		FRME B 1 BRIGHT A_Quake(7,10,0,256,0)
 		FRME CDEFGHIHJKLMNOPQRS 1 BRIGHT
 		stop
-	Kill:
-		TNT1 A 0 A_GiveToTarget("MGLExp")
-		Goto Death+4
 	}
 }
 
@@ -254,12 +261,22 @@ ACTOR PlayerPistolTracer : Tracer
 	Speed 90
 	States
 	{
-	Kill:
+	Death:
+		TNT1 A 0 A_GiveInventory("KillCheckBeretta",1,AAPTR_TRACER)
+		Goto Super::Death
+	XDeath:
+		TNT1 A 0 A_GiveInventory("KillCheckBeretta",1,AAPTR_TRACER)
+		Goto Super::XDeath
+	}
+}
+
+ACTOR KillCheckBeretta : KillCheck
+{
+	States
+	{
+	Win:
 		TNT1 A 0 A_GiveToTarget("BerettaExp")
-		Goto Death+4
-	Kill2:
-		TNT1 A 0 A_GiveToTarget("BerettaExp")
-		Goto XDeath+4
+		Stop
 	}
 }
 
@@ -277,12 +294,22 @@ ACTOR PlayerUziTracer : Tracer
 	Speed 85
 	States
 	{
-	Kill:
+	Death:
+		TNT1 A 0 A_GiveInventory("KillCheckUzi",1,AAPTR_TRACER)
+		Goto Super::Death
+	XDeath:
+		TNT1 A 0 A_GiveInventory("KillCheckUzi",1,AAPTR_TRACER)
+		Goto Super::XDeath
+	}
+}
+
+ACTOR KillCheckUzi : KillCheck
+{
+	States
+	{
+	Win:
 		TNT1 A 0 A_GiveToTarget("UziExp")
-		Goto Death+4
-	Kill2:
-		TNT1 A 0 A_GiveToTarget("UziExp")
-		Goto XDeath+4
+		Stop
 	}
 }
 
@@ -293,14 +320,25 @@ ACTOR PlayerAR10Tracer : Tracer
 	Speed 150
 	States
 	{
-	Kill:
-		TNT1 A 0 A_GiveToTarget("AR10Exp")
-		Goto Death+4
-	Kill2:
-		TNT1 A 0 A_GiveToTarget("AR10Exp")
-		Goto XDeath+4
+	Death:
+		TNT1 A 0 A_GiveInventory("KillCheckAR10",1,AAPTR_TRACER)
+		Goto Super::Death
+	XDeath:
+		TNT1 A 0 A_GiveInventory("KillCheckAR10",1,AAPTR_TRACER)
+		Goto Super::XDeath
 	}
 }
+
+ACTOR KillCheckAR10 : KillCheck
+{
+	States
+	{
+	Win:
+		TNT1 A 0 A_GiveToTarget("AR10Exp")
+		Stop
+	}
+}
+
 ACTOR PlayerAR10TracerSilent : PlayerAR10Tracer
 {
 	Damage (random(16,18))
@@ -313,12 +351,22 @@ ACTOR PlayerAK47Tracer : PlayerAR10Tracer
 	Speed 120
 	States
 	{
-	Kill:
+	Death:
+		TNT1 A 0 A_GiveInventory("KillCheckAK47",1,AAPTR_TRACER)
+		Goto Super::Death
+	XDeath:
+		TNT1 A 0 A_GiveInventory("KillCheckAK47",1,AAPTR_TRACER)
+		Goto Super::XDeath
+	}
+}
+
+ACTOR KillCheckAK47 : KillCheck
+{
+	States
+	{
+	Win:
 		TNT1 A 0 A_GiveToTarget("AK47Exp")
-		Goto Death+4
-	Kill2:
-		TNT1 A 0 A_GiveToTarget("AK47Exp")
-		Goto XDeath+4
+		Stop
 	}
 }
 
@@ -335,12 +383,22 @@ ACTOR PlayerM60Tracer : Tracer
 	Speed 140
 	States
 	{
-	Kill:
+	Death:
+		TNT1 A 0 A_GiveInventory("KillCheckM60",1,AAPTR_TRACER)
+		Goto Super::Death
+	XDeath:
+		TNT1 A 0 A_GiveInventory("KillCheckM60",1,AAPTR_TRACER)
+		Goto Super::XDeath
+	}
+}
+
+ACTOR KillCheckM60 : KillCheck
+{
+	States
+	{
+	Win:
 		TNT1 A 0 A_GiveToTarget("M60Exp")
-		Goto Death+4
-	Kill2:
-		TNT1 A 0 A_GiveToTarget("M60Exp")
-		Goto XDeath+4
+		Stop
 	}
 }
 
@@ -359,20 +417,24 @@ ACTOR PlayerShotgunTracer : Tracer
 	{
 	Death:
 	Crash:
-		TNT1 A 0 A_CheckFlag("ISMONSTER",2,AAPTR_TRACER)
-		TNT1 A 0 A_Jump(256,3)
-		TNT1 A 0 A_JumpIf(CallACS("NoLevelup")==0,2)
-		TNT1 A 0 A_JumpIfHealthLower(1,"Kill",AAPTR_TRACER)
+		TNT1 A 0 A_GiveInventory("KillCheckStriker",1,AAPTR_TRACER)
 		PUFF A 2 BRIGHT A_SpawnDebris("TracerSpark")
 		PUFF B 2 BRIGHT A_SetTranslucent(0.9,0)
 		PUFF CD 2 BRIGHT
 		Stop
-	Kill:
+	XDeath:
+		TNT1 A 0 A_GiveInventory("KillCheckStriker",1,AAPTR_TRACER)
+		Goto Super::XDeath
+	}
+}
+
+ACTOR KillCheckStriker : KillCheck
+{
+	States
+	{
+	Win:
 		TNT1 A 0 A_GiveToTarget("StrikerExp")
-		Goto Death+4
-	Kill2:
-		TNT1 A 0 A_GiveToTarget("StrikerExp")
-		Goto XDeath+4
+		Stop
 	}
 }
 
@@ -383,12 +445,22 @@ ACTOR PlayerRevolverTracer : Tracer
 	Speed 110
 	States
 	{
-	Kill:
+	Death:
+		TNT1 A 0 A_GiveInventory("KillCheckMateba",1,AAPTR_TRACER)
+		Goto Super::Death
+	XDeath:
+		TNT1 A 0 A_GiveInventory("KillCheckMateba",1,AAPTR_TRACER)
+		Goto Super::XDeath
+	}
+}
+
+ACTOR KillCheckMateba : KillCheck
+{
+	States
+	{
+	Win:
 		TNT1 A 0 A_GiveToTarget("MatebaExp")
-		Goto Death+4
-	Kill2:
-		TNT1 A 0 A_GiveToTarget("MatebaExp")
-		Goto XDeath+4
+		Stop
 	}
 }
 
@@ -400,12 +472,22 @@ ACTOR PlayerBarrettTracer : Tracer
 	Scale .6
 	States
 	{
-	Kill:
+	Death:
+		TNT1 A 0 A_GiveInventory("KillCheckBarrett",1,AAPTR_TRACER)
+		Goto Super::Death
+	XDeath:
+		TNT1 A 0 A_GiveInventory("KillCheckBarrett",1,AAPTR_TRACER)
+		Goto Super::XDeath
+	}
+}
+
+ACTOR KillCheckBarrett : KillCheck
+{
+	States
+	{
+	Win:
 		TNT1 A 0 A_GiveToTarget("BarrettExp")
-		Goto Death+4
-	Kill2:
-		TNT1 A 0 A_GiveToTarget("BarrettExp")
-		Goto XDeath+4
+		Stop
 	}
 }
 
@@ -416,10 +498,7 @@ ACTOR PlayerBarrettTracerLevel2 : PlayerBarrettTracer
 	{
 	Death:
 	XDeath:
-		TNT1 A 0 A_CheckFlag("ISMONSTER",2,AAPTR_TRACER)
-		TNT1 A 0 A_Jump(256,3)
-		TNT1 A 0 A_JumpIf(CallACS("NoLevelup")==0,2)
-		TNT1 A 0 A_JumpIfHealthLower(1,"Kill",AAPTR_TRACER)
+		TNT1 A 0 A_GiveInventory("KillCheckBarrett",1,AAPTR_TRACER)
 		FRME A 0 A_SetScale(.4,.4)
 		FRME A 0 A_SetTranslucent(.75,1)
 		FRME A 0 A_PlaySound("Barrett/Explode")
@@ -427,10 +506,6 @@ ACTOR PlayerBarrettTracerLevel2 : PlayerBarrettTracer
 		FRME B 1 BRIGHT A_Quake(7,10,0,100,0)
 		FRME CDEFGHIHJKLMNOPQRS 1 BRIGHT
 		stop
-	Kill:
-	Kill2:
-		TNT1 A 0 A_GiveToTarget("BarrettExp")
-		Goto Death+4
 	}
 }
 

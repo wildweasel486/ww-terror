@@ -70,11 +70,7 @@ ACTOR PipebombGrenade
 		PIPE BCD 2 Bright
 		loop
 	Death:
-		TNT1 A 0 A_CheckFlag("ISMONSTER",2,AAPTR_TRACER)
-		TNT1 A 0 A_Jump(256,3)
-		TNT1 A 0 A_JumpIf(CallACS("NoLevelup")==0,2)
-		TNT1 A 0 A_JumpIfHealthLower(1,"Kill",AAPTR_TRACER)
-		PIPE A 35 Bright
+		PIPE A 35 Bright A_GiveInventory("KillCheckGrenade",1,AAPTR_TRACER)
 		FRME A 0 A_SetDamageType("PlayerGrenadeBoom")
 		FRME A 0 A_AlertMonsters
 		FRME A 0 A_SetScale(1.75,1.75)
@@ -84,9 +80,16 @@ ACTOR PipebombGrenade
 		FRME B 1 Bright A_Quake(7,10,0,256,0)
 		FRME CDEFGHIHJKLMNOPQRS 1 bright
 		stop
-	Kill:
+	}
+}
+
+ACTOR KillCheckGrenade : KillCheck
+{
+	States
+	{
+	Win:
 		TNT1 A 0 A_GiveToTarget("GrenadeExp")
-		Goto Death+4
+		Stop
 	}
 }
 
@@ -102,11 +105,7 @@ ACTOR HandGrenade : PipebombGrenade
 		THRW BCDEF 2 Bright
 		loop
 	Death:
-		TNT1 A 0 A_CheckFlag("ISMONSTER",2,AAPTR_TRACER)
-		TNT1 A 0 A_Jump(256,3)
-		TNT1 A 0 A_JumpIf(CallACS("NoLevelup")==0,2)
-		TNT1 A 0 A_JumpIfHealthLower(1,"Kill",AAPTR_TRACER)
-		THRW B 35 Bright
+		THRW B 35 Bright A_GiveInventory("KillCheckGrenade",1,AAPTR_TRACER)
 		FRME A 0 A_SetDamageType("PlayerGrenadeBoom")
 		FRME A 0 A_AlertMonsters
 		FRME A 0 A_SetScale(1.75,1.75)
@@ -116,9 +115,6 @@ ACTOR HandGrenade : PipebombGrenade
 		FRME B 1 Bright A_Quake(7,10,0,256,0)
 		FRME CDEFGHIHJKLMNOPQRS 1 bright
 		stop
-	Kill:
-		TNT1 A 0 A_GiveToTarget("GrenadeExp")
-		Goto Death+4
 	}
 }
 
@@ -135,11 +131,7 @@ ACTOR ElectricGrenade : HandGrenade
 		EGRN BCDEFGH 2 Bright
 		loop
 	Death:
-		TNT1 A 0 A_CheckFlag("ISMONSTER",2,AAPTR_TRACER)
-		TNT1 A 0 A_Jump(256,3)
-		TNT1 A 0 A_JumpIf(CallACS("NoLevelup")==0,2)
-		TNT1 A 0 A_JumpIfHealthLower(1,"Kill",AAPTR_TRACER)
-		EGRN C 35 Bright
+		EGRN C 35 Bright A_GiveInventory("KillCheckGrenade",1,AAPTR_TRACER)
 		FRME A 0 A_SetDamageType("PlayerElectricGrenadeBoom")
 		STFL A 0 A_AlertMonsters
 		STFL A 0 A_SetTranslucent(0.75,1)
@@ -178,9 +170,6 @@ ACTOR ElectricGrenade : HandGrenade
 		STFL O 1 Bright A_Explode(8,312)
 		STFL P 1 Bright A_SetScale(3.5)
 		stop
-	Kill:
-		TNT1 A 0 A_GiveToTarget("GrenadeExp")
-		Goto Death+4
 	}
 }
 
@@ -195,7 +184,7 @@ ACTOR IncendiaryGrenade : PipebombGrenade
 		GCAN BCDEFGH 1 Bright
 		loop
 	Death:
-		GCAN D 35 Bright
+		GCAN D 35 Bright A_GiveInventory("KillCheckGrenade",1,AAPTR_TRACER)
 		FBLX A 0 BRIGHT A_SetScale(1.0,1.0)
      	FBLX A 0 BRIGHT A_AlertMonsters
 		FBLX A 0 BRIGHT A_SetTranslucent(0.75,1)
