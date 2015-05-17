@@ -40,7 +40,7 @@ ACTOR KillCheck : CustomInventory
 		TNT1 A 0 A_JumpIfHealthLower(1,1)
 		Stop
 		TNT1 A 0 A_GiveInventory("AlreadyKilled")
-		Goto Win
+		TNT1 A 0 A_Jump(256,"Win")
 	Win:
 	None:
 		TNT1 A 0
