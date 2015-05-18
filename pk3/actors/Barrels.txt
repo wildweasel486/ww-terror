@@ -1,10 +1,4 @@
-ACTOR WWTBarrelSpawner : RandomSpawner replaces ExplosiveBarrel
-{
-	DropItem "WeaselBarrel"
-	DropItem "WeaselBarrel2"
-}
-
-ACTOR WeaselBarrel : ExplosiveBarrel
+ACTOR WeaselBarrel : ExplosiveBarrel replaces ExplosiveBarrel
 {
 	DamageFactor "PlayerMelee",.1
 	DamageFactor "Fire",2.0
@@ -12,7 +6,8 @@ ACTOR WeaselBarrel : ExplosiveBarrel
 	States
 	{
 	Spawn:
-		NBAR A -1
+		NBAR A -1 NODELAY A_Jump(128,1)
+		NBAR B -1
 		Stop
 	Death:
 		NBAR "#" 5 BRIGHT
@@ -20,21 +15,11 @@ ACTOR WeaselBarrel : ExplosiveBarrel
 		EXP1 B 2 BRIGHT A_Scream
 		EXP1 C 2 BRIGHT A_NoBlocking
 		EXP1 D 2 BRIGHT Radius_Quake(5,10,0,7,0)
-		EXP1 E 2 BRIGHT A_MissileAttack
+		EXP1 E 2 BRIGHT
 		EXP1 F 2 BRIGHT A_Explode
 		EXP1 GHIJKL 2 BRIGHT
 		EXP1 M 2 BRIGHT A_SetTranslucent(0.55,1)
 		EXP1 N 2 BRIGHT A_SetTranslucent(0.20,1)
-		Stop
-	}
-}
-
-ACTOR WeaselBarrel2 : WeaselBarrel
-{
-	States
-	{
-	Spawn:
-		NBAR B -1
 		Stop
 	}
 }

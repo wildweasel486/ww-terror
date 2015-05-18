@@ -3,7 +3,7 @@ ACTOR Caleb : WWTBadGuy replaces WolfensteinSS
 	YScale .5
 	XScale .55
 	Health 50
-	Speed 16
+	Speed 5.33333333
 	SeeSound "Sights/Caleb"
 	PainSound "Pains/Caleb"
 	DeathSound "Deaths/Caleb"
@@ -18,7 +18,30 @@ ACTOR Caleb : WWTBadGuy replaces WolfensteinSS
 		CALB G 1 A_Look
 		Loop
 	See:
-		CALB AABBCCDDEEFF 3 A_Chase
+		CALB A 1 A_Chase
+		CALB AA 1 A_Chase("","",CHF_NOPLAYACTIVE)
+		CALB A 1 A_Chase
+		CALB AA 1 A_Chase("","",CHF_NOPLAYACTIVE)
+		CALB B 1 A_Chase
+		CALB BB 1 A_Chase("","",CHF_NOPLAYACTIVE)
+		CALB B 1 A_Chase
+		CALB BB 1 A_Chase("","",CHF_NOPLAYACTIVE)
+		CALB C 1 A_Chase
+		CALB CC 1 A_Chase("","",CHF_NOPLAYACTIVE)
+		CALB C 1 A_Chase
+		CALB CC 1 A_Chase("","",CHF_NOPLAYACTIVE)
+		CALB D 1 A_Chase
+		CALB DD 1 A_Chase("","",CHF_NOPLAYACTIVE)
+		CALB D 1 A_Chase
+		CALB DD 1 A_Chase("","",CHF_NOPLAYACTIVE)
+		CALB E 1 A_Chase
+		CALB EE 1 A_Chase("","",CHF_NOPLAYACTIVE)
+		CALB E 1 A_Chase
+		CALB EE 1 A_Chase("","",CHF_NOPLAYACTIVE)
+		CALB F 1 A_Chase
+		CALB FF 1 A_Chase("","",CHF_NOPLAYACTIVE)
+		CALB F 1 A_Chase
+		CALB FF 1 A_Chase("","",CHF_NOPLAYACTIVE)
 		Loop
 	Missile:
 		CALB G 5 Fast A_FaceTarget
@@ -58,9 +81,7 @@ ACTOR Caleb : WWTBadGuy replaces WolfensteinSS
 		CALF B 3
 		CALB H 3
 		Goto See
-	Pain.PlayerElectricGrenade:
 	Pain.PlayerTaser:
-	Pain.EnemyTaser:
 		CALB H 0
 		Goto Tased
 	Pain:

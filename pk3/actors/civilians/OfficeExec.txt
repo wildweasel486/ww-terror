@@ -42,7 +42,6 @@ ACTOR WWTOfficeExec : WWTCivilian replaces Allmap
 		CIV2 U 5 A_NoBlocking
 		CIV2 V -1
 		Stop
-	Death.Telefrag:
 	Active:
 		CIV2 A 0 A_PlaySound("MaleCiv/Saved")
 		CIV2 A 0 A_SpawnItemEx("StrongBlueprint",0,0,0,0,0,6,0,SXF_NOCHECKPOSITION)

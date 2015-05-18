@@ -3,7 +3,7 @@ ACTOR ARThug : WWTBadGuy
 	YScale 0.3
 	XScale 0.35
 	Health 90
-	Speed 11
+	Speed 2.75
 	SeeSound "Sights/Male07"
 	PainSound "Pains/Male07"
 	DeathSound "Deaths/Male07"
@@ -14,7 +14,6 @@ ACTOR ARThug : WWTBadGuy
 	DamageFactor "PlayerPistol",0.4
 	DamageFactor "PlayerUzi",0.4
 	DamageFactor "PlayerShotgun",0.4
-	DamageFactor "PlayerAK",0.9
 	DamageFactor "PlayerAR",0.9
 	DamageFactor "PlayerM60",0.9
 	DamageFactor "PlayerMagnum",0.7
@@ -27,22 +26,57 @@ ACTOR ARThug : WWTBadGuy
 		ATHG A 1 A_Look
 		Loop
 	See:
-		ATHG BBCCDDEE 4 Fast A_Chase
+		ATHG B 0 A_JumpIf(CallACS("IsNightmare") >= 4,"See2")
+		ATHG B 1 A_Chase
+		ATHG BBB 1 A_Chase("","")
+		ATHG B 1 A_Chase
+		ATHG BBB 1 A_Chase("","")
+		ATHG C 1 A_Chase
+		ATHG CCC 1 A_Chase("","")
+		ATHG C 1 A_Chase
+		ATHG CCC 1 A_Chase("","")
+		ATHG D 1 A_Chase
+		ATHG DDD 1 A_Chase("","")
+		ATHG D 1 A_Chase
+		ATHG DDD 1 A_Chase("","")
+		ATHG E 1 A_Chase
+		ATHG EEE 1 A_Chase("","")
+		ATHG E 1 A_Chase
+		ATHG EEE 1 A_Chase("","")
+		Loop
+	See2:
+		ATHG A 0 A_SetSpeed(5.5)
+		ATHG B 1 A_Chase
+		ATHG B 1 A_Chase("","")
+		ATHG B 1 A_Chase
+		ATHG B 1 A_Chase("","")
+		ATHG C 1 A_Chase
+		ATHG C 1 A_Chase("","")
+		ATHG C 1 A_Chase
+		ATHG C 1 A_Chase("","")
+		ATHG D 1 A_Chase
+		ATHG D 1 A_Chase("","")
+		ATHG D 1 A_Chase
+		ATHG D 1 A_Chase("","")
+		ATHG E 1 A_Chase
+		ATHG E 1 A_Chase("","")
+		ATHG E 1 A_Chase
+		ATHG E 1 A_Chase("","")
 		Loop
 	Missile:
-		ATHG F 0 A_JumpIfInventory("AK47Loaded",12,"Reload")
+		ATHG F 0 A_JumpIf(user_spent>=12,"Reload")
 		ATHG FGG 4 Fast A_FaceTarget
-		ATHG G 0 A_GiveInventory("AK47Loaded")
+		ATHG G 0 A_SetUserVar("user_spent",user_spent+1)
 		ATHG G 0 A_PlaySound("AK47/EnemyFire",CHAN_WEAPON)
 		ATHG G 0 A_SpawnItemEx("RifleCasing",24,-32,40,8,2,4,random(-55,-80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
 		ATHG G 2 BRIGHT A_CustomMissile("EnemyARTracer",39,0,-4)
 		ATHG G 3 A_FaceTarget
-		ATHG G 0 A_GiveInventory("AK47Loaded")
+		ATHG G 0 A_SetUserVar("user_spent",user_spent+1)
 		ATHG G 0 A_PlaySound("AK47/EnemyFire",CHAN_WEAPON)
 		ATHG G 0 A_SpawnItemEx("RifleCasing",24,-32,40,8,2,4,random(-55,-80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
 		ATHG G 2 BRIGHT A_CustomMissile("EnemyARTracer",39,0,0)
 		ATHG G 3 A_FaceTarget
-		ATHG G 0 A_GiveInventory("AK47Loaded")
+		ATHG G 0 A_SetUserVar("user_spent",user_spent+1)
 		ATHG G 0 A_PlaySound("AK47/EnemyFire",CHAN_WEAPON)
 		ATHG G 0 A_SpawnItemEx("RifleCasing",24,-32,40,8,2,4,random(-55,-80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
 		ATHG G 2 BRIGHT A_CustomMissile("EnemyARTracer",39,0,4)
@@ -54,7 +88,7 @@ ACTOR ARThug : WWTBadGuy
 		ATHG H 10 A_PlaySound("AK47/Clipin",CHAN_WEAPON)
 		ATHG F 6
 		ATHG H 4 A_PlaySound("AK47/Cock",CHAN_WEAPON)
-		ATHG F 5 A_TakeInventory("AK47Loaded",30)
+		ATHG F 5 A_SetUserVar("user_spent",0)
 		Goto See
 	Pain.PlayerPistol:
 	Pain.PlayerUzi:
@@ -62,9 +96,7 @@ ACTOR ARThug : WWTBadGuy
 		ATHG IIIIIIIIII 0 A_SpawnItemEx("BulletIneffectiveSpark",0,0,32,frandom(-2.0,2.0),frandom(-2.0,2.0),frandom(3.0,6.0),frandom(0.0,359.9),SXF_NOCHECKPOSITION)
 		ATHG I 3 A_PlaySound("Bullet/HitMetal")
 		Goto See
-	Pain.PlayerElectricGrenade:
 	Pain.PlayerTaser:
-	Pain.EnemyTaser:
 		ATHG I 0
 		Goto Tased
 	Pain:

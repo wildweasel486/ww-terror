@@ -3,7 +3,6 @@ ACTOR Cop2 : WWTBadGuy
 	XScale 0.35
 	YScale 0.3
 	Health 30
-	Speed 12
 	SeeSound "Sights/Male02"
 	PainSound "Pains/Male02"
 	DeathSound "Deaths/Male04"
@@ -19,42 +18,37 @@ ACTOR Cop2 : WWTBadGuy
 	Spawn:
 		COP3 A 1 A_Look
 		Loop
-	See:
-		COP3 BCDE 6 A_Chase
-		Loop
 	Missile:
 		COP3 FGH 5 A_FaceTarget
-		COP3 F 0 A_JumpIfInventory("BerettaLoaded",9,"Reload")
+		COP3 F 0 A_JumpIf(user_spent>=9,"Reload")
 		COP3 G 0 A_PlaySound("Beretta/EnemyFire",CHAN_WEAPON)
 		COP3 G 0 A_SpawnItemEx("BulletCasing",24,-24,40,8,2,4,random(-55,-80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
 		COP3 H 2 BRIGHT A_CustomMissile("EnemyPistolTracer",42,0,frandom(-2.0,2.0))
-		COP3 H 6 Fast A_GiveInventory("BerettaLoaded")
-		COP3 F 0 A_JumpIfInventory("BerettaLoaded",9,"Reload")
+		COP3 H 6 Fast A_SetUserVar("user_spent",user_spent+1)
+		COP3 F 0 A_JumpIf(user_spent>=9,"Reload")
 		COP3 H 0 A_PlaySound("Beretta/EnemyFire",CHAN_WEAPON)
 		COP3 G 0 A_SpawnItemEx("BulletCasing",24,-24,40,8,2,4,random(-55,-80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
 		COP3 H 2 BRIGHT A_CustomMissile("EnemyPistolTracer",42,0,frandom(-2.0,2.0))
-		COP3 H 6 Fast A_GiveInventory("BerettaLoaded")
-		COP3 F 0 A_JumpIfInventory("BerettaLoaded",9,"Reload")
+		COP3 H 6 Fast A_SetUserVar("user_spent",user_spent+1)
+		COP3 F 0 A_JumpIf(user_spent>=9,"Reload")
 		COP3 H 0 A_PlaySound("Beretta/EnemyFire",CHAN_WEAPON)
 		COP3 G 0 A_SpawnItemEx("BulletCasing",24,-24,40,8,2,4,random(-55,-80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
 		COP3 H 2 BRIGHT A_CustomMissile("EnemyPistolTracer",42,0,frandom(-2.0,2.0))
-		COP3 H 3 A_GiveInventory("BerettaLoaded")
+		COP3 H 3 A_SetUserVar("user_spent",user_spent+1)
 		COP3 G 5
 		COP3 F 4
 		Goto See
 	Reload:
 		COP3 G 5 A_PlaySound("Beretta/Reload",CHAN_WEAPON)
 		COP3 F 10
-		COP3 A 5 A_TakeInventory("BerettaLoaded",9)
+		COP3 A 5 A_SetUserVar("user_spent",0)
 		Goto Missile
 	Pain.PlayerPistol:
 	Pain.PlayerUzi:
 		COP3 IIIIIIIIII 0 A_SpawnItemEx("BulletIneffectiveSpark",0,0,32,frandom(-2.0,2.0),frandom(-2.0,2.0),frandom(3.0,6.0),frandom(0.0,359.9),SXF_NOCHECKPOSITION)
 		COP3 I 3 A_PlaySound("Bullet/HitMetal")
 		Goto See
-	Pain.PlayerElectricGrenade:
 	Pain.PlayerTaser:
-	Pain.EnemyTaser:
 		COP3 I 0
 		Goto Tased
 	Pain:

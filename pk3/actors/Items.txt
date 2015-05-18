@@ -197,13 +197,11 @@ Actor WWTBackpack : BackpackItem
 
 ACTOR BackpackSpawner replaces Backpack
 {
-	Dropitem "WWTBackpack"
-	Dropitem "GrenadePickup"
-	Dropitem "GrenadePickup"
 	States
 	{
 	Spawn:
-		TNT1 A 1 NODELAY A_Fall
+		TNT1 A 0 NODELAY A_SpawnItemEx("WWTBackpack")
+		TNT1 AA 0 A_SpawnItemEx("GrenadePickup",frandom(-16,16),frandom(-16,16),0,0,0,0,0,SXF_NOCHECKPOSITION)
 		Stop
 	}
 }

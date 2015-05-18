@@ -3,7 +3,6 @@ ACTOR WWTScientist : WWTBadGuy replaces Arachnotron
 	YScale 0.35
 	XScale 0.4
 	Health 200
-	Speed 12
 	SeeSound "Scientist/See"
 	PainSound "Scientist/Pain"
 	DeathSound "Scientist/Death"
@@ -15,17 +14,12 @@ ACTOR WWTScientist : WWTBadGuy replaces Arachnotron
 	Spawn:
 		WSCI A 1 A_Look
 		Loop
-	See:
-		WSCI BCDE 6 A_Chase
-		Loop
 	Missile:
 		WSCI F 5 A_FaceTarget
 		WSCI G 5 Bright A_CustomMissile("ScientistPlasmaBall")
 		WSCI H 5
 		Goto See
-	Pain.PlayerElectricGrenade:
 	Pain.PlayerTaser:
-	Pain.EnemyTaser:
 		WSCI I 0
 		Goto Tased
 	Pain:
@@ -48,7 +42,6 @@ ACTOR ScientistPlasmaBall : FastProjectile
 	Height 8
 	Speed 20
 	Damage (20)
-	PROJECTILE
 	SeeSound "Scientist/Blaster"
 	DeathSound "Scientist/BlasterHit"
 	MissileType "ScientistMissileTrail"

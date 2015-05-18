@@ -3,7 +3,6 @@ ACTOR Bomber1 : WWTBadGuy
 	YScale 0.35
 	XScale 0.4
 	Health 150
-	Speed 12
 	MeleeThreshold 192
 	SeeSound "Sights/Male03"
 	PainSound "Pains/Male03"
@@ -13,17 +12,16 @@ ACTOR Bomber1 : WWTBadGuy
 	DamageFactor "EnemyBullet",0.3
 	DamageFactor "EnemyGrenade",0.0
 	DamageFactor "PlayerGrenade",0.5
+	DamageFactor "PlayerGrenadeBoom",0.5
 	DamageFactor "PlayerAKGrenade",0.5
 	DamageFactor "PlayerMGL",0.5
+	DamageFactor "PlayerMGLBoom",0.5
 	Obituary "%o learns why the prison escape rate is so high lately."
 	HitObituary "%o was conked on the head by a guy with a pipebomb."
 	States
 	{
 	Spawn:
 		BOM1 A 1 A_Look
-		Loop
-	See:
-		BOM1 BCDE 6 A_Chase
 		Loop
 	Missile:
 		BOM1 A 10 Fast A_FaceTarget
@@ -38,9 +36,7 @@ ACTOR Bomber1 : WWTBadGuy
 		BOM1 H 10
 		BOM1 B 5
 		Goto See
-	Pain.PlayerElectricGrenade:
 	Pain.PlayerTaser:
-	Pain.EnemyTaser:
 		BOM1 I 0
 		Goto Tased
 	Pain:
@@ -48,8 +44,7 @@ ACTOR Bomber1 : WWTBadGuy
 		Goto See
 	Death:
 		BOM1 J 3 A_Scream
-		BOM1 K 3
-		BOM1 L 3
+		BOM1 KL 3
 		BOM1 M 3 A_PlaySound("Misc/Bodyfall")
 		BOM1 N 3 A_NoBlocking
 		BOM1 O -1
