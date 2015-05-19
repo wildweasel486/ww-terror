@@ -45,16 +45,7 @@ ACTOR KillCheck : CustomInventory
 		Stop
 	}
 }
-ACTOR TestMonster : ZombieMan
-{
-	States
-	{
-	Death:
-		POSS A 100
-		POSS A -1 A_NoBlocking
-		Stop
-	}
-}
+
 ACTOR TracerTrail
 {
 	RenderStyle Add
