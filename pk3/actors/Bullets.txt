@@ -344,9 +344,10 @@ ACTOR PlayerAR10TracerSilent : PlayerAR10Tracer
 	Speed 100
 }
 
-ACTOR PlayerAK47Tracer : PlayerAR10Tracer
+ACTOR PlayerAK47Tracer : Tracer
 {
 	Damage (30)
+	DamageType "PlayerAR"
 	Speed 120
 	States
 	{
