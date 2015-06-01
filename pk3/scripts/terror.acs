@@ -1,6 +1,20 @@
 #library "TERROR"
 #include "zcommon.acs"
 
+script "MonsterDead"(void)
+{
+	Printbold(d:GetActorProperty(0,APROP_Health));
+	if(GetActorProperty(0,APROP_Health)>0)
+	{
+		Printbold(s:"Monster is alive!");
+		SetResultValue(0);
+	}
+	else
+	{
+		Printbold(s:"Monster is dead!");
+		SetResultValue(1);
+	}
+}
 Script "AutoReload"(void)
 {
 	SetResultValue(GetCVar("autoreload"));
@@ -289,7 +303,7 @@ Script "GunExp" Enter
 				GiveInventory("UziLevelup",1);
 				HudMessage(l:"WWTWEP4NAME",s:" reached Marksman Level ",d:(CheckInventory("UziLevelup")); HUDMSG_TYPEON|HUDMSG_LOG,0,-1,0.1,0.5,3.0,0.01,0.75);
 				if(CheckInventory("UziLevelup")==1)
-					HudMessage(s:"Front Foregrip\nRECOIL --"; HUDMSG_TYPEON|HUDMSG_LOG,0,-1,0.1,0.6,3.0,0.01,0.75);
+					HudMessage(s:"Vertical Foregrip\nRECOIL --"; HUDMSG_TYPEON|HUDMSG_LOG,0,-1,0.1,0.6,3.0,0.01,0.75);
 				if(CheckInventory("UziLevelup")==2)
 					HudMessage(s:"Titanium Bolt\nFIRE RATE ++"; HUDMSG_TYPEON|HUDMSG_LOG,0,-1,0.1,0.6,3.0,0.01,0.75);
 				if(CheckInventory("UziLevelup")==3)
