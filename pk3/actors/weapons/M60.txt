@@ -116,9 +116,9 @@ ACTOR WWTM60 : WWTWeapon replaces BFG9000
 		"####" C 1 Offset(-3,38)
 		Goto DeselectLoop
 	Ready:
-		M60G A 0 A_JumpIfInventory("M60Loaded",1,1)
+		M60G A 0 A_JumpIfInventory("M60Loaded",1,2)
 		M60G F 0
-		M60S "#" 0 A_JumpIfInventory("M60Mounted",1,1)
+		M60S "#" 0 A_JumpIfInventory("M60Mounted",1,2)
 		M60G "#" 0
 		"####" "#" 0 A_JumpIfInventory("M60Loaded",0,2)
 		"####" "#" 0 A_JumpIfInventory("762mmAmmo",1,2)
