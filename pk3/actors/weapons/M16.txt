@@ -38,24 +38,14 @@ ACTOR WWTAR10 : WWTWeapon
 		A10P A -1
 		Stop
 	Select:
-		A10G A 0 A_JumpIfInventory("AR10LevelUp",4,"SelectLevel4")
-		A10G A 0 A_JumpIfInventory("AR10LevelUp",3,"SelectLevel3")
-		A10G A 0 A_JumpIfInventory("AR10LevelUp",2,"SelectLevel2")
-		Goto ReadyAnim
-	SelectLevel4:
-		A14G A 0
-		Goto ReadyAnim
-	SelectLevel3:
-		A13G A 0
-		Goto ReadyAnim
-	SelectLevel2:
-		A12G A 0
-		Goto ReadyAnim
+		A14G A 0 A_JumpIfInventory("AR10LevelUp",4,"ReadyAnim")
+		A13G A 0 A_JumpIfInventory("AR10LevelUp",3,"ReadyAnim")
+		A12G A 0 A_JumpIfInventory("AR10LevelUp",2,"ReadyAnim")
+		A10G A 0
 	ReadyAnim:
 		"####" A 1 A_Raise
 		Loop
 	Deselect:
-		"####" A 0 A_StopSound(CHAN_WEAPON)
 		"####" A 1 A_Lower
 		Wait
 	Ready:
@@ -277,14 +267,15 @@ ACTOR WWTAR10 : WWTWeapon
 		A10R A 1 Offset(3,34)
 		A10R B 1 Offset(6,35)
 		A10R C 1 Offset(9,36)
-	UnjamFire2:
 		A10J G 1 Offset(10,37)
 		A10J A 1 Offset(11,37)
 		A10J B 1 Offset(12,37)
 		A10J C 1 Offset(13,38)
 		A10J D 1 Offset(14,38) A_PlaySound("Uzi/Clipin",5)
-		A10J D 0 A_Jump(192,"Unjam")
-	UnjamFinish:
+		A10J D 0 A_Jump(64,4)
+		A10J D 0 A_PlaySound("AR10/Unjam",6)
+		A10J D 0 A_TakeInventory("AR10Jammed")
+		A10J D 0 A_SpawnItemEx("RifleCasing",24,-32,40,8,2,4,random(-55,-80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
 		A10J E 1 Offset(15,38)
 		A10J F 1 Offset(16,39)
 		A10J G 1 Offset(15,38)
@@ -294,34 +285,17 @@ ACTOR WWTAR10 : WWTWeapon
 		A10J G 1 Offset(4,34)
 		A10J G 1 Offset(1,33)
 		A10J G 1 Offset(-1,32)
-	UnjamFinish2:
 		A10R C 1 Offset(-2,34)
 		A10R B 1 Offset(1,33)
 		A10R A 1 Offset(0,32)
 		Goto Ready
-	Unjam:
-		A10J D 0 A_PlaySound("AR10/Unjam",6)
-		A10J D 0 A_TakeInventory("AR10Jammed")
-		A10J D 0 A_SpawnItemEx("RifleCasing",24,-32,40,8,2,4,random(-55,-80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH)
-		Goto UnjamFinish
 	Reload:
 		"####" A 1 A_JumpIfInventory("762mmAmmo",1,1)
 		Goto Ready
-	ReloadLevelCheck:
-		A10R A 0 A_JumpIfInventory("AR10LevelUp",4,"ReloadLevel4")
-		A10R A 0 A_JumpIfInventory("AR10LevelUp",3,"ReloadLevel3")
-		A10R A 0 A_JumpIfInventory("AR10LevelUp",2,"ReloadLevel2")
-		Goto ReloadLevel0
-	ReloadLevel4:
-		A14R A 0
-		Goto ReloadLevel0
-	ReloadLevel3:
-		A13R A 0
-		Goto ReloadLevel0
-	ReloadLevel2:
-		A12R A 0
-		Goto ReloadLevel0
-	ReloadLevel0:
+		A14R A 0 A_JumpIfInventory("AR10LevelUp",4,4)
+		A13R A 0 A_JumpIfInventory("AR10LevelUp",3,3)
+		A12R A 0 A_JumpIfInventory("AR10LevelUp",2,2)
+		A10R A 0
 		"####" A 1 Offset(1,33)
 		"####" A 1 Offset(3,34)
 		"####" B 1 Offset(6,35)
@@ -370,9 +344,8 @@ ACTOR WWTAR10 : WWTWeapon
 	ReloadWork:
 		"####" D 0 A_TakeInventory("762mmAmmo",1)
 		"####" D 0 A_GiveInventory("WWTAR10Magazine")
-		"####" D 0 A_JumpIfInventory("WWTAR10Magazine",30,"ReloadFinish")
+		"####" D 0 A_JumpIfInventory("WWTAR10Magazine",30,2)
 		"####" D 0 A_JumpIfInventory("762mmAmmo",1,"ReloadWork")
-	ReloadFinish:
 		"####" T 1 Offset(8,50) A_TakeInventory("AR10Jammed")
 		"####" S 1 Offset(8,55)
 		"####" R 1 Offset(8,59)
@@ -395,49 +368,23 @@ ACTOR WWTAR10 : WWTWeapon
 		"####" Y 1 Offset(-15,45) A_PlaySound("ar10/release",5)
 		"####" Z 1 Offset(-13,44)
 	ReloadEnd:
-		A10S A 0 A_JumpIfInventory("AR10LevelUp",4,"ReloadEndLevel4")
-		A10S A 0 A_JumpIfInventory("AR10LevelUp",3,"ReloadEndLevel3")
-		A10S A 0 A_JumpIfInventory("AR10LevelUp",2,"ReloadEndLevel2")
-		A10S A 1 Offset(-11,42)
-		A10S B 1 Offset(-8,40)
-		A10S C 1 Offset(-6,37)
-		A10S D 1 Offset(-4,35)
-		A10R C 1 Offset(-2,34)
-		A10R B 1 Offset(1,33)
-		A10R A 1 Offset(0,32)
-		Goto Ready
-	ReloadEndLevel4:
-		A14S A 1 Offset(-11,42)
-		A14S B 1 Offset(-8,40)
-		A14S C 1 Offset(-6,37)
-		A14S D 1 Offset(-4,35)
-		A14R C 1 Offset(-2,34)
-		A14R B 1 Offset(1,33)
-		A14R A 1 Offset(0,32)
-		Goto Ready
-	ReloadEndLevel3:
-		A13S A 1 Offset(-11,42)
-		A13S B 1 Offset(-8,40)
-		A13S C 1 Offset(-6,37)
-		A13S D 1 Offset(-4,35)
-		A13R C 1 Offset(-2,34)
-		A13R B 1 Offset(1,33)
-		A13R A 1 Offset(0,32)
-		Goto Ready
-	ReloadEndLevel2:
-		A12S A 1 Offset(-11,42)
-		A12S B 1 Offset(-8,40)
-		A12S C 1 Offset(-6,37)
-		A12S D 1 Offset(-4,35)
-		A12R C 1 Offset(-2,34)
-		A12R B 1 Offset(1,33)
-		A12R A 1 Offset(0,32)
+		A14S A 0 A_JumpIfInventory("AR10LevelUp",4,4)
+		A13S A 0 A_JumpIfInventory("AR10LevelUp",3,3)
+		A12S A 0 A_JumpIfInventory("AR10LevelUp",2,2)
+		A10S A 0
+		"####" A 1 Offset(-11,42)
+		"####" B 1 Offset(-8,40)
+		"####" C 1 Offset(-6,37)
+		"####" D 1 Offset(-4,35)
+		"####" C 1 Offset(-2,34)
+		"####" B 1 Offset(1,33)
+		"####" A 1 Offset(0,32)
 		Goto Ready
 	AltfireReturn:
-		A10G A 0 A_JumpIfInventory("AR10LevelUp",4,"AltfireReturnLevel4")
-		A10G A 0 A_JumpIfInventory("AR10LevelUp",3,"AltfireReturnLevel3")
-		A10G A 0 A_JumpIfInventory("AR10LevelUp",2,"AltfireReturnLevel2")
-	AltfireReturnReturn:
+		A14G A 0 A_JumpIfInventory("AR10LevelUp",4,4)
+		A13G A 0 A_JumpIfInventory("AR10LevelUp",3,3)
+		A12G A 0 A_JumpIfInventory("AR10LevelUp",2,2)
+		A10G A 0
 		"####" A 1 Offset(-30,82)
 		"####" A 1 Offset(-25,72)
 		"####" A 1 Offset(-20,62)
@@ -446,14 +393,5 @@ ACTOR WWTAR10 : WWTWeapon
 		"####" A 1 Offset(-5,38)
 		"####" A 1 Offset(-1,35)
 		Goto Ready
-	AltfireReturnLevel4:
-		A14G A 0
-		Goto AltfireReturnReturn
-	AltfireReturnLevel3:
-		A13G A 0
-		Goto AltfireReturnReturn
-	AltfireReturnLevel2:
-		A12G A 0
-		Goto AltfireReturnReturn
 	}
 }

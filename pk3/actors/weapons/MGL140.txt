@@ -48,30 +48,29 @@ ACTOR MGL140 : WWTWeapon replaces PlasmaRifle
 		MGLP A -1
 		Stop
 	Select:
-		TNT1 A 15
+		TNT1 A 15 A_WeaponReady(WRF_NOBOB|WRF_NOFIRE)
 		MGLG A 1 Offset(90,91)
-		"####" A 1 Offset(75,81)
-		"####" A 1 Offset(60,71)
-		"####" A 1 Offset(48,61) A_PlaySound("MGL/Close", 5)
-		"####" A 1 Offset(38,51)
-		"####" A 1 Offset(29,43)
-		"####" A 1 Offset(20,36)
-		"####" A 1 Offset(11,35)
-		"####" A 1 Offset(6,33)
-		"####" A 1 Offset(3,32)
+		MGLG A 1 Offset(75,81)
+		MGLG A 1 Offset(60,71)
+		MGLG A 1 Offset(48,61) A_PlaySound("MGL/Close",5)
+		MGLG A 1 Offset(38,51)
+		MGLG A 1 Offset(29,43)
+		MGLG A 1 Offset(20,36)
+		MGLG A 1 Offset(11,35)
+		MGLG A 1 Offset(6,33)
+		MGLG A 1 Offset(3,32)
 		Goto Ready
 	Deselect:
-		"####" A 0 A_StopSound(CHAN_WEAPON)
-		"####" A 1 Offset(3,32)
-		"####" A 1 Offset(6,33)
-		"####" A 1 Offset(11,35)
-		"####" A 1 Offset(20,36)
-		"####" A 1 Offset(29,43)
-		"####" A 1 Offset(38,51)
-		"####" A 1 Offset(48,61)
-		"####" A 1 Offset(60,71)
-		"####" A 1 Offset(75,81)
-		"####" A 1 Offset(90,91)
+		MGLG A 1 Offset(3,32)
+		MGLG A 1 Offset(6,33)
+		MGLG A 1 Offset(11,35)
+		MGLG A 1 Offset(20,36)
+		MGLG A 1 Offset(29,43)
+		MGLG A 1 Offset(38,51)
+		MGLG A 1 Offset(48,61)
+		MGLG A 1 Offset(60,71)
+		MGLG A 1 Offset(75,81)
+		MGLG A 1 Offset(90,91)
 		TNT1 A 0 A_Lower
 		Wait
 	Ready:
@@ -120,7 +119,7 @@ ACTOR MGL140 : WWTWeapon replaces PlasmaRifle
 		MGLG A 1 Offset(1,33)
 		Goto Ready
 	Reload:
-		"####" A 1 A_JumpIfInventory("40mmAmmo",1,1)
+		MGLG A 1 A_JumpIfInventory("40mmAmmo",1,1)
 		Goto Ready
 		MGLG A 1 A_PlaySound("MGL/Open",5)
 		MGLG A 1 Offset(1,35)
@@ -162,9 +161,8 @@ ACTOR MGL140 : WWTWeapon replaces PlasmaRifle
 		MGLG A 1 Offset(14,70) A_WeaponReady(WRF_NOBOB)
 		MGLG A 1 Offset(13,68) A_WeaponReady(WRF_NOBOB)
 		MGLG A 1 Offset(12,66) A_WeaponReady(WRF_NOBOB)
-		MGLG A 0 A_JumpIfInventory("MGLLoaded",6,"ReloadFinish")
+		MGLG A 0 A_JumpIfInventory("MGLLoaded",6,2)
 		MGLG A 0 A_JumpIfInventory("40mmAmmo",1,"ReloadWork")
-		Goto ReloadFinish
 	ReloadFinish:
 		MGLG A 1 Offset(11,57) A_PlaySound("MGL/Close",5)
 		MGLG A 1 Offset(9,50)

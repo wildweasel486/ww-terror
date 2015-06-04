@@ -41,16 +41,10 @@ ACTOR WWTAK47 : WWTWeapon
 		AKMP A -1
 		Stop
 	Select:
-		TNT1 A 15
-		AKMG A 0 A_JumpIfInventory("AK47Levelup",3,"SelectLevel3")
-		AKMG A 0 A_JumpIfInventory("AK47Levelup",2,"SelectLevel2")
-		Goto ReadyAnim
-	SelectLevel2:
-		AKLG A 0
-		Goto ReadyAnim
-	SelectLevel3:
-		AKGG A 0
-		Goto ReadyAnim
+		TNT1 A 15 A_WeaponReady(WRF_NOBOB|WRF_NOFIRE)
+		AKGG A 0 A_JumpIfInventory("AK47Levelup",3,"ReadyAnim")
+		AKLG A 0 A_JumpIfInventory("AK47Levelup",2,"ReadyAnim")
+		AKMG A 0
 	ReadyAnim:
 		"####" A 1 Offset(90,91)
 		"####" A 1 Offset(75,81)
@@ -64,8 +58,8 @@ ACTOR WWTAK47 : WWTWeapon
 		AKMG A 0 A_JumpIfInventory("AK47Levelup",2,"RaiseAnimLevel2")
 		Goto RaiseAnimLevel0
 	Ready:
-		AKMG A 0 A_JumpIfInventory("AK47Levelup",3,"ReadyLevel3")
-		AKMG A 0 A_JumpIfInventory("AK47Levelup",2,"ReadyLevel2")
+		AKLG A 0 A_JumpIfInventory("AK47Levelup",3,"ReadyLevel3")
+		AKLG A 0 A_JumpIfInventory("AK47Levelup",2,"ReadyLevel1")
 		AKMG A 0 A_JumpIfInventory("AK47Levelup",1,"ReadyLevel1")
 		AKMG A 0 A_JumpIfInventory("Ak47Loaded",20,2)
 		AKMG A 0 A_JumpIfInventory("762mmAmmo",1,2)
@@ -74,18 +68,11 @@ ACTOR WWTAK47 : WWTWeapon
 		AKMG A 1 A_WeaponReady(WRF_ALLOWRELOAD)
 		Loop
 	ReadyLevel1:
-		AKMG A 0 A_JumpIfInventory("Ak47Loaded",0,2)
-		AKMG A 0 A_JumpIfInventory("762mmAmmo",1,2)
-		AKMG A 1 A_WeaponReady
-		Loop
-		AKMG A 1 A_WeaponReady(WRF_ALLOWRELOAD)
-		Loop
-	ReadyLevel2:
-		AKLG A 0 A_JumpIfInventory("Ak47Loaded",0,2)
-		AKLG A 0 A_JumpIfInventory("762mmAmmo",1,2)
-		AKLG A 1 A_WeaponReady
+		"####" A 0 A_JumpIfInventory("Ak47Loaded",0,2)
+		"####" A 0 A_JumpIfInventory("762mmAmmo",1,2)
+		"####" A 1 A_WeaponReady
 		Goto Ready
-		AKLG A 1 A_WeaponReady(WRF_ALLOWRELOAD)
+		"####" A 1 A_WeaponReady(WRF_ALLOWRELOAD)
 		Goto Ready
 	ReadyLevel3:
 		AKLG A 0 A_JumpIfInventory("Ak47Loaded",0,2)
@@ -95,7 +82,6 @@ ACTOR WWTAK47 : WWTWeapon
 		AKGG A 1 A_WeaponReady(WRF_ALLOWRELOAD|WRF_ALLOWZOOM)
 		Goto Ready
 	Deselect:
-		"####" A 0 A_StopSound(CHAN_WEAPON)
 		"####" A 1 Offset(3,32)
 		"####" A 1 Offset(6,33)
 		"####" A 1 Offset(11,35)
@@ -350,10 +336,8 @@ ACTOR WWTAK47 : WWTWeapon
 	ReloadWorkLevel2:
 		AKLR D 0 A_TakeInventory("762mmAmmo",1)
 		AKLR D 0 A_GiveInventory("AK47Loaded")
-		AKLR D 0 A_JumpIfInventory("AK47Loaded",30,"ReloadFinishLevel2")
+		AKLR D 0 A_JumpIfInventory("AK47Loaded",30,2)
 		AKLR D 0 A_JumpIfInventory("762mmAmmo",1,"ReloadWorkLevel2")
-		Goto ReloadFinishLevel2
-	ReloadFinishLevel2:
 		AKLR C 1 Offset(2,60) A_PlaySound("AK47/Clipin",5)
 		AKLR C 1 Offset(1,65)
 		AKLR C 1 Offset(1,63)
@@ -415,10 +399,8 @@ ACTOR WWTAK47 : WWTWeapon
 	ReloadWorkLevel3:
 		AKGR B 0 A_TakeInventory("762mmAmmo",1)
 		AKGR B 0 A_GiveInventory("AK47Loaded")
-		AKGR B 0 A_JumpIfInventory("AK47Loaded",30,"ReloadFinishLevel3")
+		AKGR B 0 A_JumpIfInventory("AK47Loaded",30,2)
 		AKGR B 0 A_JumpIfInventory("762mmAmmo",1,"ReloadWorkLevel3")
-		Goto ReloadFinishLevel3
-	ReloadFinishLevel3:
 		AKGR B 1 Offset(2,60) A_PlaySound("AK47/Clipin",5)
 		AKGR B 1 Offset(1,65)
 		AKGR B 1 Offset(1,63)
@@ -448,33 +430,16 @@ ACTOR WWTAK47 : WWTWeapon
 		AKGG A 1 Offset(-1,31)
 		Goto Ready
 	AltfireReturn:
-		AKMG A 0 A_JumpIfInventory("AK47LevelUp",3,"AltfireReturnLevel3")
-		AKMG A 0 A_JumpIfInventory("AK47LevelUp",2,"AltfireReturnLevel2")
-		AKMG A 1 Offset(-30,82)
-		AKMG A 1 Offset(-25,72)
-		AKMG A 1 Offset(-20,62)
-		AKMG A 1 Offset(-15,52)
-		AKMG A 1 Offset(-10,44)
-		AKMG A 1 Offset(-5,38)
-		AKMG A 1 Offset(-1,35)
-		Goto Ready
-	AltfireReturnLevel2:
-		AKLG A 1 Offset(-30,82)
-		AKLG A 1 Offset(-25,72)
-		AKLG A 1 Offset(-20,62)
-		AKLG A 1 Offset(-15,52)
-		AKLG A 1 Offset(-10,44)
-		AKLG A 1 Offset(-5,38)
-		AKLG A 1 Offset(-1,35)
-		Goto Ready
-	AltfireReturnLevel3:
-		AKGG A 1 Offset(-30,82)
-		AKGG A 1 Offset(-25,72)
-		AKGG A 1 Offset(-20,62)
-		AKGG A 1 Offset(-15,52)
-		AKGG A 1 Offset(-10,44)
-		AKGG A 1 Offset(-5,38)
-		AKGG A 1 Offset(-1,35)
+		AKGG A 0 A_JumpIfInventory("AK47LevelUp",3,3)
+		AKLG A 0 A_JumpIfInventory("AK47LevelUp",2,2)
+		AKMG A 0
+		"####" A 1 Offset(-30,82)
+		"####" A 1 Offset(-25,72)
+		"####" A 1 Offset(-20,62)
+		"####" A 1 Offset(-15,52)
+		"####" A 1 Offset(-10,44)
+		"####" A 1 Offset(-5,38)
+		"####" A 1 Offset(-1,35)
 		Goto Ready
 	Flash:
 		TNT1 A 2 A_Light2
