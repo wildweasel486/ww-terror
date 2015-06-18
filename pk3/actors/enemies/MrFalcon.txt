@@ -6,7 +6,7 @@ ACTOR MrFalcon : WWTBadGuy replaces SpiderMastermind
 	YScale 0.35
 	XScale 0.4
 	Health 1000
-	Speed 6.66666667
+	Speed 20
 	PainChance "PlayerPistol",32
 	PainChance "PlayerUzi",48
 	PainChance "PlayerM60",32
@@ -42,9 +42,14 @@ ACTOR MrFalcon : WWTBadGuy replaces SpiderMastermind
 	States
 	{
 	Spawn:
-		LTHG A 1 A_Look
+		LTHG A 1 A_LookEx(0,0,0,0,0,"SeeFirst")
 		Loop
+	SeeFirst:
+		LTHG B 3 A_Chase
+		LTHG B 0 A_SetSpeed(20.0/3.0)
+		Goto See+4
 	See:
+		LTHG B 0 A_SetSpeed(20.0/3.0)
 		LTHG B 1 A_Chase
 		LTHG BB 1 A_Chase("","")
 		LTHG B 1 A_Chase

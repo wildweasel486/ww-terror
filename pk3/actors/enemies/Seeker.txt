@@ -16,7 +16,7 @@ ACTOR SeekerDrone : WWTRobot replaces LostSoul
 	States
 	{
 	Spawn:
-		SEKR ABCDEFGHIJK 1 A_Look
+		SEKR ABCDEFGHIJK 1 A_LookEx(0,0,0,0,0,"SeeFirst")
 		Loop
 	See:
 		SEKR A 1 A_Recoil(-1)

@@ -14,7 +14,7 @@ ACTOR ShotgunThug : WWTBadGuy
 	States
 	{
 	Spawn:
-		GTHG A 1 A_Look
+		GTHG A 1 A_LookEx(0,0,0,0,0,"SeeFirst")
 		Loop
 	Missile:
 		GTHG F 3 A_PlaySound("Striker/Load")

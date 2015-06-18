@@ -3,7 +3,7 @@ ACTOR FemaleExec : WWTBadGuy
 	XScale 0.4
 	YScale 0.35
 	Health 100
-	Speed 6
+	Speed 18
 	SeeSound "Sights/Female03"
 	PainSound "Pains/Female03"
 	DeathSound "Deaths/Female03"
@@ -21,9 +21,14 @@ ACTOR FemaleExec : WWTBadGuy
 	{
 	Spawn:
 		FXEC A 0 NODELAY A_SetUserVar("user_female",1)
-		FXEC A 1 A_Look
+		FXEC A 1 A_LookEx(0,0,0,0,0,"SeeFirst")
 		Wait
+	SeeFirst:
+		FXEC B 3 A_Chase
+		FXEC B 0 A_SetSpeed(6)
+		Goto See+4
 	See:
+		FXEC B 0 A_SetSpeed(6)
 		FXEC B 1 A_Chase
 		FXEC BB 1 A_Chase("","")
 		FXEC C 1 A_Chase

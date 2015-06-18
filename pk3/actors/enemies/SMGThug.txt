@@ -14,7 +14,7 @@ ACTOR SMGThug : WWTBadGuy
 	States
 	{
 	Spawn:
-		STHG A 1 A_Look
+		STHG A 1 A_LookEx(0,0,0,0,0,"SeeFirst")
 		Loop
 	Missile:
 		STHG FGG 3 A_FaceTarget

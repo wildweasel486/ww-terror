@@ -16,7 +16,7 @@ ACTOR MagnumFemale : WWTBadGuy
 	{
 	Spawn:
 		PGR2 A 0 NODELAY A_SetUserVar("user_female",1)
-		PGR2 A 1 A_Look
+		PGR2 A 1 A_LookEx(0,0,0,0,0,"SeeFirst")
 		Wait
 	Missile:
 		PGR2 FG 5 Fast A_FaceTarget

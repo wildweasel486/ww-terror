@@ -8,10 +8,15 @@ ACTOR WWTBadGuy
 	Var Int user_stuntime;
 	var int user_female;
 	var int user_spent;
-	Speed 2
+	Speed 12
 	States
 	{
+	SeeFirst:
+		"####" B 6 A_Chase
+		"####" B 0 A_SetSpeed(2)
+		Goto See+7
 	See:
+		"####" B 0 A_SetSpeed(2)
 		"####" B 1 A_Chase
 		"####" BBBBB 1 A_Chase("","")
 		"####" C 1 A_Chase

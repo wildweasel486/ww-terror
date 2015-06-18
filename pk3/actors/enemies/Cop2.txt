@@ -16,7 +16,7 @@ ACTOR Cop2 : WWTBadGuy
 	States
 	{
 	Spawn:
-		COP3 A 1 A_Look
+		COP3 A 1 A_LookEx(0,0,0,0,0,"SeeFirst")
 		Loop
 	Missile:
 		COP3 FGH 5 A_FaceTarget

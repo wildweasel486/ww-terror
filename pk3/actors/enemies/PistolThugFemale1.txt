@@ -14,7 +14,7 @@ ACTOR PistolThugFemale1 : WWTBadGuy
 	{
 	Spawn:
 		PGRL A 0 NODELAY A_SetUserVar("user_female",1)
-		PGRL A 1 A_Look
+		PGRL A 1 A_LookEx(0,0,0,0,0,"SeeFirst")
 		Wait
 	Missile:
 		PGRL F 10 A_FaceTarget

@@ -18,7 +18,7 @@ ACTOR Undercover : WWTBadGuy
 	{
 	Spawn:
 		UNDR A 0 NODELAY A_SetUserVar("user_female",1)
-		UNDR A 1 A_Look
+		UNDR A 1 A_LookEx(0,0,0,0,0,"SeeFirst")
 		Wait
 	Missile:
 		UNDR FGG 3 A_FaceTarget

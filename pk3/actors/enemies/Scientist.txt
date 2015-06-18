@@ -12,7 +12,7 @@ ACTOR WWTScientist : WWTBadGuy replaces Arachnotron
 	States
 	{
 	Spawn:
-		WSCI A 1 A_Look
+		WSCI A 1 A_LookEx(0,0,0,0,0,"SeeFirst")
 		Loop
 	Missile:
 		WSCI F 5 A_FaceTarget
