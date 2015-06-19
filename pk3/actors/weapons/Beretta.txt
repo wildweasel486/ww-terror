@@ -65,6 +65,7 @@ ACTOR Beretta : WWTWeapon replaces Pistol
 		BRTG A 1 Offset(1,33)
 		Goto Ready
 	Deselect:
+		BRR2 I 0 A_StopSound(5)
 		BRR2 I 1 Offset(20,35) A_TakeInventory("BerettaBurstSeq")
 		BRR2 I 1 Offset(40,45)
 		BRR2 I 1 Offset(70,65)

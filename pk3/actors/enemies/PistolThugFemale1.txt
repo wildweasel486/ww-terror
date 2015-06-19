@@ -13,7 +13,6 @@ ACTOR PistolThugFemale1 : WWTBadGuy
 	States
 	{
 	Spawn:
-		PGRL A 0 NODELAY A_SetUserVar("user_female",1)
 		PGRL A 1 A_LookEx(0,0,0,0,0,"SeeFirst")
 		Wait
 	Missile:
@@ -25,8 +24,8 @@ ACTOR PistolThugFemale1 : WWTBadGuy
 		PGRL F 4
 		Goto See
 	Pain.PlayerTaser:
-		PGRL I 0
-		Goto Tased
+		PGRL I 0 A_PlaySound("Tasered/Female",CHAN_VOICE)
+		Goto Tased+1
 	Pain:
 		PGRL I 3 A_Pain
 		Goto See
@@ -38,5 +37,8 @@ ACTOR PistolThugFemale1 : WWTBadGuy
 		PGRL OP 3
 		PGRL Q -1
 		Stop
+	Death.Fire:
+		"####" B 0 A_PlaySound("Burning/Female")
+		Goto Super::Death.Fire+1
 	}
 }

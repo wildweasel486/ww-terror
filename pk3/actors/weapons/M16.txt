@@ -46,6 +46,7 @@ ACTOR WWTAR10 : WWTWeapon
 		"####" A 1 A_Raise
 		Loop
 	Deselect:
+		"####" A 0 A_StopSound(5)
 		"####" A 1 A_Lower
 		Wait
 	Ready:
