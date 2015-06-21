@@ -125,7 +125,7 @@ ACTOR WWTWeapon : Weapon replaces Fist
 		TAZR A 1 Offset(-10,40)
 		TAZR A 1 Offset(5,25)
 		TAZR A 1 Offset(10,15)
-		TAZR A 0 A_PlaySound("Taser/Loop",CHAN_WEAPON,1.0,1)
+		TAZR A 0 A_PlaySound("Taser/Loop",5,1.0,1)
 	TaserHold:
 		TAZR A 0 A_JumpIfInventory("TaserLevelup",3,"TaserHoldLevel3")
 		TAZR A 0 A_JumpIfInventory("TaserLevelup",2,"TaserHoldLevel2")
@@ -170,7 +170,7 @@ ACTOR WWTWeapon : Weapon replaces Fist
 		TAZR A 1 Offset(10,15) A_Refire("TaserHold")
 		Goto TaserReturn
 	TaserReturn:
-		TAZR A 0 A_StopSound(CHAN_WEAPON)
+		TAZR A 0 A_StopSound(5)
 		TAZR A 1 Offset(5,25)
 		TAZR A 1 Offset(-10,40)
 		TAZR A 1 Offset(-30,60)

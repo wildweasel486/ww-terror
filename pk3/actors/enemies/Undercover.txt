@@ -17,8 +17,7 @@ ACTOR Undercover : WWTBadGuy
 	States
 	{
 	Spawn:
-		UNDR A 0 NODELAY A_SetUserVar("user_female",1)
-		UNDR A 1 A_Look
+		UNDR A 1 A_LookEx(0,0,0,0,0,"SeeFirst")
 		Wait
 	Missile:
 		UNDR FGG 3 A_FaceTarget
@@ -44,8 +43,8 @@ ACTOR Undercover : WWTBadGuy
 		UNDR F 3 A_MonsterRefire(32,"See")
 		Goto Missile+3
 	Pain.PlayerTaser:
-		UNDR I 0
-		Goto Tased
+		UNDR I 0 A_PlaySound("Tasered/Female",CHAN_VOICE)
+		Goto Tased+1
 	Pain.PlayerPistol:
 	Pain.PlayerUzi:
 		UNDR IIIIIIIIII 0 A_SpawnItemEx("BulletIneffectiveSpark",0,0,32,frandom(-2.0,2.0),frandom(-2.0,2.0),frandom(3.0,6.0),frandom(0.0,359.9),SXF_NOCHECKPOSITION)
@@ -62,5 +61,8 @@ ACTOR Undercover : WWTBadGuy
 		UNDR P 3 A_PlaySound("Misc/Bodyfall")
 		UNDR Q -1
 		Stop
+	Death.Fire:
+		"####" B 0 A_PlaySound("Burning/Female")
+		Goto Super::Death.Fire+1
 	}
 }

@@ -82,7 +82,7 @@ ACTOR WWTAK47 : WWTWeapon
 		AKGG A 1 A_WeaponReady(WRF_ALLOWRELOAD|WRF_ALLOWZOOM)
 		Goto Ready
 	Deselect:
-		"####" A 1 Offset(3,32)
+		"####" A 1 Offset(3,32) A_StopSound(5)
 		"####" A 1 Offset(6,33)
 		"####" A 1 Offset(11,35)
 		"####" A 1 Offset(20,36)

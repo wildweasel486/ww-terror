@@ -3,7 +3,7 @@ ACTOR ARThug2 : WWTBadGuy
 	YScale 0.5
 	XScale 0.55
 	Health 120
-	Speed 2.2
+	Speed 11
 	SeeSound "Sights/Male10"
 	PainSound "Pains/Male06"
 	DeathSound "Deaths/Male06"
@@ -16,10 +16,18 @@ ACTOR ARThug2 : WWTBadGuy
 	States
 	{
 	Spawn:
-		KTHG A 1 A_Look
+		KTHG A 1 A_LookEx(0,0,0,0,0,"SeeFirst")
 		Loop
+	SeeFirst:
+		KTHG B 5 Fast A_Chase
+		KTHG B 0 A_JumpIf(CallACS("IsNightmare") >= 4,2)
+		KTHG B 0 A_SetSpeed(2.2)
+		Goto See+7
+		KTHG A 0 A_SetSpeed(5.5)
+		Goto See2+3
 	See:
 		KTHG B 0 A_JumpIf(CallACS("IsNightmare") >= 4,"See2")
+		KTHG B 0 A_SetSpeed(2.2)
 		KTHG B 1 A_Chase
 		KTHG BBBB 1 A_Chase("","")
 		KTHG B 1 A_Chase
