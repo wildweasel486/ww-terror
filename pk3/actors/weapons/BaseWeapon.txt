@@ -238,7 +238,7 @@ ACTOR WWTTaserPickup : CustomInventory replaces Chainsaw
 		Fail
 	Nevermind:
 		TNT1 A 0
-		Stop
+		Fail
 	}
 }
 
