@@ -25,6 +25,8 @@ ACTOR WWTBadGuy
 		"####" E 1 A_Chase
 		"####" EEEEE 1 A_Chase("","")
 		Loop
+	Pain.EnemyTaser:
+		"----" A 0 A_Jump(256,"Pain.PlayerTaser")
 	Tased:
 		"----" A 0 A_PlaySound("Tasered/Male",CHAN_VOICE)
 		"----" A 0 A_ChangeFlag("NoPain",1)
