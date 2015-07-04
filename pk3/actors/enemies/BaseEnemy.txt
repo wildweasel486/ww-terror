@@ -38,25 +38,6 @@ ACTOR WWTBadGuy
 		"----" A 0 A_ChangeFlag("NoPain",0)
 		"----" A 0 A_Jump(256,"See")
 		Stop
-	Pain.EnemyTaser:
-		"----" A 0 A_Jump(256,"Pain.PlayerTaser")
-		Stop
-	Death.PlayerMGLBoom:
-		"----" A 0 A_JumpIf(CallACS("NoLevelup")==0,2)
-		"----" A 0 A_GiveToTarget("MGLExp")
-		"----" A 0 A_Jump(256,"Death")
-		Stop
-	Death.Player50BMGBoom:
-		"----" A 0 A_JumpIf(CallACS("NoLevelup")==0,2)
-		"----" A 0 A_GiveToTarget("BarrettExp")
-		"----" A 0 A_Jump(256,"Death")
-		Stop
-	Death.PlayerGrenadeBoom:
-	Death.PlayerElectricGrenadeBoom:
-		"----" A 0 A_JumpIf(CallACS("NoLevelup")==0,2)
-		"----" A 0 A_GiveToTarget("GrenadeExp")
-		"----" A 0 A_Jump(256,"Death")
-		Stop
 	Death.Fire:
 		"####" B 0 A_PlaySound("Burning/Male")
 		"####" B 0 A_SpawnItemEx("Flame1A",0,0,32)
