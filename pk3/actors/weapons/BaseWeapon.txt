@@ -215,7 +215,6 @@ ACTOR WWTTaserPickup : CustomInventory replaces Chainsaw
 	Inventory.PickupMessage "$WWTTASERPICK"
 	Inventory.Icon "TASPA0"
 	Inventory.PickupSound "Taser/Pickup"
-	+Inventory.AlwaysPickup
 	Scale .3
 	Radius 24
 	States
