@@ -17,7 +17,7 @@ ACTOR SilentJ : WWTBadGuy
 	States
 	{
 	Spawn:
-		ORAN A 1 A_LookEx(0,0,0,0,0,"SeeFirst")
+		ORAN A 1 A_Look
 		Loop
 	Missile:
 		ORAN F 10 A_FaceTarget

@@ -21,7 +21,7 @@ ACTOR Bomber1 : WWTBadGuy
 	States
 	{
 	Spawn:
-		BOM1 A 1 A_LookEx(0,0,0,0,0,"SeeFirst")
+		BOM1 A 1 A_Look
 		Loop
 	Missile:
 		BOM1 A 10 Fast A_FaceTarget

@@ -15,7 +15,7 @@ ACTOR MagnumFemale : WWTBadGuy
 	States
 	{
 	Spawn:
-		PGR2 A 1 A_LookEx(0,0,0,0,0,"SeeFirst")
+		PGR2 A 1 A_Look
 		Wait
 	Missile:
 		PGR2 FG 5 Fast A_FaceTarget

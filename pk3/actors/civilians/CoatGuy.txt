@@ -2,7 +2,6 @@ ACTOR WWTCoatGuy : WWTCivilian
 {
 	YScale .35
 	XScale .4
-	Speed 5
 	SeeSound "Bum/Sight"
 	DeathSound "MaleCiv/Pain"
 	PainSound "MaleCiv/Pain"
@@ -12,14 +11,14 @@ ACTOR WWTCoatGuy : WWTCivilian
 		CIV3 A 10 A_Look
 		Loop
 	See:
-		CIV3 B 3 A_Wander
-		CIV3 B 3 A_SpawnItemEx("HalpSign",0,0,64)
-		CIV3 C 3 A_Wander
-		CIV3 C 3 A_SpawnItemEx("HalpSign",0,0,64)
-		CIV3 D 3 A_Wander
-		CIV3 D 3 A_SpawnItemEx("HalpSign",0,0,64)
-		CIV3 E 3 A_Wander
-		CIV3 E 3 A_SpawnItemEx("HalpSign",0,0,64)
+		CIV3 BBBBBB 1 A_Wander
+		CIV3 B 0 A_SpawnItemEx("HalpSign",0,0,64)
+		CIV3 CCCCCC 1 A_Wander
+		CIV3 C 0 A_SpawnItemEx("HalpSign",0,0,64)
+		CIV3 DDDDDD 1 A_Wander
+		CIV3 D 0 A_SpawnItemEx("HalpSign",0,0,64)
+		CIV3 EEEEEE 1 A_Wander
+		CIV3 E 0 A_SpawnItemEx("HalpSign",0,0,64)
 		Loop
 	Pain:
 		CIV3 F 10 A_Pain

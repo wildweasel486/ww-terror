@@ -13,7 +13,7 @@ ACTOR PistolThug1 : WWTBadGuy
 	States
 	{
 	Spawn:
-		PTHG A 1 A_LookEx(0,0,0,0,0,"SeeFirst")
+		PTHG A 1 A_Look
 		Loop
 	Missile:
 		PTHG F 10 A_FaceTarget
