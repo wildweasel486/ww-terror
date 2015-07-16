@@ -2,7 +2,6 @@ ACTOR WWTOfficelady : WWTCivilian replaces BlurSphere
 {
 	YScale .33
 	XScale .38
-	Speed 5
 	SeeSound "FemCiv/Sight"
 	DeathSound "FemCiv/Pain"
 	PainSound "FemCiv/Pain"
@@ -12,14 +11,14 @@ ACTOR WWTOfficelady : WWTCivilian replaces BlurSphere
 		CIV1 AC 10 A_Look
 		Loop
 	See:
-		CIV1 A 3 A_Wander
-		CIV1 A 3 A_SpawnItemEx("HalpSign",0,0,64)
-		CIV1 B 3 A_Wander
-		CIV1 B 3 A_SpawnItemEx("HalpSign",0,0,64)
-		CIV1 C 3 A_Wander
-		CIV1 C 3 A_SpawnItemEx("HalpSign",0,0,64)
-		CIV1 D 3 A_Wander
-		CIV1 D 3 A_SpawnItemEx("HalpSign",0,0,64)
+		CIV1 AAAAAA 1 A_Wander
+		CIV1 A 0 A_SpawnItemEx("HalpSign",0,0,64)
+		CIV1 BBBBBB 1 A_Wander
+		CIV1 B 0 A_SpawnItemEx("HalpSign",0,0,64)
+		CIV1 CCCCCC 1 A_Wander
+		CIV1 C 0 A_SpawnItemEx("HalpSign",0,0,64)
+		CIV1 DDDDDD 1 A_Wander
+		CIV1 D 0 A_SpawnItemEx("HalpSign",0,0,64)
 		Loop
 	Pain:
 		CIV1 E 5 A_Pain

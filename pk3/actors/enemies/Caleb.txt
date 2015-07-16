@@ -3,7 +3,7 @@ ACTOR Caleb : WWTBadGuy replaces WolfensteinSS
 	YScale .5
 	XScale .55
 	Health 50
-	Speed 16
+	Speed 5.33333333
 	SeeSound "Sights/Caleb"
 	PainSound "Pains/Caleb"
 	DeathSound "Deaths/Caleb"
@@ -15,14 +15,9 @@ ACTOR Caleb : WWTBadGuy replaces WolfensteinSS
 	States
 	{
 	Spawn:
-		CALB G 1 A_LookEx(0,0,0,0,0,"SeeFirst")
+		CALB G 1 A_Look
 		Loop
-	SeeFirst:
-		CALB A 3 A_Chase
-		CALB A 0 A_SetSpeed(16.0/3.0)
-		Goto See+4
 	See:
-		CALB A 0 A_SetSpeed(16.0/3.0)
 		CALB A 1 A_Chase
 		CALB AA 1 A_Chase("","",CHF_NOPLAYACTIVE)
 		CALB A 1 A_Chase

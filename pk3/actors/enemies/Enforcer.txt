@@ -2,7 +2,7 @@ ACTOR WWTEnforcer : WWTBadGuy replaces BaronOfHell
 {
 	Scale 0.65
 	Health 400
-	Speed 11
+	Speed 3.66666667
 	PainChance 64
 	Mass 9000
 	SeeSound "Sights/Male09"
@@ -27,14 +27,9 @@ ACTOR WWTEnforcer : WWTBadGuy replaces BaronOfHell
 	States
 	{
 	Spawn:
-		UTHG A 1 A_LookEx(0,0,0,0,0,"SeeFirst")
+		UTHG A 1 A_Look
 		Loop
-	SeeFirst:
-		UTHG B 3 A_Chase
-		UTHG B 0 A_SetSpeed(11.0/3.0)
-		Goto See+4
 	See:
-		UTHG B 0 A_SetSpeed(11.0/3.0)
 		UTHG B 1 A_Chase
 		UTHG BB 1 A_Chase("","")
 		UTHG B 1 A_Chase

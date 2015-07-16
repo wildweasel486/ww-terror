@@ -13,7 +13,7 @@ ACTOR PistolThugFemale1 : WWTBadGuy
 	States
 	{
 	Spawn:
-		PGRL A 1 A_LookEx(0,0,0,0,0,"SeeFirst")
+		PGRL A 1 A_Look
 		Wait
 	Missile:
 		PGRL F 10 A_FaceTarget

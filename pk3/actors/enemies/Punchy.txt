@@ -3,7 +3,7 @@ ACTOR Punchy : WWTBadGuy
 	YScale 0.35
 	XScale 0.4
 	Health 90
-	Speed 22
+	Speed 5.5
 	MeleeRange 64
 	SeeSound "Sights/Male03"
 	PainSound "Pains/Male03"
@@ -15,18 +15,10 @@ ACTOR Punchy : WWTBadGuy
 	States
 	{
 	Spawn:
-		PUNK A 1 A_LookEx(0,0,0,0,0,"SeeFirst")
+		PUNK A 1 A_Look
 		Loop
-	SeeFirst:
-		PUNK B 4 A_Chase
-		COP2 B 0 A_JumpIf(CallACS("IsNightmare") >= 4,2)
-		PUNK A 0 A_SetSpeed(5.5)
-		Goto See+5
-		PUNK A 0 A_SetSpeed(11)
-		Goto See2+3
 	See:
 		COP2 B 0 A_JumpIf(CallACS("IsNightmare") >= 4,"See2")
-		TNT1 A 0 A_SetSpeed(5.5)
 		PUNK BBBBCCCCDDDDEEEE 1 A_Chase
 		Loop
 	See2:

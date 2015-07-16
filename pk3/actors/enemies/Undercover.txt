@@ -17,7 +17,7 @@ ACTOR Undercover : WWTBadGuy
 	States
 	{
 	Spawn:
-		UNDR A 1 A_LookEx(0,0,0,0,0,"SeeFirst")
+		UNDR A 1 A_Look
 		Wait
 	Missile:
 		UNDR FGG 3 A_FaceTarget
