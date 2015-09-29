@@ -31,16 +31,16 @@ ACTOR GrenadePickup : CustomInventory replaces RocketAmmo
 		TNT1 A 0 A_JumpIfInventory("GrenadeLevelup",3,"Use3")
 		TNT1 A 0 A_JumpIfInventory("GrenadeLevelup",2,"Use2")
 		TNT1 A 0 A_JumpIfInventory("GrenadeLevelup",1,"Use1")
-		TNT1 A 0 A_FireCustomMissile("PipebombGrenade",0,0)
+		TNT1 A 0 A_FireCustomMissile("PipebombGrenade",0,0,0,0,FPF_NOAUTOAIM)
 		Stop
 	Use1:
-		TNT1 A 0 A_FireCustomMissile("HandGrenade",0,0)
+		TNT1 A 0 A_FireCustomMissile("HandGrenade",0,0,0,0,FPF_NOAUTOAIM)
 		stop
 	Use2:
-		TNT1 A 0 A_FireCustomMissile("ElectricGrenade",0,0)
+		TNT1 A 0 A_FireCustomMissile("ElectricGrenade",0,0,0,0,FPF_NOAUTOAIM)
 		Stop
 	Use3:
-		TNT1 A 0 A_FireCustomMissile("IncendiaryGrenade",0,0)
+		TNT1 A 0 A_FireCustomMissile("IncendiaryGrenade",0,0,0,0,FPF_NOAUTOAIM)
 		Stop
 	}
 }
