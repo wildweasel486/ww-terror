@@ -12,6 +12,8 @@ ACTOR Cop2 : WWTBadGuy
 	DamageFactor "PlayerPistol",0.5
 	DamageFactor "PlayerUzi",0.5
 	DamageFactor "PlayerMelee",2.0
+	PainChance "PlayerPistol",32
+	PainChance "PlayerUzi",32
 	Obituary "%o was declared D.O.A. by a rookie cop."
 	States
 	{
@@ -43,11 +45,6 @@ ACTOR Cop2 : WWTBadGuy
 		COP3 F 10
 		COP3 A 5 A_SetUserVar("user_spent",0)
 		Goto Missile
-	Pain.PlayerPistol:
-	Pain.PlayerUzi:
-		COP3 IIIIIIIIII 0 A_SpawnItemEx("BulletIneffectiveSpark",0,0,32,frandom(-2.0,2.0),frandom(-2.0,2.0),frandom(3.0,6.0),frandom(0.0,359.9),SXF_NOCHECKPOSITION)
-		COP3 I 3 A_PlaySound("Bullet/HitMetal")
-		Goto See
 	Pain.PlayerTaser:
 		COP3 I 0
 		Goto Tased

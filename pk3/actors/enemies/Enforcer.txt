@@ -19,6 +19,9 @@ ACTOR WWTEnforcer : WWTBadGuy replaces BaronOfHell
 	DamageFactor "PlayerM60",0.7
 	DamageFactor "PlayerMagnum",0.6
 	DamageFactor "PlayerMelee",2.0
+	PainChance "PlayerPistol",32
+	PainChance "PlayerUzi",32
+	PainChance "PlayerShotgun",32
 	Obituary "%o exceeds a lead-to-flesh ratio of 2:1."
 	+MISSILEMORE
 	+MISSILEEVENMORE
@@ -61,12 +64,6 @@ ACTOR WWTEnforcer : WWTBadGuy replaces BaronOfHell
 		UTHG KLMN 3 Fast
 		UTHG O 3 A_CustomMissile("EnemyGrenade")
 		UTHG PQ 3
-		Goto See
-	Pain.PlayerPistol:
-	Pain.PlayerUzi:
-	Pain.PlayerShotgun:
-		UTHG RRRRRRRRRR 0 A_SpawnItemEx("BulletIneffectiveSpark",0,0,32,frandom(-2.0,2.0),frandom(-2.0,2.0),frandom(3.0,6.0),frandom(0.0,359.9),SXF_NOCHECKPOSITION)
-		UTHG R 3 A_PlaySound("Bullet/HitMetal")
 		Goto See
 	Pain.PlayerTaser:
 		UTHG R 0

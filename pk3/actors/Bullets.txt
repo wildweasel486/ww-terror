@@ -4,7 +4,7 @@ ACTOR Tracer : FastProjectile
 	Radius 2
 	Height 2
 	Speed 75
-	+BLOODSPLATTER
+	//+BLOODSPLATTER
 	+HITTRACER
 	Scale .3
 	MissileType TracerTrail
@@ -29,6 +29,26 @@ ACTOR Tracer : FastProjectile
 	}
 }
 
+ACTOR BleedCheck : CustomInventory
+{
+	States
+	{
+	Pickup:
+		TNT1 A 0 A_CheckFlag("ISMONSTER","Checking")
+		Goto None
+	Blood:
+		TNT1 A 0 A_SpawnItemEx("Blood",0,0,32,frandom(-2.0,2.0),frandom(-2.0,2.0),frandom(3.0,6.0),frandom(0.0,359.9),SXF_NOCHECKPOSITION)
+		//Position values just copied in from the sparks -- Open to adjustment
+		Stop
+	Sparks:
+		TNT1 AAAAAAAAAA 0 A_SpawnItemEx("BulletIneffectiveSpark",0,0,32,frandom(-2.0,2.0),frandom(-2.0,2.0),frandom(3.0,6.0),frandom(0.0,359.9),SXF_NOCHECKPOSITION)
+		TNT1 A 0 A_PlaySound("Bullet/HitMetal")
+		Stop
+	None:
+		TNT1 A 0
+		Stop
+	}
+}
 ACTOR KillCheck : CustomInventory
 {
 	States
@@ -265,14 +285,29 @@ ACTOR PlayerPistolTracer : Tracer
 	States
 	{
 	Death:
+		TNT1 A 0 A_GiveInventory("BleedCheckBeretta",1,AAPTR_TRACER)
 		TNT1 A 0 A_GiveInventory("KillCheckBeretta",1,AAPTR_TRACER)
 		Goto Super::Death
 	XDeath:
+		TNT1 A 0 A_GiveInventory("BleedCheckBeretta",1,AAPTR_TRACER)
 		TNT1 A 0 A_GiveInventory("KillCheckBeretta",1,AAPTR_TRACER)
 		Goto Super::XDeath
 	}
 }
 
+ACTOR BleedCheckBeretta : BleedCheck
+{
+	States
+	{
+	Checking:
+		TNT1 A 0 A_CheckFlag("NOBLOOD","Sparks")
+		//List all the classes who should not bleed from this
+		TNT1 A 0 A_JumpIf(CheckClass("ARThug")||CheckClass("Cop2")||CheckClass("DualieDooley")||
+		CheckClass("WWTEnforcer")||CheckClass("FemaleExec")||CheckClass("MagnumThug")||
+		CheckClass("SilentJ")||CheckClass("Undercover"),"Sparks")
+		Goto Blood
+	}
+}
 ACTOR KillCheckBeretta : KillCheck
 {
 	States
@@ -288,6 +323,15 @@ ACTOR PlayerPistolTracerFaster : PlayerPistolTracer
 	Damage (random(18,20))
 	DamageType "PlayerPistolPierce"
 	Speed 100
+	States
+	{
+	Death:
+		TNT1 A 0 A_GiveInventory("KillCheckBeretta",1,AAPTR_TRACER)
+		Goto Super::Death
+	XDeath:
+		TNT1 A 0 A_GiveInventory("KillCheckBeretta",1,AAPTR_TRACER)
+		Goto Super::XDeath
+	}
 }
 
 ACTOR PlayerUziTracer : Tracer
@@ -298,14 +342,29 @@ ACTOR PlayerUziTracer : Tracer
 	States
 	{
 	Death:
+		TNT1 A 0 A_GiveInventory("BleedCheckUzi",1,AAPTR_TRACER)
 		TNT1 A 0 A_GiveInventory("KillCheckUzi",1,AAPTR_TRACER)
 		Goto Super::Death
 	XDeath:
+		TNT1 A 0 A_GiveInventory("BleedCheckUzi",1,AAPTR_TRACER)
 		TNT1 A 0 A_GiveInventory("KillCheckUzi",1,AAPTR_TRACER)
 		Goto Super::XDeath
 	}
 }
 
+ACTOR BleedCheckUzi : BleedCheck
+{
+	States
+	{
+	Checking:
+		TNT1 A 0 A_CheckFlag("NOBLOOD","Sparks")
+		//List all the classes who should not bleed from this
+		TNT1 A 0 A_JumpIf(CheckClass("ARThug")||CheckClass("Cop2")||CheckClass("DualieDooley")||
+		CheckClass("WWTEnforcer")||CheckClass("FemaleExec")||CheckClass("MagnumThug")||
+		CheckClass("SilentJ")||CheckClass("Undercover"),"Sparks")
+		Goto Blood
+	}
+}
 ACTOR KillCheckUzi : KillCheck
 {
 	States
@@ -421,17 +480,31 @@ ACTOR PlayerShotgunTracer : Tracer
 	{
 	Death:
 	Crash:
+		TNT1 A 0 A_GiveInventory("BleedCheckStriker",1,AAPTR_TRACER)
 		TNT1 A 0 A_GiveInventory("KillCheckStriker",1,AAPTR_TRACER)
 		PUFF A 2 BRIGHT A_SpawnDebris("TracerSpark")
 		PUFF B 2 BRIGHT A_SetTranslucent(0.9,0)
 		PUFF CD 2 BRIGHT
 		Stop
 	XDeath:
+		TNT1 A 0 A_GiveInventory("BleedCheckStriker",1,AAPTR_TRACER)
 		TNT1 A 0 A_GiveInventory("KillCheckStriker",1,AAPTR_TRACER)
 		Goto Super::XDeath
 	}
 }
 
+ACTOR BleedCheckStriker : BleedCheck
+{
+	States
+	{
+	Checking:
+		TNT1 A 0 A_CheckFlag("NOBLOOD","Sparks")
+		//List all the classes who should not bleed from this
+		TNT1 A 0 A_JumpIf(CheckClass("ARThug")||CheckClass("DualieDooley")||CheckClass("WWTEnforcer")||
+		CheckClass("FemaleExec"),"Sparks")
+		Goto Blood
+	}
+}
 ACTOR KillCheckStriker : KillCheck
 {
 	States

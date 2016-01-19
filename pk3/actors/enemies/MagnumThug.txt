@@ -13,6 +13,8 @@ ACTOR MagnumThug : WWTBadGuy
 	DamageFactor "PlayerPistol",0.5
 	DamageFactor "PlayerUzi",0.5
 	DamageFactor "PlayerMelee",2.0
+	PainChance "PlayerPistol",32
+	PainChance "PlayerUzi",32
 	Obituary "%o's death was an Executive Decision."
 	+MISSILEMORE
 	States
@@ -53,11 +55,6 @@ ACTOR MagnumThug : WWTBadGuy
 		MTHG G 2 BRIGHT A_CustomMissile("EnemyPistolTracer",48,0,frandom(-1.0,1.0))
 		MTHG H 5
 		MTHG F 4
-		Goto See
-	Pain.PlayerPistol:
-	Pain.PlayerUzi:
-		MTHG IIIIIIIIII 0 A_SpawnItemEx("BulletIneffectiveSpark",0,0,32,frandom(-2.0,2.0),frandom(-2.0,2.0),frandom(3.0,6.0),frandom(0.0,359.9),SXF_NOCHECKPOSITION)
-		MTHG I 3 A_PlaySound("Bullet/HitMetal")
 		Goto See
 	Pain.PlayerTaser:
 		MTHG I 0

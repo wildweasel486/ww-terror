@@ -43,8 +43,6 @@ ACTOR SeekerDrone : WWTRobot replaces LostSoul
 		SEKR A 0
 		Goto Tased
 	Pain:
-		SEKR LLLLLLLLLL 0 A_SpawnItemEx("BulletIneffectiveSpark",0,0,32,frandom(-2.0,2.0),frandom(-2.0,2.0),frandom(3.0,6.0),frandom(0.0,359.9),SXF_NOCHECKPOSITION)
-	Pain.Fire:
 		SEKR L 1 A_Pain
 		Goto See
 	Death.Fire:
