@@ -21,6 +21,9 @@ ACTOR DualieDooley : WWTBadGuy replaces Archvile
 	DamageFactor "PlayerM60",0.7
 	DamageFactor "PlayerMagnum",0.8
 	DamageFactor "PlayerMelee",2.0
+	PainChance "PlayerPistol",32
+	PainChance "PlayerUzi",32
+	PainChance "PlayerShotgun",32
 	Obituary "%o was bullet-hosed by \"Dualie\" Dooley."
 	+MISSILEMORE
 	+MISSILEEVENMORE
@@ -88,12 +91,6 @@ ACTOR DualieDooley : WWTBadGuy replaces Archvile
 		DTHG F 5
 		DTHG H 4 A_PlaySound("Uzi/Cock")
 		DTHG F 5 A_SetUserVar("user_spent",0)
-		Goto See
-	Pain.PlayerPistol:
-	Pain.PlayerUzi:
-	Pain.PlayerShotgun:
-		DTHG IIIIIIIIII 0 A_SpawnItemEx("BulletIneffectiveSpark",0,0,32,frandom(-2.0,2.0),frandom(-2.0,2.0),frandom(3.0,6.0),frandom(0.0,359.9),SXF_NOCHECKPOSITION)
-		DTHG I 3 A_PlaySound("Bullet/HitMetal")
 		Goto See
 	Pain.PlayerTaser:
 		DTHG I 0
