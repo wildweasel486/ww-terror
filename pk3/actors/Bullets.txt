@@ -330,12 +330,10 @@ ACTOR PlayerPistolTracerFaster : PlayerPistolTracer
 	{
 	Death:
 		TNT1 A 0 A_GiveInventory("BleedCheck",1,AAPTR_TRACER)
-		TNT1 A 0 A_GiveInventory("KillCheckBeretta",1,AAPTR_TRACER)
-		Goto Super::Death
+		Goto Super::Death+1
 	XDeath:
 		TNT1 A 0 A_GiveInventory("BleedCheck",1,AAPTR_TRACER)
-		TNT1 A 0 A_GiveInventory("KillCheckBeretta",1,AAPTR_TRACER)
-		Goto Super::XDeath
+		Goto Super::XDeath61
 	}
 }
 
