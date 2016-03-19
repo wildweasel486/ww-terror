@@ -333,7 +333,7 @@ ACTOR PlayerPistolTracerFaster : PlayerPistolTracer
 		Goto Super::Death+1
 	XDeath:
 		TNT1 A 0 A_GiveInventory("BleedCheck",1,AAPTR_TRACER)
-		Goto Super::XDeath61
+		Goto Super::XDeath+1
 	}
 }
 
