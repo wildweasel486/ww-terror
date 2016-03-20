@@ -19,8 +19,14 @@ ACTOR Undercover : WWTBadGuy
 	States
 	{
 	Spawn:
+		UNDR A 0 NODELAY A_GiveInventory("ResistBeretta")
+		UNDR A 1 A_GiveInventory("ResistUzi")
 		UNDR A 1 A_Look
 		Wait
+	See:
+		UNDR A 0 A_GiveInventory("ResistBeretta")
+		UNDR A 0 A_GiveInventory("ResistUzi")
+		Goto Super::See
 	Missile:
 		UNDR FGG 3 A_FaceTarget
 		UNDR G 0 A_PlaySound("Uzi/FireSilent",CHAN_WEAPON)

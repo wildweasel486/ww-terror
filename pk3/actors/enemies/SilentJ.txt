@@ -19,8 +19,14 @@ ACTOR SilentJ : WWTBadGuy
 	States
 	{
 	Spawn:
+		ORAN A 0 NODELAY A_GiveInventory("ResistBeretta")
+		ORAN A 1 A_GiveInventory("ResistUzi")
 		ORAN A 1 A_Look
-		Loop
+		Wait
+	See:
+		ORAN A 0 A_GiveInventory("ResistBeretta")
+		ORAN A 0 A_GiveInventory("ResistUzi")
+		Goto Super::See
 	Missile:
 		ORAN F 10 A_FaceTarget
 		ORAN G 0 A_PlaySound("Beretta/Silent",CHAN_WEAPON)

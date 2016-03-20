@@ -30,9 +30,15 @@ ACTOR WWTEnforcer : WWTBadGuy replaces BaronOfHell
 	States
 	{
 	Spawn:
+		UTHG A 0 NODELAY A_GiveInventory("ResistBeretta")
+		UTHG A 0 A_GiveInventory("ResistUzi")
+		UTHG A 1 A_GiveInventory("ResistStriker")
 		UTHG A 1 A_Look
-		Loop
+		Wait
 	See:
+		UTHG A 0 A_GiveInventory("ResistBeretta")
+		UTHG A 0 A_GiveInventory("ResistUzi")
+		UTHG A 0 A_GiveInventory("ResistStriker")
 		UTHG B 1 A_Chase
 		UTHG BB 1 A_Chase("","")
 		UTHG B 1 A_Chase
