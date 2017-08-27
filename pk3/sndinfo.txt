@@ -57,7 +57,7 @@ Pickups/Vial GetVial
 Pickups/Scroll GetScrol
 Pickups/Ibex GetIbex
 Pickups/KombatKoin GetKoin
-misc/k_pkup dskeyup
+misc/k_pkup GetKey
 
 // WEAPONS
 
