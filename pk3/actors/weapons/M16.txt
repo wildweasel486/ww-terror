@@ -38,16 +38,33 @@ ACTOR WWTAR10 : WWTWeapon
 		A10P A -1
 		Stop
 	Select:
-		A14G A 0 A_JumpIfInventory("AR10LevelUp",4,"ReadyAnim")
+		TNT1 A 15 A_WeaponReady(WRF_NOBOB|WRF_NOFIRE)
+        A14G A 0 A_JumpIfInventory("AR10LevelUp",4,"ReadyAnim")
 		A13G A 0 A_JumpIfInventory("AR10LevelUp",3,"ReadyAnim")
 		A12G A 0 A_JumpIfInventory("AR10LevelUp",2,"ReadyAnim")
 		A10G A 0
 	ReadyAnim:
-		"####" A 1 A_Raise
-		Loop
+		"####" A 1 Offset(90,91)
+		"####" A 1 Offset(75,81)
+		"####" A 1 Offset(60,71)
+		"####" A 1 Offset(48,61)
+		"####" A 1 Offset(38,51)
+		"####" A 1 Offset(29,43)
+		"####" A 1 Offset(20,36)
+		"####" A 1 Offset(11,35)
+		Goto Ready
 	Deselect:
-		"####" A 0 A_StopSound(5)
-		"####" A 1 A_Lower
+		"####" A 1 Offset(3,32) A_StopSound(CHAN_WEAPON)
+		"####" A 1 Offset(6,33)
+		"####" A 1 Offset(11,35)
+		"####" A 1 Offset(20,36)
+		"####" A 1 Offset(29,43)
+		"####" A 1 Offset(38,51)
+		"####" A 1 Offset(48,61)
+		"####" A 1 Offset(60,71)
+		"####" A 1 Offset(75,81)
+		"####" A 1 Offset(90,91)
+		TNT1 A 0 A_Lower
 		Wait
 	Ready:
 		A10G A 0 A_JumpIfInventory("AR10LevelUp",4,"ReadyLevel4")
