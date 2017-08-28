@@ -1,6 +1,23 @@
 #library "TERROR"
 #include "zcommon.acs"
 
+script "Terrorism is Fun" enter //Pillowblaster fixes the EXP bars!
+{
+	SetAmmoCapacity("BerettaExp", GetCvar("ww_wep1exp")); //Set the item limit for the cvar. Repeat for as many cases of weapons you have.
+	SetAmmoCapacity("MatebaExp", GetCvar("ww_wep2exp"));
+    SetAmmoCapacity("StrikerExp", GetCvar("ww_wep3exp"));
+    SetAmmoCapacity("UziExp", GetCvar("ww_wep4exp"));
+    SetAmmoCapacity("AK47Exp", GetCvar("ww_wep5exp"));
+    SetAmmoCapacity("BarrettExp", GetCvar("ww_wep6exp"));
+    SetAmmoCapacity("MGLExp", GetCvar("ww_wep7exp"));
+    SetAmmoCapacity("WWTM60Exp", GetCvar("ww_wep8exp"));
+    SetAmmoCapacity("WWTAR10Exp", GetCvar("ww_wep5aexp"));
+    SetAmmoCapacity("KickExp", GetCvar("ww_wepMexp"));
+    SetAmmoCapacity("TaserExp", GetCvar("ww_wepTexp"));
+    SetAmmoCapacity("GrenadeExp", GetCvar("ww_wepGexp"));
+	Delay(const:1); //Constant, or else the not-so-friendly ghost of KeksDose will find you and do terrible things with you.
+	Restart;
+}
 script "MonsterDead"(void)
 {
 	Printbold(d:GetActorProperty(0,APROP_Health));
