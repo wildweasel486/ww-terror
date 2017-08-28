@@ -4,9 +4,11 @@
 // Edits and pickup: wildweasel.
 // Sounds: Freesound.org, Firearms for Half-Life.
 
-ACTOR UziExp : Inventory
+ACTOR UziExp : Ammo
 {
 	Inventory.MaxAmount 1000
+	+ignoreskill
+	+undroppable
 }
 
 ACTOR UziLevelup : Inventory

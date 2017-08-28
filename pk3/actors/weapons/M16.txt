@@ -10,9 +10,11 @@ ACTOR WWTAR10Magazine : Ammo
 ACTOR AR10Jammed : Inventory{}
 ACTOR AR10FireAuto : Inventory{} // Tracks whether weapon has fired more than one shot per burst for sound purposes.
 
-ACTOR AR10Exp : Inventory
+ACTOR AR10Exp : Ammo
 {
 	Inventory.MaxAmount 1000
+	+ignoreskill
+	+undroppable
 }
 
 ACTOR AR10LevelUp : Inventory

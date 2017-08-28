@@ -13,9 +13,11 @@
 // - Bmaczero
 // - Soldier of Fortune 2
 
-ACTOR MGLExp : Inventory
+ACTOR MGLExp : Ammo
 {
 	Inventory.MaxAmount 1000
+	+ignoreskill
+	+undroppable
 }
 
 ACTOR MGLLevelup : Inventory

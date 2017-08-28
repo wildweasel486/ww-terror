@@ -1,9 +1,11 @@
 // Berlinghoff AMR-82
 // Model credits: r2pp2r, twinke masta, Hav0c, Jennifer!!, Vunsunta, kenlau
 
-ACTOR BarrettExp : Inventory
+ACTOR BarrettExp : Ammo
 {
 	Inventory.MaxAmount 1000
+	+ignoreskill
+	+undroppable
 }
 
 ACTOR BarrettLevelup : Inventory

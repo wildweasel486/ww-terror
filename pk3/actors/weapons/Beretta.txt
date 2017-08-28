@@ -5,9 +5,11 @@
 // Edits and Pickup: wildweasel.
 // Sounds: Daikatana and Deus Ex by Ion Storm.
 
-ACTOR BerettaExp : Inventory
+ACTOR BerettaExp : Ammo
 {
 	Inventory.MaxAmount 1000
+	+ignoreskill
+	+undroppable
 }
 
 ACTOR BerettaLevelup : Inventory

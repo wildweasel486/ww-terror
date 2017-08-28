@@ -1,6 +1,8 @@
-ACTOR GrenadeExp : Inventory
+ACTOR GrenadeExp : Ammo
 {
 	Inventory.MaxAmount 1000
+	+ignoreskill
+	+undroppable
 }
 
 ACTOR GrenadeLevelup : Inventory

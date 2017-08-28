@@ -1,8 +1,10 @@
 // Model Base: W1LLDAB3AST, DeadPixel, SilentAssassin12, CIgano
 
-ACTOR StrikerExp : Inventory
+ACTOR StrikerExp : Ammo
 {
 	Inventory.MaxAmount 1000
+	+ignoreskill
+	+undroppable
 }
 
 ACTOR StrikerLevelup : Inventory

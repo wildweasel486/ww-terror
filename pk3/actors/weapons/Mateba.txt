@@ -2,9 +2,11 @@
 // Graphic by The_Funktasm
 // Sounds from Left 4 Dead 2, Medal of Honor: Pacific Assault and others I forget
 
-ACTOR MatebaExp : Inventory
+ACTOR MatebaExp : Ammo
 {
 	Inventory.MaxAmount 1000
+	+ignoreskill
+	+undroppable
 }
 
 ACTOR MatebaLevelup : Inventory

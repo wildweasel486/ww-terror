@@ -2,9 +2,11 @@
 // Original sprite by Kronos, with portions from Powerslave by Lobotomy Software and edits by Xaser.
 // Sounds from MOH: Pacific Assault, Fallout New Vegas, and Soldier of Fortune 2.
 
-ACTOR M60Exp : Inventory
+ACTOR M60Exp : Ammo
 {
 	Inventory.MaxAmount 1000
+	+ignoreskill
+	+undroppable
 }
 
 ACTOR M60Levelup : Inventory

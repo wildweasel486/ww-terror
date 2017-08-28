@@ -3,9 +3,11 @@
 // Rechamber sound: NoiseCollector (Creative Commons 3.0 Attribution)
 // Magazine sounds: Yzhamua (Creative Commons 3.0 Attribution)
 
-ACTOR AK47Exp : Inventory
+ACTOR AK47Exp : Ammo
 {
 	Inventory.MaxAmount 1000
+	+ignoreskill
+	+undroppable
 }
 
 ACTOR AK47Levelup : Inventory
