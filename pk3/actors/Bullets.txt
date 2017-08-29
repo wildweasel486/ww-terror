@@ -138,7 +138,7 @@ ACTOR PlayerLauncherGrenade
 		TNT1 A 0 A_GiveInventory("KillCheckMGL",1,AAPTR_TRACER)
 		FRME A 0 A_AlertMonsters
 		FRME A 0 A_SetScale(1.75,1.75)
-		FRME A 0 A_SetTranslucent(0.75,1)
+		//FRME A 0 A_SetTranslucent(0.75,1)
 		FRME A 0 A_PlaySound("grenade/explode",0,1.0,0,0.1)
 		FRME A 0 A_Explode(128,192)
 		FRME A 1 BRIGHT A_RadiusGive("KillCheckMGL",192,RGF_MONSTERS|RGF_CORPSES|RGF_CUBE)
@@ -167,7 +167,7 @@ ACTOR PlayerAKGrenade : PlayerLauncherGrenade
 	Death:
 		FRME A 0 A_AlertMonsters
 		FRME A 0 A_SetScale(1.0,1.0)
-		FRME A 0 A_SetTranslucent(0.75,1)
+		//FRME A 0 A_SetTranslucent(0.75,1)
 		FRME A 0 A_PlaySound("grenade/explode",0,1.0,0,0.1)
 		FRME A 1 BRIGHT A_Explode(32,192)
 		FRME B 1 BRIGHT A_Quake(7,10,0,256,0)
@@ -194,7 +194,7 @@ ACTOR PlayerLauncherGrenadeFaster : FastProjectile
 		TNT1 A 0 A_GiveInventory("KillCheckMGL",1,AAPTR_TRACER)
 		FRME A 0 A_AlertMonsters
 		FRME A 0 A_SetScale(1.75,1.75)
-		FRME A 0 A_SetTranslucent(0.75,1)
+		//FRME A 0 A_SetTranslucent(0.75,1)
 		FRME A 0 A_PlaySound("grenade/explode",0,1.0,0,0.1)
 		FRME A 0 A_Explode(128,192)
 		FRME A 1 BRIGHT A_RadiusGive("KillCheckMGL",192,RGF_MONSTERS|RGF_CORPSES|RGF_CUBE)
@@ -217,7 +217,7 @@ ACTOR PlayerLauncherGrenadeFinal : PlayerLauncherGrenadeFaster2
 	Death:
 		FBLX A 0 A_SetScale(1.0,1.0)
 	 	FBLX A 0 A_AlertMonsters
-		FBLX A 0 A_SetTranslucent(0.75,1)
+		//FBLX A 0 A_SetTranslucent(0.75,1)
 		FBLX A 0 A_PlaySound("grenade/explode",0,1.0,0,0.1)
 		FBLX A 1 BRIGHT A_Explode(128,192)
 		FBLX B 1 BRIGHT A_Quake(7,10,0,256,0)
@@ -268,7 +268,7 @@ ACTOR EnemyLauncherGrenade : PlayerLauncherGrenade
 	{
 	Death:
 		FRME A 0 A_SetScale(1.75,1.75)
-		FRME A 0 A_SetTranslucent(0.75,1)
+		//FRME A 0 A_SetTranslucent(0.75,1)
 		FRME A 0 A_PlaySound("grenade/explode",0,1.0,0,0.1)
 		FRME A 1 BRIGHT A_Explode(32,256,0)
 		FRME B 1 A_Quake(7,10,0,256,0)

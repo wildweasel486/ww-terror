@@ -22,7 +22,7 @@ ACTOR RepelShock // Borrowed from LWM's Hammerhound.
 
 ACTOR DIExplosion
 {
-	RenderStyle Add
+	//RenderStyle Add
 	Radius 1
 	Height 1
 	Scale 1.5
