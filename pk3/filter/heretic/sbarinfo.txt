@@ -1,0 +1,608 @@
+CreatePopup Status,320,100,Fade,0.2,0.2;
+Height 23;
+
+statusbar normal
+{
+	AspectRatio "16:9"
+	{
+		DrawImage "SbarWide",-60,176;
+
+		DrawNumber 3,BIGNUMS,Yellow,Health,Alignment(center),-41,180,1,Orange,50,Green,101;
+		DrawNumber 3,BIGNUMS,Yellow,Armor,Alignment(center),23,180,1,Orange,50,Green,101;
+
+		DrawKeyBar 6,horizontal,9,47,188;
+
+		DrawNumber 3,THREEFIV,Yellow,"9mmAmmo",Alignment(right),336,177,1,Orange,30,Green,151;
+		DrawNumber 3,THREEFIV,Yellow,"44MagAmmo",Alignment(right),336,184,1,Orange,30,Green,43;
+		DrawNumber 3,THREEFIV,Yellow,"12gaAmmo",Alignment(right),336,191,1,Orange,30,Green,49;
+		DrawNumber 3,THREEFIV,Yellow,"762mmAmmo",Alignment(right),352,177,1,Orange,30,Green,201;
+		DrawNumber 3,THREEFIV,Yellow,"50BMGAmmo",Alignment(right),352,184,1,Orange,30,Green,26;
+		DrawNumber 3,THREEFIV,Yellow,"40mmAmmo",Alignment(right),352,191,1,Orange,30,Green,31;
+
+		DrawNumber 3,BIGNUMS,White,Ammo1,Alignment(center),283,180,1;
+
+		DrawString THREEFIV,White,"Grenades:",174,179,1,Alignment(left);
+		DrawNumber 1,ROHUDSMALL,Yellow,"GrenadePickup",Alignment(left),209,179,1,Orange,2,Green,5;
+
+		InInventory WWTTaserPickup
+		{
+			DrawString THREEFIV,White,"Taser:",226,179,1,Alignment(left);
+			InInventory WWTTaserActivated
+			{
+				DrawString THREEFIV,Green,"ON",250,179,1,Alignment(left);
+			}
+			Else
+			{
+				DrawString THREEFIV,Red,"OFF",250,179,1,Alignment(left);
+			}
+		}
+		DrawSelectedInventory artiflash, indexfont, 0, 140;
+
+		// And the huge block of weapon experience bars.
+		IsSelected Beretta
+		{
+			InInventory BerettaLevelup,3
+			{
+				DrawImage "Subrmax",174,189;
+				DrawString THREEFIV,Black,"Fire:",174,190,1,Alignment(left);
+				InInventory "BerettaBurstActive"
+				{
+					DrawString THREEFIV,Black,"Burst",194,190,1,Alignment(left);
+				}
+				Else
+				{
+					DrawString THREEFIV,Black,"Single",194,190,1,Alignment(left);
+				}
+			}
+			else
+			{
+				DrawBar "Subrfull","Subrempt",BerettaExp,Horizontal,174,189;
+			}
+		}
+		IsSelected Mateba
+		{
+			InInventory MatebaLevelup,3
+			{
+				DrawImage "Subrmax",174,189;
+			}
+			else
+			{
+				DrawBar "Subrfull","Subrempt",MatebaExp,Horizontal,174,189;
+			}
+		}
+		IsSelected WWTStriker
+		{
+			InInventory StrikerLevelup,3
+			{
+				DrawImage "Subrmax",174,189;
+			}
+			else
+			{
+				DrawBar "Subrfull","Subrempt",StrikerExp,Horizontal,174,189;
+			}
+		}
+		IsSelected WWTUzi
+		{
+			InInventory UziLevelup,3
+			{
+				DrawImage "Subrmax",174,189;
+			}
+			else
+			{
+				DrawBar "Subrfull","Subrempt",UziExp,Horizontal,174,189;
+			}
+		}
+		IsSelected WWTAK47
+		{
+			InInventory AK47Levelup,3
+			{
+				DrawImage "Subrmax",174,189;
+				DrawString THREEFIV,Black,"GL:",174,190,1,Alignment(left);
+				InInventory "AK47GrenadeSeq"
+				{
+					DrawString THREEFIV,Black,"Ready",188,190,1,Alignment(left);
+				}
+				Else
+				{
+					DrawString THREEFIV,Black,"RELOAD",188,190,1,Alignment(left);
+				}
+			}
+			else
+			{
+				DrawBar "Subrfull","Subrempt",AK47Exp,Horizontal,174,189;
+			}
+		}
+		IsSelected Barrett
+		{
+			InInventory BarrettLevelup,3
+			{
+				DrawImage "Subrmax",174,189;
+			}
+			else
+			{
+				DrawBar "Subrfull","Subrempt",BarrettExp,Horizontal,174,189;
+			}
+		}
+		IsSelected MGL140
+		{
+			InInventory MGLLevelup,3
+			{
+				DrawImage "Subrmax",174,189;
+			}
+			else
+			{
+				DrawBar "Subrfull","Subrempt",MGLExp,Horizontal,174,189;
+			}
+		}
+		IsSelected WWTM60
+		{
+			InInventory M60Levelup,3
+			{
+				DrawImage "Subrmax",174,189;
+			}
+			else
+			{
+				DrawBar "Subrfull","Subrempt",M60Exp,Horizontal,174,189;
+			}
+		}
+		IsSelected WWTAR10
+		{
+			InInventory AR10LevelUp,4
+			{
+				DrawImage "Subrmax",174,189;
+			}
+			else
+			{
+				DrawBar "Subrfull","Subrempt",AR10Exp,Horizontal,174,189;
+			}
+		}
+	}
+	Else
+	{
+		DrawImage "Sbar43",0,176;
+		DrawNumber 3,BIGNUMS,Yellow,Health,Alignment(center),18,180,1,Orange,50,Green,101;
+		DrawNumber 3,BIGNUMS,Yellow,Armor,Alignment(center),83,180,1,Orange,50,Green,101;
+
+		DrawKeyBar 3,horizontal,9,107,189;
+		DrawKeyBar 3,horizontal,9,107,179,3;
+
+		DrawNumber 3,THREEFIV,Yellow,"9mmAmmo",Alignment(right),277,177,1,Orange,30,Green,151;
+		DrawNumber 3,THREEFIV,Yellow,"44MagAmmo",Alignment(right),277,184,1,Orange,30,Green,43;
+		DrawNumber 3,THREEFIV,Yellow,"12gaAmmo",Alignment(right),277,191,1,Orange,30,Green,49;
+		DrawNumber 3,THREEFIV,Yellow,"762mmAmmo",Alignment(right),293,177,1,Orange,30,Green,201;
+		DrawNumber 3,THREEFIV,Yellow,"50BMGAmmo",Alignment(right),293,184,1,Orange,30,Green,26;
+		DrawNumber 3,THREEFIV,Yellow,"40mmAmmo",Alignment(right),293,191,1,Orange,30,Green,31;
+
+		DrawNumber 3,BIGNUMS,White,Ammo1,Alignment(center),222,180,1;
+
+		DrawString THREEFIV,White,"Grn:",138,179,1,Alignment(left);
+		DrawNumber 1,ROHUDSMALL,Yellow,"GrenadePickup",Alignment(left),154,179,1,Orange,2,Green,5;
+
+		InInventory WWTTaserPickup
+		{
+			DrawString THREEFIV,White,"Tas:",164,179,1,Alignment(left);
+			InInventory WWTTaserActivated
+			{
+				DrawString THREEFIV,Green,"ON",179,179,1,Alignment(left);
+			}
+			Else
+			{
+				DrawString THREEFIV,Red,"OFF",179,179,1,Alignment(left);
+			}
+		}
+		DrawSelectedInventory artiflash, indexfont, 0, 140;
+
+		// And the huge block of weapon experience bars.
+		IsSelected Beretta
+		{
+			InInventory BerettaLevelup,3
+			{
+				DrawImage "Subrmx43",137,189;
+				DrawString THREEFIV,Black,"Fire:",138,190,1,Alignment(left);
+				InInventory "BerettaBurstActive"
+				{
+					DrawString THREEFIV,Black,"Burst",158,190,1,Alignment(left);
+				}
+				Else
+				{
+					DrawString THREEFIV,Black,"Single",158,190,1,Alignment(left);
+				}
+			}
+			else
+			{
+				DrawBar "Subrfl43","Subrmt43",BerettaExp,Horizontal,137,189;
+			}
+		}
+		IsSelected Mateba
+		{
+			InInventory MatebaLevelup,3
+			{
+				DrawImage "subrmx43",137,189;
+			}
+			else
+			{
+				DrawBar "subrfl43","subrmt43",MatebaExp,Horizontal,137,189;
+			}
+		}
+		IsSelected WWTStriker
+		{
+			InInventory StrikerLevelup,3
+			{
+				DrawImage "subrmx43",137,189;
+			}
+			else
+			{
+				DrawBar "subrfl43","subrmt43",StrikerExp,Horizontal,137,189;
+			}
+		}
+		IsSelected WWTUzi
+		{
+			InInventory UziLevelup,3
+			{
+				DrawImage "subrmx43",137,189;
+			}
+			else
+			{
+				DrawBar "subrfl43","subrmt43",UziExp,Horizontal,137,189;
+			}
+		}
+		IsSelected WWTAK47
+		{
+			InInventory AK47Levelup,3
+			{
+				DrawImage "subrmx43",137,189;
+				DrawString THREEFIV,Black,"GL:",138,190,1,Alignment(left);
+				InInventory "AK47GrenadeSeq"
+				{
+					DrawString THREEFIV,Black,"Ready",148,190,1,Alignment(left);
+				}
+				Else
+				{
+					DrawString THREEFIV,Black,"RELOAD",148,190,1,Alignment(left);
+				}
+			}
+			else
+			{
+				DrawBar "subrfl43","subrmt43",AK47Exp,Horizontal,137,189;
+			}
+		}
+		IsSelected Barrett
+		{
+			InInventory BarrettLevelup,3
+			{
+				DrawImage "subrmx43",137,189;
+			}
+			else
+			{
+				DrawBar "subrfl43","subrmt43",BarrettExp,Horizontal,137,189;
+			}
+		}
+		IsSelected MGL140
+		{
+			InInventory MGLLevelup,3
+			{
+				DrawImage "subrmx43",137,189;
+			}
+			else
+			{
+				DrawBar "subrfl43","subrmt43",MGLExp,Horizontal,137,189;
+			}
+		}
+		IsSelected WWTM60
+		{
+			InInventory M60Levelup,3
+			{
+				DrawImage "subrmx43",137,189;
+			}
+			else
+			{
+				DrawBar "subrfl43","subrmt43",M60Exp,Horizontal,137,189;
+			}
+		}
+		IsSelected WWTAR10
+		{
+			InInventory AR10LevelUp,4
+			{
+				DrawImage "Subrmax",137,189;
+			}
+			else
+			{
+				DrawBar "Subrfull","Subrempt",AR10Exp,Horizontal,137,189;
+			}
+		}
+	}
+}
+
+statusbar fullscreen,fullscreenoffsets
+{
+	IsSelected Beretta
+	{
+		DrawImage "BRTXPMAX",-80,-40;
+		DrawBar "UpBarFul","UpBarEmp",BerettaExp,horizontal,-70,-17;
+		InInventory BerettaLevelup,3
+		{
+			DrawImage "UpBarMax",-66,-14;
+			DrawSwitchableImage BerettaBurstActive,"BRTBRST0","BRTBRST1",-67,-27;
+		}
+	}
+	IsSelected Mateba
+	{
+		DrawImage "MATXPMAX",-80,-40;
+		DrawBar "UpBarFul","UpBarEmp",MatebaExp,horizontal,-70,-17;
+		InInventory MatebaLevelup,3
+		{
+			DrawImage "UpBarMax",-66,-14;
+		}
+	}
+	IsSelected WWTStriker
+	{
+		DrawImage "STKXPMAX",-80,-40;
+		DrawBar "UpBarFul","UpBarEmp",StrikerExp,horizontal,-70,-17;
+		InInventory StrikerLevelup,3
+		{
+			DrawImage "UpBarMax",-66,-14;
+		}
+	}
+	IsSelected WWTUzi
+	{
+		DrawImage "UZIXPMAX",-80,-40;
+		DrawBar "UpBarFul","UpBarEmp",UziExp,horizontal,-70,-17;
+		InInventory UziLevelup,3
+		{
+			DrawImage "UpBarMax",-66,-14;
+		}
+	}
+	IsSelected WWTAK47
+	{
+		DrawImage "AKMXPMAX",-90,-37;
+		DrawBar "UpBarFul","UpBarEmp",AK47Exp,horizontal,-70,-17;
+		InInventory AK47Levelup,3
+		{
+			DrawImage "UpBarMax",-66,-14;
+			DrawImage "40MMICON",-50,-65;
+			DrawNumber 3,BIGNUMS,White,"Ak47GrenadeSeq",Alignment(right),-52,-60,1;
+			DrawNumber 3,BIGFONT,White,"40mmAmmo",Alignment(right),-5,-57,1;
+		}
+	}
+	IsSelected Barrett
+	{
+		DrawImage "AMRXPMAX",-110,-43;
+		DrawBar "UpBarFul","UpBarEmp",BarrettExp,horizontal,-70,-17;
+		InInventory BarrettLevelup,3
+		{
+			DrawImage "UpBarMax",-66,-14;
+		}
+	}
+	IsSelected MGL140
+	{
+		DrawImage "MGLXPMAX",-88,-45;
+		DrawBar "UpBarFul","UpBarEmp",MGLExp,horizontal,-70,-17;
+		InInventory MGLLevelup,3
+		{
+			DrawImage "UpBarMax",-66,-14;
+		}
+	}
+	IsSelected WWTM60
+	{
+		DrawImage "M60XPMAX",-88,-38;
+		DrawBar "UpBarFul","UpBarEmp",M60Exp,horizontal,-70,-17;
+		InInventory M60Levelup,3
+		{
+			DrawImage "UpBarMax",-66,-14;
+		}
+	}
+	IsSelected WWTAR10
+	{
+		DrawImage "ARXPMAX",-90,-37;
+		DrawBar "UpBarFul","UpBarEmp",AR10Exp,horizontal,-70,-17;
+		InInventory AR10Jammed
+		{
+			DrawString SMALLFONT,Red,"JAMMED!",-30,-35,0,Alignment(right);
+		}
+		InInventory AR10LevelUp,4
+		{
+			DrawImage "UpBarMax",-66,-14;
+		}
+	}
+
+	DrawNumber 3,BIGNUMS,White,Ammo1,Alignment(right),-72,-30,1;
+	DrawNumber 3,BIGFONT,White,Ammo2,Alignment(right),-5,-27,1;
+	DrawString SMALLFONT,White,Ammo2tag,-6,-47,0,Alignment(right);
+	DrawString SMALLFONT,White,Weapontag,-6,-10,0,Alignment(right);
+
+	InInventory GrenadeLevelUp,3
+	{
+		DrawImage "GRENICOD",62,-5,centerbottom;
+	}
+	else InInventory GrenadeLevelup,2
+	{
+		DrawImage "GRENICOC",62,-5,centerbottom;
+	}
+	else InInventory GrenadeLevelup,1
+	{
+		DrawImage "GRENICOB",62,-5,centerbottom;
+	}
+	else DrawImage "GRENICOA",62,-5,centerbottom;
+	DrawNumber 1,BIGFONT,White,GrenadePickup,fillzeros,Alignment(right),60,-19,1;
+	DrawBar "UpBrmFul","UpBrmEmp",GrenadeExp,vertical,66,-33;
+	InInventory GrenadeLevelup,3
+	{
+		DrawImage "UpBrmMax",66,-33;
+	}
+
+	DrawSwitchableImage WWTTaserActivated,"BOOTICON","TASICON2",75,-25;
+	InInventory WWTTaserActivated
+	{
+		DrawBar "UpBrmFul","UpBrmEmp",TaserExp,vertical,85,-33;
+		InInventory TaserLevelup,3
+		{
+			DrawImage "UpBrmMax",85,-33;
+		}
+	}
+	Else
+	{
+		DrawBar "UpBrmFul","UpBrmEmp",KickExp,vertical,85,-33;
+		InInventory KickLevelup,3
+		{
+			DrawImage "UpBrmMax",85,-33;
+		}
+	}
+	DrawSelectedInventory artiflash, indexfont, 100, -32;
+
+	DrawString BIGNUMS,White,"H:",2,-15,1,Alignment(left);
+	DrawNumber 3,BIGNUMS,Yellow,Health,Alignment(left),24,-15,1,Orange,50,Green,101;
+	DrawString BIGNUMS,White,"A:",2,-30,1,Alignment(left);
+	DrawNumber 3,BIGNUMS,Yellow,Armor,Alignment(left),24,-30,1,Orange,50,Green,101;
+
+	DrawKeyBar 9,horizontal,9,2,-40;
+}
+
+// Weapon and ammo list popup
+Statusbar PopupStatus,forcescaled
+{
+	DrawShader 440,100,vertical,-60,100;
+	InInventory Beretta
+	{
+		DrawImage "BRTPA0",40,195,centerbottom;
+		DrawBar "UpBarFul","UpBarEmp",BerettaExp,horizontal,10,193;
+		InInventory BerettaLevelup,3
+		{
+			DrawImage "UpBarMax",14,196;
+		}
+		DrawNumber 1,SMALLFONT,LightBlue,"BerettaLevelup",Alignment(right),10,192;
+		DrawNumber 3,SMALLFONT,White,Ammo BerettaLoaded,Alignment(right),40,185,1;
+	}
+	InInventory Mateba
+	{
+		DrawImage "MATPA0",110,195,centerbottom;
+		DrawBar "UpBarFul","UpBarEmp",MatebaExp,horizontal,90,193;
+		InInventory MatebaLevelup,3
+		{
+			DrawImage "UpBarMax",94,196;
+		}
+		DrawNumber 1,SMALLFONT,LightBlue,"MatebaLevelup",Alignment(right),90,192;
+		DrawNumber 3,SMALLFONT,White,Ammo MatebaLoaded,Alignment(right),120,185,1;
+	}
+	InInventory WWTStriker
+	{
+		DrawImage "STKPA0",195,195,centerbottom;
+		DrawBar "UpBarFul","UpBarEmp",StrikerExp,horizontal,170,193;
+		InInventory StrikerLevelup,3
+		{
+			DrawImage "UpBarMax",174,196;
+		}
+		DrawNumber 1,SMALLFONT,LightBlue,"StrikerLevelup",Alignment(right),170,192;
+		DrawNumber 3,SMALLFONT,White,Ammo StrikerLoaded,Alignment(right),205,185,1;
+	}
+	InInventory WWTUzi
+	{
+		DrawImage "UZIPA0",35,165,centerbottom;
+		DrawBar "UpBarFul","UpBarEmp",UziExp,horizontal,10,163;
+		InInventory UziLevelup,3
+		{
+			DrawImage "UpBarMax",14,166;
+		}
+		DrawNumber 1,SMALLFONT,LightBlue,"UziLevelup",Alignment(right),10,162;
+		DrawNumber 3,SMALLFONT,White,Ammo UziLoaded,Alignment(right),40,155,1;
+	}
+	InInventory WWTAK47
+	{
+		DrawImage "AKMICON",125,165,centerbottom;
+		DrawBar "UpBarFul","UpBarEmp",AK47Exp,horizontal,90,163;
+		InInventory AK47Levelup,3
+		{
+			DrawImage "UpBarMax",94,166;
+		}
+		DrawNumber 1,SMALLFONT,LightBlue,"AK47Levelup",Alignment(right),90,162;
+		DrawNumber 3,SMALLFONT,White,Ammo AK47Loaded,Alignment(right),120,155,1;
+	}
+	InInventory MGL140
+	{
+		DrawImage "MGLPA0",200,165,centerbottom;
+		DrawBar "UpBarFul","UpBarEmp",MGLExp,horizontal,170,163;
+		InInventory MGLLevelup,3
+		{
+			DrawImage "UpBarMax",174,166;
+		}
+		DrawNumber 1,SMALLFONT,LightBlue,"MGLLevelup",Alignment(right),170,162;
+		DrawNumber 3,SMALLFONT,White,Ammo MGLLoaded,Alignment(right),205,155,1;
+	}
+	InInventory Barrett
+	{
+		DrawImage "AMRICON",48,130,centerbottom;
+		DrawBar "UpBarFul","UpBarEmp",BarrettExp,horizontal,10,133;
+		InInventory BarrettLevelup,3
+		{
+			DrawImage "UpBarMax",14,136;
+		}
+		DrawNumber 1,SMALLFONT,LightBlue,"BarrettLevelup",Alignment(right),10,132;
+		DrawNumber 3,SMALLFONT,White,Ammo BarrettLoaded,Alignment(right),40,125,1;
+	}
+	InInventory WWTM60
+	{
+		DrawImage "M60ICON",120,132,centerbottom;
+		DrawBar "UpBarFul","UpBarEmp",M60Exp,horizontal,90,133;
+		InInventory M60Levelup,3
+		{
+			DrawImage "UpBarMax",94,136;
+		}
+		DrawNumber 1,SMALLFONT,LightBlue,"M60Levelup",Alignment(right),90,132;
+		DrawNumber 3,SMALLFONT,White,Ammo M60Loaded,Alignment(right),120,125,1;
+	}
+	InInventory WWTAR10
+	{
+		DrawImage "AR10ICON",125,165,centerbottom;
+		DrawBar "UpBarFul","UpBarEmp",AR10Exp,horizontal,90,163;
+		InInventory AR10LevelUp,4
+		{
+			DrawImage "UpBarMax",94,166;
+		}
+		DrawNumber 1,SMALLFONT,LightBlue,"AR10Levelup",Alignment(right),90,162;
+		DrawNumber 3,SMALLFONT,White,Ammo WWTAR10Magazine,Alignment(right),120,155,1;
+	}
+
+	DrawImage "GRENICN2",175,135,centerbottom;
+	DrawBar "UpBrmFul","UpBrmEmp",GrenadeExp,vertical,180,105;
+	InInventory GrenadeLevelup,3
+	{
+		DrawImage "UpBrmMax",180,105;
+	}
+	DrawNumber 1,SMALLFONT,LightBlue,"GrenadeLevelup",Alignment(right),182,129;
+
+	DrawImage "BOOTA0",200,135,centerbottom;
+	DrawBar "UpBrmFul","UpBrmEmp",KickExp,vertical,210,105;
+	InInventory KickLevelup,3
+	{
+		DrawImage "UpBrmMax",210,105;
+	}
+	DrawNumber 1,SMALLFONT,LightBlue,"KickLevelup",Alignment(right),212,129;
+
+	InInventory WWTTaserPickup
+	{
+		DrawImage "TASICON",230,135,centerbottom;
+		DrawBar "UpBrmFul","UpBrmEmp",TaserExp,vertical,235,105;
+		InInventory TaserLevelup,3
+		{
+			DrawImage "UpBrmMax",235,105;
+		}
+		DrawNumber 1,SMALLFONT,LightBlue,"TaserLevelup",Alignment(right),237,129;
+	}
+
+	DrawImage "9MMICON",250,115;
+	DrawNumber 3,SMALLFONT,White,"9mmAmmo",265,130,1;
+
+	DrawImage "44MICON",250,145;
+	DrawNumber 3,SMALLFONT,White,"44MagAmmo",265,160,1;
+
+	DrawImage "12GAICON",250,175;
+	DrawNumber 3,SMALLFONT,White,"12gaAmmo",265,190,1;
+
+	DrawImage "762ICON",280,115;
+	DrawNumber 3,SMALLFONT,White,"762mmAmmo",295,130,1;
+
+	DrawImage "50CICON",280,145;
+	DrawNumber 3,SMALLFONT,White,"50BMGAmmo",295,160,1;
+
+	DrawImage "40MMICON",280,175;
+	DrawNumber 3,SMALLFONT,White,"40mmAmmo",295,190,1;
+}

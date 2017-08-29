@@ -1,0 +1,94 @@
+// Heretic enemy spawn filters
+
+ACTOR HereticSeekerDrone : SeekerDrone replaces HereticImp
+{
+	Health 40
+	DropItem "HereticAmmo1", 48
+}
+ACTOR HereticSkimmer : Skimmer replaces HereticImpLeader
+{
+	Health 70
+	DropItem "HereticAmmo1", 48
+}
+ACTOR HereticUAV : UAV1 replaces Wizard {}
+ACTOR HereticThugSpawner1 : ZombiemanSpawner replaces Mummy {}
+ACTOR HereticThugSpawner2 : ShotgunguySpawner replaces MummyLeader {}
+ACTOR HereticThugSpawner3 : ChaingunguySpawner replaces KnightGhost {}
+ACTOR HereticThugSpawner4 : ImpSpawner replaces Knight {}
+ACTOR HereticThugSpawner5 : DemonSpawner replaces MummyLeaderGhost {}
+ACTOR HereticThugSpawner6 : SpectreSpawner replaces Clink {}
+ACTOR HereticThugSpawner7 : HellKnightSpawner replaces Beast {}
+ACTOR HereticThugSpawner8 : RevenantSpawner replaces Snake {}
+ACTOR HereticThugSpawner9 : ChaingunguySpawner replaces MummyGhost {}
+
+// Heretic weapon spawns
+ACTOR HereticTaserSpawner : RandomSpawner replaces Gauntlets
+{
+	DropItem "WWTTaserPickup"
+}
+ACTOR HereticUziSpawner : RandomSpawner replaces Crossbow
+{
+	DropItem "WWTUzi"
+}
+ACTOR HereticShotgunSpawner : RandomSpawner replaces Blaster
+{
+	DropItem "WWTStriker"
+	DropItem "WWTRifleSpawner"
+}
+ACTOR HereticSniperSPawner : RandomSpawner replaces PhoenixRod
+{
+	DropItem "Barrett"
+}
+ACTOR HereticMGLSpawner : RandomSpawner replaces SkullRod
+{
+	DropItem "MGL140"
+}
+ACTOR HereticBlackBoarSpawner : RandomSpawner replaces MaceSpawner
+{
+	DropItem "WWTM60"
+}
+
+// Heretic ammo spawns
+ACTOR HereticAmmo1 : BulletSpawner1 replaces GoldWandAmmo {}
+ACTOR HereticAmmo2 : BulletSpawner2 replaces GoldWandHefty {}
+ACTOR HereticAmmo3 : 12gaAmmoSmall replaces BlasterAmmo {}
+ACTOR HereticAmmo4 : 12gaAmmo replaces BlasterHefty {}
+ACTOR HereticAmmo5 : 9mmAmmoLarge replaces CrossbowAmmo {}
+ACTOR HereticAmmo6 : 762mmAmmo replaces CrossbowHefty {}
+ACTOR HereticAmmo7 : 50BMGAmmo replaces PhoenixRodAmmo {}
+ACTOR HereticAmmo8 : 762mmAmmoLarge replaces SkullRodHefty {}
+ACTOR HereticAmmo9 : 40mmAmmo replaces PhoenixRodHefty {}
+ACTOR HereticAmmo10 : 40mmAmmo replaces MaceAmmo {}
+ACTOR HereticAmmo11 : 762mmAmmoLarge replaces MaceHefty {}
+ACTOR HereticGrenadePickup2 : RandomSpawner replaces SkullRodAmmo
+{
+	DropItem "GrenadePickup"
+}
+ACTOR HereticGrenadePickup3 : RandomSpawner replaces ArtiTimeBomb
+{
+	DropItem "GrenadePickup"
+}
+ACTOR HereticBackpack : BackpackSpawner replaces BagOfHolding {}
+
+// Heretic Hostage spawns
+ACTOR HereticTomeHostageSpawner : RandomSpawner replaces ArtiTomeOfPower
+{
+	DropItem "WWTCoatGuy"
+	DropItem "WWTOfficelady"
+	DropItem "SuperBattery"
+	DropItem "GrenadeUpgradeKit"
+}
+ACTOR HereticInvulnHostageSpawner : RandomSpawner replaces ArtiInvulnerability
+{
+	DropItem "WWTStrykerHostage"
+}
+ACTOR HereticSuperHealthHostageSpawner : RandomSpawner replaces ArtiSuperHealth
+{
+	DropItem "WWTSonyaHostage"
+	DropItem "BumSpawner"
+}
+ACTOR HereticExecHostageSpawner : RandomSpawner replaces SuperMap
+{
+	DropItem "WWTOfficeExec"
+}
+ACTOR HereticInvisHostageSpawner : HereticTomeHostageSpawner replaces ArtiInvisibility {}
