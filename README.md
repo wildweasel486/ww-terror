@@ -10,5 +10,5 @@ Weasel Presents: Terrorists! (Police Brutality)
 
 ## ALTERNATIVELY
 
-Download it from itch.io here: https://wildweasel.itch.io/terrorists
-Or from the Releases tab if you're that way.
+- Download it from itch.io here: https://wildweasel.itch.io/terrorists
+- Or from the Releases tab if you're that way.
